@@ -36,7 +36,7 @@ really is that easy.
 
 ## Example Plugins
 
-Check out the `plugins` folder for fully-functional plugins.
+Check out the `examples` folder for sample plugins demonstrating the API features.
 
 ## PostalPoint Plugin API
 
