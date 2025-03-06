@@ -99,7 +99,7 @@ PostalPoint uses the Jimp library version 1.6 for creating and manipulating imag
 * `addOnscreenPaymentLog(string)`: Append a line of text to the onscreen log displayed during credit card processing. Not shown in kiosk mode.
 * `onReceiptChange(function (receipt) {})`: Add a function to be called whenever the transaction data/receipt is changed.
 * `onTransactionFinished(function (receipt) {})`: Same as `onReceiptChange` except run when a transaction is completed.
-* `registerCardProcessor(...)`: Register the plugin as a credit card processor. See plugins/payment-processor for details.
+* `registerCardProcessor(...)`: Register the plugin as a credit card processor. See examples/payment-processor for details.
 * `ReceiptItem`: A class representing a sale item in the current transaction. See docs/Receipt.md for details.
 * `ReceiptPayment`: A class representing a payment entry for the current transaction. See docs/Receipt.md for details.
 
@@ -126,7 +126,7 @@ PostalPoint uses the Jimp library version 1.6 for creating and manipulating imag
 
 #### Settings/Configuration Storage
 
-PostalPoint provides a UI for user-configurable plugin settings. See `exports.config` in plugins/basic-demo/plugin.js for details.
+PostalPoint provides a UI for user-configurable plugin settings. See `exports.config` in examples/basic-demo/plugin.js for details.
 
 Settings are typically very short strings. Do not store data in settings. Non-string settings values
 are transparently converted to/from JSON objects.
@@ -162,13 +162,13 @@ Use `setBig` and `getBig` for storing data except for very short string or numbe
   `{"city": "HELENA", "state": "MT", "type": "STANDARD"}`.
   Returns `false` if the ZIP Code isn't in the database.
 * `registerRateEndpoint(getRate, purchase, idPrefix)`: Register the plugin as a shipping rate and label provider.
-  See plugins/shipping/plugin.js for example usage.
+  See examples/shipping/plugin.js for example usage.
 
 #### UI
 
 `global.apis.ui.`:
 
-* `addToolsPage(page, title, id = "", description = "", cardTitle = "", icon = "")`: Add a page to the Tools screen. See plugins/basic-demo for example usage.
+* `addToolsPage(page, title, id = "", description = "", cardTitle = "", icon = "")`: Add a page to the Tools screen. See examples/basic-demo for example usage.
 * `showProgressSpinner(title, text = "", subtitle = "")`: Show a Framework7 notification with a loading icon.
 * `hideProgressSpinner()`: hide the UI element created by `showProgressSpinner`.
 * `openInternalWebBrowser(url)`: Open a web browser UI, navigating to the URL. The browser has forward/back/close buttons.
