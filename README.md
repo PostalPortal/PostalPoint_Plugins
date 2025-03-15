@@ -53,7 +53,7 @@ The PostalPoint plugin API is a globally-available object.
 * `getPluginFolder(pluginName)`: Get the filesystem path to a plugin's folder.
   If used without arguments, gets the root plugin storage folder.
 * `f7`: The Framework7 app instance for PostalPoint's entire UI, created by `new Framework7()`.  See https://framework7.io/docs/app for details.  Be very careful.
-
+* `eventbus`: A [Framework7 event bus](https://framework7.io/docs/events#events-bus) that parts of PostalPoint broadcast on. See docs/Events.md for details.
 
 #### Barcode
 
