@@ -168,7 +168,7 @@ Use `setBig` and `getBig` for storing data except for very short string or numbe
 
 `global.apis.ui.`:
 
-* `addToolsPage(page, title, id = "", description = "", cardTitle = "", icon = "")`: Add a page to the Tools screen. See examples/basic-demo for example usage.
+* `addToolsPage(page, title, id = "", description = "", cardTitle = "", icon = "", type = "page")`: Add a page to the Tools screen. See examples/basic-demo for example usage.  If `type` is set to "function", the `page` argument will be run as a function and will not be expected to return a page component.
 * `showProgressSpinner(title, text = "", subtitle = "")`: Show a Framework7 notification with a loading icon.
 * `hideProgressSpinner()`: hide the UI element created by `showProgressSpinner`.
 * `openInternalWebBrowser(url)`: Open a web browser UI, navigating to the URL. The browser has forward/back/close buttons.
