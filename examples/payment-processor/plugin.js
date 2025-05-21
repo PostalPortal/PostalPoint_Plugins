@@ -156,9 +156,9 @@ exports.init = function () {
                 "dueFormatted": "$12.14"
             }
         },
-        checkoutSavedMethod: async function ({cardProcessorCustomerID, paymentMethodID, amount}) {
+        checkoutSavedMethod: async function ({customerID, paymentMethodID, amount}) {
             // Same as checkout() except using a payment method already on file.
-            // cardProcessorCustomerID and paymentMethodID are provided by getSavedPaymentMethods below.
+            // customerID and paymentMethodID are provided by getSavedPaymentMethods below.
             await global.apis.util.delay(1000); // Replace this with something useful!
             global.apis.pos.addReceiptPayment(
                 new global.apis.pos.ReceiptPayment(
@@ -198,7 +198,7 @@ exports.init = function () {
             // Return all saved payment methods tied to the provided customer UUID.
             var methods = [];
             methods.push({
-                customer: "<internal string referencing the customer>", // Passed to checkoutSavedMethod as cardProcessorCustomerID
+                customer: "<internal string referencing the customer>", // Passed to checkoutSavedMethod as customerID
                 customer_uuid: customerUUID,
                 id: "<card/payment method identifier>", // Passed to checkoutSavedMethod as paymentMethodID
                 type: "card", // Payment type. Accepted values are card, ach, crypto, cash, check, account, and free.
