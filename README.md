@@ -14,9 +14,8 @@ PostalPoint® supports plugin extensions. Plugins can hook into PostalPoint to a
 
 ## Plugin Package Structure
 
-A plugin is distributed as a simple ZIP file, containing a folder.  That folder's name is the plugin
-name. The folder then has at least one file, named `plugin.js`.
-he `exports.init` function in `plugin.js` is executed when PostalPoint launches, allowing the plugin
+A plugin is distributed as a simple ZIP file, containing a folder. The folder then has at least one file, named `plugin.js`.
+The `exports.init` function in `plugin.js` is executed when PostalPoint launches, allowing the plugin
 to request involvement with various events in PostalPoint.
 
 PostalPoint installs plugin packages by unzipping their contents into a plugins folder.
@@ -34,13 +33,41 @@ exports.init = function () {
 Yes, the smallest plugin really is just two lines of code, and accessing PostalPoint features
 really is that easy.
 
+## Plugin Metadata File
+
+While not strictly required, a `package.json` is encouraged, and allows specifying the plugin's
+display name, PostalPoint version compatibility, and using a filename other than `plugin.js`
+for the main plugin script.
+
+Sample:
+
+```js
+{
+    "name": "plugin-id-here",
+    "main": "plugin.js",
+    "description": "Human-readable description of the plugin",
+    "version": "1.0.0",
+    "author": "Your Name",
+    "license": "Code license name",
+    "postalpoint": {
+        "pluginname": "Display Name for Plugin",
+        "minVersion": "000034",
+        "maxVersion": "001000"
+    }
+}
+
+```
+
+PostalPoint version codes are MMMnnn where MMM is the major version and nnn is the minor version, zero-padded.
+So version 0.35 is "000035", and 1.23 is "001023".
+
 ## Example Plugins
 
 Check out the `examples` folder for sample plugins demonstrating the API features.
 
 ## PostalPoint Plugin API
 
-The PostalPoint plugin API is a globally-available object.
+The PostalPoint plugin API is a globally-available object named `global.apis`.
 
 ### API List
 
@@ -173,6 +200,12 @@ Use `setBig` and `getBig` for storing data except for very short string or numbe
 * `hideProgressSpinner()`: hide the UI element created by `showProgressSpinner`.
 * `openInternalWebBrowser(url)`: Open a web browser UI, navigating to the URL. The browser has forward/back/close buttons.
 * `openSystemWebBrowser(url)`: Open the native OS default browser to the URL given.
+* `getCustomerDisplayInfo()`: Describes if the customer-facing display is currently enabled, and if it supports customer touch interaction: `{"enabled": true, "touch": true}`.
+* `clearCustomerScreen()`: Clear any custom content on the customer-facing display, defaulting back to blank/receipt/shipping rates, as applicable.
+* `setCustomerScreen(content, type = "html")`: Encodes `content` as a data URI (example: `` `data:text/html;charset=utf-8,${content}` ``) and renders on the customer-facing display.  If `type` is `html`, renders the string as HTML.  If `type` is `pdf`, displays a PDF viewer.  If `type` is `raw`, functions like setting an iframe's src to `content`.  All other `type` values are rendered as `text/plain`.  Warning: Do not load third-party websites, this is a security risk. Wrap it in a `<webview src="..."></webview>` tag if you need to display one.
+* `collectSignatureFromCustomerScreen()`: Show a signature pad on the customer-facing display. When the customer indicates the signature is finished, the `customerSignatureCollected` event is emitted with the data `{"svg": "data:image/svg+xml;base64,...", "png": "data:image/png;base64,..."}`
+* `cancelSignatureCollection()`: Cancels customer signature collection and returns the customer-facing display to normal operation.
+* `clearSignaturePad()`: Erase the signature on the customer-facing display. Note that the customer is also provided a button to do this.
 
 
 #### Utilities
