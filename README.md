@@ -1,15 +1,17 @@
 # PostalPoint Plugins
 
-PostalPoint® supports plugin extensions. Plugins can hook into PostalPoint to add features.
+PostalPoint® supports JavaScript plugin extensions. Plugins can hook into PostalPoint to add features and integrations.
 
 ## What plugins can do
 
 * Process card payments and handle saved payment methods
-* Add additional carriers and provide shipping rates
+* Process cryptocurrency payments
+* Add additional carriers, providing shipping rates and labels
 * Print to label and receipt printers, letting PostalPoint handle hardware support and drivers
 * Extend support for prepaid label acceptance, prepaid barcode recognition, and carrier dropoff QR codes
-* Install pages in the Tools interface, creating new interfaces and features
+* Install pages in the Tools menu, creating new interfaces and features
 * Receive transaction receipts for ingestion into third-party accounting or business software
+* Display interactive HTML5 content on the customer-facing screen
 * Run both Node.JS and browser code.
 
 ## Plugin Package Structure
