@@ -125,6 +125,7 @@ PostalPoint uses the Jimp library version 1.6 for creating and manipulating imag
 * `addReceiptItem(item)`: Add a `ReceiptItem` to the current transaction.
 * `addReceiptPayment(item)`: Add a `ReceiptPayment` to the current transaction.
 * `addOnscreenPaymentLog(string)`: Append a line of text to the onscreen log displayed during credit card processing. Not shown in kiosk mode.
+* `getReceiptID()`: Get the unique alphanumeric ID for the current transaction/receipt. This is the same code printed on receipts and used in digital receipt URLs.
 * `onReceiptChange(function (receipt) {})`: Add a function to be called whenever the transaction data/receipt is changed.
 * `onTransactionFinished(function (receipt) {})`: Same as `onReceiptChange` except run when a transaction is completed.
 * `registerCardProcessor(...)`: Register the plugin as a credit card processor. See examples/payment-processor for details.
@@ -204,7 +205,7 @@ Use `setBig` and `getBig` for storing data except for very short string or numbe
 * `openSystemWebBrowser(url)`: Open the native OS default browser to the URL given.
 * `getCustomerDisplayInfo()`: Describes if the customer-facing display is currently enabled, and if it supports customer touch interaction: `{"enabled": true, "touch": true}`.
 * `clearCustomerScreen()`: Clear any custom content on the customer-facing display, defaulting back to blank/receipt/shipping rates, as applicable.
-* `setCustomerScreen(content, type = "html")`: Encodes `content` as a data URI (example: `` `data:text/html;charset=utf-8,${content}` ``) and renders on the customer-facing display.  If `type` is `html`, renders the string as HTML.  If `type` is `pdf`, displays a PDF viewer.  If `type` is `raw`, functions like setting an iframe's src to `content`.  All other `type` values are rendered as `text/plain`.  Warning: Do not load third-party websites, this is a security risk. Wrap it in a `<webview src="..."></webview>` tag if you need to display one.
+* `setCustomerScreen(content, type = "html", displayInCard = false, cardSize = [300, 300])`: Encodes `content` as a data URI (example: `` `data:text/html;charset=utf-8,${content}` ``) and renders on the customer-facing display.  If `type` is `html`, renders the string as HTML.  If `type` is `pdf`, displays a PDF viewer.  If `type` is `raw`, functions like setting an iframe's src to `content`.  All other `type` values are rendered as `text/plain`.  To display the iframe in a card centered on the screen, set displayInCard to true and pass the desired dimensions (w, h) of the card in px. If the requested size is larger than the available screen space, the card will instead fill the available space. Warning: Do not load third-party websites, this is a security risk. Wrap it in a `<webview src="..."></webview>` tag if you need to display one.
 * `collectSignatureFromCustomerScreen()`: Show a signature pad on the customer-facing display. When the customer indicates the signature is finished, the `customerSignatureCollected` event is emitted with the data `{"svg": "data:image/svg+xml;base64,...", "png": "data:image/png;base64,..."}`
 * `cancelSignatureCollection()`: Cancels customer signature collection and returns the customer-facing display to normal operation.
 * `clearSignaturePad()`: Erase the signature on the customer-facing display. Note that the customer is also provided a button to do this.
@@ -216,7 +217,8 @@ Various useful helper functions.
 
 `global.apis.util.`:
 
-* `barcode.getBuffer(data, type = "code128", height = 10, scale = 2, includetext = false)`: Get a PNG image buffer of a barcode.  Uses library "bwip-js".
+* `async barcode.getBuffer(data, type = "code128", height = 10, scale = 2, includetext = false)`: Get a PNG image buffer of a barcode.  Uses library "bwip-js".
+* `async barcode.getBase64`: Same as `barcode.getBuffer` except returns a base64 image URL.
 * `clipboard.copy(text, showNotification = false)`: Copy a string to the system clipboard, optionally showing a "copied" notification to the user.
 * `async delay(ms = 1000)`: Pause execution for some amount of time in an async function, i.e., returns a Promise that resolves in some number of milliseconds.
 * `async http.fetch(url, responseType = "text", timeout = 15)`: Fetch a URL.  `responseType` can be "text", "blob", "buffer", or "json". Timeout is in seconds.
