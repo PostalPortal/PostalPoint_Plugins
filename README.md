@@ -92,6 +92,7 @@ when a barcode is scanned on the Prepaid page. The function is passed one argume
 containing the raw barcode data. The function shall return boolean `false` if unable or unwilling
 to handle the barcode. If the barcode is handled by this function, it shall return a TrackingBarcode object.
 * `addPrepaidBarcode(trackingBarcodeData)`: Add a TrackingBarcode object to the transaction receipt at any time other than `onPrepaidScan`.
+* `inject(barcodeData)`: Pass data to the internal barcode event subsystem. The data is handled as if it were just received from a physical barcode scanner.
 
 #### Database
 
@@ -127,6 +128,7 @@ PostalPoint uses the Jimp library version 1.6 for creating and manipulating imag
 * `onReceiptChange(function (receipt) {})`: Add a function to be called whenever the transaction data/receipt is changed.
 * `onTransactionFinished(function (receipt) {})`: Same as `onReceiptChange` except run when a transaction is completed.
 * `registerCardProcessor(...)`: Register the plugin as a credit card processor. See examples/payment-processor for details.
+* `registerCryptoProcessor(...)`: Register the plugin as a cryptocurrency payment provider. See examples/crypto-processor for details.
 * `ReceiptItem`: A class representing a sale item in the current transaction. See docs/Receipt.md for details.
 * `ReceiptPayment`: A class representing a payment entry for the current transaction. See docs/Receipt.md for details.
 
