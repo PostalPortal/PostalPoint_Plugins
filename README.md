@@ -190,6 +190,9 @@ asynchronous and return a Promise.
 String values are stored and fetched as-is; all other datatypes are encoded to JSON before saving,
 and decoded back when fetched.
 
+Storing a value of `null` causes the key to be deleted. Fetching a key that doesn't exist without
+specifying a default value returns `null`.
+
 Behavior if the host machine is out of disk space or has a drive failure is undefined.
 
 `global.apis.storage.`:
