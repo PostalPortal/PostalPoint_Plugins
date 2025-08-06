@@ -156,6 +156,77 @@ PostalPoint uses the Jimp library version 1.6 for creating and manipulating imag
   Returns an object such as {width: 300, height: 200, img: Uint8Array}. Pass the img value to `drawImage`.
 
 
+#### Reports
+
+Plugins can supply reports which the PostalPoint user can run.  Reports can be exported to a CSV file.
+
+`global.apis.reports.`:
+
+* `registerReport(name, onload, date = true)`: Add a report to the Reports UI in PostalPoint.
+`name` is the user-visible name of the report in the list. `onload` is an async function that
+returns the report (see below for format). It is passed two arguments consisting of UNIX timestamps
+for the start and end date selected by the user. Setting `date` to `false` turns off the date range
+selection for reports that don't need a date range.
+
+##### Report format:
+
+Single table report:
+
+```js
+{
+  table: {
+    header: ["Column 1", "Column 2"],
+    datatypes: ["string", "string"],
+    rows: [
+      ["Row 1 Col 1", "Row 1 Col 2"],
+      ["Row 2 Col 1", "Row 2 Col 2"]
+    ]
+  }
+}
+```
+
+Multiple table report: (several tables in one report):
+
+```js
+{
+  multitable: true,
+  table: {
+    titles: ["Report 1 Title", "Report 2 Title"],
+    header: [["Report 1 Column 1", "Report 1 Column 2"], ["Report 2 Column 1", ...]],
+    datatypes: [["string", "string"], ["string", "string"]],
+    rows: [
+      [
+        ["Report 1 Row 1 Col 1", "Report 1 Row 1 Col 2"],
+        ["Report 1 Row 2 Col 1", "Report 1 Row 2 Col 2"]
+      ],
+      [
+        ["Report 2 Row 1 Col 1", "Report 2 Row 1 Col 2"],
+        ["Report 2 Row 2 Col 1", "Report 2 Row 2 Col 2"]
+      ]
+    ]
+  }
+}
+```
+
+##### Report datatypes/column values:
+
+With a few exceptions, report columns must be strings.
+If the datatype provided is not recognized, it is treated as `string`.
+Strings are displayed as-is, except newlines are replaced with markup
+so multi-line data displays as expected.
+
+Special datatype values:
+
+* `datetime`: Column is a UNIX timestamp (in seconds) or a JavaScript `Date` object.
+It is displayed as a formatted date and time string.
+* `receiptid`: Column is a PostalPoint receipt ID number.
+Displayed as a link. Clicking the ID will fetch and open the receipt in a popup.
+* `userid`: Column contains an employee ID number from the PostalPoint database. It is queried in
+the database and replaced with the employee's name, or with an empty string if the ID lookup has
+no results.
+
+Other datatypes may be defined in the future, so always use `string` when no special behavior is desired.
+
 #### Settings/Configuration Storage
 
 PostalPoint provides a UI for user-configurable plugin settings. See `exports.config` in examples/basic-demo/plugin.js for details.
