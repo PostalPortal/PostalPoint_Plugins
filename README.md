@@ -160,10 +160,11 @@ PostalPoint uses the Jimp library version 1.6 for creating and manipulating imag
 
 PostalPoint provides a UI for user-configurable plugin settings. See `exports.config` in examples/basic-demo/plugin.js for details.
 
-Settings are typically very short strings. Do not store data in settings. Non-string settings values
-are transparently converted to/from JSON objects.
+Settings are typically very short strings. Do not store data in settings. For data storage, see **Storing Data**.
+Non-string settings values are transparently converted to/from JSON objects.
 
-Use a unique prefix for your plugin to prevent key name conflicts.
+Use a unique key name prefix for your plugin to prevent key name conflicts.
+Reverse domain style is recommended (i.e. `"com.example.pluginname.keyname"`).
 
 `global.apis.settings.`:
 
@@ -173,16 +174,32 @@ Use a unique prefix for your plugin to prevent key name conflicts.
 
 #### Storing Data
 
-Behavior is the same as the settings storage. `setBig` stores the data to disk as a JSON file,
-while `setSmall` uses the settings storage.
-Use `setBig` and `getBig` for storing data except for very short string or number values.
+There are three key/value stores available in PostalPoint.
+
+1. `setSmall` and `getSmall` currently use
+[localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) as a backend,
+but this may change in the future.
+2. `setBig` and `getBig` store the data to disk as a JSON file.
+3. `setDatabase` and `getDatabase` store the data in the PostalPoint database, making stored data
+available on the network to other PostalPoint installations. Depending on the backend in use, data
+is stored either as a SQLite TEXT column or a MariaDB/MySQL LONGTEXT.
+
+`*Big` and `*Small` functions perform synchronous disk access while `*Database` functions are
+asynchronous and return a Promise.
+
+String values are stored and fetched as-is; all other datatypes are encoded to JSON before saving,
+and decoded back when fetched.
+
+Behavior if the host machine is out of disk space or has a drive failure is undefined.
 
 `global.apis.storage.`:
 
 * `getBig(key, defaultValue)`
-* `getSmall(key, defaultValue)`
 * `setBig(key, value)`
+* `getSmall(key, defaultValue)`
 * `setSmall(key, value)`
+* `async getDatabase(key, defaultValue)`
+* `async setDatabase(key, value)`
 
 
 #### Shipping and Rates
