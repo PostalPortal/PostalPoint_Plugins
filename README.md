@@ -217,8 +217,7 @@ so multi-line data displays as expected.
 
 Special datatype values:
 
-* `datetime`: Column is a UNIX timestamp (in seconds) or a JavaScript `Date` object.
-It is displayed as a formatted date and time string.
+* `datetime`: Column is a UNIX timestamp (in seconds). It is displayed as a formatted date and time string.
 * `receiptid`: Column is a PostalPoint receipt ID number.
 Displayed as a link. Clicking the ID will fetch and open the receipt in a popup.
 * `userid`: Column contains an employee ID number from the PostalPoint database. It is queried in
