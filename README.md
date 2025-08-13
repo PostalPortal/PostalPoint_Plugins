@@ -120,6 +120,7 @@ PostalPoint uses the Jimp library version 1.6 for creating and manipulating imag
 
 * `country()`: Returns the 2-character country code that PostalPoint is running in (examples: "US", "CA").
 * `currency()`: Returns the 3-character currency code (examples: "usd", "cad").
+* `symbol()`: Returns the currency symbol (example: "$").
 
 #### Kiosk
 
