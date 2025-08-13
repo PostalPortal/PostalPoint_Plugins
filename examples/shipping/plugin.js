@@ -34,6 +34,8 @@ async function purchase(rateid) {
                     rate.retail_rate, 1, rate.cost_rate, 0
                     );
             receiptitem.barcode = tracking;
+            receiptitem.carrier = "Carrier Name";
+            receiptitem.service = "Service Name";
 
             return {
                 label: label,
