@@ -114,6 +114,13 @@ PostalPoint uses the Jimp library version 1.6 for creating and manipulating imag
 * `Jimp()`: The [JavaScript Image Manipulation Program](https://jimp-dev.github.io/jimp/). Access like so: `const {Jimp} = global.apis.graphics.Jimp();`.
 * `async loadFont(filename)`: Replacement for [Jimp's loadFont](https://jimp-dev.github.io/jimp/api/jimp/functions/loadfont/), which gets very confused about our JS environment and ends up crashing everything.
 
+#### I18N
+
+`global.apis.i18n.`:
+
+* `country()`: Returns the 2-character country code that PostalPoint is running in (examples: "US", "CA").
+* `currency()`: Returns the 3-character currency code (examples: "usd", "cad").
+
 #### Kiosk
 
 `global.apis.kiosk.`:
