@@ -32,7 +32,10 @@ exports.config = [
         defaultVal: "",
         label: "Type a string",
         placeholder: "",
-        text: "Description text next to the input box"
+        text: "Description text next to the input box",
+        sync: false // Add sync: false to prevent automatically syncing this setting between
+                    // PostalPoint installations (i.e. it's a device-specific setting, like a pairing code)
+                    // If it's not present, or is any truthy value, it could be synced between PCs
     },
     {
         type: "password",
