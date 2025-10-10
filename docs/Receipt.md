@@ -13,9 +13,10 @@ export class ReceiptItem {
      * @param {number} quantity Number of units
      * @param {number} cost Cost per unit. Used for automatic expense tracking.
      * @param {number} taxrate Examples: 0 (for 0%), 0.05 (for 5%), etc
+     * @param {string} taxableAmount The part of the sale price that's taxable. "" for default (all), "markup" for only taxing profit.
      * @returns {ReceiptItem}
      */
-    constructor(id, label, text, priceEach, quantity, cost, taxrate) {
+    constructor(id, label, text, priceEach, quantity, cost, taxrate = 0.0, taxableAmount = "") {
         this.id = id;
         this.label = label;
         if (text == null) {
@@ -31,23 +32,36 @@ export class ReceiptItem {
         } else {
             this.taxRate = num(taxrate);
         }
+        this.taxableAmount = taxableAmount;
         this.merch = false;
         this.merchid = null;
         this.surcharge = false;
         this.retail = 0; // For ensuring PostalPoint fee collection on office mode shipments
+        this.mailboxNumber = null;
+        this.mailboxDays = 0;
+        this.mailboxMonths = 0;
+        this.category = ""; // merch category
+        this.electronicReturnReceipt = false;
     }
 
     static fromJSON(obj) {
-        var item = new ReceiptItem(obj.id, obj.label, obj.text, obj.priceEach, obj.qty, obj.cost, obj.taxRate);
+        var item = new ReceiptItem(obj.id, obj.label, obj.text, obj.priceEach, obj.qty, obj.cost, obj.taxRate, obj.taxableAmount ?? "");
         item.free = obj.free;
         item.barcode = obj.barcode;
         item.certifiedInfo = obj.certifiedInfo;
         item.toAddress = obj.toAddress;
         item.fromAddress = obj.fromAddress;
-        item.merch = obj.isMerch == true;
-        item.merchid = item.merch ? obj.merchid : null;
+        item.merch = obj.isMerch == true || (typeof obj.merchid == "string" && obj.merchid.length > 0);
+        item.merchid = obj.merchid ?? null;
+        item.mailboxNumber = obj.mailboxNumber ?? null;
+        item.mailboxDays = obj.mailboxDays ?? 0;
+        item.mailboxMonths = obj.mailboxMonths ?? 0;
         item.surcharge = obj.surcharge;
         item.retailPrice = obj.retail;
+        item.carrier = obj.carrier ?? null;
+        item.service = obj.service ?? null;
+        item.category = obj.category ?? "";
+        item.electronicReturnReceipt = obj.electronicReturnReceipt ?? false;
         return item;
     }
 
@@ -61,6 +75,8 @@ export class ReceiptItem {
             cost: num(this.cost),
             retail: num(this.retail),
             taxRate: num(this.taxRate),
+            taxableAmount: this.taxableAmount,
+            taxTotal: this.taxAmount,
             free: this.free,
             barcode: this.barcode,
             certifiedInfo: this.certifiedInfo,
@@ -68,7 +84,14 @@ export class ReceiptItem {
             merchid: this.merchid,
             surcharge: this.surcharge,
             toAddress: this.toAddress,
-            fromAddress: this.fromAddress
+            fromAddress: this.fromAddress,
+            mailboxNumber: this.mailboxNumber,
+            mailboxDays: this.mailboxDays,
+            mailboxMonths: this.mailboxMonths,
+            carrier: this.carrier,
+            service: this.service,
+            category: this.category,
+            electronicReturnReceipt: this.electronicReturnReceipt
         };
     }
 
@@ -138,11 +161,11 @@ export class ReceiptItem {
     }
 
     get priceEachFormatted() {
-        return "$" + round(num(this.priceEach), 2).toFixed(2);
+        return getCurrencySymbol() + round(num(this.priceEach), 2).toFixed(2);
     }
 
     get linePriceFormatted() {
-        return "$" + round(num(this.linePrice), 2).toFixed(2);
+        return getCurrencySymbol() + round(num(this.linePrice), 2).toFixed(2);
     }
 
     get texthtml() {
@@ -160,7 +183,16 @@ export class ReceiptItem {
     }
 
     get taxAmount() {
-        return round(m(this.linePrice, this.taxRate), 2);
+        if (this.taxableAmount == "markup") {
+            var lineCost = m(this.cost, this.qty);
+            var margin = s(this.linePrice, lineCost);
+            if (margin <= 0) {
+                return 0;
+            }
+            return round(m(margin, this.taxRate), 2);
+        } else {
+            return round(m(this.linePrice, this.taxRate), 2);
+        }
     }
 
     get retailPrice() {
@@ -219,7 +251,7 @@ export class ReceiptPayment {
     }
 
     get amountFormatted() {
-        return "$" + this.amount.toFixed(2);
+        return getCurrencySymbol() + this.amount.toFixed(2);
     }
 
     get label() {
@@ -245,6 +277,8 @@ export class ReceiptPayment {
                 return "Cryptocurrency";
             case "ach":
                 return "ACH Debit";
+            case "rounding":
+                return "Cash Rounding";
             default:
                 return this.type;
         }
