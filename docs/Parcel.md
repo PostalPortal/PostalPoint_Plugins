@@ -16,6 +16,7 @@ export class Package {
             height: 999999,
             weightOz: 999999,
             nonmachinable: false,
+            additionalHandling: false,
             internalid: 100,
             oversizeFlag: false
         };
@@ -29,10 +30,22 @@ export class Package {
             insurance: false, // can be a number in USD
             signature: false, // can be false, "SIGNATURE", or "SIGNATURE_RESTRICTED"
             hazmat: false,
-            liveAnimal: false, // DAY_OLD_POULTRY
+            perishable: false,
+            crematedRemains: false,
+            liveAnimal: false, // BEES, DAY_OLD_POULTRY, ADULT_BIRDS, OTHER_LIVES
             cod: false, // Collect on Delivery
             codAmount: false,
-            endorsement: "" // ADDRESS_SERVICE_REQUESTED, CHANGE_SERVICE_REQUESTED, FORWARDING_SERVICE_REQUESTED, LEAVE_IF_NO_RESPONSE, RETURN_SERVICE_REQUESTED
+            endorsement: "", // ADDRESS_SERVICE_REQUESTED, CHANGE_SERVICE_REQUESTED, FORWARDING_SERVICE_REQUESTED, LEAVE_IF_NO_RESPONSE, RETURN_SERVICE_REQUESTED
+            carrier_billing_account: {// Bill a third party's account number for the label
+                type: "", // "" (ignores this entire option), "SENDER" (EasyPost default), "THIRD_PARTY", "RECEIVER", "COLLECT"
+                carrier: "", // Carrier ID (should be used to filter rates)
+                account_number: "", // Carrier account number to bill
+                country: "", // Country account is based in
+                postal_code: "" // Postal code of account
+            },
+            dryIce: false,
+            dryIceWeight: 0,
+            dryIceMedical: false
         };
         this.specialRateEligibility = false;
         this.customs = {
@@ -42,7 +55,8 @@ export class Package {
             restriction: "",
             restrictionComments: "", // needed if restriction is "other"
             nonDelivery: "return", // "return" or "abandon",
-            items: [] // {index: 0, description: "", qty: "", weight: "", value: "", hscode: "", origin: US"}
+            eel_pfc: "",
+            items: [] // {index: 0, description: "", qty: "", lbs: "", oz: "", value: "", hscode: "", origin: US"}
         };
         this.toAddress = new Address();
         this.returnAddress = new Address();
@@ -55,7 +69,7 @@ export class Package {
      * @returns {Package.toEasyPostShipment.shipment}
      */
     async toEasyPostShipment() {
-        // removed
+        // Not relevant to plugins
     }
 
     /**
@@ -63,21 +77,7 @@ export class Package {
      * @returns {Package.toSERAShipment.shipment}
      */
     async toSERAShipment() {
-        // removed
-    }
-
-    toJSON() {
-        return {
-            prepaid: this.prepaid,
-            packaging: this.packaging,
-            extraServices: this.extraServices,
-            specialRateEligibility: this.specialRateEligibility,
-            customs: this.customs,
-            toAddress: this.toAddress,
-            returnAddress: this.returnAddress,
-            originAddress: this.originAddress,
-            trackingNumber: this.trackingNumber
-        };
+        // Not relevant to plugins
     }
 
     /**
@@ -91,16 +91,50 @@ export class Package {
         let weight = ozToLbsOz(this.packaging.weightOz);
         let weightStr = this.packaging.weightOz >= 16 ? `${weight[0]} lbs ${weight[1]} oz` : `${weight[1]} oz`;
         if (packaging != false) {
-            if (packaging.weight === false) {
-                summary.push(packaging.name);
+            if (packaging.irregular) {
+                if (packaging.weight === false) {
+                    summary.push("Parcel");
+                } else {
+                    summary.push(`${weightStr} Parcel`);
+                }
+                summary.push("Additional Handling");
             } else {
-                summary.push(`${weightStr} ${packaging.name}`);
+                if (packaging.weight === false) {
+                    summary.push(packaging.name);
+                } else {
+                    summary.push(`${weightStr} ${packaging.name}`);
+                }
             }
         } else {
             summary.push(weightStr);
         }
-        if (this.extraServices.liveAnimal) {
-            summary.push("Contains Live Animals");
+        if (this.extraServices.hazmat) {
+            summary.push("HAZMAT");
+        }
+        if (this.extraServices.liveAnimal === true) {
+            summary.push("Live Animals");
+        } else if (typeof this.extraServices.liveAnimal == "string") {
+            switch (this.extraServices.liveAnimal) {
+                case "BEES":
+                    summary.push("Live Bees");
+                    break;
+                case "DAY_OLD_POULTRY":
+                    summary.push("Day-old Poultry");
+                    break;
+                case "ADULT_BIRDS":
+                    summary.push("Live Adult Birds");
+                    break;
+                case "OTHER_LIVES":
+                default:
+                    summary.push("Live Animals");
+                    break;
+            }
+        }
+        if (this.extraServices.perishable) {
+            summary.push("Perishable");
+        }
+        if (this.extraServices.crematedRemains) {
+            summary.push("Cremated Remains");
         }
         if (this.extraServices.certifiedMail) {
             summary.push("Certified Mail");
@@ -109,6 +143,9 @@ export class Package {
             summary.push("Registered for $" + (this.extraServices.registeredMailAmount * 1.0).toFixed(2));
         } else if (this.extraServices.signature == "SIGNATURE") {
             summary.push("Signature Required");
+        }
+        if (this.extraServices.signature == "ADULT_SIGNATURE") {
+            summary.push("Adult Signature Required");
         }
         if (this.extraServices.signature == "SIGNATURE_RESTRICTED") {
             summary.push("Restricted Delivery");
@@ -124,6 +161,34 @@ export class Package {
         }
         if (this.extraServices.cod) {
             summary.push("Collect on Delivery: $" + (this.extraServices.codAmount * 1.0).toFixed(2));
+        }
+        if (this.extraServices.dryIce && this.extraServices.dryIceWeight > 0) {
+            summary.push("Dry Ice: " + (this.extraServices.dryIceWeight * 1).toFixed(0) + " oz");
+        }
+        if (this.extraServices.carrier_billing_account?.type) {
+            if (this.extraServices.carrier_billing_account.type != "") {
+                var accountNumber = this.extraServices.carrier_billing_account.account_number;
+                var accountNumberCensored = accountNumber.substring(accountNumber.length - 4).padStart(accountNumber.length, "X");
+                var carrierName = this.extraServices.carrier_billing_account.carrier;
+                switch (this.extraServices.carrier_billing_account.type) {
+                    case "SENDER":
+                        summary.push(`Bill to sender ${carrierName} account #${accountNumberCensored}`);
+                        break;
+                    case "THIRD_PARTY":
+                        summary.push(`Bill to third party ${carrierName} account #${accountNumberCensored}`);
+                        break;
+                    case "RECEIVER":
+                        summary.push(`Bill to receiver ${carrierName} account #${accountNumberCensored}`);
+                        break;
+                    case "COLLECT":
+                        if (accountNumber.length > 0) {
+                            summary.push(`Bill collect ${carrierName} account #${accountNumberCensored}`);
+                        } else {
+                            summary.push(`Bill collect`);
+                        }
+                        break;
+                }
+            }
         }
         return summary.join("\n");
     }
@@ -213,7 +278,7 @@ export class Package {
      * @returns {boolean|string} true if okay, human-readable error message and instructions if not okay
      */
     async isValid(kioskMode = false) {
-        // removed for brevity. Just a bunch of if statements.
+        // Removed from docs for brevity. Just a bunch of if statements to catch problems.
     }
 
     /**
@@ -374,21 +439,37 @@ export class Package {
      * @returns {address}
      */
     getReturnAddress() {
+        var a = null;
         if (typeof this.returnAddress == "object") {
-            return this.returnAddress;
+            a = Address.fromObject(this.returnAddress);
+        } else {
+            a = Address.fromObject(this.originAddress);
         }
-        return this.originAddress;
+        if (a.country == "") {
+            a.country = defaultCountryCode();
+        }
+        return a;
     }
 
     getToAddress() {
-        return this.toAddress;
+        var a = Address.fromObject(this.toAddress);
+        if (a.country == "") {
+            a.country = defaultCountryCode();
+        }
+        return a;
     }
 
     getFromAddress() {
+        var a = null;
         if (typeof this.originAddress == "object") {
-            return this.originAddress;
+            a = Address.fromObject(this.originAddress);
+        } else {
+            a = Address.fromObject(this.returnAddress);
         }
-        return this.returnAddress;
+        if (a.country == "") {
+            a.country = defaultCountryCode();
+        }
+        return a;
     }
 }
 ```

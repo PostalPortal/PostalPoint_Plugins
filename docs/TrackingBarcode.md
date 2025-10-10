@@ -13,10 +13,12 @@ export class TrackingBarcode {
     constructor(code) {
         // All data are optional except for the tracking number. Missing data is gracefully handled by the PostalPoint UI.
         this.cleanCode = code;
+        // Original barcode data this was created from
+        this.barcode = code;
         // Destination ZIP Code, for domestic shipments. The city and state are automatically added.  If toAddress is specified, toZip is ignored in favor of it.
         this.toZip = "";
         // Two-letter destination country code.  If not "US", toZip is ignored, and the full country name is appended to the displayed address information.
-        this.toCountry = "US";
+        this.toCountry = defaultCountryCode();
         // If toAddress is set, it will be used instead of the toZip when displaying the destination.
         // If both toZip and toAddress are empty strings, no destination will be displayed.
         this.toAddress = "";
@@ -33,6 +35,10 @@ export class TrackingBarcode {
         this.serviceShort = "";
         // If set to false, the barcode will be rejected with a suitable message when PostalPoint is running in self-serve kiosk mode.
         this.dropoff = true;
+        // If false, app may prompt user to specify the shipping carrier
+        this.confidentCarrier = true;
+        // Extra description strings, like "Signature Required"
+        this.extraInfo = [];
     }
 
     /**
@@ -109,14 +115,21 @@ export class TrackingBarcode {
         if (this.toAddress != "") {
             addressLines.push(...this.toAddress.split("\n"));
         }
-        if (this.toCountry.toUpperCase() == "US" && this.toZip != "" && this.toAddress == "") {
+        if (defaultCountryCode() == this.toCountry.toUpperCase() && this.toCountry.toUpperCase() == "US" && this.toZip != "" && this.toAddress == "") {
+            // Domestic shipment within USA, look up ZIP code
             var zipdata = getZIP(this.toZip);
             if (zipdata != false) {
                 addressLines.push(`${zipdata.city} ${zipdata.state} ${this.toZip}`);
             } else {
                 addressLines.push(`${this.toZip}`);
             }
-        } else if (this.toCountry.toUpperCase() != "US") {
+        } else if (defaultCountryCode() == this.toCountry.toUpperCase()) {
+            // Domestic shipment, outside USA, add postal code line if we have one
+            if (this.toZip != "" && this.toAddress.includes(this.toZip) != true) {
+                addressLines.push(`${this.toZip}`);
+            }
+        } else {
+            // International shipment, add country name
             addressLines.push(getCountryNameForISO(this.toCountry));
         }
         return addressLines.join("\n");
@@ -141,6 +154,10 @@ export class TrackingBarcode {
             var destlines = dest.split("\n");
             destlines[0] = "To " + destlines[0];
             lines.push(...destlines);
+        }
+
+        if (typeof this.extraInfo == "object" && this.extraInfo.length > 0) {
+            lines.push(...this.extraInfo);
         }
 
         return lines.join("\n");

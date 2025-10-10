@@ -2,7 +2,7 @@
 
 ```javascript
 export default class Address {
-    constructor(uuid = "", name = "", company = "", street1 = "", street2 = "", zip = "", city = "", state = "", country = "", phone = "", email = "") {
+    constructor(uuid = "", name = "", company = "", street1 = "", street2 = "", zip = "", city = "", state = "", country = "", phone = "", email = "", taxid = "") {
         this.uuid = uuid;
         this.name = name;
         this.company = company;
@@ -14,6 +14,7 @@ export default class Address {
         this.country = country;
         this.phone = phone;
         this.email = email;
+        this.taxid = taxid;
         this.residential = null;
     }
 
@@ -21,14 +22,19 @@ export default class Address {
         if (address instanceof Address) {
             return address;
         }
-        return new Address(address.uuid ?? "", address.name, address.company, address.street1,
+        var a = new Address(address.uuid ?? "", address.name, address.company, address.street1,
                 address.street2, address.zip, address.city, address.state, address.country,
-                address.phone, address.email);
+                address.phone, address.email, address.taxid);
+        return a;
     }
 
-    toStringArray() {
+    toStringArray(expandCountry = false) {
         var citystatezipLine = [this.city, this.state, this.zip].filter(Boolean);
-        return [this.name, this.company, this.street1, this.street2, `${citystatezipLine.join(" ")}`, (this.country == "US" ? "" : this.country)].filter(Boolean);
+        var country = this.country == defaultCountryCode() ? "" : this.country;
+        if (expandCountry && country != "") {
+            country = getCountryNameForISO(country);
+        }
+        return [this.name, this.company, this.street1, this.street2, `${citystatezipLine.join(" ")}`, country, (this.taxid ? "Tax ID " + this.taxid : "")].filter(Boolean);
     }
 
     /**
@@ -44,7 +50,8 @@ export default class Address {
                 && this.city == address.city
                 && this.state == address.state
                 && this.zip == address.zip
-                && this.country == address.country) {
+                && this.country == address.country
+                && this.taxid == address.taxid) {
             return true;
         }
         return false;
