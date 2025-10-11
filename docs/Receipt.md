@@ -384,7 +384,7 @@ export class ReceiptPayment {
             case "ach":
                 return "ACH Debit";
             case "rounding":
-                return "Cash Rounding";
+                return "Cash Rounding"; // Used in penniless countries to balance a cash-only transaction
             default:
                 return this.type;
         }
