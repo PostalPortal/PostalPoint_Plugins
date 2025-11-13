@@ -172,6 +172,9 @@ exports.init = function () {
                     "Card on File\nx1234" // Additional text for receipt
                 )
             );
+            // Must return true upon success.
+            // If the payment is not successful, and you didn't throw an Error to show the user,
+            // then `return false` instead and it'll appear that the user's action to start the payment did nothing.
             return true;
         },
         saveCardForOfflineUse: async function ({statusCallback, customerUUID, name, company, street1, street2, city, state, zip, country, email, phone}) {
