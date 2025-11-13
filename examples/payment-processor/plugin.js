@@ -160,6 +160,11 @@ exports.init = function () {
             // Same as checkout() except using a payment method already on file.
             // customerID and paymentMethodID are provided by getSavedPaymentMethods below.
             await global.apis.util.delay(1000); // Replace this with something useful!
+            var error = false;
+            if (error) {
+                // If you can't charge the payment method, throw an Error with a string to display to the user.
+                throw new Error("The saved card didn't work.");
+            }
             global.apis.pos.addReceiptPayment(
                 new global.apis.pos.ReceiptPayment(
                     (amount / 100).toFixed(2) * 1,
