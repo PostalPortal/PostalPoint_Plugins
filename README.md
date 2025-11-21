@@ -128,6 +128,100 @@ PostalPoint uses the Jimp library version 1.6 for creating and manipulating imag
 
 * `isKiosk()`: Returns a boolean to indicate if PostalPoint is running in kiosk mode.
 
+#### Mailboxes
+
+Note: Functions will throw an error if a mailbox number is not valid (must be alphanumeric).
+Use `boxNumberValid(number)` to validate user input and avoid errors.
+
+`global.apis.mailboxes.`:
+
+* `FormPS1583`: PS Form 1583 object. See docs/FormPS1583.md
+* `boxNumberValid(number)`: Returns true if the mailbox number is an acceptable format, false if it isn't. Does not check if the box actually exists, merely if the number is acceptable to use as a mailbox number.
+* `async getList()`: Get the list of mailboxes and boxholders as an array of objects (see below)
+* `async addDaysToMailbox(boxNumber, days = 0, months = 0)`: Add a number of days or months to a mailbox's expiration.
+* `async setMailboxExpirationDate(boxNumber, date)`: Set the box expiration to a specific JavaScript Date object, or a UNIX timestamp (in seconds).
+* `async createMailbox(number, size, notes)`: Create a new mailbox number with the specified box size.  Throws an error if the box number is already in use.
+* `async editMailbox(oldNumber, newNumber, newSize = null)`: Change the number and/or size of a mailbox while preserving the boxholders and packages associated. If only changing size, set oldNumber and newNumber to the same value.
+* `async deleteMailbox(number)`: Delete a mailbox. Throws an error if the mailbox has boxholders attached.
+* `async closeMailbox(number)`: Close a mailbox by removing the boxholders and marking it as vacant. Boxholder PS Form 1583 records are archived per USPS regulations.
+* `async mailboxExists(number)`: Returns true if the mailbox number exists, false if it doesn't.
+* `async addOrUpdateBoxholder(boxNumber, info)`: Modify or add a boxholder to a mailbox. `info` is the boxholder structure below.  If the `uuid` given already belongs to a boxholder, their info is updated with what you supply. Otherwise, the info is added as a new boxholder.
+* `async removeBoxholder(boxNumber, uuid)`: Remove a boxholder by their UUID, and archive their PS Form 1583 data per USPS regulations.
+* `async get1583(boxNumber, uuid, archiveNumber = false)`: Get the FormPS1583 object for a boxholder by UUID.  If `archiveNumber` is true, returns the form for a deleted boxholder from the archive.
+* `async set1583(boxNumber, uuid, formps1583)`: Set the FormPS1583 object for a boxholder by UUID.
+* `async getMailboxProducts()`: Get a list of merchandise items that are usable for mailbox renewals. See below.
+
+
+##### Mailbox getList() output
+
+```js
+[{
+    num: "123", // Box number as string
+    expires: 1234567890, // UNIX timestamp (in seconds) or false if box vacant
+    size: "2", // Box size, 1-10
+    notes: "", // Notes for mailbox, not currently shown in Mailbox Manager UI but may be used in the future
+    barcode: "", // Unique barcode for the mailbox, for future use
+    renewalMerchID: "", // Merchandise item ID used for autorenewing this mailbox
+    isBusiness: false, // True if the box is for a business, false if for personal use
+    names: [], // Array of boxholders, see Boxholder structure below
+    packages: [], // Array of packages awaiting pickup, see below
+    vacant: false // True if the box is currently vacant, else false
+}]
+```
+
+##### Boxholder structure
+
+Unless noted, all fields are strings and default to an empty string if data not available.
+
+```js
+{
+    name: [bizname, fname, mname, lname].filter(Boolean).join(" "),
+    fname: "", // First name
+    mname: "", // Middle name
+    lname: "", // Last name
+    email: "", // Email
+    phone: "", // Phone
+    uuid: "", // Customer UUID
+    bizname: "", // Business name
+    street1: "", // Street address
+    city: "", // City
+    state: "", // Two-character state
+    zipcode: "", // ZIP or postal code
+    country: "", // Two-character country code
+    primary: true // True if the primary (first) boxholder, false if an additional authorized mail recipient
+}
+```
+
+##### Mailbox getList()[].packages format
+
+```js
+{
+    tracking: tracking ?? "[Untracked]", // Package tracking number
+    finalized: true, // True if package check-in is finished and shelf tag/mailbox slips printed, false if not finalized
+    available_date: Date(), // The date and time the package was checked in
+    tag: "" // Unique number assigned to the package and printed on shelf tags, scanned by employee when customer picks up package
+}
+```
+
+##### Mailbox merchandise item format (getMailboxProducts)
+
+These fields are returned as entered in the Merchandise Admin user interface or as shown in the merchandise CSV export.
+
+```js
+{
+    id: "", // Unique ID for this entry in the merchandise table
+    name: "", // Merch item name
+    category: "", // Merch item category
+    price: 0.0, // Sale price in dollars
+    cost: 0.0, // Merchandise cost in dollars (likely not used for mailboxes)
+    barcode: "", // Barcode/UPC (likely not used for mailboxes)
+    tax: 0.0, // Sales tax rate
+    rentaldays: 30, // Number of days this item adds to a mailbox (mutually exclusive with rentalmonths)
+    rentalmonths: 1, // Number of months (mutually exclusive with rentaldays)
+    boxsize: "1" // Mailbox size tier, 1-10
+}
+```
+
 #### Point of Sale
 
 `global.apis.pos.`:

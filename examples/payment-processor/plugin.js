@@ -154,7 +154,7 @@ exports.init = function () {
                 "paidFormatted": "$22.34",
                 "due": -12.14, // If negative, is the amount of change owed to the customer instead
                 "dueFormatted": "$12.14"
-            }
+            };
         },
         checkoutSavedMethod: async function ({customerID, paymentMethodID, amount}) {
             // Same as checkout() except using a payment method already on file.
