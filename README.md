@@ -352,7 +352,7 @@ There are three key/value stores available in PostalPoint.
 [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) as a backend,
 but this may change in the future.
 2. `setBig` and `getBig` store the data to disk as a JSON file.
-3. `setDatabase` and `getDatabase` store the data in the PostalPoint database, making stored data
+3. `setDB` and `getDB` store the data in the PostalPoint database, making stored data
 available on the network to other PostalPoint installations. Depending on the backend in use, data
 is stored either as a SQLite TEXT column or a MariaDB/MySQL LONGTEXT.
 
@@ -373,8 +373,8 @@ Behavior if the host machine is out of disk space or has a drive failure is unde
 * `setBig(key, value)`
 * `getSmall(key, defaultValue)`
 * `setSmall(key, value)`
-* `async getDatabase(key, defaultValue)`
-* `async setDatabase(key, value)`
+* `async getDB(key, defaultValue)`
+* `async setDB(key, value)`
 
 
 #### Shipping and Rates
