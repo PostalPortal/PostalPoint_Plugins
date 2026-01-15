@@ -11,6 +11,8 @@ Plugins can use `global.apis.eventbus` to receive events when certain actions ha
 * `transactionFinished`: Contains a receipt object of a transaction that was just finalized.
 * `receiveFromCustomerScreen`: Contains the event sent from the customer-facing display's custom HTML interface via `window.parent.postMessage`
 * `customerSignatureCollected`: Contains a signature image from the customer-facing display, in the structure `{"svg": "data:image/svg+xml;base64,...", "png": "data:image/png;base64,..."}`.
+* `settingsSaved`: Emitted when PostalPoint's settings are saved. Usually this means the user changed a setting in the UI.
+* `pluginSettingsSaved`: Emitted when the user saves a plugin's settings. The plugin ID is sent as the event data.
 
 ## Example Code
 
