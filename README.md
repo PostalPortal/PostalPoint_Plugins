@@ -73,6 +73,10 @@ The PostalPoint plugin API is a globally-available object named `global.apis`.
 
 ### API List
 
+Note: API functions shown here are available in the
+[latest testing build](https://build.netsyms.net/job/PostalPoint_Retail/),
+but may not yet be present in the most recent release.
+
 #### Core
 
 `global.apis.`:
