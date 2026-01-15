@@ -121,6 +121,10 @@ PostalPoint uses the Jimp library version 1.6 for creating and manipulating imag
 * `country()`: Returns the 2-character country code that PostalPoint is running in (examples: "US", "CA").
 * `currency()`: Returns the 3-character currency code (examples: "usd", "cad").
 * `symbol()`: Returns the currency symbol (example: "$").
+* `decimals()`: Returns the number of decimal places for the currency (2 for USD 0.00, etc)
+* `async convertCurrency(amount = 1.0, fromCurrency = "usd", toCurrency = global.apis.i18n.currency())`: Convert an amount of money to a different currency. Conversion rate is retrieved from the cloud service and cached for 4 hours.
+* `moneyToFixed(amount)`: Returns the amount as a string with the correct number of decimal places. Same as running `amount.toFixed(global.apis.i18n.decimals())`.
+* `moneyString(amount)`: Returns the money amount formatted as a string with currency symbol. Same as running `global.apis.i18n.symbol() + amount.toFixed(global.apis.i18n.decimals())`.
 
 #### Kiosk
 
