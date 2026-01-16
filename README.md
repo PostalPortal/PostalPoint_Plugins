@@ -77,6 +77,8 @@ Note: API functions shown here are available in the
 [latest testing build](https://build.netsyms.net/job/PostalPoint_Retail/),
 but may not yet be present in the most recent release.
 
+Functions listed as `async ...` return a Promise.
+
 #### Core
 
 `global.apis.`:
@@ -118,14 +120,17 @@ PostalPoint uses the Jimp library version 1.6 for creating and manipulating imag
 * `Jimp()`: The [JavaScript Image Manipulation Program](https://jimp-dev.github.io/jimp/). Access like so: `const {Jimp} = global.apis.graphics.Jimp();`.
 * `async loadFont(filename)`: Replacement for [Jimp's loadFont](https://jimp-dev.github.io/jimp/api/jimp/functions/loadfont/), which gets very confused about our JS environment and ends up crashing everything.
 
-#### I18N
+#### International and Currency
+
+PostalPoint only officially supports the US and Canada, but does not prohibit use in other countries.
+It's recommended to use these functions instead of assuming the US dollar.
 
 `global.apis.i18n.`:
 
 * `country()`: Returns the 2-character country code that PostalPoint is running in (examples: "US", "CA").
 * `currency()`: Returns the 3-character currency code (examples: "usd", "cad").
 * `symbol()`: Returns the currency symbol (example: "$").
-* `decimals()`: Returns the number of decimal places for the currency (2 for USD 0.00, etc)
+* `decimals()`: Returns the number of decimal places for the currency (2 for USD 1.23, 3 for TND 1.234, etc)
 * `async convertCurrency(amount = 1.0, fromCurrency = "usd", toCurrency = global.apis.i18n.currency())`: Convert an amount of money to a different currency. Conversion rate is retrieved from the cloud service and cached for 4 hours.
 * `moneyToFixed(amount)`: Returns the amount as a string with the correct number of decimal places. Same as running `amount.toFixed(global.apis.i18n.decimals())`.
 * `moneyString(amount)`: Returns the money amount formatted as a string with currency symbol. Same as running `global.apis.i18n.symbol() + amount.toFixed(global.apis.i18n.decimals())`.
