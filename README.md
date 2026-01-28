@@ -450,11 +450,20 @@ Various useful helper functions.
 ```javascript
 [
     {
-        id: 123, // Unique ID. Used for ack(webhookid).
-        timestamp: 1234567890, // UNIX timestamp (in seconds) of when the data was received by the webhook URL.
+        // Unique ID. Used for ack(webhookid).
+        id: 123,
+
+        // UNIX timestamp (in seconds) of when the data was received by the webhook URL.
+        timestamp: 1234567890,
+
+        // Source name set in geturl()
         source: "sourcename",
-        headers: "{'Content-Type': 'application/json'}", JSON string of all the HTTP headers sent to the webhook URL.
-        body: "", Entire HTTP request body sent to the webhook URL.
+
+        // JSON string of all the HTTP headers sent to the webhook URL.
+        headers: "{'Content-Type': 'application/json'}",
+
+        // Entire HTTP request body sent to the webhook URL.
+        body: ""
     }
 ]
 ```
