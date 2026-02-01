@@ -47,10 +47,11 @@ export class Package {
             dryIceWeight: 0,
             dryIceMedical: false
         };
+        this.description = ""; // Fillable on customs form, or generated before rating call using customs items
         this.specialRateEligibility = false;
         this.customs = {
             contents: "",
-            contentsExplanation: "", // needed if contents is "other"
+            contentsExplanation: "", // needed if contents is "other", will be copied from this.description if blank for maximum carrier compatibility
             signature: "",
             restriction: "",
             restrictionComments: "", // needed if restriction is "other"
