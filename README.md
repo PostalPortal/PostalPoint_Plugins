@@ -398,8 +398,18 @@ Behavior if the host machine is out of disk space or has a drive failure is unde
 * `getZIPCode(zip)`: Get data for a 5-digit US ZIP Code, such as
   `{"city": "HELENA", "state": "MT", "type": "STANDARD"}`.
   Returns `false` if the ZIP Code isn't in the database.
+* `getCarrierName(carrierId)`: Converts the carrier ID string into a consistent and human-readable name. Useful with registerMarkupCalculator.
+See docs/Carrier_Service.md for info.
+* `getServiceName(serviceId, carrier = "USPS")`: Converts the service ID string into a consistent and human-readable name.
+Set the carrier ID for better results. Useful with registerMarkupCalculator.
+See docs/Carrier_Service.md for info.
 * `registerRateEndpoint(getRate, purchase, idPrefix)`: Register the plugin as a shipping rate and label provider.
   See examples/shipping/plugin.js for example usage.
+* `registerMarkupCalculator(function (cost, retail, suggested, carrier, service) {})`:
+Register the plugin to modify PostalPoint's shipping markup calculation during shipment rating.
+The function shall return either `false` (to opt out of making the decision) or a numeric retail price for the shipment rate.
+Only one plugin may register with this function at a time. If a plugin attempts to register later, it will throw an `Error`.
+See examples/shipping/plugin.js for details.
 
 #### UI
 
