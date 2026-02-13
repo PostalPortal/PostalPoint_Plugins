@@ -1,0 +1,1911 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Parcel/">
+      
+      
+        <link rel="next" href="../ReceiptPrinter/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/external/postalpoint.app/images/favicon-voxel.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Receipt Objects - PostalPoint Plugin Development</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://analytics.netsyms.net/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '57']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#receipt-objects" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://postalpoint.app" title="PostalPoint Plugin Development" class="md-header__button md-logo" aria-label="PostalPoint Plugin Development" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PostalPoint Plugin Development
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Receipt Objects
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://postalpoint.app" title="PostalPoint Plugin Development" class="md-nav__button md-logo" aria-label="PostalPoint Plugin Development" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    PostalPoint Plugin Development
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Docs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Address/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Address object
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Carrier_Service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    getCarrierName and getServiceName
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Drivers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Event Bus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FormPS1583/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FormPS1583 object
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Parcel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parcel/Package Object
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Receipt Objects
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Receipt Objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sample-receipt-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample receipt object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sample receipt object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#globalapisposreceiptitem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        global.apis.pos.ReceiptItem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#globalapisposreceiptpayment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        global.apis.pos.ReceiptPayment
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ReceiptPrinter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Receipt Printer driver functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TrackingBarcode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TrackingBarcode class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/01Minimal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Minimal Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/02Basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/03Shipping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shipping Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/04CardProcessor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Card Payments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/05CryptoProcessor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cryptocurrency Payments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plugin API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin%20API/barcode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Barcode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin%20API/database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin%20API/fs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin%20API/global%20functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Global functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin%20API/graphics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graphics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin%20API/i18n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I18n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin%20API/kiosk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kiosk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin%20API/mailboxes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mailboxes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin%20API/pos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin%20API/print/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Print
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin%20API/reports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin%20API/settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin%20API/shipping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shipping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin%20API/storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin%20API/ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ui
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin%20API/user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin%20API/util/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Util
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sample-receipt-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample receipt object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sample receipt object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#globalapisposreceiptitem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        global.apis.pos.ReceiptItem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#globalapisposreceiptpayment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        global.apis.pos.ReceiptPayment
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="receipt-objects">Receipt Objects</h1>
+<h2 id="sample-receipt-object">Sample receipt object</h2>
+<p>This is an example of the data <code>global.apis.pos.onReceiptChange</code>
+and <code>global.apis.pos.onTransactionFinished</code> send to plugins.
+All data for a PostalPoint transaction is available in its receipt object.</p>
+<p>The money-related properties near the bottom of this sample are generated by PostalPoint
+from the items and payments.</p>
+<h3 id="notes">Notes:</h3>
+<ul>
+<li>The <code>due</code> property will be a negative number if change is owed to the customer.</li>
+<li><code>pendingEmailTo</code> is set to a suggested email address for the email receipt, and if the receipt
+should actually be emailed, it will be set in <code>emailTo</code>.</li>
+<li><code>uuid</code> is a unique 16-character alphanumeric receipt ID number, which is shown and used in several places.
+The <code>uuid</code> is generated using <code>global.apis.util.uuid.short()</code>.</li>
+<li><code>customerAccountId</code> is the UUID for the customer's account, or null if there isn't a customer attached.</li>
+<li>This example happens to be the object used when test printing a receipt from the PostalPoint
+settings menu, so press that button to see what this is rendered into.</li>
+</ul>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="s2">&quot;items&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nx">ReceiptItem</span><span class="p">.</span><span class="nx">fromJSON</span><span class="p">({</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9100123456789012345678&quot;</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">            </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Test Package&quot;</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">            </span><span class="s2">&quot;text&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Package Details\nTracking # 9100 1234 5678 9012 3456 78\nTo:\nTEST PERSON\nORGANIZATION INC\n123 TEST ROAD\nTESTTOWN TE 99999-0001&quot;</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">            </span><span class="s2">&quot;priceEach&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">            </span><span class="s2">&quot;qty&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">            </span><span class="s2">&quot;cost&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">            </span><span class="s2">&quot;retail&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">            </span><span class="s2">&quot;taxRate&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">            </span><span class="s2">&quot;free&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">            </span><span class="s2">&quot;barcode&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9100123456789012345678&quot;</span><span class="p">,</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">            </span><span class="s2">&quot;certifiedInfo&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">            </span><span class="s2">&quot;isMerch&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">            </span><span class="s2">&quot;surcharge&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">            </span><span class="s2">&quot;toAddress&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">                </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;TEST PERSON&quot;</span><span class="p">,</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">                </span><span class="s2">&quot;company&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ORGANIZATION INC&quot;</span><span class="p">,</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">                </span><span class="s2">&quot;street1&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123 TEST ROAD&quot;</span><span class="p">,</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">                </span><span class="s2">&quot;street2&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">                </span><span class="s2">&quot;city&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;TESTTOWN&quot;</span><span class="p">,</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">                </span><span class="s2">&quot;state&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;TE&quot;</span><span class="p">,</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">                </span><span class="s2">&quot;zip&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;99999-0001&quot;</span><span class="p">,</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">                </span><span class="s2">&quot;email&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">                </span><span class="s2">&quot;phone&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">                </span><span class="s2">&quot;country&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">            </span><span class="p">},</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">            </span><span class="s2">&quot;fromAddress&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">                </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;TEST PERSON&quot;</span><span class="p">,</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">                </span><span class="s2">&quot;company&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ORGANIZATION INC&quot;</span><span class="p">,</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">                </span><span class="s2">&quot;street1&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123 TEST ROAD&quot;</span><span class="p">,</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">                </span><span class="s2">&quot;street2&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">                </span><span class="s2">&quot;city&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;TESTTOWN&quot;</span><span class="p">,</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">                </span><span class="s2">&quot;state&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;TE&quot;</span><span class="p">,</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">                </span><span class="s2">&quot;zip&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;99999-0001&quot;</span><span class="p">,</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">                </span><span class="s2">&quot;email&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">                </span><span class="s2">&quot;phone&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">                </span><span class="s2">&quot;country&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">        </span><span class="p">}),</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">        </span><span class="nx">ReceiptItem</span><span class="p">.</span><span class="nx">fromJSON</span><span class="p">({</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;testitem&quot;</span><span class="p">,</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">            </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Test Item&quot;</span><span class="p">,</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">            </span><span class="s2">&quot;text&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">            </span><span class="s2">&quot;priceEach&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">            </span><span class="s2">&quot;qty&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">            </span><span class="s2">&quot;cost&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">            </span><span class="s2">&quot;retail&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">            </span><span class="s2">&quot;taxRate&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">            </span><span class="s2">&quot;free&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">            </span><span class="s2">&quot;barcode&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">            </span><span class="s2">&quot;certifiedInfo&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">            </span><span class="s2">&quot;isMerch&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">            </span><span class="s2">&quot;surcharge&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="w">        </span><span class="p">})</span>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">    </span><span class="p">],</span>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">    </span><span class="s2">&quot;payments&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">        </span><span class="nx">ReceiptPayment</span><span class="p">.</span><span class="nx">fromJSON</span><span class="p">({</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="w">            </span><span class="s2">&quot;amount&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span>
+</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;cash&quot;</span><span class="p">,</span>
+</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="w">            </span><span class="s2">&quot;text&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;testcash&quot;</span>
+</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="w">        </span><span class="p">})</span>
+</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="w">    </span><span class="p">],</span>
+</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="w">    </span><span class="s2">&quot;subtotal&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span>
+</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="w">    </span><span class="s2">&quot;subtotalFormatted&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;$10.00&quot;</span><span class="p">,</span>
+</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="w">    </span><span class="s2">&quot;tax&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span>
+</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="w">    </span><span class="s2">&quot;taxFormatted&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;$0.20&quot;</span><span class="p">,</span>
+</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="w">    </span><span class="s2">&quot;grandTotal&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">10.2</span><span class="p">,</span>
+</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="w">    </span><span class="s2">&quot;grandTotalFormatted&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;$10.20&quot;</span><span class="p">,</span>
+</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="w">    </span><span class="s2">&quot;paid&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">10.2</span><span class="p">,</span>
+</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="w">    </span><span class="s2">&quot;paidFormatted&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;$10.20&quot;</span><span class="p">,</span>
+</span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="w">    </span><span class="s2">&quot;due&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a><span class="w">    </span><span class="s2">&quot;dueFormatted&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;$0.00&quot;</span><span class="p">,</span>
+</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a><span class="w">    </span><span class="s2">&quot;emailTo&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="w">    </span><span class="s2">&quot;pendingEmailTo&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a><span class="w">    </span><span class="s2">&quot;uuid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1234567890abcdef&quot;</span><span class="p">,</span>
+</span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="w">    </span><span class="s2">&quot;customerAccountId&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a><span class="w">    </span><span class="s2">&quot;topTextHTML&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a><span class="w">    </span><span class="s2">&quot;bottomTextHTML&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+</span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="globalapisposreceiptitem">global.apis.pos.ReceiptItem</h2>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ReceiptItem</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="cm">/**</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cm">     *</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cm">     * @param {string|number} id Unique ID number for this item (UPC code, inventory number, etc). Used to deduplicate line items. Unique items (like shipping labels) should be random or empty.</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cm">     * @param {string} label One-line item information.</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="cm">     * @param {string} text Extra item information.</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="cm">     * @param {number} priceEach Price per unit</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="cm">     * @param {number} quantity Number of units</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="cm">     * @param {number} cost Cost per unit. Used for automatic expense tracking.</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="cm">     * @param {number} taxrate Examples: 0 (for 0%), 0.05 (for 5%), etc</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="cm">     * @param {string} taxableAmount The part of the sale price that&#39;s taxable. &quot;&quot; for default (all), &quot;markup&quot; for only taxing profit.</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="cm">     * @returns {ReceiptItem}</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="cm">     */</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">,</span><span class="w"> </span><span class="nx">priceEach</span><span class="p">,</span><span class="w"> </span><span class="nx">quantity</span><span class="p">,</span><span class="w"> </span><span class="nx">cost</span><span class="p">,</span><span class="w"> </span><span class="nx">taxrate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nx">taxableAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">id</span><span class="p">;</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">label</span><span class="p">;</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">text</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">txt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">txt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">text</span><span class="p">;</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">priceEach</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">num</span><span class="p">(</span><span class="nx">priceEach</span><span class="p">);</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">qty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">num</span><span class="p">(</span><span class="nx">quantity</span><span class="p">);</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">cost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">num</span><span class="p">(</span><span class="nx">cost</span><span class="p">);</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">taxrate</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">taxRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">taxRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">num</span><span class="p">(</span><span class="nx">taxrate</span><span class="p">);</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">taxableAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">taxableAmount</span><span class="p">;</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">merch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">merchid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">surcharge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">retail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// For ensuring PostalPoint fee collection on office mode shipments</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">mailboxNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">mailboxDays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">mailboxMonths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// merch category</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">electronicReturnReceipt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="nx">fromJSON</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ReceiptItem</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">label</span><span class="p">,</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">text</span><span class="p">,</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">priceEach</span><span class="p">,</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">qty</span><span class="p">,</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">cost</span><span class="p">,</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">taxRate</span><span class="p">,</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">taxableAmount</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">        </span><span class="nx">item</span><span class="p">.</span><span class="nx">free</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">free</span><span class="p">;</span>
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">        </span><span class="nx">item</span><span class="p">.</span><span class="nx">barcode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">barcode</span><span class="p">;</span>
+</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">        </span><span class="nx">item</span><span class="p">.</span><span class="nx">certifiedInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">certifiedInfo</span><span class="p">;</span>
+</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">        </span><span class="nx">item</span><span class="p">.</span><span class="nx">toAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">toAddress</span><span class="p">;</span>
+</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="w">        </span><span class="nx">item</span><span class="p">.</span><span class="nx">fromAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">fromAddress</span><span class="p">;</span>
+</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="w">        </span><span class="nx">item</span><span class="p">.</span><span class="nx">merch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">isMerch</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">merchid</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">merchid</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+</span><span id="__span-1-50"><a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="w">        </span><span class="nx">item</span><span class="p">.</span><span class="nx">merchid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">merchid</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</span><span id="__span-1-51"><a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="w">        </span><span class="nx">item</span><span class="p">.</span><span class="nx">mailboxNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">mailboxNumber</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="w">        </span><span class="nx">item</span><span class="p">.</span><span class="nx">mailboxDays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">mailboxDays</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-1-53"><a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="w">        </span><span class="nx">item</span><span class="p">.</span><span class="nx">mailboxMonths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">mailboxMonths</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-1-54"><a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="w">        </span><span class="nx">item</span><span class="p">.</span><span class="nx">surcharge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">surcharge</span><span class="p">;</span>
+</span><span id="__span-1-55"><a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="w">        </span><span class="nx">item</span><span class="p">.</span><span class="nx">retailPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">retail</span><span class="p">;</span>
+</span><span id="__span-1-56"><a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="w">        </span><span class="nx">item</span><span class="p">.</span><span class="nx">carrier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">carrier</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</span><span id="__span-1-57"><a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="w">        </span><span class="nx">item</span><span class="p">.</span><span class="nx">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">service</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</span><span id="__span-1-58"><a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="w">        </span><span class="nx">item</span><span class="p">.</span><span class="nx">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">category</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span id="__span-1-59"><a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="w">        </span><span class="nx">item</span><span class="p">.</span><span class="nx">electronicReturnReceipt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">electronicReturnReceipt</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span id="__span-1-60"><a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">item</span><span class="p">;</span>
+</span><span id="__span-1-61"><a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-62"><a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a>
+</span><span id="__span-1-63"><a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="w">    </span><span class="nx">toJSON</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-64"><a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-65"><a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a><span class="w">            </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+</span><span id="__span-1-66"><a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a><span class="w">            </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">label</span><span class="p">,</span>
+</span><span id="__span-1-67"><a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a><span class="w">            </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">text</span><span class="p">,</span>
+</span><span id="__span-1-68"><a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a><span class="w">            </span><span class="nx">priceEach</span><span class="o">:</span><span class="w"> </span><span class="nx">num</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">priceEach</span><span class="p">),</span>
+</span><span id="__span-1-69"><a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a><span class="w">            </span><span class="nx">qty</span><span class="o">:</span><span class="w"> </span><span class="nx">num</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">qty</span><span class="p">),</span>
+</span><span id="__span-1-70"><a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a><span class="w">            </span><span class="nx">cost</span><span class="o">:</span><span class="w"> </span><span class="nx">num</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">cost</span><span class="p">),</span>
+</span><span id="__span-1-71"><a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a><span class="w">            </span><span class="nx">retail</span><span class="o">:</span><span class="w"> </span><span class="nx">num</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">retail</span><span class="p">),</span>
+</span><span id="__span-1-72"><a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a><span class="w">            </span><span class="nx">taxRate</span><span class="o">:</span><span class="w"> </span><span class="nx">num</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">taxRate</span><span class="p">),</span>
+</span><span id="__span-1-73"><a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a><span class="w">            </span><span class="nx">taxableAmount</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">taxableAmount</span><span class="p">,</span>
+</span><span id="__span-1-74"><a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a><span class="w">            </span><span class="nx">taxTotal</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">taxAmount</span><span class="p">,</span>
+</span><span id="__span-1-75"><a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a><span class="w">            </span><span class="nx">free</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">free</span><span class="p">,</span>
+</span><span id="__span-1-76"><a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a><span class="w">            </span><span class="nx">barcode</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">barcode</span><span class="p">,</span>
+</span><span id="__span-1-77"><a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a><span class="w">            </span><span class="nx">certifiedInfo</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">certifiedInfo</span><span class="p">,</span>
+</span><span id="__span-1-78"><a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a><span class="w">            </span><span class="nx">isMerch</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">merch</span><span class="p">,</span>
+</span><span id="__span-1-79"><a id="__codelineno-1-79" name="__codelineno-1-79" href="#__codelineno-1-79"></a><span class="w">            </span><span class="nx">merchid</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">merchid</span><span class="p">,</span>
+</span><span id="__span-1-80"><a id="__codelineno-1-80" name="__codelineno-1-80" href="#__codelineno-1-80"></a><span class="w">            </span><span class="nx">surcharge</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">surcharge</span><span class="p">,</span>
+</span><span id="__span-1-81"><a id="__codelineno-1-81" name="__codelineno-1-81" href="#__codelineno-1-81"></a><span class="w">            </span><span class="nx">toAddress</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">toAddress</span><span class="p">,</span>
+</span><span id="__span-1-82"><a id="__codelineno-1-82" name="__codelineno-1-82" href="#__codelineno-1-82"></a><span class="w">            </span><span class="nx">fromAddress</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">fromAddress</span><span class="p">,</span>
+</span><span id="__span-1-83"><a id="__codelineno-1-83" name="__codelineno-1-83" href="#__codelineno-1-83"></a><span class="w">            </span><span class="nx">mailboxNumber</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">mailboxNumber</span><span class="p">,</span>
+</span><span id="__span-1-84"><a id="__codelineno-1-84" name="__codelineno-1-84" href="#__codelineno-1-84"></a><span class="w">            </span><span class="nx">mailboxDays</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">mailboxDays</span><span class="p">,</span>
+</span><span id="__span-1-85"><a id="__codelineno-1-85" name="__codelineno-1-85" href="#__codelineno-1-85"></a><span class="w">            </span><span class="nx">mailboxMonths</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">mailboxMonths</span><span class="p">,</span>
+</span><span id="__span-1-86"><a id="__codelineno-1-86" name="__codelineno-1-86" href="#__codelineno-1-86"></a><span class="w">            </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">carrier</span><span class="p">,</span>
+</span><span id="__span-1-87"><a id="__codelineno-1-87" name="__codelineno-1-87" href="#__codelineno-1-87"></a><span class="w">            </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">service</span><span class="p">,</span>
+</span><span id="__span-1-88"><a id="__codelineno-1-88" name="__codelineno-1-88" href="#__codelineno-1-88"></a><span class="w">            </span><span class="nx">category</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">category</span><span class="p">,</span>
+</span><span id="__span-1-89"><a id="__codelineno-1-89" name="__codelineno-1-89" href="#__codelineno-1-89"></a><span class="w">            </span><span class="nx">electronicReturnReceipt</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">electronicReturnReceipt</span>
+</span><span id="__span-1-90"><a id="__codelineno-1-90" name="__codelineno-1-90" href="#__codelineno-1-90"></a><span class="w">        </span><span class="p">};</span>
+</span><span id="__span-1-91"><a id="__codelineno-1-91" name="__codelineno-1-91" href="#__codelineno-1-91"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-92"><a id="__codelineno-1-92" name="__codelineno-1-92" href="#__codelineno-1-92"></a>
+</span><span id="__span-1-93"><a id="__codelineno-1-93" name="__codelineno-1-93" href="#__codelineno-1-93"></a><span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">text</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-94"><a id="__codelineno-1-94" name="__codelineno-1-94" href="#__codelineno-1-94"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">txt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-95"><a id="__codelineno-1-95" name="__codelineno-1-95" href="#__codelineno-1-95"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">txt</span><span class="p">;</span>
+</span><span id="__span-1-96"><a id="__codelineno-1-96" name="__codelineno-1-96" href="#__codelineno-1-96"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-97"><a id="__codelineno-1-97" name="__codelineno-1-97" href="#__codelineno-1-97"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span id="__span-1-98"><a id="__codelineno-1-98" name="__codelineno-1-98" href="#__codelineno-1-98"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-99"><a id="__codelineno-1-99" name="__codelineno-1-99" href="#__codelineno-1-99"></a>
+</span><span id="__span-1-100"><a id="__codelineno-1-100" name="__codelineno-1-100" href="#__codelineno-1-100"></a><span class="w">    </span><span class="nx">set</span><span class="w"> </span><span class="nx">text</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-101"><a id="__codelineno-1-101" name="__codelineno-1-101" href="#__codelineno-1-101"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-102"><a id="__codelineno-1-102" name="__codelineno-1-102" href="#__codelineno-1-102"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">txt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">t</span><span class="p">;</span>
+</span><span id="__span-1-103"><a id="__codelineno-1-103" name="__codelineno-1-103" href="#__codelineno-1-103"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-104"><a id="__codelineno-1-104" name="__codelineno-1-104" href="#__codelineno-1-104"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">txt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span id="__span-1-105"><a id="__codelineno-1-105" name="__codelineno-1-105" href="#__codelineno-1-105"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-106"><a id="__codelineno-1-106" name="__codelineno-1-106" href="#__codelineno-1-106"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-107"><a id="__codelineno-1-107" name="__codelineno-1-107" href="#__codelineno-1-107"></a>
+</span><span id="__span-1-108"><a id="__codelineno-1-108" name="__codelineno-1-108" href="#__codelineno-1-108"></a><span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">certifiedInfo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-109"><a id="__codelineno-1-109" name="__codelineno-1-109" href="#__codelineno-1-109"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">certified</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;undefined&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-110"><a id="__codelineno-1-110" name="__codelineno-1-110" href="#__codelineno-1-110"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span id="__span-1-111"><a id="__codelineno-1-111" name="__codelineno-1-111" href="#__codelineno-1-111"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-112"><a id="__codelineno-1-112" name="__codelineno-1-112" href="#__codelineno-1-112"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">certified</span><span class="p">;</span>
+</span><span id="__span-1-113"><a id="__codelineno-1-113" name="__codelineno-1-113" href="#__codelineno-1-113"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-114"><a id="__codelineno-1-114" name="__codelineno-1-114" href="#__codelineno-1-114"></a>
+</span><span id="__span-1-115"><a id="__codelineno-1-115" name="__codelineno-1-115" href="#__codelineno-1-115"></a><span class="w">    </span><span class="nx">set</span><span class="w"> </span><span class="nx">certifiedInfo</span><span class="p">(</span><span class="nx">info</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-116"><a id="__codelineno-1-116" name="__codelineno-1-116" href="#__codelineno-1-116"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">certified</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">info</span><span class="p">;</span>
+</span><span id="__span-1-117"><a id="__codelineno-1-117" name="__codelineno-1-117" href="#__codelineno-1-117"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-118"><a id="__codelineno-1-118" name="__codelineno-1-118" href="#__codelineno-1-118"></a>
+</span><span id="__span-1-119"><a id="__codelineno-1-119" name="__codelineno-1-119" href="#__codelineno-1-119"></a><span class="w">    </span><span class="nx">setCertifiedInfo</span><span class="p">(</span><span class="nx">tracking</span><span class="p">,</span><span class="w"> </span><span class="nx">certfee</span><span class="p">,</span><span class="w"> </span><span class="nx">extrafees</span><span class="p">,</span><span class="w"> </span><span class="nx">postage</span><span class="p">,</span><span class="w"> </span><span class="nx">date</span><span class="p">,</span><span class="w"> </span><span class="nx">location</span><span class="p">,</span><span class="w"> </span><span class="nx">toaddress</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-120"><a id="__codelineno-1-120" name="__codelineno-1-120" href="#__codelineno-1-120"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">certified</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-121"><a id="__codelineno-1-121" name="__codelineno-1-121" href="#__codelineno-1-121"></a><span class="w">            </span><span class="nx">tracking</span><span class="o">:</span><span class="w"> </span><span class="nx">tracking</span><span class="p">,</span>
+</span><span id="__span-1-122"><a id="__codelineno-1-122" name="__codelineno-1-122" href="#__codelineno-1-122"></a><span class="w">            </span><span class="nx">certifiedFee</span><span class="o">:</span><span class="w"> </span><span class="nx">num</span><span class="p">(</span><span class="nx">certfee</span><span class="p">),</span>
+</span><span id="__span-1-123"><a id="__codelineno-1-123" name="__codelineno-1-123" href="#__codelineno-1-123"></a><span class="w">            </span><span class="nx">extraFees</span><span class="o">:</span><span class="w"> </span><span class="nx">extrafees</span><span class="p">,</span>
+</span><span id="__span-1-124"><a id="__codelineno-1-124" name="__codelineno-1-124" href="#__codelineno-1-124"></a><span class="w">            </span><span class="nx">postage</span><span class="o">:</span><span class="w"> </span><span class="nx">num</span><span class="p">(</span><span class="nx">postage</span><span class="p">),</span>
+</span><span id="__span-1-125"><a id="__codelineno-1-125" name="__codelineno-1-125" href="#__codelineno-1-125"></a><span class="w">            </span><span class="nx">date</span><span class="o">:</span><span class="w"> </span><span class="nx">date</span><span class="p">,</span>
+</span><span id="__span-1-126"><a id="__codelineno-1-126" name="__codelineno-1-126" href="#__codelineno-1-126"></a><span class="w">            </span><span class="nx">location</span><span class="o">:</span><span class="w"> </span><span class="nx">location</span><span class="p">,</span>
+</span><span id="__span-1-127"><a id="__codelineno-1-127" name="__codelineno-1-127" href="#__codelineno-1-127"></a><span class="w">            </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="nx">toaddress</span>
+</span><span id="__span-1-128"><a id="__codelineno-1-128" name="__codelineno-1-128" href="#__codelineno-1-128"></a><span class="w">        </span><span class="p">};</span>
+</span><span id="__span-1-129"><a id="__codelineno-1-129" name="__codelineno-1-129" href="#__codelineno-1-129"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-130"><a id="__codelineno-1-130" name="__codelineno-1-130" href="#__codelineno-1-130"></a>
+</span><span id="__span-1-131"><a id="__codelineno-1-131" name="__codelineno-1-131" href="#__codelineno-1-131"></a><span class="w">    </span><span class="nx">setQuantity</span><span class="p">(</span><span class="nx">q</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-132"><a id="__codelineno-1-132" name="__codelineno-1-132" href="#__codelineno-1-132"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">qty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">num</span><span class="p">(</span><span class="nx">q</span><span class="p">);</span>
+</span><span id="__span-1-133"><a id="__codelineno-1-133" name="__codelineno-1-133" href="#__codelineno-1-133"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-134"><a id="__codelineno-1-134" name="__codelineno-1-134" href="#__codelineno-1-134"></a>
+</span><span id="__span-1-135"><a id="__codelineno-1-135" name="__codelineno-1-135" href="#__codelineno-1-135"></a><span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">free</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-136"><a id="__codelineno-1-136" name="__codelineno-1-136" href="#__codelineno-1-136"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">isFree</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</span><span id="__span-1-137"><a id="__codelineno-1-137" name="__codelineno-1-137" href="#__codelineno-1-137"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-138"><a id="__codelineno-1-138" name="__codelineno-1-138" href="#__codelineno-1-138"></a>
+</span><span id="__span-1-139"><a id="__codelineno-1-139" name="__codelineno-1-139" href="#__codelineno-1-139"></a><span class="w">    </span><span class="nx">set</span><span class="w"> </span><span class="nx">free</span><span class="p">(</span><span class="nx">free</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-140"><a id="__codelineno-1-140" name="__codelineno-1-140" href="#__codelineno-1-140"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">isFree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">free</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</span><span id="__span-1-141"><a id="__codelineno-1-141" name="__codelineno-1-141" href="#__codelineno-1-141"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-142"><a id="__codelineno-1-142" name="__codelineno-1-142" href="#__codelineno-1-142"></a>
+</span><span id="__span-1-143"><a id="__codelineno-1-143" name="__codelineno-1-143" href="#__codelineno-1-143"></a><span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">barcode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-144"><a id="__codelineno-1-144" name="__codelineno-1-144" href="#__codelineno-1-144"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">barcodeData</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-145"><a id="__codelineno-1-145" name="__codelineno-1-145" href="#__codelineno-1-145"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span id="__span-1-146"><a id="__codelineno-1-146" name="__codelineno-1-146" href="#__codelineno-1-146"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-147"><a id="__codelineno-1-147" name="__codelineno-1-147" href="#__codelineno-1-147"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">barcodeData</span><span class="p">;</span>
+</span><span id="__span-1-148"><a id="__codelineno-1-148" name="__codelineno-1-148" href="#__codelineno-1-148"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-149"><a id="__codelineno-1-149" name="__codelineno-1-149" href="#__codelineno-1-149"></a>
+</span><span id="__span-1-150"><a id="__codelineno-1-150" name="__codelineno-1-150" href="#__codelineno-1-150"></a><span class="w">    </span><span class="nx">set</span><span class="w"> </span><span class="nx">barcode</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-151"><a id="__codelineno-1-151" name="__codelineno-1-151" href="#__codelineno-1-151"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">barcodeData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">;</span>
+</span><span id="__span-1-152"><a id="__codelineno-1-152" name="__codelineno-1-152" href="#__codelineno-1-152"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-153"><a id="__codelineno-1-153" name="__codelineno-1-153" href="#__codelineno-1-153"></a>
+</span><span id="__span-1-154"><a id="__codelineno-1-154" name="__codelineno-1-154" href="#__codelineno-1-154"></a><span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">linePrice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-155"><a id="__codelineno-1-155" name="__codelineno-1-155" href="#__codelineno-1-155"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">round</span><span class="p">(</span><span class="nx">m</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">priceEach</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">qty</span><span class="p">),</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+</span><span id="__span-1-156"><a id="__codelineno-1-156" name="__codelineno-1-156" href="#__codelineno-1-156"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-157"><a id="__codelineno-1-157" name="__codelineno-1-157" href="#__codelineno-1-157"></a>
+</span><span id="__span-1-158"><a id="__codelineno-1-158" name="__codelineno-1-158" href="#__codelineno-1-158"></a><span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">priceEachFormatted</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-159"><a id="__codelineno-1-159" name="__codelineno-1-159" href="#__codelineno-1-159"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">getCurrencySymbol</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">round</span><span class="p">(</span><span class="nx">num</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">priceEach</span><span class="p">),</span><span class="w"> </span><span class="mf">2</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
+</span><span id="__span-1-160"><a id="__codelineno-1-160" name="__codelineno-1-160" href="#__codelineno-1-160"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-161"><a id="__codelineno-1-161" name="__codelineno-1-161" href="#__codelineno-1-161"></a>
+</span><span id="__span-1-162"><a id="__codelineno-1-162" name="__codelineno-1-162" href="#__codelineno-1-162"></a><span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">linePriceFormatted</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-163"><a id="__codelineno-1-163" name="__codelineno-1-163" href="#__codelineno-1-163"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">getCurrencySymbol</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">round</span><span class="p">(</span><span class="nx">num</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">linePrice</span><span class="p">),</span><span class="w"> </span><span class="mf">2</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
+</span><span id="__span-1-164"><a id="__codelineno-1-164" name="__codelineno-1-164" href="#__codelineno-1-164"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-165"><a id="__codelineno-1-165" name="__codelineno-1-165" href="#__codelineno-1-165"></a>
+</span><span id="__span-1-166"><a id="__codelineno-1-166" name="__codelineno-1-166" href="#__codelineno-1-166"></a><span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">texthtml</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-167"><a id="__codelineno-1-167" name="__codelineno-1-167" href="#__codelineno-1-167"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">text</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-168"><a id="__codelineno-1-168" name="__codelineno-1-168" href="#__codelineno-1-168"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span id="__span-1-169"><a id="__codelineno-1-169" name="__codelineno-1-169" href="#__codelineno-1-169"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-170"><a id="__codelineno-1-170" name="__codelineno-1-170" href="#__codelineno-1-170"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">text</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;\n&quot;</span><span class="p">);</span>
+</span><span id="__span-1-171"><a id="__codelineno-1-171" name="__codelineno-1-171" href="#__codelineno-1-171"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">lines</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-172"><a id="__codelineno-1-172" name="__codelineno-1-172" href="#__codelineno-1-172"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">lines</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">startsWith</span><span class="p">(</span><span class="s2">&quot;Tracking # &quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-173"><a id="__codelineno-1-173" name="__codelineno-1-173" href="#__codelineno-1-173"></a><span class="w">                </span><span class="c1">// Allow copying tracking number</span>
+</span><span id="__span-1-174"><a id="__codelineno-1-174" name="__codelineno-1-174" href="#__codelineno-1-174"></a><span class="w">                </span><span class="nx">lines</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Tracking # &lt;span class=\&quot;usall\&quot;&gt;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">lines</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">replace</span><span class="p">(</span><span class="s2">&quot;Tracking # &quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;&lt;/span&gt;&quot;</span><span class="p">;</span>
+</span><span id="__span-1-175"><a id="__codelineno-1-175" name="__codelineno-1-175" href="#__codelineno-1-175"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-1-176"><a id="__codelineno-1-176" name="__codelineno-1-176" href="#__codelineno-1-176"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-177"><a id="__codelineno-1-177" name="__codelineno-1-177" href="#__codelineno-1-177"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">lines</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">);</span>
+</span><span id="__span-1-178"><a id="__codelineno-1-178" name="__codelineno-1-178" href="#__codelineno-1-178"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-179"><a id="__codelineno-1-179" name="__codelineno-1-179" href="#__codelineno-1-179"></a>
+</span><span id="__span-1-180"><a id="__codelineno-1-180" name="__codelineno-1-180" href="#__codelineno-1-180"></a><span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">taxAmount</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-181"><a id="__codelineno-1-181" name="__codelineno-1-181" href="#__codelineno-1-181"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">taxableAmount</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;markup&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-182"><a id="__codelineno-1-182" name="__codelineno-1-182" href="#__codelineno-1-182"></a><span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">lineCost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">m</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">cost</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">qty</span><span class="p">);</span>
+</span><span id="__span-1-183"><a id="__codelineno-1-183" name="__codelineno-1-183" href="#__codelineno-1-183"></a><span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">margin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">s</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">linePrice</span><span class="p">,</span><span class="w"> </span><span class="nx">lineCost</span><span class="p">);</span>
+</span><span id="__span-1-184"><a id="__codelineno-1-184" name="__codelineno-1-184" href="#__codelineno-1-184"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">margin</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-185"><a id="__codelineno-1-185" name="__codelineno-1-185" href="#__codelineno-1-185"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-1-186"><a id="__codelineno-1-186" name="__codelineno-1-186" href="#__codelineno-1-186"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-1-187"><a id="__codelineno-1-187" name="__codelineno-1-187" href="#__codelineno-1-187"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">round</span><span class="p">(</span><span class="nx">m</span><span class="p">(</span><span class="nx">margin</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">taxRate</span><span class="p">),</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+</span><span id="__span-1-188"><a id="__codelineno-1-188" name="__codelineno-1-188" href="#__codelineno-1-188"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-189"><a id="__codelineno-1-189" name="__codelineno-1-189" href="#__codelineno-1-189"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">round</span><span class="p">(</span><span class="nx">m</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">linePrice</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">taxRate</span><span class="p">),</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+</span><span id="__span-1-190"><a id="__codelineno-1-190" name="__codelineno-1-190" href="#__codelineno-1-190"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-191"><a id="__codelineno-1-191" name="__codelineno-1-191" href="#__codelineno-1-191"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-192"><a id="__codelineno-1-192" name="__codelineno-1-192" href="#__codelineno-1-192"></a>
+</span><span id="__span-1-193"><a id="__codelineno-1-193" name="__codelineno-1-193" href="#__codelineno-1-193"></a><span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">retailPrice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-194"><a id="__codelineno-1-194" name="__codelineno-1-194" href="#__codelineno-1-194"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">retail</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;number&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-195"><a id="__codelineno-1-195" name="__codelineno-1-195" href="#__codelineno-1-195"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">retail</span><span class="p">;</span>
+</span><span id="__span-1-196"><a id="__codelineno-1-196" name="__codelineno-1-196" href="#__codelineno-1-196"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-197"><a id="__codelineno-1-197" name="__codelineno-1-197" href="#__codelineno-1-197"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">priceEach</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">qty</span><span class="p">;</span>
+</span><span id="__span-1-198"><a id="__codelineno-1-198" name="__codelineno-1-198" href="#__codelineno-1-198"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-199"><a id="__codelineno-1-199" name="__codelineno-1-199" href="#__codelineno-1-199"></a>
+</span><span id="__span-1-200"><a id="__codelineno-1-200" name="__codelineno-1-200" href="#__codelineno-1-200"></a><span class="w">    </span><span class="nx">set</span><span class="w"> </span><span class="nx">retailPrice</span><span class="p">(</span><span class="nx">price</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-201"><a id="__codelineno-1-201" name="__codelineno-1-201" href="#__codelineno-1-201"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">retail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">num</span><span class="p">(</span><span class="nx">price</span><span class="p">);</span>
+</span><span id="__span-1-202"><a id="__codelineno-1-202" name="__codelineno-1-202" href="#__codelineno-1-202"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-203"><a id="__codelineno-1-203" name="__codelineno-1-203" href="#__codelineno-1-203"></a>
+</span><span id="__span-1-204"><a id="__codelineno-1-204" name="__codelineno-1-204" href="#__codelineno-1-204"></a><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="globalapisposreceiptpayment">global.apis.pos.ReceiptPayment</h2>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ReceiptPayment</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="cm">/**</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cm">     *</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="cm">     * @param {number} amount amount paid</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="cm">     * @param {string} type payment type</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="cm">     * @param {string} text extra data (credit card info, etc)</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="cm">     * @returns {ReceiptPayment}</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="cm">     */</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">amount</span><span class="p">,</span><span class="w"> </span><span class="nx">type</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100000000</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;_&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;_&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">amount</span><span class="p">;</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">text</span><span class="p">);</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">type</span><span class="p">;</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">amount</span><span class="p">;</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="nx">fromJSON</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ReceiptPayment</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">amount</span><span class="p">,</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">type</span><span class="p">,</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">text</span><span class="p">);</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">        </span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">item</span><span class="p">;</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="nx">toJSON</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">            </span><span class="nx">amount</span><span class="o">:</span><span class="w"> </span><span class="nx">round</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">amount</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">),</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">type</span><span class="p">,</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">            </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">text</span><span class="p">,</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">            </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">id</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">        </span><span class="p">};</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">texthtml</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">text</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">text</span><span class="p">.</span><span class="nx">replaceAll</span><span class="p">(</span><span class="s2">&quot;\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">);</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">amountFormatted</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">getCurrencySymbol</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">amount</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">label</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">type</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Payment&quot;</span><span class="p">;</span>
+</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;cash&quot;</span><span class="o">:</span>
+</span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Cash&quot;</span><span class="p">;</span>
+</span><span id="__span-2-50"><a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;check&quot;</span><span class="o">:</span>
+</span><span id="__span-2-51"><a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Check&quot;</span><span class="p">;</span>
+</span><span id="__span-2-52"><a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;card&quot;</span><span class="o">:</span>
+</span><span id="__span-2-53"><a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Card&quot;</span><span class="p">;</span>
+</span><span id="__span-2-54"><a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;card_manual&quot;</span><span class="o">:</span>
+</span><span id="__span-2-55"><a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Card&quot;</span><span class="p">;</span>
+</span><span id="__span-2-56"><a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;account&quot;</span><span class="o">:</span>
+</span><span id="__span-2-57"><a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Account&quot;</span><span class="p">;</span>
+</span><span id="__span-2-58"><a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;free&quot;</span><span class="o">:</span>
+</span><span id="__span-2-59"><a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Free&quot;</span><span class="p">;</span>
+</span><span id="__span-2-60"><a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;discount&quot;</span><span class="o">:</span>
+</span><span id="__span-2-61"><a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Discount&quot;</span><span class="p">;</span>
+</span><span id="__span-2-62"><a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;crypto&quot;</span><span class="o">:</span>
+</span><span id="__span-2-63"><a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Cryptocurrency&quot;</span><span class="p">;</span>
+</span><span id="__span-2-64"><a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;ach&quot;</span><span class="o">:</span>
+</span><span id="__span-2-65"><a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;ACH Debit&quot;</span><span class="p">;</span>
+</span><span id="__span-2-66"><a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;rounding&quot;</span><span class="o">:</span>
+</span><span id="__span-2-67"><a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Cash Rounding&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Used in penniless countries to balance a cash-only transaction</span>
+</span><span id="__span-2-68"><a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a><span class="w">            </span><span class="k">default</span><span class="o">:</span>
+</span><span id="__span-2-69"><a id="__codelineno-2-69" name="__codelineno-2-69" href="#__codelineno-2-69"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">type</span><span class="p">;</span>
+</span><span id="__span-2-70"><a id="__codelineno-2-70" name="__codelineno-2-70" href="#__codelineno-2-70"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-71"><a id="__codelineno-2-71" name="__codelineno-2-71" href="#__codelineno-2-71"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-72"><a id="__codelineno-2-72" name="__codelineno-2-72" href="#__codelineno-2-72"></a><span class="p">}</span>
+</span></code></pre></div>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../assets/external/unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

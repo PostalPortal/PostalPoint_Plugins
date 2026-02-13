@@ -1,0 +1,2883 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../user/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/external/postalpoint.app/images/favicon-voxel.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Util - PostalPoint Plugin Development</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://analytics.netsyms.net/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '57']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#util-object" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://postalpoint.app" title="PostalPoint Plugin Development" class="md-header__button md-logo" aria-label="PostalPoint Plugin Development" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PostalPoint Plugin Development
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Util
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://postalpoint.app" title="PostalPoint Plugin Development" class="md-nav__button md-logo" aria-label="PostalPoint Plugin Development" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    PostalPoint Plugin Development
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Docs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Address/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Address object
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Carrier_Service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    getCarrierName and getServiceName
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Drivers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Event Bus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/FormPS1583/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FormPS1583 object
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Parcel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parcel/Package Object
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Receipt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Receipt Objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/ReceiptPrinter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Receipt Printer driver functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/TrackingBarcode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TrackingBarcode class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/01Minimal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Minimal Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/02Basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/03Shipping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shipping Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/04CardProcessor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Card Payments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/05CryptoProcessor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cryptocurrency Payments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plugin API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../barcode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Barcode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../global%20functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Global functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graphics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graphics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../i18n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I18n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kiosk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kiosk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mailboxes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mailboxes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../print/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Print
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../shipping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shipping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ui
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Util
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Util
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#util-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="util : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utiluuid-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.uuid : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="util.uuid : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uuidv4-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uuid.v4() ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uuidshortlength-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uuid.short([length]) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilhttp-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.http : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="util.http : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#httpwebhook-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        http.webhook : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="http.webhook : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#webhookgeturlsourcename-promisestring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        webhook.geturl(sourcename) ⇒ Promise.&lt;string&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webhookpollsourcename-promisearrayobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        webhook.poll(sourcename) ⇒ Promise.&lt;Array.&lt;Object&gt;&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webhookackwebhookid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        webhook.ack(webhookid)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#httpposturl-data-responsetype-headers-method-continueonbadstatuscode-timeoutseconds-promisestringblobarraybufferobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        http.post(url, data, [responseType], [headers], [method], [continueOnBadStatusCode], [timeoutSeconds]) ⇒ Promise.&lt;(string|Blob|ArrayBuffer|Object)&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#httpfetchurl-responsetype-timeoutseconds-promisestringblobarraybufferobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        http.fetch(url, [responseType], [timeoutSeconds]) ⇒ Promise.&lt;(string|Blob|ArrayBuffer|Object)&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilstring-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.string : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="util.string : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stringsplitinput-separator-limit-arraystring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        string.split(input, separator, [limit]) ⇒ Array.&lt;string&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringchunkinput-chunksize-arraystring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        string.chunk(input, chunksize) ⇒ Array.&lt;string&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utiltime-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.time : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="util.time : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timenow-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time.now() ⇒ number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timediffcompareto-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time.diff(compareto) ⇒ number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timestrtotimestr-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time.strtotime(str) ⇒ number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeformatformat-timestamp-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time.format(format, [timestamp]) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timetodatestringtimestamp-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time.toDateString(timestamp) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timetotimestringtimestamp-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time.toTimeString(timestamp) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilclipboard-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.clipboard : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="util.clipboard : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clipboardcopytext-shownotification-promiseboolean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        clipboard.copy(text, [showNotification]) ⇒ Promise.&lt;boolean&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilbarcode-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.barcode : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="util.barcode : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#barcodegetbufferdata-type-height-scale-includetext-promisebuffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barcode.getBuffer(data, [type], [height], [scale], [includetext]) ⇒ Promise.&lt;Buffer&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barcodegetbase64data-type-height-scale-includetext-promisestring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barcode.getBase64(data, [type], [height], [scale], [includetext]) ⇒ Promise.&lt;string&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilgeography-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.geography : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="util.geography : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#geographyisotocountrynameiso-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        geography.isoToCountryName(iso) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilobjectequalsa-b-boolean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.objectEquals(a, b) ⇒ boolean
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utildelayms-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.delay([ms]) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#util-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="util : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utiluuid-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.uuid : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="util.uuid : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uuidv4-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uuid.v4() ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uuidshortlength-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uuid.short([length]) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilhttp-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.http : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="util.http : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#httpwebhook-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        http.webhook : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="http.webhook : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#webhookgeturlsourcename-promisestring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        webhook.geturl(sourcename) ⇒ Promise.&lt;string&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webhookpollsourcename-promisearrayobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        webhook.poll(sourcename) ⇒ Promise.&lt;Array.&lt;Object&gt;&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webhookackwebhookid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        webhook.ack(webhookid)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#httpposturl-data-responsetype-headers-method-continueonbadstatuscode-timeoutseconds-promisestringblobarraybufferobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        http.post(url, data, [responseType], [headers], [method], [continueOnBadStatusCode], [timeoutSeconds]) ⇒ Promise.&lt;(string|Blob|ArrayBuffer|Object)&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#httpfetchurl-responsetype-timeoutseconds-promisestringblobarraybufferobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        http.fetch(url, [responseType], [timeoutSeconds]) ⇒ Promise.&lt;(string|Blob|ArrayBuffer|Object)&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilstring-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.string : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="util.string : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stringsplitinput-separator-limit-arraystring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        string.split(input, separator, [limit]) ⇒ Array.&lt;string&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringchunkinput-chunksize-arraystring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        string.chunk(input, chunksize) ⇒ Array.&lt;string&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utiltime-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.time : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="util.time : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timenow-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time.now() ⇒ number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timediffcompareto-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time.diff(compareto) ⇒ number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timestrtotimestr-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time.strtotime(str) ⇒ number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeformatformat-timestamp-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time.format(format, [timestamp]) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timetodatestringtimestamp-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time.toDateString(timestamp) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timetotimestringtimestamp-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time.toTimeString(timestamp) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilclipboard-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.clipboard : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="util.clipboard : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clipboardcopytext-shownotification-promiseboolean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        clipboard.copy(text, [showNotification]) ⇒ Promise.&lt;boolean&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilbarcode-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.barcode : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="util.barcode : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#barcodegetbufferdata-type-height-scale-includetext-promisebuffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barcode.getBuffer(data, [type], [height], [scale], [includetext]) ⇒ Promise.&lt;Buffer&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barcodegetbase64data-type-height-scale-includetext-promisestring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barcode.getBase64(data, [type], [height], [scale], [includetext]) ⇒ Promise.&lt;string&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilgeography-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.geography : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="util.geography : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#geographyisotocountrynameiso-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        geography.isoToCountryName(iso) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilobjectequalsa-b-boolean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.objectEquals(a, b) ⇒ boolean
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utildelayms-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.delay([ms]) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Util</h1>
+
+<p><a name="util"></a></p>
+<h2 id="util-object">util : <code>object</code></h2>
+<p>Various utility functions: HTTP, time/date, barcode creation, clipboard, etc.</p>
+<p><strong>Kind</strong>: global namespace  </p>
+<ul>
+<li><a href="#util">util</a> : <code>object</code><ul>
+<li><a href="#util.uuid">.uuid</a> : <code>object</code><ul>
+<li><a href="#util.uuid.v4">.v4()</a> ⇒ <code>string</code></li>
+<li><a href="#util.uuid.short">.short([length])</a> ⇒ <code>string</code></li>
+</ul>
+</li>
+<li><a href="#util.http">.http</a> : <code>object</code><ul>
+<li><a href="#util.http.webhook">.webhook</a> : <code>object</code><ul>
+<li><a href="#util.http.webhook.geturl">.geturl(sourcename)</a> ⇒ <code>Promise.&lt;string&gt;</code></li>
+<li><a href="#util.http.webhook.poll">.poll(sourcename)</a> ⇒ <code>Promise.&lt;Array.&lt;Object&gt;&gt;</code></li>
+<li><a href="#util.http.webhook.ack">.ack(webhookid)</a></li>
+</ul>
+</li>
+<li><a href="#util.http.post">.post(url, data, [responseType], [headers], [method], [continueOnBadStatusCode], [timeoutSeconds])</a> ⇒ <code>Promise.&lt;(string|Blob|ArrayBuffer|Object)&gt;</code></li>
+<li><a href="#util.http.fetch">.fetch(url, [responseType], [timeoutSeconds])</a> ⇒ <code>Promise.&lt;(string|Blob|ArrayBuffer|Object)&gt;</code></li>
+</ul>
+</li>
+<li><a href="#util.string">.string</a> : <code>object</code><ul>
+<li><a href="#util.string.split">.split(input, separator, [limit])</a> ⇒ <code>Array.&lt;string&gt;</code></li>
+<li><a href="#util.string.chunk">.chunk(input, chunksize)</a> ⇒ <code>Array.&lt;string&gt;</code></li>
+</ul>
+</li>
+<li><a href="#util.time">.time</a> : <code>object</code><ul>
+<li><a href="#util.time.now">.now()</a> ⇒ <code>number</code></li>
+<li><a href="#util.time.diff">.diff(compareto)</a> ⇒ <code>number</code></li>
+<li><a href="#util.time.strtotime">.strtotime(str)</a> ⇒ <code>number</code></li>
+<li><a href="#util.time.format">.format(format, [timestamp])</a> ⇒ <code>string</code></li>
+<li><a href="#util.time.toDateString">.toDateString(timestamp)</a> ⇒ <code>string</code></li>
+<li><a href="#util.time.toTimeString">.toTimeString(timestamp)</a> ⇒ <code>string</code></li>
+</ul>
+</li>
+<li><a href="#util.clipboard">.clipboard</a> : <code>object</code><ul>
+<li><a href="#util.clipboard.copy">.copy(text, [showNotification])</a> ⇒ <code>Promise.&lt;boolean&gt;</code></li>
+</ul>
+</li>
+<li><a href="#util.barcode">.barcode</a> : <code>object</code><ul>
+<li><a href="#util.barcode.getBuffer">.getBuffer(data, [type], [height], [scale], [includetext])</a> ⇒ <code>Promise.&lt;Buffer&gt;</code></li>
+<li><a href="#util.barcode.getBase64">.getBase64(data, [type], [height], [scale], [includetext])</a> ⇒ <code>Promise.&lt;string&gt;</code></li>
+</ul>
+</li>
+<li><a href="#util.geography">.geography</a> : <code>object</code><ul>
+<li><a href="#util.geography.isoToCountryName">.isoToCountryName(iso)</a> ⇒ <code>string</code></li>
+</ul>
+</li>
+<li><a href="#util.objectEquals">.objectEquals(a, b)</a> ⇒ <code>boolean</code></li>
+<li><a href="#util.delay">.delay([ms])</a> ⇒ <code>Promise</code></li>
+</ul>
+</li>
+</ul>
+<p><a name="util.uuid"></a></p>
+<h3 id="utiluuid-object">util.uuid : <code>object</code></h3>
+<p>Unique ID generators.</p>
+<p><strong>Kind</strong>: static namespace of <a href="#util"><code>util</code></a>  </p>
+<ul>
+<li><a href="#util.uuid">.uuid</a> : <code>object</code><ul>
+<li><a href="#util.uuid.v4">.v4()</a> ⇒ <code>string</code></li>
+<li><a href="#util.uuid.short">.short([length])</a> ⇒ <code>string</code></li>
+</ul>
+</li>
+</ul>
+<p><a name="util.uuid.v4"></a></p>
+<h4 id="uuidv4-string">uuid.v4() ⇒ <code>string</code></h4>
+<p>Generate a UUID string</p>
+<p><strong>Kind</strong>: static method of <a href="#util.uuid"><code>uuid</code></a><br />
+<strong>Returns</strong>: <code>string</code> - UUID v4 with dashes: xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx<br />
+<a name="util.uuid.short"></a></p>
+<h4 id="uuidshortlength-string">uuid.short([length]) ⇒ <code>string</code></h4>
+<p>Generate a short random alphanumeric string.</p>
+<p><strong>Kind</strong>: static method of <a href="#util.uuid"><code>uuid</code></a><br />
+<strong>Returns</strong>: <code>string</code> - A string of length <code>length</code>, from the character set "acdefhjkmnpqrtuvwxy0123456789".  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[length]</td>
+<td><code>number</code></td>
+<td><code>16</code></td>
+<td>String character count.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.http"></a></p>
+<h3 id="utilhttp-object">util.http : <code>object</code></h3>
+<p>HTTP requests and webhooks.</p>
+<p><strong>Kind</strong>: static namespace of <a href="#util"><code>util</code></a>  </p>
+<ul>
+<li><a href="#util.http">.http</a> : <code>object</code><ul>
+<li><a href="#util.http.webhook">.webhook</a> : <code>object</code><ul>
+<li><a href="#util.http.webhook.geturl">.geturl(sourcename)</a> ⇒ <code>Promise.&lt;string&gt;</code></li>
+<li><a href="#util.http.webhook.poll">.poll(sourcename)</a> ⇒ <code>Promise.&lt;Array.&lt;Object&gt;&gt;</code></li>
+<li><a href="#util.http.webhook.ack">.ack(webhookid)</a></li>
+</ul>
+</li>
+<li><a href="#util.http.post">.post(url, data, [responseType], [headers], [method], [continueOnBadStatusCode], [timeoutSeconds])</a> ⇒ <code>Promise.&lt;(string|Blob|ArrayBuffer|Object)&gt;</code></li>
+<li><a href="#util.http.fetch">.fetch(url, [responseType], [timeoutSeconds])</a> ⇒ <code>Promise.&lt;(string|Blob|ArrayBuffer|Object)&gt;</code></li>
+</ul>
+</li>
+</ul>
+<p><a name="util.http.webhook"></a></p>
+<h4 id="httpwebhook-object">http.webhook : <code>object</code></h4>
+<p>Use webhooks via a PostalPoint cloud relay service.</p>
+<p><strong>Kind</strong>: static namespace of <a href="#util.http"><code>http</code></a>  </p>
+<ul>
+<li><a href="#util.http.webhook">.webhook</a> : <code>object</code><ul>
+<li><a href="#util.http.webhook.geturl">.geturl(sourcename)</a> ⇒ <code>Promise.&lt;string&gt;</code></li>
+<li><a href="#util.http.webhook.poll">.poll(sourcename)</a> ⇒ <code>Promise.&lt;Array.&lt;Object&gt;&gt;</code></li>
+<li><a href="#util.http.webhook.ack">.ack(webhookid)</a></li>
+</ul>
+</li>
+</ul>
+<p><a name="util.http.webhook.geturl"></a></p>
+<h5 id="webhookgeturlsourcename-promisestring">webhook.geturl(sourcename) ⇒ <code>Promise.&lt;string&gt;</code></h5>
+<p>geturl - Returns a public URL that can be used as a webhook target/endpoint for third-party integrations.</p>
+<p><strong>Kind</strong>: static method of <a href="#util.http.webhook"><code>webhook</code></a><br />
+<strong>Returns</strong>: <code>Promise.&lt;string&gt;</code> - A URL for the webhook.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sourcename</td>
+<td><code>string</code></td>
+<td>Unique identifier for the webhook</td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.http.webhook.poll"></a></p>
+<h5 id="webhookpollsourcename-promisearrayobject">webhook.poll(sourcename) ⇒ <code>Promise.&lt;Array.&lt;Object&gt;&gt;</code></h5>
+<p>poll - Returns an array of webhook payloads received by the webhook identified by <code>sourcename</code>.</p>
+<p><strong>Kind</strong>: static method of <a href="#util.http.webhook"><code>webhook</code></a><br />
+<strong>Returns</strong>: <code>Promise.&lt;Array.&lt;Object&gt;&gt;</code> - Payloads as received by the webhook relay service.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sourcename</td>
+<td><code>string</code></td>
+<td>Unique identifier for the webhook</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">[</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">     </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">         </span><span class="c1">// Unique ID. Used for ack(webhookid).</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">         </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">         </span><span class="c1">// UNIX timestamp (in seconds) of when the data was received by the webhook URL.</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">         </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="mf">1234567890</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">         </span><span class="c1">// Source name set in geturl()</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">         </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;sourcename&quot;</span><span class="p">,</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">         </span><span class="c1">// JSON string of all the HTTP headers sent to the webhook URL.</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">         </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{&#39;Content-Type&#39;: &#39;application/json&#39;}&quot;</span><span class="p">,</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">         </span><span class="c1">// Entire HTTP request body sent to the webhook URL.</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">         </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">     </span><span class="p">}</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="p">]</span>
+</span></code></pre></div>
+<a name="util.http.webhook.ack"></a></p>
+<h5 id="webhookackwebhookid">webhook.ack(webhookid)</h5>
+<p>Acknowledge receipt of a webhook payload, deleting it from the relay server.
+Webhook payload is only queued for deletion, so polling may still return it for a short time.</p>
+<p><strong>Kind</strong>: static method of <a href="#util.http.webhook"><code>webhook</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>webhookid</td>
+<td><code>number</code></td>
+<td>Numeric unique ID received with the payload. See <code>poll</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.http.post"></a></p>
+<h4 id="httpposturl-data-responsetype-headers-method-continueonbadstatuscode-timeoutseconds-promisestringblobarraybufferobject">http.post(url, data, [responseType], [headers], [method], [continueOnBadStatusCode], [timeoutSeconds]) ⇒ <code>Promise.&lt;(string|Blob|ArrayBuffer|Object)&gt;</code></h4>
+<p>post - Fetch a HTTP POST request.</p>
+<p><strong>Kind</strong>: static method of <a href="#util.http"><code>http</code></a><br />
+<strong>Returns</strong>: <code>Promise.&lt;(string|Blob|ArrayBuffer|Object)&gt;</code> - The server response body. See <code>responseType</code> parameter.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td><code>string</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>data</td>
+<td><code>Object.&lt;string, string&gt;</code></td>
+<td></td>
+<td>POST data key/value list</td>
+</tr>
+<tr>
+<td>[responseType]</td>
+<td><code>string</code></td>
+<td><code>&quot;text&quot;</code></td>
+<td>"text", "blob", "buffer", or "json"</td>
+</tr>
+<tr>
+<td>[headers]</td>
+<td><code>Object.&lt;string, string&gt;</code></td>
+<td></td>
+<td>HTTP headers to send. Defaults to <code>{"Content-Type": "application/json"}</code>.</td>
+</tr>
+<tr>
+<td>[method]</td>
+<td><code>string</code></td>
+<td><code>&quot;POST&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>[continueOnBadStatusCode]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>If false, throws an Error when the HTTP response code is not 2XX. If true, ignores the response code and proceeds as normal.</td>
+</tr>
+<tr>
+<td>[timeoutSeconds]</td>
+<td><code>number</code></td>
+<td><code>15</code></td>
+<td>Aborts the request (timeout) after this many seconds.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.http.fetch"></a></p>
+<h4 id="httpfetchurl-responsetype-timeoutseconds-promisestringblobarraybufferobject">http.fetch(url, [responseType], [timeoutSeconds]) ⇒ <code>Promise.&lt;(string|Blob|ArrayBuffer|Object)&gt;</code></h4>
+<p>fetch - Fetch a HTTP GET request.</p>
+<p><strong>Kind</strong>: static method of <a href="#util.http"><code>http</code></a><br />
+<strong>Returns</strong>: <code>Promise.&lt;(string|Blob|ArrayBuffer|Object)&gt;</code> - The server response body. See <code>responseType</code> parameter.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td><code>string</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[responseType]</td>
+<td><code>string</code></td>
+<td><code>&quot;text&quot;</code></td>
+<td>"text", "blob", "buffer", or "json"</td>
+</tr>
+<tr>
+<td>[timeoutSeconds]</td>
+<td><code>number</code></td>
+<td><code>15</code></td>
+<td>Aborts the request (timeout) after this many seconds.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.string"></a></p>
+<h3 id="utilstring-object">util.string : <code>object</code></h3>
+<p>String manipulation functions.</p>
+<p><strong>Kind</strong>: static namespace of <a href="#util"><code>util</code></a>  </p>
+<ul>
+<li><a href="#util.string">.string</a> : <code>object</code><ul>
+<li><a href="#util.string.split">.split(input, separator, [limit])</a> ⇒ <code>Array.&lt;string&gt;</code></li>
+<li><a href="#util.string.chunk">.chunk(input, chunksize)</a> ⇒ <code>Array.&lt;string&gt;</code></li>
+</ul>
+</li>
+</ul>
+<p><a name="util.string.split"></a></p>
+<h4 id="stringsplitinput-separator-limit-arraystring">string.split(input, separator, [limit]) ⇒ <code>Array.&lt;string&gt;</code></h4>
+<p>Split a string with a separator regex.</p>
+<p><strong>Kind</strong>: static method of <a href="#util.string"><code>string</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td><code>string</code></td>
+<td>Input string</td>
+</tr>
+<tr>
+<td>separator</td>
+<td><code>string</code></td>
+<td>Passed to <code>new RegExp(separator, 'g')</code></td>
+</tr>
+<tr>
+<td>[limit]</td>
+<td><code>number</code></td>
+<td>Maximum number of splits to perform</td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.string.chunk"></a></p>
+<h4 id="stringchunkinput-chunksize-arraystring">string.chunk(input, chunksize) ⇒ <code>Array.&lt;string&gt;</code></h4>
+<p>Split a string into chunks of length <code>chunksize</code>.</p>
+<p><strong>Kind</strong>: static method of <a href="#util.string"><code>string</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td><code>string</code></td>
+<td>Input string</td>
+</tr>
+<tr>
+<td>chunksize</td>
+<td><code>string</code></td>
+<td>Number of characters per chunk</td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.time"></a></p>
+<h3 id="utiltime-object">util.time : <code>object</code></h3>
+<p>Date and time functions</p>
+<p><strong>Kind</strong>: static namespace of <a href="#util"><code>util</code></a>  </p>
+<ul>
+<li><a href="#util.time">.time</a> : <code>object</code><ul>
+<li><a href="#util.time.now">.now()</a> ⇒ <code>number</code></li>
+<li><a href="#util.time.diff">.diff(compareto)</a> ⇒ <code>number</code></li>
+<li><a href="#util.time.strtotime">.strtotime(str)</a> ⇒ <code>number</code></li>
+<li><a href="#util.time.format">.format(format, [timestamp])</a> ⇒ <code>string</code></li>
+<li><a href="#util.time.toDateString">.toDateString(timestamp)</a> ⇒ <code>string</code></li>
+<li><a href="#util.time.toTimeString">.toTimeString(timestamp)</a> ⇒ <code>string</code></li>
+</ul>
+</li>
+</ul>
+<p><a name="util.time.now"></a></p>
+<h4 id="timenow-number">time.now() ⇒ <code>number</code></h4>
+<p>Get the current UNIX timestamp in seconds.</p>
+<p><strong>Kind</strong>: static method of <a href="#util.time"><code>time</code></a><br />
+<a name="util.time.diff"></a></p>
+<h4 id="timediffcompareto-number">time.diff(compareto) ⇒ <code>number</code></h4>
+<p>Get the number of seconds between now and the given Date or UNIX timestamp in seconds.</p>
+<p><strong>Kind</strong>: static method of <a href="#util.time"><code>time</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>compareto</td>
+<td><code>number</code> | <code>Date</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.time.strtotime"></a></p>
+<h4 id="timestrtotimestr-number">time.strtotime(str) ⇒ <code>number</code></h4>
+<p>Parse a string date and return UNIX timestamp (in seconds).</p>
+<p><strong>Kind</strong>: static method of <a href="#util.time"><code>time</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str</td>
+<td><code>string</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.time.format"></a></p>
+<h4 id="timeformatformat-timestamp-string">time.format(format, [timestamp]) ⇒ <code>string</code></h4>
+<p>Take a Date or UNIX timestamp in seconds and format it to a string.
+Mostly compatible with the <a href="https://www.php.net/manual/en/datetime.format.php">PHP date format codes</a>.</p>
+<p><strong>Kind</strong>: static method of <a href="#util.time"><code>time</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>format</td>
+<td><code>string</code></td>
+<td></td>
+<td>"Y-m-d H:i:s", etc</td>
+</tr>
+<tr>
+<td>[timestamp]</td>
+<td><code>number</code> | <code>Date</code></td>
+<td><code>now()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.time.toDateString"></a></p>
+<h4 id="timetodatestringtimestamp-string">time.toDateString(timestamp) ⇒ <code>string</code></h4>
+<p>Format a UNIX timestamp (in seconds) as a localized date string.</p>
+<p><strong>Kind</strong>: static method of <a href="#util.time"><code>time</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>timestamp</td>
+<td><code>number</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.time.toTimeString"></a></p>
+<h4 id="timetotimestringtimestamp-string">time.toTimeString(timestamp) ⇒ <code>string</code></h4>
+<p>Format a UNIX timestamp (in seconds) as a localized time string.</p>
+<p><strong>Kind</strong>: static method of <a href="#util.time"><code>time</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>timestamp</td>
+<td><code>number</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.clipboard"></a></p>
+<h3 id="utilclipboard-object">util.clipboard : <code>object</code></h3>
+<p>OS clipboard</p>
+<p><strong>Kind</strong>: static namespace of <a href="#util"><code>util</code></a><br />
+<a name="util.clipboard.copy"></a></p>
+<h4 id="clipboardcopytext-shownotification-promiseboolean">clipboard.copy(text, [showNotification]) ⇒ <code>Promise.&lt;boolean&gt;</code></h4>
+<p>Copy a string to the system clipboard.</p>
+<p><strong>Kind</strong>: static method of <a href="#util.clipboard"><code>clipboard</code></a><br />
+<strong>Returns</strong>: <code>Promise.&lt;boolean&gt;</code> - True if the copy succeeded, else false.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text</td>
+<td><code>string</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[showNotification]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>If true, a "Copied" notification will appear onscreen briefly.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.barcode"></a></p>
+<h3 id="utilbarcode-object">util.barcode : <code>object</code></h3>
+<p>Barcode image generation functions.</p>
+<p><strong>Kind</strong>: static namespace of <a href="#util"><code>util</code></a>  </p>
+<ul>
+<li><a href="#util.barcode">.barcode</a> : <code>object</code><ul>
+<li><a href="#util.barcode.getBuffer">.getBuffer(data, [type], [height], [scale], [includetext])</a> ⇒ <code>Promise.&lt;Buffer&gt;</code></li>
+<li><a href="#util.barcode.getBase64">.getBase64(data, [type], [height], [scale], [includetext])</a> ⇒ <code>Promise.&lt;string&gt;</code></li>
+</ul>
+</li>
+</ul>
+<p><a name="util.barcode.getBuffer"></a></p>
+<h4 id="barcodegetbufferdata-type-height-scale-includetext-promisebuffer">barcode.getBuffer(data, [type], [height], [scale], [includetext]) ⇒ <code>Promise.&lt;Buffer&gt;</code></h4>
+<p>Get a PNG image buffer of a barcode. Uses library "bwip-js".</p>
+<p><strong>Kind</strong>: static method of <a href="#util.barcode"><code>barcode</code></a><br />
+<strong>Returns</strong>: <code>Promise.&lt;Buffer&gt;</code> - PNG data for the barcode.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><code>string</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[type]</td>
+<td><code>string</code></td>
+<td><code>&quot;\&quot;code128\&quot;&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>[height]</td>
+<td><code>number</code></td>
+<td><code>10</code></td>
+<td></td>
+</tr>
+<tr>
+<td>[scale]</td>
+<td><code>number</code></td>
+<td><code>2</code></td>
+<td></td>
+</tr>
+<tr>
+<td>[includetext]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>Set true to render the barcode's content as text below the code.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.barcode.getBase64"></a></p>
+<h4 id="barcodegetbase64data-type-height-scale-includetext-promisestring">barcode.getBase64(data, [type], [height], [scale], [includetext]) ⇒ <code>Promise.&lt;string&gt;</code></h4>
+<p>Get a PNG image of a barcode as a base64 data URI. Uses library "bwip-js".</p>
+<p><strong>Kind</strong>: static method of <a href="#util.barcode"><code>barcode</code></a><br />
+<strong>Returns</strong>: <code>Promise.&lt;string&gt;</code> - "data:image/png;base64,..."  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><code>string</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[type]</td>
+<td><code>string</code></td>
+<td><code>&quot;\&quot;code128\&quot;&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>[height]</td>
+<td><code>number</code></td>
+<td><code>10</code></td>
+<td></td>
+</tr>
+<tr>
+<td>[scale]</td>
+<td><code>number</code></td>
+<td><code>2</code></td>
+<td></td>
+</tr>
+<tr>
+<td>[includetext]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>Set true to render the barcode's content as text below the code.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.geography"></a></p>
+<h3 id="utilgeography-object">util.geography : <code>object</code></h3>
+<p><strong>Kind</strong>: static namespace of <a href="#util"><code>util</code></a><br />
+<a name="util.geography.isoToCountryName"></a></p>
+<h4 id="geographyisotocountrynameiso-string">geography.isoToCountryName(iso) ⇒ <code>string</code></h4>
+<p>Get a human-readable country name from an ISO country code.</p>
+<p><strong>Kind</strong>: static method of <a href="#util.geography"><code>geography</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iso</td>
+<td><code>string</code> | <code>number</code></td>
+<td>2 or 3 letter country code, or numeric country code.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.objectEquals"></a></p>
+<h3 id="utilobjectequalsa-b-boolean">util.objectEquals(a, b) ⇒ <code>boolean</code></h3>
+<p>Compare two objects for equality.  See https://stackoverflow.com/a/16788517</p>
+<p><strong>Kind</strong>: static method of <a href="#util"><code>util</code></a><br />
+<strong>Returns</strong>: <code>boolean</code> - True if equal, else false.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td><code>*</code></td>
+</tr>
+<tr>
+<td>b</td>
+<td><code>*</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.delay"></a></p>
+<h3 id="utildelayms-promise">util.delay([ms]) ⇒ <code>Promise</code></h3>
+<p>Pause execution for some amount of time in an async function, i.e., returns a Promise that resolves in some number of milliseconds.</p>
+<p><strong>Kind</strong>: static method of <a href="#util"><code>util</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[ms]</td>
+<td><code>number</code></td>
+<td><code>1000</code></td>
+<td>Number of milliseconds to pause.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../assets/external/unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
