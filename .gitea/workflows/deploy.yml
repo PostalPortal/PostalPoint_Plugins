@@ -10,6 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set up container
+        run: |
+          apt update
+          apt install -y rsync
+      
       - name: Checkout repository
         uses: actions/checkout@v4
 
