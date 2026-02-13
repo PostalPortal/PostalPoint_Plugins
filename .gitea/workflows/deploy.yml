@@ -47,6 +47,7 @@ jobs:
 
       - name: Deploy "next" version
         run: |
+          mike set-default next
           mike deploy --push --update-aliases next latest
 
       - name: Checkout public branch
