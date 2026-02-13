@@ -1,4 +1,5 @@
 site_name: PostalPoint Plugin Development
+remote_branch: public
 theme:
   name: material
   custom_dir: overrides
@@ -15,11 +16,22 @@ extra:
     provider: custom
     url: analytics.netsyms.net
     siteid: 57
+  version:
+    provider: mike
+    alias: true
 extra_css:
   - assets/styles.css
 plugins:
   - privacy
   - search
+  - mike:
+      alias_type: symlink
+      redirect_template: null
+      deploy_prefix: ''
+      canonical_version: null
+      version_selector: true
+      css_dir: css
+      javascript_dir: js
 markdown_extensions:
   - def_list
   - pymdownx.highlight:
