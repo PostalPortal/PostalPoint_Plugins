@@ -40,7 +40,7 @@ jobs:
 
       - name: Deploy with rsync
         run: |
-          rsync -avz --delete \
+          rsync -rltz --no-perms --no-owner --no-group --omit-dir-times --delete \
             --filter='P error/' \
             --filter='P stats/' \
             site/ \
