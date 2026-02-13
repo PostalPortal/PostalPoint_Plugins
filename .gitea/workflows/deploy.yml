@@ -45,6 +45,6 @@ jobs:
           rsync -avz --delete \
             --filter='P error/' \
             --filter='P stats/' \
-            -e "ssh -p ${{ secrets.DEPLOY_PORT || 22 }}" \
+            -e "ssh -v -p ${{ secrets.DEPLOY_PORT || 22 }}" \
             site/ \
             ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/var/www/dev.postalpoint.app/web
