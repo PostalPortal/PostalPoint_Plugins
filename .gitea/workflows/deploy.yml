@@ -8,23 +8,28 @@ on:
 jobs:
   build-next:
     runs-on: ubuntu-latest
-
-    container:
-      image: squidfunk/mkdocs-material
       
     steps:
       - name: Set up container
         run: |
-          apk add --no-cache rsync openssh-client
+          apt update
+          apt install -y rsync
       
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
       - name: Install MkDocs/Mike
         run: |
-          pip install mike
+          pip install --upgrade pip
+          
+          pip install mkdocs mkdocs-material pymdown-extensions mkdocs-material-extensions mike
     
       - name: Setup SSH keys
         run: |
