@@ -3,45 +3,56 @@ name: Build and Deploy MkDocs
 on:
   push:
     branches:
-      - public
+      - master
 
 jobs:
-  build-deploy:
+  build-next:
     runs-on: ubuntu-latest
 
+    container:
+      image: squidfunk/mkdocs-material
+      
     steps:
       - name: Set up container
         run: |
-          apt update
-          apt install -y rsync
+          apk add --no-cache rsync openssh-client
       
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          fetch-depth: 0
 
-      - name: Install MkDocs
+      - name: Install MkDocs/Mike
         run: |
-          pip install --upgrade pip
-          pip install mkdocs mkdocs-material pymdown-extensions mkdocs-material-extensions
-
-      - name: Build site
-        run: mkdocs build --clean
-
-      - name: Setup SSH
+          pip install mike
+    
+      - name: Setup SSH keys
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
+          ssh-keyscan -p 2322 source.netsyms.com >> ~/.ssh/known_hosts
+      
+      - name: Configure Git
+        run: |
+          git config user.name "CI"
+          git config user.email "ci@netsyms.com"
+          git remote set-url origin ssh://gitea@source.netsyms.com:2322/PostalPortal/PostalPoint_Plugins.git
+
+      - name: Deploy "next" version
+        run: |
+          mike deploy --push --update-aliases next latest
+
+      - name: Checkout public branch
+        run: |
+          git checkout public
 
       - name: Deploy with rsync
         run: |
           rsync -rltz --no-perms --no-owner --no-group --omit-dir-times --delete \
             --filter='P error/' \
             --filter='P stats/' \
-            site/ \
+            --exclude=".git/" \
+            ./ \
             ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/var/www/dev.postalpoint.app/web
