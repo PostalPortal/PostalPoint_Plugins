@@ -14,6 +14,7 @@ Plugins can use `global.apis.eventbus` to receive events when certain actions ha
 * `settingsSaved`: Emitted when PostalPoint's settings are saved. Usually this means the user changed a setting in the UI.
 * `pluginSettingsSaved`: Emitted when the user saves a plugin's settings. The plugin ID string is sent as the event data.
 * `packageCheckIn`: Emitted when a package is checked in to a mailbox or for Hold At Location. See below for event data details.
+* `mailboxMailDelivered`: Emitted when mail delivery notifications are sent by the user. Data is an array of the mailbox numbers notifications are being sent for.
 
 ## Example Code
 
@@ -36,7 +37,7 @@ For events that return an object instead of a single value.
 
 ### transactionFinished
 
-See Receipt.md
+See [Receipt](./Receipt.md)
 
 ### customerSignatureCollected
 

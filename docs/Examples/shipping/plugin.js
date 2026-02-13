@@ -4,7 +4,10 @@ var rateCache = [];
 var parcelCache = {};
 
 exports.init = function () {
+    // Add support for shipping rating and label purchasing
     global.apis.shipping.registerRateEndpoint(getRates, purchase, "uniqueprefixhere_");
+    
+    // Add support for prepaid drop-offs
     global.apis.barcode.onPrepaidScan(function (barcode) {
         if (barcode.startsWith("mycarrierbarcode")) { // Replace this with your checks for barcode validity
             var data = new global.apis.barcode.TrackingBarcode(barcode);
@@ -14,46 +17,6 @@ exports.init = function () {
         }
         return false;
     });
-
-
-
-    /*
-     * Plugins can override PostalPoint's built-in shipment markup calculation.
-     * Only one plugin on an instance of PostalPoint can register, on a first-come basis.
-     * This function throws an Error if another plugin has already registered.
-     */
-    /**
-     * Add your code for calculating shipping markup.
-     * @param {number} cost Cost to shipper
-     * @param {number} retail Carrier-suggested retail price
-     * @param {number} suggested PostalPoint-suggested retail (default margin calc)
-     * @param {string} carrier Shipping carrier name
-     * @param {string} service Shipping service code
-     * @param {number|null} weightOz The weight of the shipment in ounces, or null if not available.
-     * @param {string} packaging An empty string if not available, or "Letter", "FlatRateEnvelope", etc. See https://docs.easypost.com/docs/parcels#predefined-packages
-     * @returns {Boolean|number} false if opting out of setting markup, otherwise the retail price
-     */
-    global.apis.shipping.registerMarkupCalculator(
-            function (cost, retail, suggested, carrier, service, weightOz, packaging) {
-                if (carrier == "USPS") {
-                    if (service == "First-Class Mail") {
-                        // Handle First-Class Mail differently if it's a 1oz letter (i.e. Forever stamp)
-                        if (weightOz <= 1 && packaging == "Letter") {
-                            return retail + 0.05;
-                        } else {
-                            return retail + 0.25;
-                        }
-                    }
-                    // Handle flat rate envelopes differently
-                    if (global.apis.shipping.getServiceName(service, carrier) == "Priority Mail" && packaging == "FlatRateEnvelope") {
-                        return retail + 1.0;
-                    }
-                    return suggested + 2.0; // Charge the PostalPoint-calculated amount plus $2
-                } else {
-                    return cost * 2; // Charges the customer double the shipment's cost.
-                }
-            }
-    );
 }
 
 async function purchase(rateid) {

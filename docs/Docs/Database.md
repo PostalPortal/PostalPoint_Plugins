@@ -1,4 +1,4 @@
-# SQL Database Drivers
+# Database Drivers
 
 `global.apis.database.getConnection()` returns one of these, depending on which database is in use.
 
@@ -63,6 +63,63 @@ export class SQLiteAdapter {
         await this.db.exec(`PRAGMA user_version = ${version}`);
     }
 
+}
+```
+
+## Remote host/master
+
+```javascript
+export class RemoteDatabaseAdapter {
+    constructor() {
+        this.type = "remote";
+    }
+
+    async apirequest(args) {
+        var resp = await sendToPostalPointHTTPServer(args, "database");
+        if (typeof resp.status == "string" && resp.status == "OK") {
+            return resp.result;
+        } else if (typeof resp.status == "string" && resp.status == "ERR") {
+            if (typeof resp.message == "string") {
+                throw new Error(resp.message);
+            } else {
+                throw new Error(resp);
+            }
+        } else {
+            throw new Error(resp);
+        }
+    }
+
+    async query(query, replace = []) {
+        return await this.apirequest({type: "query", query: query, replace: replace});
+    }
+
+    async run(statement, replace = []) {
+        return await this.apirequest({type: "run", query: statement, replace: replace});
+    }
+
+    async exec(statement) {
+        return await this.apirequest({type: "exec", query: statement});
+    }
+
+    async exists(table, where, replace = []) {
+        return await this.apirequest({type: "exists", table: table, where: where, replace: replace});
+    }
+
+    async close() {
+        // NOOP: We don't care about this
+    }
+
+    async tableExists(table) {
+        return await this.apirequest({type: "tableExists", table: table});
+    }
+
+    async getSchemaVersion() {
+        return await this.apirequest({type: "getSchemaVersion"});
+    }
+
+    async setSchemaVersion(version) {
+        // NOOP: Don't upgrade server's installation, it can do that itself
+    }
 }
 ```
 
@@ -141,4 +198,4 @@ export class MariaDBAdapter {
         }
     }
 }
-```
+``` 
