@@ -298,6 +298,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#postalpoint-devtools-and-testing-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PostalPoint DevTools and Testing Builds
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#plugin-package-structure" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1417,6 +1428,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#postalpoint-devtools-and-testing-builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PostalPoint DevTools and Testing Builds
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#plugin-package-structure" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1491,6 +1513,16 @@
 <li>Display interactive HTML5 content on the customer-facing screen</li>
 <li>Run both Node.JS and browser code.</li>
 </ul>
+<h2 id="postalpoint-devtools-and-testing-builds">PostalPoint DevTools and Testing Builds</h2>
+<p>The <a href="https://build.netsyms.net/job/PostalPoint_Retail/">PostalPoint build server</a>
+creates installers from the latest prerelease changes. It is not recommended to use these
+builds for production purposes, but they contain the latest changes to plugin APIs.</p>
+<p>For Windows developers, you'll want to download a "postalpoint-retail-sdk_x.xx.exe" installer,
+as it contains the Chromium DevTools.</p>
+<p>To enable DevTools on Linux, simply run <code>sudo apt install nw.js-sdk</code> and restart PostalPoint.</p>
+<p>To access the DevTools, press F12 or right-click anywhere inside PostalPoint and click Inspect.
+Depending on various factors, some plugin console output may go to the "background page"; 
+right-click and click "Inspect background page" to view that console.</p>
 <h2 id="plugin-package-structure">Plugin Package Structure</h2>
 <p>A plugin is distributed as a simple ZIP file, containing a folder. The folder then has at least one file, named <code>plugin.js</code>.
 The <code>exports.init</code> function in <code>plugin.js</code> is executed when PostalPoint launches, allowing the plugin
