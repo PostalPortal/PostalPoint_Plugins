@@ -14,6 +14,21 @@ PostalPoint® supports JavaScript plugin extensions. Plugins can hook into Posta
 * Display interactive HTML5 content on the customer-facing screen
 * Run both Node.JS and browser code.
 
+## PostalPoint DevTools and Testing Builds
+
+The [PostalPoint build server](https://build.netsyms.net/job/PostalPoint_Retail/)
+creates installers from the latest prerelease changes. It is not recommended to use these
+builds for production purposes, but they contain the latest changes to plugin APIs.
+
+For Windows developers, you'll want to download a "postalpoint-retail-sdk_x.xx.exe" installer,
+as it contains the Chromium DevTools.
+
+To enable DevTools on Linux, simply run `sudo apt install nw.js-sdk` and restart PostalPoint.
+
+To access the DevTools, press F12 or right-click anywhere inside PostalPoint and click Inspect.
+Depending on various factors, some plugin console output may go to the "background page"; 
+right-click and click "Inspect background page" to view that console.
+
 ## Plugin Package Structure
 
 A plugin is distributed as a simple ZIP file, containing a folder. The folder then has at least one file, named `plugin.js`.
