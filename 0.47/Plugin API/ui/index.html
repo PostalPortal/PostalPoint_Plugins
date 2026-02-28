@@ -1,0 +1,2143 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../storage/">
+      
+      
+        <link rel="next" href="../user/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/external/postalpoint.app/images/favicon-voxel.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Ui - PostalPoint Plugin Development</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://analytics.netsyms.net/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '57']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ui-object" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://postalpoint.app" title="PostalPoint Plugin Development" class="md-header__button md-logo" aria-label="PostalPoint Plugin Development" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PostalPoint Plugin Development
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ui
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://postalpoint.app" title="PostalPoint Plugin Development" class="md-nav__button md-logo" aria-label="PostalPoint Plugin Development" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    PostalPoint Plugin Development
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Docs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Address/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Address object
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Carrier_Service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    getCarrierName and getServiceName
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Drivers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Event Bus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/FormPS1583/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FormPS1583 object
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Parcel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parcel/Package Object
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Receipt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Receipt Objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/ReceiptPrinter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Receipt Printer driver functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/TrackingBarcode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TrackingBarcode class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/01Minimal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Minimal Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/02Basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/03Shipping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shipping Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/04CardProcessor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Card Payments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/05CryptoProcessor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cryptocurrency Payments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plugin API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../barcode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Barcode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../global%20functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Global functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graphics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graphics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../i18n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I18n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kiosk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kiosk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mailboxes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mailboxes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../print/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Print
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../shipping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shipping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ui
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ui
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ui-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ui : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uiaddtoolspagepage-title-id-description-cardtitle-icon-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.addToolsPage(page, title, id, description, cardTitle, icon, type)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uiaddhometabcontent-title-icon-id-undefined" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.addHomeTab(content, title, icon, id) ⇒ undefined
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uishowprogressspinnertitle-text-subtitle-undefined" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.showProgressSpinner(title, text, subtitle) ⇒ undefined
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uihideprogressspinner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.hideProgressSpinner()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uiopensystemwebbrowserurl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.openSystemWebBrowser(url)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uiopeninternalwebbrowserurl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.openInternalWebBrowser(url)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uiclearcustomerscreen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.clearCustomerScreen()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uisetcustomerscreencontent-type-displayincard-cardsize-displaystatusbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.setCustomerScreen(content, type, displayInCard, cardSize, displayStatusBar)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uicollectsignaturefromcustomerscreentitle-terms-termstype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.collectSignatureFromCustomerScreen(title, terms, termstype)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uicancelsignaturecollection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.cancelSignatureCollection()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uiclearsignaturepad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.clearSignaturePad()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uigetcustomerdisplayinfo-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.getCustomerDisplayInfo() ⇒ Object
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../util/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Util
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ui-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ui : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uiaddtoolspagepage-title-id-description-cardtitle-icon-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.addToolsPage(page, title, id, description, cardTitle, icon, type)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uiaddhometabcontent-title-icon-id-undefined" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.addHomeTab(content, title, icon, id) ⇒ undefined
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uishowprogressspinnertitle-text-subtitle-undefined" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.showProgressSpinner(title, text, subtitle) ⇒ undefined
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uihideprogressspinner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.hideProgressSpinner()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uiopensystemwebbrowserurl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.openSystemWebBrowser(url)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uiopeninternalwebbrowserurl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.openInternalWebBrowser(url)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uiclearcustomerscreen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.clearCustomerScreen()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uisetcustomerscreencontent-type-displayincard-cardsize-displaystatusbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.setCustomerScreen(content, type, displayInCard, cardSize, displayStatusBar)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uicollectsignaturefromcustomerscreentitle-terms-termstype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.collectSignatureFromCustomerScreen(title, terms, termstype)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uicancelsignaturecollection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.cancelSignatureCollection()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uiclearsignaturepad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.clearSignaturePad()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uigetcustomerdisplayinfo-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.getCustomerDisplayInfo() ⇒ Object
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Ui</h1>
+
+<p><a name="ui"></a></p>
+<h2 id="ui-object">ui : <code>object</code></h2>
+<p>Interact with and modify the PostalPoint user interface.</p>
+<p><strong>Kind</strong>: global namespace  </p>
+<ul>
+<li><a href="#ui">ui</a> : <code>object</code><ul>
+<li><a href="#ui.addToolsPage">.addToolsPage(page, title, id, description, cardTitle, icon, type)</a></li>
+<li><a href="#ui.addHomeTab">.addHomeTab(content, title, icon, id)</a> ⇒ <code>undefined</code></li>
+<li><a href="#ui.showProgressSpinner">.showProgressSpinner(title, text, subtitle)</a> ⇒ <code>undefined</code></li>
+<li><a href="#ui.hideProgressSpinner">.hideProgressSpinner()</a></li>
+<li><a href="#ui.openSystemWebBrowser">.openSystemWebBrowser(url)</a></li>
+<li><a href="#ui.openInternalWebBrowser">.openInternalWebBrowser(url)</a></li>
+<li><a href="#ui.clearCustomerScreen">.clearCustomerScreen()</a></li>
+<li><a href="#ui.setCustomerScreen">.setCustomerScreen(content, type, displayInCard, cardSize, displayStatusBar)</a></li>
+<li><a href="#ui.collectSignatureFromCustomerScreen">.collectSignatureFromCustomerScreen(title, terms, termstype)</a></li>
+<li><a href="#ui.cancelSignatureCollection">.cancelSignatureCollection()</a></li>
+<li><a href="#ui.clearSignaturePad">.clearSignaturePad()</a></li>
+<li><a href="#ui.getCustomerDisplayInfo">.getCustomerDisplayInfo()</a> ⇒ <code>Object</code></li>
+</ul>
+</li>
+</ul>
+<p><a name="ui.addToolsPage"></a></p>
+<h3 id="uiaddtoolspagepage-title-id-description-cardtitle-icon-type">ui.addToolsPage(page, title, id, description, cardTitle, icon, type)</h3>
+<p>Add a page to the Tools screen. If type is set to "function", the page argument
+will be run as a function and will not be expected to return a page component.
+<a href="https://framework7.io/docs/router-component#single-file-component">Framework7 Page Component documentation</a></p>
+<p><strong>Kind</strong>: static method of <a href="#ui"><code>ui</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>page</td>
+<td><code>string</code> | <code>function</code></td>
+<td></td>
+<td>Page content as a Framework7 component page. If <code>page</code> is a string ending in <code>.f7</code> it is treated as a file path and the page content will be loaded from disk. If <code>page</code> is any other string, it is treated as the page content. If <code>page</code> is a function, it will be called and must return the page content (unless <code>type</code> is set to <code>"function"</code>, see examples)</td>
+</tr>
+<tr>
+<td>title</td>
+<td><code>string</code></td>
+<td></td>
+<td>Page title.</td>
+</tr>
+<tr>
+<td>id</td>
+<td><code>string</code></td>
+<td></td>
+<td>Page ID. Make it unique, or pass an empty string to be assigned a random ID.</td>
+</tr>
+<tr>
+<td>description</td>
+<td><code>string</code></td>
+<td></td>
+<td>Description of this tool for its card on the Tools screen.</td>
+</tr>
+<tr>
+<td>cardTitle</td>
+<td><code>string</code></td>
+<td></td>
+<td>Title of the card for this page on the Tools screen.</td>
+</tr>
+<tr>
+<td>icon</td>
+<td><code>string</code></td>
+<td></td>
+<td>FontAwesome icon class, for example, "fa-solid fa-globe". FontAwesome Pro solid, regular, light, and duotone icons are available.</td>
+</tr>
+<tr>
+<td>type</td>
+<td><code>string</code></td>
+<td><code>&quot;page&quot;</code></td>
+<td>What kind of data is supplied by <code>page</code>: "page" or "function".</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Full plugin that displays an alert when the card is clicked on the Tools page</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nx">exports</span><span class="p">.</span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addToolsPage</span><span class="p">(</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">                                 </span><span class="nx">displayMessage</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">                                 </span><span class="s2">&quot;click me&quot;</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">                                 </span><span class="s2">&quot;clickmecard&quot;</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">                                 </span><span class="s2">&quot;Click here to see a message&quot;</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">                                 </span><span class="s2">&quot;Click This Card&quot;</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">                                 </span><span class="s2">&quot;fa-solid fa-arrow-pointer&quot;</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">                                 </span><span class="s2">&quot;function&quot;</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">                               </span><span class="p">);</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">}</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="kd">function</span><span class="w"> </span><span class="nx">displayMessage</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Card clicked&quot;</span><span class="p">);</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="p">}</span>
+</span></code></pre></div>
+<strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Open a dynamically-generated page</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">function</span><span class="w"> </span><span class="nx">rollDice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">randomNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">6</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="sb">`&lt;div class=&quot;page&quot;&gt;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="sb">        &lt;div class=&quot;navbar&quot;&gt;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="sb">            &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="sb">            &lt;div class=&quot;navbar-inner&quot;&gt;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="sb">                &lt;a href=&quot;#&quot; class=&quot;link back&quot;&gt;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="sb">                    &lt;i class=&quot;icon icon-back&quot;&gt;&lt;/i&gt;</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="sb">                &lt;/a&gt;</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="sb">                &lt;div class=&quot;title&quot;&gt;Random Number&lt;/div&gt;</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="sb">            &lt;/div&gt;</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="sb">        &lt;/div&gt;</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="sb">        &lt;div class=&quot;page-content&quot;&gt;</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="sb">            &lt;div class=&quot;block&quot;&gt;</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="sb">                &lt;h1&gt;You rolled </span><span class="si">${</span><span class="nx">randomNumber</span><span class="si">}</span><span class="sb">&lt;/h1&gt;</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="sb">            &lt;/div&gt;</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="sb">        &lt;/div&gt;</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="sb">    &lt;/div&gt;`</span><span class="p">;</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="p">}</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addToolsPage</span><span class="p">(</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">                             </span><span class="nx">rollDice</span><span class="p">,</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">                             </span><span class="s2">&quot;Random&quot;</span><span class="p">,</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">                             </span><span class="s2">&quot;randomnumbercard&quot;</span><span class="p">,</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">                             </span><span class="s2">&quot;Click here for a random number&quot;</span><span class="p">,</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">                             </span><span class="s2">&quot;Random Number&quot;</span><span class="p">,</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">                             </span><span class="s2">&quot;fa-regular fa-dice&quot;</span><span class="p">,</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">                             </span><span class="s2">&quot;page&quot;</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">                           </span><span class="p">);</span>
+</span></code></pre></div>
+<strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Open a page from a file.</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">// See https://framework7.io/docs/router-component#single-file-component</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addToolsPage</span><span class="p">(</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">                             </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">getPluginFolder</span><span class="p">(</span><span class="s2">&quot;example-plugin&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/page.f7&quot;</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">                             </span><span class="s2">&quot;Page&quot;</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">                             </span><span class="s2">&quot;filepage&quot;</span><span class="p">,</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">                             </span><span class="s2">&quot;Open page.f7 from the plugin installation folder&quot;</span><span class="p">,</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">                             </span><span class="s2">&quot;Open Custom Page&quot;</span><span class="p">,</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">                             </span><span class="s2">&quot;fa-regular fa-file&quot;</span><span class="p">,</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">                             </span><span class="s2">&quot;page&quot;</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">                           </span><span class="p">);</span>
+</span></code></pre></div>
+<a name="ui.addHomeTab"></a></p>
+<h3 id="uiaddhometabcontent-title-icon-id-undefined">ui.addHomeTab(content, title, icon, id) ⇒ <code>undefined</code></h3>
+<p>Add a custom tab to the PostalPoint home screen.  Works almost the same as addToolsPage.</p>
+<p><strong>Kind</strong>: static method of <a href="#ui"><code>ui</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content</td>
+<td><code>string</code> | <code>function</code></td>
+<td>Tab content. It is rendered/processed when the user navigates to the Home screen and clicks the tab; if the user navigates to a different screen and back to Home, it will be re-rendered. If <code>content</code> is a string ending in <code>.f7</code> it is treated as a file path and the content will be loaded from disk. If <code>content</code> is any other string, it is treated as the content. If <code>content</code> is a function, it will be called and must return the content.</td>
+</tr>
+<tr>
+<td>title</td>
+<td><code>string</code></td>
+<td>Tab title. Keep it short; depending on screen size and tab count, you have as little as 150px of space.</td>
+</tr>
+<tr>
+<td>icon</td>
+<td><code>string</code></td>
+<td>FontAwesome icon displayed above the tab title.</td>
+</tr>
+<tr>
+<td>id</td>
+<td><code>string</code></td>
+<td>Tab ID. Make it unique, or pass an empty string to be assigned a random ID. If addHomeTab is called with a tab ID that is already registered, it will be overwritten.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addHomeTab</span><span class="p">(</span><span class="s2">&quot;&lt;div class=&#39;block&#39;&gt;Hello&lt;/div&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hello Tab&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fa-duotone fa-hand-wave&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hellotab&quot;</span><span class="p">);</span>
+</span></code></pre></div>
+<strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">renderTab</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;&lt;template&gt;&lt;div&gt;&lt;h1&gt;${hellovar}&lt;/h1&gt;&lt;/div&gt;&lt;/template&gt;&lt;script&gt;export default (props, {$on, $update, $f7}) =&gt; {var hellovar = &#39;hello world&#39;; return $render;}&lt;/script&gt;&quot;</span><span class="p">;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">}</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addHomeTab</span><span class="p">(</span><span class="nx">renderTab</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hello Template&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fa-duotone fa-file-code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hellotemplatetab&quot;</span><span class="p">);</span>
+</span></code></pre></div>
+<a name="ui.showProgressSpinner"></a></p>
+<h3 id="uishowprogressspinnertitle-text-subtitle-undefined">ui.showProgressSpinner(title, text, subtitle) ⇒ <code>undefined</code></h3>
+<p>Show a notification with a loading icon.</p>
+<p><strong>Kind</strong>: static method of <a href="#ui"><code>ui</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td><code>string</code></td>
+<td>The message to show on the spinner.</td>
+</tr>
+<tr>
+<td>text</td>
+<td><code>string</code></td>
+<td>Optional. Body text on the spinner.</td>
+</tr>
+<tr>
+<td>subtitle</td>
+<td><code>string</code></td>
+<td>Optional. Sub-heading under the <code>title</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="ui.hideProgressSpinner"></a></p>
+<h3 id="uihideprogressspinner">ui.hideProgressSpinner()</h3>
+<p>Close the notification opened by <code>showProgressSpinner</code>.</p>
+<p><strong>Kind</strong>: static method of <a href="#ui"><code>ui</code></a><br />
+<a name="ui.openSystemWebBrowser"></a></p>
+<h3 id="uiopensystemwebbrowserurl">ui.openSystemWebBrowser(url)</h3>
+<p>Open the native OS default browser to the URL given.</p>
+<p><strong>Kind</strong>: static method of <a href="#ui"><code>ui</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td><code>string</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="ui.openInternalWebBrowser"></a></p>
+<h3 id="uiopeninternalwebbrowserurl">ui.openInternalWebBrowser(url)</h3>
+<p>Open a web browser inside PostalPoint. The browser has forward/back/close buttons.</p>
+<p><strong>Kind</strong>: static method of <a href="#ui"><code>ui</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td><code>string</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">openInternalWebBrowser</span><span class="p">(</span><span class="s2">&quot;https://postalpoint.app&quot;</span><span class="p">);</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">eventbus</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;browserNavigate&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">newUrl</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="sb">`New URL: </span><span class="si">${</span><span class="nx">newUrl</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Browser Navigated&quot;</span><span class="p">);</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">newUrl</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;https://closeme.com&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">eventbus</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s2">&quot;browserCloseRequest&quot;</span><span class="p">);</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="p">});</span>
+</span></code></pre></div>
+<a name="ui.clearCustomerScreen"></a></p>
+<h3 id="uiclearcustomerscreen">ui.clearCustomerScreen()</h3>
+<p>Clear any custom content on the customer-facing display, defaulting back to blank/receipt/shipping rates, as applicable.</p>
+<p><strong>Kind</strong>: static method of <a href="#ui"><code>ui</code></a><br />
+<a name="ui.setCustomerScreen"></a></p>
+<h3 id="uisetcustomerscreencontent-type-displayincard-cardsize-displaystatusbar">ui.setCustomerScreen(content, type, displayInCard, cardSize, displayStatusBar)</h3>
+<p>Render content on the customer-facing display.
+Encodes content as a data URI (example: <code>data:text/html;charset=utf-8,${content}</code>)
+and renders on the customer-facing display. If type is html, renders the string as HTML.
+If type is pdf, displays a PDF viewer. If type is raw, functions like setting an iframe's
+src to content. All other type values are rendered as text/plain.
+To display the iframe in a card centered on the screen, set displayInCard to true
+and pass the desired dimensions (w, h) of the card in px.
+If the requested size is larger than the available screen space, the card will instead
+fill the available space.
+Warning: Do not load third-party websites, this is a security risk.
+Wrap it in a <webview src="..."></webview> tag if you need to display one.</p>
+<p><strong>Kind</strong>: static method of <a href="#ui"><code>ui</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content</td>
+<td><code>string</code></td>
+<td></td>
+<td>Page content.</td>
+</tr>
+<tr>
+<td>type</td>
+<td><code>string</code></td>
+<td><code>&quot;html&quot;</code></td>
+<td>Format of the <code>content</code>. One of "html", "pdf", "raw", "body", or "text".</td>
+</tr>
+<tr>
+<td>displayInCard</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>Set to true to wrap the content in a card UI.</td>
+</tr>
+<tr>
+<td>cardSize</td>
+<td><code>Array.&lt;number&gt;</code></td>
+<td><code>[300,300</code></td>
+<td>Size of the card UI if displayInCard == true.</td>
+</tr>
+<tr>
+<td>displayStatusBar</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>Whether the bar on the bottom of the screen should be visible, containing the store logo and scale weight.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// How content is converted by PostalPoint before display:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;html&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`data:text/html;charset=utf-8,</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;pdf&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`data:application/pdf,</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;raw&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="nb">global</span><span class="p">.</span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;body&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`data:text/html;charset=utf-8,&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="sb">    &lt;meta charset=&quot;utf-8&quot;&gt;</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="sb">    &lt;title&gt;&lt;/title&gt;</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="sb">    &lt;style&gt;</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="sb">        html, body {margin: 0; padding: 0; font-family: Roboto, Ubuntu, Arial, sans-serif;}</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="sb">        h1, h2, h3 {margin: 0;}</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="sb">    &lt;/style&gt;</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="sb">    &lt;div id=&quot;maindiv&quot;&gt;</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">&lt;/div&gt;`</span><span class="p">;</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">    </span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`data:text/plain;charset=utf-8,</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="p">}</span>
+</span></code></pre></div>
+<a name="ui.collectSignatureFromCustomerScreen"></a></p>
+<h3 id="uicollectsignaturefromcustomerscreentitle-terms-termstype">ui.collectSignatureFromCustomerScreen(title, terms, termstype)</h3>
+<p>Show a signature pad on the customer-facing display.
+When the customer indicates the signature is finished,
+the customerSignatureCollected event is emitted with the data
+{"svg": "data:image/svg+xml;base64,...", "png": "data:image/png;base64,..."}</p>
+<p><strong>Kind</strong>: static method of <a href="#ui"><code>ui</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td><code>string</code></td>
+<td><code>null</code></td>
+<td>Display a title/header on the customer screen. Currently ignored, but may be used in the future.</td>
+</tr>
+<tr>
+<td>terms</td>
+<td><code>string</code> | <code>boolean</code></td>
+<td><code>false</code></td>
+<td>Set to a string to display terms and conditions or other text content next to the signature pad.</td>
+</tr>
+<tr>
+<td>termstype</td>
+<td><code>string</code></td>
+<td><code>&quot;body&quot;</code></td>
+<td>"html", "pdf", "raw", or "body". See setCustomerScreen()</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">collectSignatureFromCustomerScreen</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&lt;p&gt;By signing, you agree to pay us lots of money&lt;/p&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;body&quot;</span><span class="p">);</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">eventbus</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;customerSignatureCollected&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">sigdata</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">pngDataURL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sigdata</span><span class="p">.</span><span class="nx">png</span><span class="p">;</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">svgDataURL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sigdata</span><span class="p">.</span><span class="nx">svg</span><span class="p">;</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">});</span>
+</span></code></pre></div>
+<a name="ui.cancelSignatureCollection"></a></p>
+<h3 id="uicancelsignaturecollection">ui.cancelSignatureCollection()</h3>
+<p>Cancels customer signature collection and returns the customer-facing display to normal operation.</p>
+<p><strong>Kind</strong>: static method of <a href="#ui"><code>ui</code></a><br />
+<strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">cancelSignatureCollection</span><span class="p">();</span>
+</span></code></pre></div>
+<a name="ui.clearSignaturePad"></a></p>
+<h3 id="uiclearsignaturepad">ui.clearSignaturePad()</h3>
+<p>Erase the signature drawn on the customer-facing display.
+Note that the customer is also provided a button to do this.</p>
+<p><strong>Kind</strong>: static method of <a href="#ui"><code>ui</code></a><br />
+<strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">clearSignaturePad</span><span class="p">();</span>
+</span></code></pre></div>
+<a name="ui.getCustomerDisplayInfo"></a></p>
+<h3 id="uigetcustomerdisplayinfo-object">ui.getCustomerDisplayInfo() ⇒ <code>Object</code></h3>
+<p>Describes if the customer-facing display is currently enabled,
+and if it supports customer touch interaction.</p>
+<p><strong>Kind</strong>: static method of <a href="#ui"><code>ui</code></a><br />
+<strong>Returns</strong>: <code>Object</code> - {"enabled": true, "touch": true}<br />
+<strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">getCustomerDisplayInfo</span><span class="p">();</span>
+</span></code></pre></div></p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../assets/external/unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

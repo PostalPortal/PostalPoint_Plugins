@@ -1,0 +1,2257 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../kiosk/">
+      
+      
+        <link rel="next" href="../pos/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/external/postalpoint.app/images/favicon-voxel.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Mailboxes - PostalPoint Plugin Development</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://analytics.netsyms.net/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '57']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mailboxes-object" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://postalpoint.app" title="PostalPoint Plugin Development" class="md-header__button md-logo" aria-label="PostalPoint Plugin Development" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PostalPoint Plugin Development
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mailboxes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://postalpoint.app" title="PostalPoint Plugin Development" class="md-nav__button md-logo" aria-label="PostalPoint Plugin Development" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    PostalPoint Plugin Development
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Docs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Address/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Address object
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Carrier_Service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    getCarrierName and getServiceName
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Drivers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Event Bus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/FormPS1583/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FormPS1583 object
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Parcel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parcel/Package Object
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Receipt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Receipt Objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/ReceiptPrinter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Receipt Printer driver functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/TrackingBarcode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TrackingBarcode class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/01Minimal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Minimal Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/02Basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/03Shipping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shipping Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/04CardProcessor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Card Payments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/05CryptoProcessor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cryptocurrency Payments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plugin API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../barcode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Barcode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../global%20functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Global functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graphics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graphics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../i18n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I18n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kiosk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kiosk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mailboxes
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mailboxes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mailboxes-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="mailboxes : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesformps1583" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.FormPS1583
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="mailboxes.FormPS1583">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-formps1583" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        new FormPS1583()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesgetlistfilter-promisearray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.getList(filter) ⇒ Promise.&lt;Array&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesadddaystomailboxboxnumber-days-months-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.addDaysToMailbox(boxNumber, days, months) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxessetmailboxexpirationdateboxnumber-date-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.setMailboxExpirationDate(boxNumber, date) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxescreatemailboxnumber-size-notes-barcode-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.createMailbox(number, size, notes, barcode) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxeseditmailboxoldnumber-newnumber-newsize-barcode-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.editMailbox(oldNumber, newNumber, newSize, barcode) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesdeletemailboxnumber-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.deleteMailbox(number) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesclosemailboxnumber-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.closeMailbox(number) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesmailboxexistsnumber-promiseboolean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.mailboxExists(number) ⇒ Promise.&lt;boolean&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesaddorupdateboxholderboxnumber-info-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.addOrUpdateBoxholder(boxNumber, info) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesremoveboxholderboxnumber-uuid-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.removeBoxholder(boxNumber, uuid) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesget1583boxnumber-uuid-archivenumber-promiseformps1583" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.get1583(boxNumber, uuid, archiveNumber) ⇒ Promise.&lt;FormPS1583&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesset1583boxnumber-uuid-formps1583-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.set1583(boxNumber, uuid, formps1583) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesboxnumbervalid-boolean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.boxNumberValid() ⇒ boolean
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesgetmailboxproducts-promisearray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.getMailboxProducts() ⇒ Promise.&lt;Array&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../print/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Print
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../shipping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shipping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ui
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../util/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Util
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mailboxes-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="mailboxes : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesformps1583" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.FormPS1583
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="mailboxes.FormPS1583">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-formps1583" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        new FormPS1583()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesgetlistfilter-promisearray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.getList(filter) ⇒ Promise.&lt;Array&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesadddaystomailboxboxnumber-days-months-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.addDaysToMailbox(boxNumber, days, months) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxessetmailboxexpirationdateboxnumber-date-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.setMailboxExpirationDate(boxNumber, date) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxescreatemailboxnumber-size-notes-barcode-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.createMailbox(number, size, notes, barcode) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxeseditmailboxoldnumber-newnumber-newsize-barcode-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.editMailbox(oldNumber, newNumber, newSize, barcode) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesdeletemailboxnumber-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.deleteMailbox(number) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesclosemailboxnumber-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.closeMailbox(number) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesmailboxexistsnumber-promiseboolean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.mailboxExists(number) ⇒ Promise.&lt;boolean&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesaddorupdateboxholderboxnumber-info-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.addOrUpdateBoxholder(boxNumber, info) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesremoveboxholderboxnumber-uuid-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.removeBoxholder(boxNumber, uuid) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesget1583boxnumber-uuid-archivenumber-promiseformps1583" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.get1583(boxNumber, uuid, archiveNumber) ⇒ Promise.&lt;FormPS1583&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesset1583boxnumber-uuid-formps1583-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.set1583(boxNumber, uuid, formps1583) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesboxnumbervalid-boolean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.boxNumberValid() ⇒ boolean
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mailboxesgetmailboxproducts-promisearray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mailboxes.getMailboxProducts() ⇒ Promise.&lt;Array&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Mailboxes</h1>
+
+<p><a name="mailboxes"></a></p>
+<h2 id="mailboxes-object">mailboxes : <code>object</code></h2>
+<p>Add, modify, and delete mailboxes and mailbox customers.</p>
+<p><strong>Kind</strong>: global namespace  </p>
+<ul>
+<li><a href="#mailboxes">mailboxes</a> : <code>object</code><ul>
+<li><a href="#mailboxes.FormPS1583">.FormPS1583</a><ul>
+<li><a href="#new_mailboxes.FormPS1583_new">new FormPS1583()</a></li>
+</ul>
+</li>
+<li><a href="#mailboxes.getList">.getList(filter)</a> ⇒ <code>Promise.&lt;Array&gt;</code></li>
+<li><a href="#mailboxes.addDaysToMailbox">.addDaysToMailbox(boxNumber, days, months)</a> ⇒ <code>Promise</code></li>
+<li><a href="#mailboxes.setMailboxExpirationDate">.setMailboxExpirationDate(boxNumber, date)</a> ⇒ <code>Promise</code></li>
+<li><a href="#mailboxes.createMailbox">.createMailbox(number, size, notes, barcode)</a> ⇒ <code>Promise</code></li>
+<li><a href="#mailboxes.editMailbox">.editMailbox(oldNumber, newNumber, newSize, barcode)</a> ⇒ <code>Promise</code></li>
+<li><a href="#mailboxes.deleteMailbox">.deleteMailbox(number)</a> ⇒ <code>Promise</code></li>
+<li><a href="#mailboxes.closeMailbox">.closeMailbox(number)</a> ⇒ <code>Promise</code></li>
+<li><a href="#mailboxes.mailboxExists">.mailboxExists(number)</a> ⇒ <code>Promise.&lt;boolean&gt;</code></li>
+<li><a href="#mailboxes.addOrUpdateBoxholder">.addOrUpdateBoxholder(boxNumber, info)</a> ⇒ <code>Promise</code></li>
+<li><a href="#mailboxes.removeBoxholder">.removeBoxholder(boxNumber, uuid)</a> ⇒ <code>Promise</code></li>
+<li><a href="#mailboxes.get1583">.get1583(boxNumber, uuid, archiveNumber)</a> ⇒ <code>Promise.&lt;FormPS1583&gt;</code></li>
+<li><a href="#mailboxes.set1583">.set1583(boxNumber, uuid, formps1583)</a> ⇒ <code>Promise</code></li>
+<li><a href="#mailboxes.boxNumberValid">.boxNumberValid()</a> ⇒ <code>boolean</code></li>
+<li><a href="#mailboxes.getMailboxProducts">.getMailboxProducts()</a> ⇒ <code>Promise.&lt;Array&gt;</code></li>
+</ul>
+</li>
+</ul>
+<p><a name="mailboxes.FormPS1583"></a></p>
+<h3 id="mailboxesformps1583">mailboxes.FormPS1583</h3>
+<p><strong>Kind</strong>: static class of <a href="#mailboxes"><code>mailboxes</code></a><br />
+<a name="new_mailboxes.FormPS1583_new"></a></p>
+<h4 id="new-formps1583">new FormPS1583()</h4>
+<p>USPS Form PS1583 object, with all the fields needed by USPS for CMRA customers.</p>
+<p><a name="mailboxes.getList"></a></p>
+<h3 id="mailboxesgetlistfilter-promisearray">mailboxes.getList(filter) ⇒ <code>Promise.&lt;Array&gt;</code></h3>
+<p>Get the list of mailboxes and boxholders as an array of objects, see example.</p>
+<p><strong>Kind</strong>: static method of <a href="#mailboxes"><code>mailboxes</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>filter</td>
+<td><code>null</code> | <code>object</code></td>
+<td><code></code></td>
+<td>Filter to mailboxes matching a column condition, such as <code>getList({number: "102"})</code> or <code>getList({"size &gt;=": "2"})</code>. Supported filter names include "number" (string, box number), "expires" (expiration date), "size" (number 1-10), and "barcode" (string) SQL injection warning: Filter names are inserted directly into query strings without sanitization. Only the values are safe for user input.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">[{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nx">num</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Box number as string</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nx">expires</span><span class="o">:</span><span class="w"> </span><span class="mf">1234567890</span><span class="p">,</span><span class="w"> </span><span class="c1">// UNIX timestamp (in seconds) or false if box vacant</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Box size, 1-10</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nx">notes</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Notes for mailbox, not currently shown in Mailbox Manager UI but may be used in the future</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nx">barcode</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Unique barcode for the mailbox, for future use</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nx">renewalMerchID</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Merchandise item ID used for autorenewing this mailbox</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nx">isBusiness</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// True if the box is for a business, false if for personal use</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="nx">names</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="c1">// Array of boxholders. See addOrUpdateBoxholder for the format.</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nx">packages</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="c1">// Array of packages awaiting pickup, see below</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nx">vacant</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c1">// True if the box is currently vacant, else false</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">}]</span>
+</span></code></pre></div>
+<strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Data objects in the packages array:</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nx">tracking</span><span class="o">:</span><span class="w"> </span><span class="nx">tracking</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s2">&quot;[Untracked]&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Package tracking number</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nx">finalized</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// True if package check-in is finished and shelf tag/mailbox slips printed, false if not finalized</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nx">available_date</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">(),</span><span class="w"> </span><span class="c1">// The date and time the package was checked in</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nx">tag</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="c1">// Unique number assigned to the package and printed on shelf tags, scanned by employee when customer picks up package</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<a name="mailboxes.addDaysToMailbox"></a></p>
+<h3 id="mailboxesadddaystomailboxboxnumber-days-months-promise">mailboxes.addDaysToMailbox(boxNumber, days, months) ⇒ <code>Promise</code></h3>
+<p>Add a number of days or months to a mailbox's expiration. Use either days or months, not both.</p>
+<p><strong>Kind</strong>: static method of <a href="#mailboxes"><code>mailboxes</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boxNumber</td>
+<td><code>string</code></td>
+<td></td>
+<td>Mailbox number.</td>
+</tr>
+<tr>
+<td>days</td>
+<td><code>number</code></td>
+<td><code>0</code></td>
+<td>Days to add.</td>
+</tr>
+<tr>
+<td>months</td>
+<td><code>number</code></td>
+<td><code>0</code></td>
+<td>Months to add.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="mailboxes.setMailboxExpirationDate"></a></p>
+<h3 id="mailboxessetmailboxexpirationdateboxnumber-date-promise">mailboxes.setMailboxExpirationDate(boxNumber, date) ⇒ <code>Promise</code></h3>
+<p>Set the box expiration to a specific JavaScript Date object, or a UNIX timestamp (in seconds).</p>
+<p><strong>Kind</strong>: static method of <a href="#mailboxes"><code>mailboxes</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boxNumber</td>
+<td><code>string</code></td>
+</tr>
+<tr>
+<td>date</td>
+<td><code>number</code> | <code>Date</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="mailboxes.createMailbox"></a></p>
+<h3 id="mailboxescreatemailboxnumber-size-notes-barcode-promise">mailboxes.createMailbox(number, size, notes, barcode) ⇒ <code>Promise</code></h3>
+<p>Create a new mailbox number with the specified box size. Throws an error if the box number is already in use.</p>
+<p><strong>Kind</strong>: static method of <a href="#mailboxes"><code>mailboxes</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number</td>
+<td><code>string</code></td>
+<td>Mailbox number</td>
+</tr>
+<tr>
+<td>size</td>
+<td><code>number</code></td>
+<td>Box size (1 - 10)</td>
+</tr>
+<tr>
+<td>notes</td>
+<td><code>string</code></td>
+<td>Arbitrary string with human-readable notes about the box.</td>
+</tr>
+<tr>
+<td>barcode</td>
+<td><code>null</code> | <code>string</code></td>
+<td>A barcode value representing this mailbox, typically a sticker on the the physical box visible when delivering mail.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="mailboxes.editMailbox"></a></p>
+<h3 id="mailboxeseditmailboxoldnumber-newnumber-newsize-barcode-promise">mailboxes.editMailbox(oldNumber, newNumber, newSize, barcode) ⇒ <code>Promise</code></h3>
+<p>Change the number and/or size of a mailbox while preserving the boxholders
+and packages associated. If only changing size, set oldNumber and newNumber to the same value.</p>
+<p><strong>Kind</strong>: static method of <a href="#mailboxes"><code>mailboxes</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>oldNumber</td>
+<td><code>string</code></td>
+<td></td>
+<td>Currently assigned box number.</td>
+</tr>
+<tr>
+<td>newNumber</td>
+<td><code>string</code></td>
+<td></td>
+<td>New box number. Must not exist yet.</td>
+</tr>
+<tr>
+<td>newSize</td>
+<td><code>number</code> | <code>null</code></td>
+<td><code></code></td>
+<td>Box size (1 - 10), if changing the size.</td>
+</tr>
+<tr>
+<td>barcode</td>
+<td><code>null</code> | <code>string</code></td>
+<td></td>
+<td>A barcode value representing this mailbox, typically a sticker on the the physical box visible when delivering mail.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="mailboxes.deleteMailbox"></a></p>
+<h3 id="mailboxesdeletemailboxnumber-promise">mailboxes.deleteMailbox(number) ⇒ <code>Promise</code></h3>
+<p>Delete a mailbox. Throws an Error if the mailbox has boxholders attached.</p>
+<p><strong>Kind</strong>: static method of <a href="#mailboxes"><code>mailboxes</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number</td>
+<td><code>string</code></td>
+<td>Mailbox number to delete.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="mailboxes.closeMailbox"></a></p>
+<h3 id="mailboxesclosemailboxnumber-promise">mailboxes.closeMailbox(number) ⇒ <code>Promise</code></h3>
+<p>Close a mailbox by removing the boxholders and marking it as vacant.
+Boxholder PS Form 1583 records are automatically archived per USPS regulations.</p>
+<p><strong>Kind</strong>: static method of <a href="#mailboxes"><code>mailboxes</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number</td>
+<td><code>string</code></td>
+<td>Mailbox number to close.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="mailboxes.mailboxExists"></a></p>
+<h3 id="mailboxesmailboxexistsnumber-promiseboolean">mailboxes.mailboxExists(number) ⇒ <code>Promise.&lt;boolean&gt;</code></h3>
+<p>Returns true if the mailbox number exists, false if it doesn't.</p>
+<p><strong>Kind</strong>: static method of <a href="#mailboxes"><code>mailboxes</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number</td>
+<td><code>string</code></td>
+<td>Mailbox number to check.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="mailboxes.addOrUpdateBoxholder"></a></p>
+<h3 id="mailboxesaddorupdateboxholderboxnumber-info-promise">mailboxes.addOrUpdateBoxholder(boxNumber, info) ⇒ <code>Promise</code></h3>
+<p>Modify or add a boxholder to a mailbox. info is the boxholder structure below.
+If the uuid given already belongs to a boxholder, their info is updated with what you supply.
+Otherwise, the info is added as a new boxholder.</p>
+<p><strong>Kind</strong>: static method of <a href="#mailboxes"><code>mailboxes</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boxNumber</td>
+<td><code>string</code></td>
+<td>Mailbox number</td>
+</tr>
+<tr>
+<td>info</td>
+<td><code>Object</code></td>
+<td>Boxholder information.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Unless noted, all fields are strings and default to an empty string.</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">bizname</span><span class="p">,</span><span class="w"> </span><span class="nx">fname</span><span class="p">,</span><span class="w"> </span><span class="nx">mname</span><span class="p">,</span><span class="w"> </span><span class="nx">lname</span><span class="p">].</span><span class="nx">filter</span><span class="p">(</span><span class="nb">Boolean</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">),</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nx">fname</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// First name</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nx">mname</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Middle name</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nx">lname</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Last name</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Email</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nx">phone</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Phone</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="nx">uuid</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Customer UUID</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="nx">bizname</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Business name</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="nx">street1</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Street address</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="nx">city</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// City</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Two-character state</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="nx">zipcode</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// ZIP or postal code</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="nx">country</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Two-character country code</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="nx">primary</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c1">// True if the primary (first) boxholder, false if an additional authorized mail recipient</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="p">}</span>
+</span></code></pre></div>
+<a name="mailboxes.removeBoxholder"></a></p>
+<h3 id="mailboxesremoveboxholderboxnumber-uuid-promise">mailboxes.removeBoxholder(boxNumber, uuid) ⇒ <code>Promise</code></h3>
+<p>Remove a boxholder by their UUID, and archive their PS Form 1583 data per USPS regulations.</p>
+<p><strong>Kind</strong>: static method of <a href="#mailboxes"><code>mailboxes</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boxNumber</td>
+<td><code>string</code></td>
+<td>Mailbox number.</td>
+</tr>
+<tr>
+<td>uuid</td>
+<td><code>string</code></td>
+<td>Boxholder UUID.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="mailboxes.get1583"></a></p>
+<h3 id="mailboxesget1583boxnumber-uuid-archivenumber-promiseformps1583">mailboxes.get1583(boxNumber, uuid, archiveNumber) ⇒ <code>Promise.&lt;FormPS1583&gt;</code></h3>
+<p>Get the FormPS1583 object for a boxholder by UUID.</p>
+<p><strong>Kind</strong>: static method of <a href="#mailboxes"><code>mailboxes</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boxNumber</td>
+<td><code>string</code></td>
+<td></td>
+<td>Mailbox number.</td>
+</tr>
+<tr>
+<td>uuid</td>
+<td><code>string</code></td>
+<td></td>
+<td>Boxholder UUID.</td>
+</tr>
+<tr>
+<td>archiveNumber</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>If true, returns the form for a deleted boxholder from the archive.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="mailboxes.set1583"></a></p>
+<h3 id="mailboxesset1583boxnumber-uuid-formps1583-promise">mailboxes.set1583(boxNumber, uuid, formps1583) ⇒ <code>Promise</code></h3>
+<p>Set the FormPS1583 object for a boxholder by UUID.</p>
+<p><strong>Kind</strong>: static method of <a href="#mailboxes"><code>mailboxes</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boxNumber</td>
+<td><code>string</code></td>
+<td>Mailbox number.</td>
+</tr>
+<tr>
+<td>uuid</td>
+<td><code>string</code></td>
+<td>Boxholder UUID.</td>
+</tr>
+<tr>
+<td>formps1583</td>
+<td><code>FormPS1583</code></td>
+<td>The FormPS1583 object to use.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="mailboxes.boxNumberValid"></a></p>
+<h3 id="mailboxesboxnumbervalid-boolean">mailboxes.boxNumberValid() ⇒ <code>boolean</code></h3>
+<p>Returns true if the mailbox number is an acceptable format, false if it isn't.
+Does not check if the box actually exists, merely if the number is acceptable to use as a mailbox number.</p>
+<p><strong>Kind</strong>: static method of <a href="#mailboxes"><code>mailboxes</code></a><br />
+<a name="mailboxes.getMailboxProducts"></a></p>
+<h3 id="mailboxesgetmailboxproducts-promisearray">mailboxes.getMailboxProducts() ⇒ <code>Promise.&lt;Array&gt;</code></h3>
+<p>Get a list of merchandise items that are usable for mailbox renewals.</p>
+<p><strong>Kind</strong>: static method of <a href="#mailboxes"><code>mailboxes</code></a><br />
+<strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">[{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Unique ID for this entry in the merchandise table</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Merch item name</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nx">category</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Merch item category</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nx">price</span><span class="o">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="c1">// Sale price in dollars</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nx">cost</span><span class="o">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="c1">// Merchandise cost in dollars (likely not used for mailboxes)</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nx">barcode</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Barcode/UPC (likely not used for mailboxes)</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nx">tax</span><span class="o">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="c1">// Sales tax rate</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nx">rentaldays</span><span class="o">:</span><span class="w"> </span><span class="mf">30</span><span class="p">,</span><span class="w"> </span><span class="c1">// Number of days this item adds to a mailbox (mutually exclusive with rentalmonths)</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="nx">rentalmonths</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="c1">// Number of months (mutually exclusive with rentaldays)</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="nx">boxsize</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span><span class="c1">// Mailbox size tier, 1-10</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="p">}]</span>
+</span></code></pre></div></p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../assets/external/unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
