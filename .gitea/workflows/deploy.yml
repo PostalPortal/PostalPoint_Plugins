@@ -49,3 +49,16 @@ jobs:
         run: |
           mike set-default next
           mike deploy --push --update-aliases next latest
+
+      - name: Checkout public branch
+        run: |
+          git checkout public
+
+      - name: Deploy with rsync
+        run: |
+          rsync -rltz --no-perms --no-owner --no-group --omit-dir-times --delete \
+            --filter='P error/' \
+            --filter='P stats/' \
+            --exclude=".git/" \
+            ./ \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/var/www/dev.postalpoint.app/web
