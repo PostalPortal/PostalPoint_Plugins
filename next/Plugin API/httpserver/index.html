@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../fs/">
+        <link rel="prev" href="../graphics/">
       
       
-        <link rel="next" href="../graphics/">
+        <link rel="next" href="../i18n/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Global functions - PostalPoint Plugin Development</title>
+        <title>Httpserver - PostalPoint Plugin Development</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#f7" class="md-skip">
+        <a href="#httpserver-object" class="md-skip">
           Skip to content
         </a>
       
@@ -134,7 +134,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Global functions
+              Httpserver
             
           </span>
         </div>
@@ -886,35 +886,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Global functions
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../global%20functions/" class="md-nav__link">
         
   
   
@@ -930,68 +905,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#f7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        f7
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#getpluginfolderid-string" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        getPluginFolder([id]) ⇒ string
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#getappfolder-string" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        getAppFolder() ⇒ string
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#alerttext-title-callback" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        alert(text, title, [callback])
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1029,10 +942,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../httpserver/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Httpserver
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1048,6 +986,74 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#httpserver-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        httpserver : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="httpserver : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#httpserveraddendpointid-oncall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        httpserver.addEndpoint(id, onCall)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#httpservergetserverport-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        httpserver.getServerPort() ⇒ number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#httpservergetclientkey-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        httpserver.getClientKey() ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1421,46 +1427,52 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#f7" class="md-nav__link">
+  <a href="#httpserver-object" class="md-nav__link">
     <span class="md-ellipsis">
       
-        f7
+        httpserver : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="httpserver : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#httpserveraddendpointid-oncall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        httpserver.addEndpoint(id, onCall)
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#getpluginfolderid-string" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#httpservergetserverport-number" class="md-nav__link">
     <span class="md-ellipsis">
       
-        getPluginFolder([id]) ⇒ string
+        httpserver.getServerPort() ⇒ number
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#getappfolder-string" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#httpservergetclientkey-string" class="md-nav__link">
     <span class="md-ellipsis">
       
-        getAppFolder() ⇒ string
+        httpserver.getClientKey() ⇒ string
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#alerttext-title-callback" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        alert(text, title, [callback])
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1481,18 +1493,25 @@
 
 
 
-  <h1>Global functions</h1>
+  <h1>Httpserver</h1>
 
-<p><a name="f7"></a></p>
-<h2 id="f7">f7</h2>
-<p>The Framework7 app instance for PostalPoint's entire UI, created by new Framework7().
-See https://framework7.io/docs/app for details.</p>
-<p><strong>Kind</strong>: global constant<br />
-<a name="getPluginFolder"></a></p>
-<h2 id="getpluginfolderid-string">getPluginFolder([id]) ⇒ <code>string</code></h2>
-<p>Get the filesystem path to a plugin's installation folder.</p>
-<p><strong>Kind</strong>: global function<br />
-<strong>Returns</strong>: <code>string</code> - "/home/user/.config/postalpoint-retail/Default/storage/plugins/...", "C:\Users\user\AppData...", etc  </p>
+<p><a name="httpserver"></a></p>
+<h2 id="httpserver-object">httpserver : <code>object</code></h2>
+<p>Add features to PostalPoint's integrated LAN HTTP API server.</p>
+<p><strong>Kind</strong>: global namespace  </p>
+<ul>
+<li><a href="#httpserver">httpserver</a> : <code>object</code><ul>
+<li><a href="#httpserver.addEndpoint">.addEndpoint(id, onCall)</a></li>
+<li><a href="#httpserver.getServerPort">.getServerPort()</a> ⇒ <code>number</code></li>
+<li><a href="#httpserver.getClientKey">.getClientKey()</a> ⇒ <code>string</code></li>
+</ul>
+</li>
+</ul>
+<p><a name="httpserver.addEndpoint"></a></p>
+<h3 id="httpserveraddendpointid-oncall">httpserver.addEndpoint(id, onCall)</h3>
+<p>Add a custom HTTP JSON POST endpoint to the LAN HTTP API server running inside
+PostalPoint.  Requests must be POSTed and contain a JSON body (or empty body, which will be converted to <code>null</code>).</p>
+<p><strong>Kind</strong>: static method of <a href="#httpserver"><code>httpserver</code></a>  </p>
 <table>
 <thead>
 <tr>
@@ -1503,50 +1522,36 @@ See https://framework7.io/docs/app for details.</p>
 </thead>
 <tbody>
 <tr>
-<td>[id]</td>
+<td>id</td>
 <td><code>string</code></td>
-<td>Plugin ID. If omitted or empty, will return the parent folder plugins are installed within.</td>
-</tr>
-</tbody>
-</table>
-<p><a name="getAppFolder"></a></p>
-<h2 id="getappfolder-string">getAppFolder() ⇒ <code>string</code></h2>
-<p>Get the filesystem path to the PostalPoint installation folder.</p>
-<p><strong>Kind</strong>: global function<br />
-<a name="alert"></a></p>
-<h2 id="alerttext-title-callback">alert(text, title, [callback])</h2>
-<p>Display a simple alert-style dialog box.</p>
-<p><strong>Kind</strong>: global function  </p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>text</td>
-<td><code>string</code></td>
-<td></td>
-<td>Body text of the dialog.</td>
+<td>Endpoint ID. Used in URL, for example: <code>http://&lt;host&gt;:7678/&lt;id&gt;</code></td>
 </tr>
 <tr>
-<td>title</td>
-<td><code>string</code></td>
-<td></td>
-<td>Dialog title.</td>
-</tr>
-<tr>
-<td>[callback]</td>
+<td>onCall</td>
 <td><code>function</code></td>
-<td><code></code></td>
-<td>Function to call when the alert is closed.</td>
+<td>Async function to call when the endpoint is called, which returns the response.</td>
 </tr>
 </tbody>
 </table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">httpserver</span><span class="p">.</span><span class="nx">addEndpoint</span><span class="p">(</span><span class="s2">&quot;testendpoint&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">abc</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;123&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="c1">// A non-string `body` is converted to JSON before the HTTP reply is sent.</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">json</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">abc</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">},</span><span class="w"> </span><span class="nx">httpcode</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="nx">contentType</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">};</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="c1">// A string `body` is sent to the client as-is using whatever contentType you specify.</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;abc&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">httpcode</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="nx">contentType</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;text/plain&quot;</span><span class="p">};</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">});</span>
+</span></code></pre></div>
+<a name="httpserver.getServerPort"></a></p>
+<h3 id="httpservergetserverport-number">httpserver.getServerPort() ⇒ <code>number</code></h3>
+<p>Get the local HTTP server's port number.</p>
+<p><strong>Kind</strong>: static method of <a href="#httpserver"><code>httpserver</code></a><br />
+<a name="httpserver.getClientKey"></a></p>
+<h3 id="httpservergetclientkey-string">httpserver.getClientKey() ⇒ <code>string</code></h3>
+<p>Get the local machine's HTTP client key it uses to authenticate with other
+installations of PostalPoint on the LAN.</p>
+<p><strong>Kind</strong>: static method of <a href="#httpserver"><code>httpserver</code></a>  </p>
 
 
 
