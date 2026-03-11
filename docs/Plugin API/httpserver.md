@@ -9,6 +9,7 @@ Add features to PostalPoint's integrated LAN HTTP API server.
     * [.addEndpoint(id, onCall)](#httpserver.addEndpoint)
     * [.getServerPort()](#httpserver.getServerPort) ⇒ <code>number</code>
     * [.getClientKey()](#httpserver.getClientKey) ⇒ <code>string</code>
+    * [.sendRequestToRemote(data, endpointID, serverAddress, serverPort)](#httpserver.sendRequestToRemote) ⇒ <code>Promise.&lt;Object&gt;</code>
 
 <a name="httpserver.addEndpoint"></a>
 
@@ -47,3 +48,22 @@ Get the local machine's HTTP client key it uses to authenticate with other
 installations of PostalPoint on the LAN.
 
 **Kind**: static method of [<code>httpserver</code>](#httpserver)  
+<a name="httpserver.sendRequestToRemote"></a>
+
+### httpserver.sendRequestToRemote(data, endpointID, serverAddress, serverPort) ⇒ <code>Promise.&lt;Object&gt;</code>
+Send a HTTP request to another PostalPoint installation on the local network.
+
+**Kind**: static method of [<code>httpserver</code>](#httpserver)  
+**Returns**: <code>Promise.&lt;Object&gt;</code> - - The JSON reply.  
+**Throws**:
+
+- <code>Error</code> When there's a network or other unrecoverable error while completing the request.  Error message is a human-readable description of the problem.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| data | <code>Object</code> | Data to encode as JSON in the request body. |
+| endpointID | <code>string</code> | Endpoint to call. |
+| serverAddress | <code>string</code> \| <code>undefined</code> | Address of the PostalPoint server. If undefined, uses the host address configured in PostalPoint's Databases settings. |
+| serverPort | <code>number</code> \| <code>undefined</code> | Port of the PostalPoint server. If undefined, the default PostalPoint port number is used. |
+
