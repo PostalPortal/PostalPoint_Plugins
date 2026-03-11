@@ -443,6 +443,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../Docs/HTTP_API_Server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTTP API Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../Docs/Parcel/" class="md-nav__link">
         
   
@@ -1045,6 +1073,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#httpserversendrequesttoremotedata-endpointid-serveraddress-serverport-promiseobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        httpserver.sendRequestToRemote(data, endpointID, serverAddress, serverPort) ⇒ Promise.&lt;Object&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1471,6 +1510,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#httpserversendrequesttoremotedata-endpointid-serveraddress-serverport-promiseobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        httpserver.sendRequestToRemote(data, endpointID, serverAddress, serverPort) ⇒ Promise.&lt;Object&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1504,6 +1554,7 @@
 <li><a href="#httpserver.addEndpoint">.addEndpoint(id, onCall)</a></li>
 <li><a href="#httpserver.getServerPort">.getServerPort()</a> ⇒ <code>number</code></li>
 <li><a href="#httpserver.getClientKey">.getClientKey()</a> ⇒ <code>string</code></li>
+<li><a href="#httpserver.sendRequestToRemote">.sendRequestToRemote(data, endpointID, serverAddress, serverPort)</a> ⇒ <code>Promise.&lt;Object&gt;</code></li>
 </ul>
 </li>
 </ul>
@@ -1551,7 +1602,47 @@ PostalPoint.  Requests must be POSTed and contain a JSON body (or empty body, wh
 <h3 id="httpservergetclientkey-string">httpserver.getClientKey() ⇒ <code>string</code></h3>
 <p>Get the local machine's HTTP client key it uses to authenticate with other
 installations of PostalPoint on the LAN.</p>
-<p><strong>Kind</strong>: static method of <a href="#httpserver"><code>httpserver</code></a>  </p>
+<p><strong>Kind</strong>: static method of <a href="#httpserver"><code>httpserver</code></a><br />
+<a name="httpserver.sendRequestToRemote"></a></p>
+<h3 id="httpserversendrequesttoremotedata-endpointid-serveraddress-serverport-promiseobject">httpserver.sendRequestToRemote(data, endpointID, serverAddress, serverPort) ⇒ <code>Promise.&lt;Object&gt;</code></h3>
+<p>Send a HTTP request to another PostalPoint installation on the local network.</p>
+<p><strong>Kind</strong>: static method of <a href="#httpserver"><code>httpserver</code></a><br />
+<strong>Returns</strong>: <code>Promise.&lt;Object&gt;</code> - - The JSON reply.<br />
+<strong>Throws</strong>:</p>
+<ul>
+<li><code>Error</code> When there's a network or other unrecoverable error while completing the request.  Error message is a human-readable description of the problem.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><code>Object</code></td>
+<td>Data to encode as JSON in the request body.</td>
+</tr>
+<tr>
+<td>endpointID</td>
+<td><code>string</code></td>
+<td>Endpoint to call.</td>
+</tr>
+<tr>
+<td>serverAddress</td>
+<td><code>string</code> | <code>undefined</code></td>
+<td>Address of the PostalPoint server. If undefined, uses the host address configured in PostalPoint's Databases settings.</td>
+</tr>
+<tr>
+<td>serverPort</td>
+<td><code>number</code> | <code>undefined</code></td>
+<td>Port of the PostalPoint server. If undefined, the default PostalPoint port number is used.</td>
+</tr>
+</tbody>
+</table>
 
 
 
