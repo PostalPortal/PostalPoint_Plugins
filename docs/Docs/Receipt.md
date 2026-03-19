@@ -148,6 +148,8 @@ export class ReceiptItem {
         this.mailboxMonths = 0;
         this.category = ""; // merch category
         this.electronicReturnReceipt = false;
+        this.isStamp = false;
+        this.extraData = {};
     }
 
     static fromJSON(obj) {
@@ -168,6 +170,8 @@ export class ReceiptItem {
         item.service = obj.service ?? null;
         item.category = obj.category ?? "";
         item.electronicReturnReceipt = obj.electronicReturnReceipt ?? false;
+        item.isStamp = obj.isStamp ?? false;
+        item.extraData = obj.extraData ?? {};
         return item;
     }
 
@@ -197,8 +201,21 @@ export class ReceiptItem {
             carrier: this.carrier,
             service: this.service,
             category: this.category,
-            electronicReturnReceipt: this.electronicReturnReceipt
+            electronicReturnReceipt: this.electronicReturnReceipt,
+            isStamp: this.isStamp,
+            extraData: this.extraData
         };
+    }
+    
+    setExtra(key, val) {
+        this.extraData[key] = val;
+    }
+
+    getExtra(key) {
+        if (typeof this.extraData[key] != "undefined") {
+            return this.extraData[key];
+        }
+        return null;
     }
 
     get text() {
@@ -332,11 +349,13 @@ export class ReceiptPayment {
         this.text = (typeof text != "string" ? "" : text);
         this.type = type;
         this.amount = amount;
+        this.extraData = {};
     }
 
     static fromJSON(obj) {
         var item = new ReceiptPayment(obj.amount, obj.type, obj.text);
         item.id = obj.id;
+        item.extraData = obj.extraData ?? {};
         return item;
     }
 
@@ -345,8 +364,20 @@ export class ReceiptPayment {
             amount: round(this.amount, 2),
             type: this.type,
             text: this.text,
-            id: this.id
+            id: this.id,
+            extraData: this.extraData ?? {}
         };
+    }
+    
+    setExtra(key, val) {
+        this.extraData[key] = val;
+    }
+
+    getExtra(key) {
+        if (typeof this.extraData[key] != "undefined") {
+            return this.extraData[key];
+        }
+        return null;
     }
 
     get texthtml() {
