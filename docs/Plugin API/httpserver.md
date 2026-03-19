@@ -54,7 +54,7 @@ installations of PostalPoint on the LAN.
 Send a HTTP request to another PostalPoint installation on the local network.
 
 **Kind**: static method of [<code>httpserver</code>](#httpserver)  
-**Returns**: <code>Promise.&lt;Object&gt;</code> - - The JSON reply.  
+**Returns**: <code>Promise.&lt;Object&gt;</code> - The JSON reply.  
 **Throws**:
 
 - <code>Error</code> When there's a network or other unrecoverable error while completing the request.  Error message is a human-readable description of the problem.

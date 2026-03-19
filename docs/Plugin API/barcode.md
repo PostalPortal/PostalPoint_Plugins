@@ -11,6 +11,7 @@ Handle tracking barcodes
     * [.addPrepaidBarcode(trackingBarcodeData)](#barcode.addPrepaidBarcode)
     * [.inject(barcodeData)](#barcode.inject)
     * [.onPrepaidScan(f)](#barcode.onPrepaidScan)
+    * [.registerDropOffCarrierScanHandler(carrier, fn)](#barcode.registerDropOffCarrierScanHandler)
 
 <a name="barcode.TrackingBarcode"></a>
 
@@ -84,3 +85,36 @@ If the barcode is handled by this function, it shall return a TrackingBarcode ob
 | --- | --- |
 | f | <code>function</code> | 
 
+<a name="barcode.registerDropOffCarrierScanHandler"></a>
+
+### barcode.registerDropOffCarrierScanHandler(carrier, fn)
+Register to handle prepaid drop off scans for a particular shipping carrier.
+Scans are kept in a local, disk-backed queue and the function registered here will be
+called when a queued barcode is processed for the provided carrier.
+This function is intended for carrier drop-off reimbursement programs such as ASO and FASC.
+
+**Kind**: static method of [<code>barcode</code>](#barcode)  
+**Throws**:
+
+- <code>Error</code> - Only one plugin may register a particular carrier with this function;
+any subsequent attempts to register to handle that carrier will throw an Error.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| carrier | <code>string</code> | Carrier name to register for. |
+| fn | <code>function</code> | Async function to pass scan details to. Returns true if processed, false if not processed (but the barcode should be removed from queue), or throws an Error if it should be retried later. See example for data and usage. |
+
+**Example**  
+```js
+global.apis.barcode.registerDropOffCarrierScanHandler("FedEx", function (data) {
+    global.apis.alert(`Carrier: ${data.carrier}, Tracking number: ${data.tracking}, `
+        + `Raw scanned barcode: ${data.barcode}, `
+        + `UNIX timestamp of scan: ${data.timestamp}, Scan UUID: ${data.uuid}`,
+        "Processing DropOffCarrierScan data");
+
+    return false; // Not processed but should be discarded
+    return true; // Processed, discard from queue
+    throw new Error("Failed to process, try again later");
+});
+```
