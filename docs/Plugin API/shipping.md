@@ -260,7 +260,9 @@ Add a shipping insurance provider.
 
 **Example**  
 ```js
-async function getQuote(value, parcel, carrier, service) {
+async function getQuote(value, parcel, carrier, service, rateObject) {
+    // See shipping rate provider documentation for rateObject structure.
+
     // Do math, etc
     var cost = value / 100;
 

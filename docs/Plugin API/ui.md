@@ -244,7 +244,7 @@ the customerSignatureCollected event is emitted with the data
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| title | <code>string</code> | <code>null</code> | Display a title/header on the customer screen. Currently ignored, but may be used in the future. |
+| title | <code>string</code> | <code>null</code> | Display some title/header text on the customer screen near the signature box. Not shown if terms are set. |
 | terms | <code>string</code> \| <code>boolean</code> | <code>false</code> | Set to a string to display terms and conditions or other text content next to the signature pad. |
 | termstype | <code>string</code> | <code>&quot;body&quot;</code> | "html", "pdf", "raw", or "body". See setCustomerScreen() |
 
