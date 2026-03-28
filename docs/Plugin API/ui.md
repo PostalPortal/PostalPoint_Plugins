@@ -32,7 +32,7 @@ will be run as a function and will not be expected to return a page component.
 | --- | --- | --- | --- |
 | page | <code>string</code> \| <code>function</code> |  | Page content as a Framework7 component page. If `page` is a string ending in `.f7` it is treated as a file path and the page content will be loaded from disk. If `page` is any other string, it is treated as the page content. If `page` is a function, it will be called and must return the page content (unless `type` is set to `"function"`, see examples) |
 | title | <code>string</code> |  | Page title. |
-| id | <code>string</code> |  | Page ID. Make it unique, or pass an empty string to be assigned a random ID. |
+| id | <code>string</code> |  | Page ID. Make it unique, or pass an empty string to be assigned a random ID. Tools with a random ID are not pinnable to the program's main navigation bar. |
 | description | <code>string</code> |  | Description of this tool for its card on the Tools screen. |
 | cardTitle | <code>string</code> |  | Title of the card for this page on the Tools screen. |
 | icon | <code>string</code> |  | FontAwesome icon class, for example, "fa-solid fa-globe". FontAwesome Pro solid, regular, light, and duotone icons are available. |
