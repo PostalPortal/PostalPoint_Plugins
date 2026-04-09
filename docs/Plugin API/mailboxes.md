@@ -16,7 +16,7 @@ Add, modify, and delete mailboxes and mailbox customers.
     * [.deleteMailbox(number)](#mailboxes.deleteMailbox) ⇒ <code>Promise</code>
     * [.closeMailbox(number)](#mailboxes.closeMailbox) ⇒ <code>Promise</code>
     * [.mailboxExists(number)](#mailboxes.mailboxExists) ⇒ <code>Promise.&lt;boolean&gt;</code>
-    * [.addOrUpdateBoxholder(boxNumber, info)](#mailboxes.addOrUpdateBoxholder) ⇒ <code>Promise</code>
+    * [.addOrUpdateBoxholder(boxNumber, info, setPrimary)](#mailboxes.addOrUpdateBoxholder) ⇒ <code>Promise</code>
     * [.removeBoxholder(boxNumber, uuid)](#mailboxes.removeBoxholder) ⇒ <code>Promise</code>
     * [.get1583(boxNumber, uuid, archiveNumber)](#mailboxes.get1583) ⇒ <code>Promise.&lt;FormPS1583&gt;</code>
     * [.set1583(boxNumber, uuid, formps1583)](#mailboxes.set1583) ⇒ <code>Promise</code>
@@ -158,7 +158,7 @@ Returns true if the mailbox number exists, false if it doesn't.
 
 <a name="mailboxes.addOrUpdateBoxholder"></a>
 
-### mailboxes.addOrUpdateBoxholder(boxNumber, info) ⇒ <code>Promise</code>
+### mailboxes.addOrUpdateBoxholder(boxNumber, info, setPrimary) ⇒ <code>Promise</code>
 Modify or add a boxholder to a mailbox. info is the boxholder structure below.
 If the uuid given already belongs to a boxholder, their info is updated with what you supply.
 Otherwise, the info is added as a new boxholder.
@@ -169,6 +169,7 @@ Otherwise, the info is added as a new boxholder.
 | --- | --- | --- |
 | boxNumber | <code>string</code> | Mailbox number |
 | info | <code>Object</code> | Boxholder information. |
+| setPrimary | <code>Boolean</code> \| <code>undefined</code> | If true, this boxholder will become the primary boxholder. Default is false. |
 
 **Example**  
 ```js

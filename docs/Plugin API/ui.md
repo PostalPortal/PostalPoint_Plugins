@@ -236,6 +236,8 @@ if (type == "html") {
 
 ### ui.collectSignatureFromCustomerScreen(title, terms, termstype)
 Show a signature pad on the customer-facing display.
+Signature pad may appear on main employee display in some hardware configurations
+(for example, no customer display and main screen is touch-capable).
 When the customer indicates the signature is finished,
 the customerSignatureCollected event is emitted with the data
 {"svg": "data:image/svg+xml;base64,...", "png": "data:image/png;base64,..."}
@@ -281,10 +283,14 @@ global.apis.ui.clearSignaturePad();
 
 ### ui.getCustomerDisplayInfo() ⇒ <code>Object</code>
 Describes if the customer-facing display is currently enabled,
-and if it supports customer touch interaction.
+and if it supports customer touch interaction, and if it's possible to
+get a signature via `collectSignatureFromCustomerScreen()`.
+Note that it may be possible to get a signature even if `enabled` and/or `touch` are `false`,
+because if the main PostalPoint display is on a touch-capable monitor, a signature popup
+will be displayed there instead of on the customer screen.
 
 **Kind**: static method of [<code>ui</code>](#ui)  
-**Returns**: <code>Object</code> - {"enabled": true, "touch": true}  
+**Returns**: <code>Object</code> - {"enabled": true, "touch": true, "signature": true}  
 **Example**  
 ```js
 var info = global.apis.ui.getCustomerDisplayInfo();
