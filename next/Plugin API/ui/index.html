@@ -917,6 +917,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../documentscanner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentscanner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fs/" class="md-nav__link">
         
   
@@ -2099,6 +2127,8 @@ Wrap it in a <webview src="..."></webview> tag if you need to display one.</p>
 <a name="ui.collectSignatureFromCustomerScreen"></a></p>
 <h3 id="uicollectsignaturefromcustomerscreentitle-terms-termstype">ui.collectSignatureFromCustomerScreen(title, terms, termstype)</h3>
 <p>Show a signature pad on the customer-facing display.
+Signature pad may appear on main employee display in some hardware configurations
+(for example, no customer display and main screen is touch-capable).
 When the customer indicates the signature is finished,
 the customerSignatureCollected event is emitted with the data
 {"svg": "data:image/svg+xml;base64,...", "png": "data:image/png;base64,..."}</p>
@@ -2158,9 +2188,13 @@ Note that the customer is also provided a button to do this.</p>
 <a name="ui.getCustomerDisplayInfo"></a></p>
 <h3 id="uigetcustomerdisplayinfo-object">ui.getCustomerDisplayInfo() ⇒ <code>Object</code></h3>
 <p>Describes if the customer-facing display is currently enabled,
-and if it supports customer touch interaction.</p>
+and if it supports customer touch interaction, and if it's possible to
+get a signature via <code>collectSignatureFromCustomerScreen()</code>.
+Note that it may be possible to get a signature even if <code>enabled</code> and/or <code>touch</code> are <code>false</code>,
+because if the main PostalPoint display is on a touch-capable monitor, a signature popup
+will be displayed there instead of on the customer screen.</p>
 <p><strong>Kind</strong>: static method of <a href="#ui"><code>ui</code></a><br />
-<strong>Returns</strong>: <code>Object</code> - {"enabled": true, "touch": true}<br />
+<strong>Returns</strong>: <code>Object</code> - {"enabled": true, "touch": true, "signature": true}<br />
 <strong>Example</strong><br />
 <div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">getCustomerDisplayInfo</span><span class="p">();</span>
 </span></code></pre></div></p>

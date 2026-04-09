@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../barcode/">
+        <link rel="prev" href="../database/">
       
       
-        <link rel="next" href="../documentscanner/">
+        <link rel="next" href="../fs/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Database - PostalPoint Plugin Development</title>
+        <title>Documentscanner - PostalPoint Plugin Development</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#database-object" class="md-skip">
+        <a href="#documentscanner-object" class="md-skip">
           Skip to content
         </a>
       
@@ -134,7 +134,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Database
+              Documentscanner
             
           </span>
         </div>
@@ -886,6 +886,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -903,7 +931,7 @@
   <span class="md-ellipsis">
     
   
-    Database
+    Documentscanner
   
 
     
@@ -921,7 +949,7 @@
   <span class="md-ellipsis">
     
   
-    Database
+    Documentscanner
   
 
     
@@ -945,22 +973,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#database-object" class="md-nav__link">
+  <a href="#documentscanner-object" class="md-nav__link">
     <span class="md-ellipsis">
       
-        database : object
+        documentscanner : object
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="database : object">
+    <nav class="md-nav" aria-label="documentscanner : object">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#databasegetconnection-promisedatabaseadapter" class="md-nav__link">
+  <a href="#documentscannerdiscoverscanners-promisearray" class="md-nav__link">
     <span class="md-ellipsis">
       
-        database.getConnection() ⇒ Promise.&lt;DatabaseAdapter&gt;
+        documentscanner.discoverScanners() ⇒ Promise.&lt;Array&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentscannerscantopdfscannerobj-opts-promiseblob" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        documentscanner.scanToPDF(scannerObj, opts) ⇒ Promise.&lt;Blob&gt;
       
     </span>
   </a>
@@ -976,34 +1015,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../documentscanner/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Documentscanner
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1489,22 +1500,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#database-object" class="md-nav__link">
+  <a href="#documentscanner-object" class="md-nav__link">
     <span class="md-ellipsis">
       
-        database : object
+        documentscanner : object
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="database : object">
+    <nav class="md-nav" aria-label="documentscanner : object">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#databasegetconnection-promisedatabaseadapter" class="md-nav__link">
+  <a href="#documentscannerdiscoverscanners-promisearray" class="md-nav__link">
     <span class="md-ellipsis">
       
-        database.getConnection() ⇒ Promise.&lt;DatabaseAdapter&gt;
+        documentscanner.discoverScanners() ⇒ Promise.&lt;Array&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentscannerscantopdfscannerobj-opts-promiseblob" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        documentscanner.scanToPDF(scannerObj, opts) ⇒ Promise.&lt;Blob&gt;
       
     </span>
   </a>
@@ -1533,16 +1555,64 @@
 
 
 
-  <h1>Database</h1>
+  <h1>Documentscanner</h1>
 
-<p><a name="database"></a></p>
-<h2 id="database-object">database : <code>object</code></h2>
-<p>Database connection</p>
-<p><strong>Kind</strong>: global namespace<br />
-<a name="database.getConnection"></a></p>
-<h3 id="databasegetconnection-promisedatabaseadapter">database.getConnection() ⇒ <code>Promise.&lt;DatabaseAdapter&gt;</code></h3>
-<p>Return a database connection object to run SQL against the store database.  See the Database docs for details.</p>
-<p><strong>Kind</strong>: static method of <a href="#database"><code>database</code></a>  </p>
+<p><a name="documentscanner"></a></p>
+<h2 id="documentscanner-object">documentscanner : <code>object</code></h2>
+<p>Scan documents from flatbed/ADF scanners.</p>
+<p><strong>Kind</strong>: global namespace  </p>
+<ul>
+<li><a href="#documentscanner">documentscanner</a> : <code>object</code><ul>
+<li><a href="#documentscanner.discoverScanners">.discoverScanners()</a> ⇒ <code>Promise.&lt;Array&gt;</code></li>
+<li><a href="#documentscanner.scanToPDF">.scanToPDF(scannerObj, opts)</a> ⇒ <code>Promise.&lt;Blob&gt;</code></li>
+</ul>
+</li>
+</ul>
+<p><a name="documentscanner.discoverScanners"></a></p>
+<h3 id="documentscannerdiscoverscanners-promisearray">documentscanner.discoverScanners() ⇒ <code>Promise.&lt;Array&gt;</code></h3>
+<p>Get a list of document scanners found on the network. Supports eSCL/AirPrint.</p>
+<p><strong>Kind</strong>: static method of <a href="#documentscanner"><code>documentscanner</code></a><br />
+<strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">[{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">         </span><span class="nx">protocol</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">         </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ip or hostname&quot;</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">         </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="mf">80</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">         </span><span class="nx">rs</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;eSCL&quot;</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">         </span><span class="nx">uuid</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1234etc&quot;</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">         </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://hostname/icon.png&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Icon supplied by the scanner to represent itself visually to the user.</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">         </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ScanTron 9000&quot;</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">         </span><span class="nx">note</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Whatever is set as the scanner&#39;s human-readable location in its settings</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">         </span><span class="nx">hasAdf</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// Has an automatic document/page feeder</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">         </span><span class="nx">hasPlaten</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// Has a flatbed</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">         </span><span class="nx">hasDuplex</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c1">// Can do automatic duplex scanning</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">         </span><span class="p">}]</span>
+</span></code></pre></div>
+<a name="documentscanner.scanToPDF"></a></p>
+<h3 id="documentscannerscantopdfscannerobj-opts-promiseblob">documentscanner.scanToPDF(scannerObj, opts) ⇒ <code>Promise.&lt;Blob&gt;</code></h3>
+<p>Scan a document to PDF. Supports eSCL/AirPrint.</p>
+<p><strong>Kind</strong>: static method of <a href="#documentscanner"><code>documentscanner</code></a><br />
+<strong>Returns</strong>: <code>Promise.&lt;Blob&gt;</code> - PDF file.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scannerObj</td>
+<td><code>Object</code></td>
+<td>A scanner object from discoverScanners()</td>
+</tr>
+<tr>
+<td>opts</td>
+<td><code>Object</code></td>
+<td>Scanning options:   dpi?: number,            // default 300   colorMode?: string,      // "RGB24"</td>
+</tr>
+</tbody>
+</table>
 
 
 

@@ -917,6 +917,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../documentscanner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentscanner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fs/" class="md-nav__link">
         
   
@@ -1269,10 +1297,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mailboxesaddorupdateboxholderboxnumber-info-promise" class="md-nav__link">
+  <a href="#mailboxesaddorupdateboxholderboxnumber-info-setprimary-promise" class="md-nav__link">
     <span class="md-ellipsis">
       
-        mailboxes.addOrUpdateBoxholder(boxNumber, info) ⇒ Promise
+        mailboxes.addOrUpdateBoxholder(boxNumber, info, setPrimary) ⇒ Promise
       
     </span>
   </a>
@@ -1760,10 +1788,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mailboxesaddorupdateboxholderboxnumber-info-promise" class="md-nav__link">
+  <a href="#mailboxesaddorupdateboxholderboxnumber-info-setprimary-promise" class="md-nav__link">
     <span class="md-ellipsis">
       
-        mailboxes.addOrUpdateBoxholder(boxNumber, info) ⇒ Promise
+        mailboxes.addOrUpdateBoxholder(boxNumber, info, setPrimary) ⇒ Promise
       
     </span>
   </a>
@@ -1867,7 +1895,7 @@
 <li><a href="#mailboxes.deleteMailbox">.deleteMailbox(number)</a> ⇒ <code>Promise</code></li>
 <li><a href="#mailboxes.closeMailbox">.closeMailbox(number)</a> ⇒ <code>Promise</code></li>
 <li><a href="#mailboxes.mailboxExists">.mailboxExists(number)</a> ⇒ <code>Promise.&lt;boolean&gt;</code></li>
-<li><a href="#mailboxes.addOrUpdateBoxholder">.addOrUpdateBoxholder(boxNumber, info)</a> ⇒ <code>Promise</code></li>
+<li><a href="#mailboxes.addOrUpdateBoxholder">.addOrUpdateBoxholder(boxNumber, info, setPrimary)</a> ⇒ <code>Promise</code></li>
 <li><a href="#mailboxes.removeBoxholder">.removeBoxholder(boxNumber, uuid)</a> ⇒ <code>Promise</code></li>
 <li><a href="#mailboxes.get1583">.get1583(boxNumber, uuid, archiveNumber)</a> ⇒ <code>Promise.&lt;FormPS1583&gt;</code></li>
 <li><a href="#mailboxes.set1583">.set1583(boxNumber, uuid, formps1583)</a> ⇒ <code>Promise</code></li>
@@ -2121,7 +2149,7 @@ Boxholder PS Form 1583 records are automatically archived per USPS regulations.<
 </tbody>
 </table>
 <p><a name="mailboxes.addOrUpdateBoxholder"></a></p>
-<h3 id="mailboxesaddorupdateboxholderboxnumber-info-promise">mailboxes.addOrUpdateBoxholder(boxNumber, info) ⇒ <code>Promise</code></h3>
+<h3 id="mailboxesaddorupdateboxholderboxnumber-info-setprimary-promise">mailboxes.addOrUpdateBoxholder(boxNumber, info, setPrimary) ⇒ <code>Promise</code></h3>
 <p>Modify or add a boxholder to a mailbox. info is the boxholder structure below.
 If the uuid given already belongs to a boxholder, their info is updated with what you supply.
 Otherwise, the info is added as a new boxholder.</p>
@@ -2144,6 +2172,11 @@ Otherwise, the info is added as a new boxholder.</p>
 <td>info</td>
 <td><code>Object</code></td>
 <td>Boxholder information.</td>
+</tr>
+<tr>
+<td>setPrimary</td>
+<td><code>Boolean</code> | <code>undefined</code></td>
+<td>If true, this boxholder will become the primary boxholder. Default is false.</td>
 </tr>
 </tbody>
 </table>
