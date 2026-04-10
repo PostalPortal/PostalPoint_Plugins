@@ -19,6 +19,11 @@ Point of Sale, transaction, and payment-related functionality.
     * [.registerCardProcessor(f)](#pos.registerCardProcessor)
     * [.registerCryptoProcessor(f)](#pos.registerCryptoProcessor)
     * [.getShippingSalesTax()](#pos.getShippingSalesTax) ⇒ <code>Object</code>
+    * [.getTransactions(startDate, endDate, customeruuid)](#pos.getTransactions) ⇒ <code>Promise.&lt;Array&gt;</code>
+    * [.getCategories()](#pos.getCategories) ⇒ <code>Promise.&lt;Array.&lt;String&gt;&gt;</code>
+    * [.updateStock(merchId, adjustment)](#pos.updateStock) ⇒ <code>Promise</code>
+    * [.getMerchDB()](#pos.getMerchDB) ⇒ <code>Promise.&lt;Array.&lt;Object&gt;&gt;</code>
+    * [.saveMerchDB(data, overwrite)](#pos.saveMerchDB) ⇒ <code>Promise</code>
 
 <a name="pos.ReceiptItem"></a>
 
@@ -351,3 +356,141 @@ Get the sales tax percentage to charge on a shipping service ReceiptItem.
 **Returns**: <code>Object</code> - `{type: "", percent: 0.15}`
 `type` is an empty string for taxing the entire price, or "markup" for only adding tax to the markup amount.
 `percent` is the tax percentage.  A value of 0.15 means a 15% tax.  
+<a name="pos.getTransactions"></a>
+
+### pos.getTransactions(startDate, endDate, customeruuid) ⇒ <code>Promise.&lt;Array&gt;</code>
+Get a list of transactions inside a date range.
+
+**Kind**: static method of [<code>pos</code>](#pos)  
+**Returns**: <code>Promise.&lt;Array&gt;</code> - See example for returned data structure.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| startDate | <code>Date</code> \| <code>Number</code> | Return transactions after this date. Can be a Date object or UNIX timestamp. |
+| endDate | <code>Date</code> \| <code>Number</code> | Return transactions before this date. Can be a Date object or UNIX timestamp. |
+| customeruuid | <code>null</code> \| <code>String</code> | If set, only return transactions belonging to this customer UUID. |
+
+**Example**  
+```js
+[{
+    "transactionid": 220, // Internal database ID.
+    "uuid": "fh38mmun15f7qdmj", // The receipt's public ID.
+    "date": "2026-04-06 19:35:47",
+    "cashierid": -1, // Employee's database ID number, or -1 if not using employee logins.
+    "customeruuid": "be89ab9c-83a4-4ee7-a8ff-9464bf656f15", // Customer UUID, or null.
+    "originaluuid": null, // If a return, the original receipt's ID.
+    "type": "SALE", // "SALE" or "RETURN"
+    "total": 22,
+    "itemCount": 1,
+    "paidTotal": 22,
+    "costTotal": 0,
+    "taxTotal": 0,
+    "cashTotal": 22,
+    "cardTotal": 0,
+    "checkTotal": 0,
+    "cryptoTotal": 0,
+    "discountTotal": 0,
+    "roundingTotal": 0, // Cash rounding to 5 cents
+    "otherTotal": 0, // Other payment types.
+    "dueTotal": 0,
+    "paid": true,
+    "cashCount": 1,
+    "cardCount": 0,
+    "checkCount": 0,
+    "cryptoCount": 0,
+    "discountCount": 0,
+    "roundingCount": 0, // Cash rounding to 5 cents
+    "otherCount": 0, // Other payment types.
+    "netProfit": 22, // Net profit if the sale were fully paid: revenue - costTotal - taxTotal
+    "netProfitActual": 22, // Actual net profit based on payments received so far: paidTotal - costTotal - taxTotal
+    "items": [
+        {
+            "category": "", // Item category name.
+            "merchandiseid": null, // If set, is a string UUID for a merchandise item.
+            "type": "ship", // "merch" or "ship"
+            "label": "Item Label",
+            "priceEach": 22, // Price for one unit of the item.
+            "qty": 1, // Quantity/units sold.
+            "taxRate": 0, // Tax rate.
+            "taxableAmount": "", // If "markup", only the margin/markup is taxable. Rarely, this is how shipping is taxed in some jurisdictions.
+            "cost": 0, // Item cost for one unit, set by the user in the merchandise database.
+            // See ReceiptItem docs for info on the JSON data.
+            "json": "{\"id\":\"item_id_12345\",\"label\":\"Item Label\",\"text\":\"Item Receipt Text Lines\",\"priceEach\":22,\"qty\":1,\"cost\":0,\"retail\":0,\"taxRate\":0,\"taxableAmount\":\"\",\"taxTotal\":0,\"free\":false,\"barcode\":\"406183511501\",\"certifiedInfo\":false,\"isMerch\":false,\"merchid\":null,\"surcharge\":false,\"mailboxNumber\":null,\"mailboxDays\":0,\"mailboxMonths\":0,\"carrier\":\"\",\"service\":\"\",\"category\":\"\",\"electronicReturnReceipt\":false,\"isStamp\":false,\"extraData\":{}}"
+        }
+    ],
+    "payments": [
+        {
+            "type": "cash",
+            "amount": 22,
+            "text": "" // Extra text lines printed on the receipt. Present for card payments and in some other situations.
+        }
+    ]
+}]
+```
+<a name="pos.getCategories"></a>
+
+### pos.getCategories() ⇒ <code>Promise.&lt;Array.&lt;String&gt;&gt;</code>
+Get a list of merchandise categories defined in the database (i.e. belonging to at least one item).
+Note that this doesn't return all categories possible, but only the user-defined ones.
+System-generated categories exist as well.
+
+**Kind**: static method of [<code>pos</code>](#pos)  
+<a name="pos.updateStock"></a>
+
+### pos.updateStock(merchId, adjustment) ⇒ <code>Promise</code>
+Update the stock count of a merchandise item.
+
+**Kind**: static method of [<code>pos</code>](#pos)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| merchId | <code>String</code> | Merchandise item UUID. |
+| adjustment | <code>number</code> | Amount to add to the count. Negative numbers subtract. |
+
+**Example**  
+```js
+// Reduce the stock count by 2
+await global.apis.pos.updateStock("243d4c0f-c9ce-414a-aec7-9fc753eb13d6", -2);
+
+// Increase the stock count by 5
+await global.apis.pos.updateStock("243d4c0f-c9ce-414a-aec7-9fc753eb13d6", 5);
+```
+<a name="pos.getMerchDB"></a>
+
+### pos.getMerchDB() ⇒ <code>Promise.&lt;Array.&lt;Object&gt;&gt;</code>
+Dump the merchandise database table. This is the same data used in the Merchandise Admin interface.
+
+**Kind**: static method of [<code>pos</code>](#pos)  
+**Returns**: <code>Promise.&lt;Array.&lt;Object&gt;&gt;</code> - See example.  
+**Example**  
+```js
+[{
+ "id": "", // UUID v4
+ "name": "",
+ "category": "",
+ "price": 1.0,
+ "cost": 0.5,
+ "barcode": "",
+ "taxrate": 0.1,
+ "stock": 10,
+ "show": 1, // Boolean
+ "length": 0,
+ "width": 0,
+ "height": 0,
+ "rental_days": 0,
+ "rental_months": 0,
+ "rental_size": "1"
+}]
+```
+<a name="pos.saveMerchDB"></a>
+
+### pos.saveMerchDB(data, overwrite) ⇒ <code>Promise</code>
+Save merchandise item database. Items already in the database that are not in `data` are deleted.
+
+**Kind**: static method of [<code>pos</code>](#pos)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| data | <code>Object</code> | See output of getMerchDB() |
+| overwrite | <code>boolean</code> | Default false. If true, merch table is purged before inserting. If false, records with matching IDs are updated in place. |
+
