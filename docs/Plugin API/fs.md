@@ -7,7 +7,7 @@ Basic filesystem access utility functions, wrapping Node.JS and/or NW.JS code.
 
 * [fs](#fs) : <code>object</code>
     * [.openFileSaveDialog(suggestedFilename, fileExtensions)](#fs.openFileSaveDialog) ⇒ <code>Promise.&lt;(string\|null)&gt;</code>
-    * [.openFileBrowseDialog(chooseFolder, accept, dialogTitle)](#fs.openFileBrowseDialog) ⇒ <code>string</code> \| <code>null</code>
+    * [.openFileBrowseDialog(chooseFolder, accept, dialogTitle)](#fs.openFileBrowseDialog) ⇒ <code>Promise.&lt;(string\|null)&gt;</code>
     * [.writeFile(filename, data, encoding, flag)](#fs.writeFile) ⇒ <code>Promise</code>
     * [.readFile(filename, encoding, flag)](#fs.readFile) ⇒ <code>Promise.&lt;(string\|Buffer)&gt;</code>
     * [.fileExists(filename)](#fs.fileExists) ⇒ <code>boolean</code>
@@ -28,12 +28,12 @@ Opens to the user's Documents folder, with sane fallbacks if it cannot be locate
 
 <a name="fs.openFileBrowseDialog"></a>
 
-### fs.openFileBrowseDialog(chooseFolder, accept, dialogTitle) ⇒ <code>string</code> \| <code>null</code>
+### fs.openFileBrowseDialog(chooseFolder, accept, dialogTitle) ⇒ <code>Promise.&lt;(string\|null)&gt;</code>
 Open a file browse/file open dialog prompting the user to select a file or folder.
 Opens to the user's Documents folder, with sane fallbacks if it cannot be located.
 
 **Kind**: static method of [<code>fs</code>](#fs)  
-**Returns**: <code>string</code> \| <code>null</code> - The selected file/folder path, or null if cancelled.  
+**Returns**: <code>Promise.&lt;(string\|null)&gt;</code> - The selected file/folder path, or null if cancelled.  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
