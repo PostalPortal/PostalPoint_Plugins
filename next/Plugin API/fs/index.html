@@ -1024,10 +1024,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fsopenfilebrowsedialogchoosefolder-accept-dialogtitle-string-null" class="md-nav__link">
+  <a href="#fsopenfilebrowsedialogchoosefolder-accept-dialogtitle-promisestringnull" class="md-nav__link">
     <span class="md-ellipsis">
       
-        fs.openFileBrowseDialog(chooseFolder, accept, dialogTitle) ⇒ string | null
+        fs.openFileBrowseDialog(chooseFolder, accept, dialogTitle) ⇒ Promise.&lt;(string|null)&gt;
       
     </span>
   </a>
@@ -1556,10 +1556,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fsopenfilebrowsedialogchoosefolder-accept-dialogtitle-string-null" class="md-nav__link">
+  <a href="#fsopenfilebrowsedialogchoosefolder-accept-dialogtitle-promisestringnull" class="md-nav__link">
     <span class="md-ellipsis">
       
-        fs.openFileBrowseDialog(chooseFolder, accept, dialogTitle) ⇒ string | null
+        fs.openFileBrowseDialog(chooseFolder, accept, dialogTitle) ⇒ Promise.&lt;(string|null)&gt;
       
     </span>
   </a>
@@ -1630,7 +1630,7 @@
 <ul>
 <li><a href="#fs">fs</a> : <code>object</code><ul>
 <li><a href="#fs.openFileSaveDialog">.openFileSaveDialog(suggestedFilename, fileExtensions)</a> ⇒ <code>Promise.&lt;(string|null)&gt;</code></li>
-<li><a href="#fs.openFileBrowseDialog">.openFileBrowseDialog(chooseFolder, accept, dialogTitle)</a> ⇒ <code>string</code> | <code>null</code></li>
+<li><a href="#fs.openFileBrowseDialog">.openFileBrowseDialog(chooseFolder, accept, dialogTitle)</a> ⇒ <code>Promise.&lt;(string|null)&gt;</code></li>
 <li><a href="#fs.writeFile">.writeFile(filename, data, encoding, flag)</a> ⇒ <code>Promise</code></li>
 <li><a href="#fs.readFile">.readFile(filename, encoding, flag)</a> ⇒ <code>Promise.&lt;(string|Buffer)&gt;</code></li>
 <li><a href="#fs.fileExists">.fileExists(filename)</a> ⇒ <code>boolean</code></li>
@@ -1665,11 +1665,11 @@ Opens to the user's Documents folder, with sane fallbacks if it cannot be locate
 </tbody>
 </table>
 <p><a name="fs.openFileBrowseDialog"></a></p>
-<h3 id="fsopenfilebrowsedialogchoosefolder-accept-dialogtitle-string-null">fs.openFileBrowseDialog(chooseFolder, accept, dialogTitle) ⇒ <code>string</code> | <code>null</code></h3>
+<h3 id="fsopenfilebrowsedialogchoosefolder-accept-dialogtitle-promisestringnull">fs.openFileBrowseDialog(chooseFolder, accept, dialogTitle) ⇒ <code>Promise.&lt;(string|null)&gt;</code></h3>
 <p>Open a file browse/file open dialog prompting the user to select a file or folder.
 Opens to the user's Documents folder, with sane fallbacks if it cannot be located.</p>
 <p><strong>Kind</strong>: static method of <a href="#fs"><code>fs</code></a><br />
-<strong>Returns</strong>: <code>string</code> | <code>null</code> - The selected file/folder path, or null if cancelled.  </p>
+<strong>Returns</strong>: <code>Promise.&lt;(string|null)&gt;</code> - The selected file/folder path, or null if cancelled.  </p>
 <table>
 <thead>
 <tr>
