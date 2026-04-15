@@ -12,6 +12,8 @@ Point of Sale, transaction, and payment-related functionality.
         * [new ReceiptPayment(amount, type, text)](#new_pos.ReceiptPayment_new)
     * [.addReceiptItem(item)](#pos.addReceiptItem)
     * [.addReceiptPayment(payment)](#pos.addReceiptPayment)
+    * [.getReceipt()](#pos.getReceipt) ⇒ <code>Receipt</code>
+    * [.getCustomerAccountInfo()](#pos.getCustomerAccountInfo) ⇒ <code>Object</code> \| <code>boolean</code>
     * [.addOnscreenPaymentLog(msg)](#pos.addOnscreenPaymentLog)
     * [.getReceiptID()](#pos.getReceiptID) ⇒ <code>string</code>
     * [.onReceiptChange(f)](#pos.onReceiptChange)
@@ -115,6 +117,38 @@ Add a payment to the current transaction/receipt.
 | --- | --- |
 | payment | <code>ReceiptPayment</code> | 
 
+<a name="pos.getReceipt"></a>
+
+### pos.getReceipt() ⇒ <code>Receipt</code>
+Get the current receipt for the currently active transaction.
+
+**Kind**: static method of [<code>pos</code>](#pos)  
+<a name="pos.getCustomerAccountInfo"></a>
+
+### pos.getCustomerAccountInfo() ⇒ <code>Object</code> \| <code>boolean</code>
+Get information about the active customer account.
+
+**Kind**: static method of [<code>pos</code>](#pos)  
+**Returns**: <code>Object</code> \| <code>boolean</code> - The object in the example, or `false` if no active customer account.  
+**Example**  
+```js
+{
+    uuid: "",
+    name: "",
+    company: "",
+    email: "",
+    phone: "", // primary phone number, E.164 format.
+    phone2: "", // second phone/fax, not usually visible in PostalPoint
+    phone3: "", // third phone/fax, not usually visible in PostalPoint
+    street1: "", // address line 1
+    street2: "", // address line 2
+    zip: "", // postal code
+    city: "",
+    state: "", // state/province/etc
+    country: "", // 2-letter ISO country code
+    taxid: ""
+}
+```
 <a name="pos.addOnscreenPaymentLog"></a>
 
 ### pos.addOnscreenPaymentLog(msg)

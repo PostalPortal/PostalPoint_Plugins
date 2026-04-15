@@ -12,6 +12,7 @@ Handle tracking barcodes
     * [.inject(barcodeData)](#barcode.inject)
     * [.onPrepaidScan(f)](#barcode.onPrepaidScan)
     * [.registerDropOffCarrierScanHandler(carrier, fn)](#barcode.registerDropOffCarrierScanHandler)
+    * [.decodeAAMVA(barcodeData)](#barcode.decodeAAMVA) ⇒ <code>Object</code>
 
 <a name="barcode.TrackingBarcode"></a>
 
@@ -118,3 +119,35 @@ global.apis.barcode.registerDropOffCarrierScanHandler("FedEx", function (data) {
     throw new Error("Failed to process, try again later");
 });
 ```
+<a name="barcode.decodeAAMVA"></a>
+
+### barcode.decodeAAMVA(barcodeData) ⇒ <code>Object</code>
+Parse the contents of an AAMVA drivers license or ID card's barcode.
+
+**Kind**: static method of [<code>barcode</code>](#barcode)  
+**Returns**: <code>Object</code> - {
+  type: "", // "DL" (drivers license), "ID" (ID card), or "EN" (enhanced ID)
+  name: "", // Full/combined name
+  firstname: "", // First name
+  middlename: "", // Middle name
+  lastname: "", // Last name
+  number: "", // ID number
+  issuer: "", // Full name of the issuer (state/province name, "USA State Dept.", etc). May be empty for issuers not on PostalPoint's lookup list.
+  issuerAbbr: "", // Two-letter issuer abbreviation. May be empty for issuers without a standard abbreviation.
+  iin: "", // 6-digit issuer identification number.
+  exp: "", // expiration date: "YYYY-MM-DD"
+  address: "", // home street address
+  city: "", // home city
+  state: "", // home state/province
+  zip: "", // home postal code
+  country: "" // Country code: "US", "CA", or "MX"
+}  
+**Throws**:
+
+- Error when the barcode doesn't have valid correct header data for an AAMVA license barcode.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| barcodeData | <code>String</code> | Contents of the barcode. If missing or an empty string, returns an empty data object. |
+
