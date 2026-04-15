@@ -1000,6 +1000,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#barcodedecodeaamvabarcodedata-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barcode.decodeAAMVA(barcodeData) ⇒ Object
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1633,6 +1644,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#barcodedecodeaamvabarcodedata-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barcode.decodeAAMVA(barcodeData) ⇒ Object
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1671,6 +1693,7 @@
 <li><a href="#barcode.inject">.inject(barcodeData)</a></li>
 <li><a href="#barcode.onPrepaidScan">.onPrepaidScan(f)</a></li>
 <li><a href="#barcode.registerDropOffCarrierScanHandler">.registerDropOffCarrierScanHandler(carrier, fn)</a></li>
+<li><a href="#barcode.decodeAAMVA">.decodeAAMVA(barcodeData)</a> ⇒ <code>Object</code></li>
 </ul>
 </li>
 </ul>
@@ -1890,7 +1913,48 @@ any subsequent attempts to register to handle that carrier will throw an Error.<
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// Processed, discard from queue</span>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;Failed to process, try again later&quot;</span><span class="p">);</span>
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">});</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
+<a name="barcode.decodeAAMVA"></a></p>
+<h3 id="barcodedecodeaamvabarcodedata-object">barcode.decodeAAMVA(barcodeData) ⇒ <code>Object</code></h3>
+<p>Parse the contents of an AAMVA drivers license or ID card's barcode.</p>
+<p><strong>Kind</strong>: static method of <a href="#barcode"><code>barcode</code></a><br />
+<strong>Returns</strong>: <code>Object</code> - {
+  type: "", // "DL" (drivers license), "ID" (ID card), or "EN" (enhanced ID)
+  name: "", // Full/combined name
+  firstname: "", // First name
+  middlename: "", // Middle name
+  lastname: "", // Last name
+  number: "", // ID number
+  issuer: "", // Full name of the issuer (state/province name, "USA State Dept.", etc). May be empty for issuers not on PostalPoint's lookup list.
+  issuerAbbr: "", // Two-letter issuer abbreviation. May be empty for issuers without a standard abbreviation.
+  iin: "", // 6-digit issuer identification number.
+  exp: "", // expiration date: "YYYY-MM-DD"
+  address: "", // home street address
+  city: "", // home city
+  state: "", // home state/province
+  zip: "", // home postal code
+  country: "" // Country code: "US", "CA", or "MX"
+}<br />
+<strong>Throws</strong>:</p>
+<ul>
+<li>Error when the barcode doesn't have valid correct header data for an AAMVA license barcode.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>barcodeData</td>
+<td><code>String</code></td>
+<td>Contents of the barcode. If missing or an empty string, returns an empty data object.</td>
+</tr>
+</tbody>
+</table>
 
 
 
