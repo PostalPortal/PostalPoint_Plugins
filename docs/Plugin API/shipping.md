@@ -8,6 +8,8 @@ Add custom carrier and rates, and adjust markup.
 * [shipping](#shipping) : <code>object</code>
     * [.Address](#shipping.Address)
         * [new Address()](#new_shipping.Address_new)
+    * [.Package](#shipping.Package)
+        * [new Package()](#new_shipping.Package_new)
     * [.getZIPCode(zipcode, country)](#shipping.getZIPCode) ⇒ <code>Object</code>
     * [.getPackagingByID(id)](#shipping.getPackagingByID) ⇒ <code>Promise.&lt;Object&gt;</code>
     * [.getRetailPriceWithMarkup(cost, retail, carrier, service, weightOz, packaging)](#shipping.getRetailPriceWithMarkup) ⇒ <code>Promise.&lt;number&gt;</code>
@@ -16,6 +18,8 @@ Add custom carrier and rates, and adjust markup.
     * [.registerRateEndpoint(getRates, purchase, idPrefix)](#shipping.registerRateEndpoint)
     * [.registerMarkupCalculator(markupFn)](#shipping.registerMarkupCalculator)
     * [.registerInsuranceProvider(id, name, cardText, maxValue, getQuote, insure)](#shipping.registerInsuranceProvider)
+    * [.getParcel()](#shipping.getParcel) ⇒ <code>Package</code>
+    * [.setParcel(newParcel, parcelChangeEventSource)](#shipping.setParcel)
 
 <a name="shipping.Address"></a>
 
@@ -25,6 +29,15 @@ Add custom carrier and rates, and adjust markup.
 
 #### new Address()
 A class representing an address.
+
+<a name="shipping.Package"></a>
+
+### shipping.Package
+**Kind**: static class of [<code>shipping</code>](#shipping)  
+<a name="new_shipping.Package_new"></a>
+
+#### new Package()
+A class representing a package/parcel. See docs.
 
 <a name="shipping.getZIPCode"></a>
 
@@ -298,3 +311,22 @@ global.apis.shipping.registerInsuranceProvider(
      "Insurance coverage from Sample Insurance. $1 per $100 of value.",
      5000, getQuote, insure);
 ```
+<a name="shipping.getParcel"></a>
+
+### shipping.getParcel() ⇒ <code>Package</code>
+Get the current in-progress shipment's data.
+
+**Kind**: static method of [<code>shipping</code>](#shipping)  
+**Returns**: <code>Package</code> - See Parcel/Package docs  
+<a name="shipping.setParcel"></a>
+
+### shipping.setParcel(newParcel, parcelChangeEventSource)
+Set/overwrite the current in-progress shipment's data.
+
+**Kind**: static method of [<code>shipping</code>](#shipping)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| newParcel | <code>Package</code> |  |
+| parcelChangeEventSource | <code>string</code> \| <code>null</code> | An optional string sent as the data for the `parcelUpdated` event. |
+
