@@ -725,6 +725,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UI_Components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI Components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1642,6 +1670,15 @@
 <li><code>pluginSettingsSaved</code>: Emitted when the user saves a plugin's settings. The plugin ID string is sent as the event data.</li>
 <li><code>packageCheckIn</code>: Emitted when a package is checked in to a mailbox or for Hold At Location. See below for event data details.</li>
 <li><code>mailboxMailDelivered</code>: Emitted when mail delivery notifications are sent by the user. Data is an array of the mailbox numbers notifications are being sent for.</li>
+<li><code>customerPackagePickedUp</code>: A mailbox customer's package has been picked up by the customer.</li>
+<li><code>halPackagePickedUp</code>: A Hold at Location package has been picked up by the customer.</li>
+<li><code>parcelUpdated</code>: The current shipment's package/parcel data has been changed. Data is a string representing the source of the change (often an empty string).</li>
+<li><code>keyboardNavShortcut</code>: A keyboard function key, F5 through F11, has been pressed. Data is like "F5", or "Ctrl F5" if Ctrl key is pressed. This event is used by PostalPoint's UI for context-dependent shortcut keys, but plugins may desire to add keyboard shortcuts when displaying the entire UI (such as a Tools page).</li>
+<li><code>prepaidItemAdded</code>: A prepaid package has been added to the current receipt.  Data is the TrackingBarcode object.</li>
+<li><code>customerSet</code>: A customer account has been selected for the current transaction.</li>
+<li><code>goodBarcode</code>: Emit this event to trigger a "success" beep/feedback on a barcode scanner. Not supported by all scanners.</li>
+<li><code>badBarcode</code>: Emit this event to trigger a "error" beep/feedback on a barcode scanner. Not supported by all scanners.</li>
+<li><code>nafBarcode</code>: Emit this event to trigger a "not on file" beep/feedback on a barcode scanner. Not supported by all scanners.</li>
 </ul>
 <h2 id="example-code">Example Code</h2>
 <div class="language-javascript highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Handle a barcode scan.</span>
