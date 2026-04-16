@@ -15,6 +15,15 @@ Plugins can use `global.apis.eventbus` to receive events when certain actions ha
 * `pluginSettingsSaved`: Emitted when the user saves a plugin's settings. The plugin ID string is sent as the event data.
 * `packageCheckIn`: Emitted when a package is checked in to a mailbox or for Hold At Location. See below for event data details.
 * `mailboxMailDelivered`: Emitted when mail delivery notifications are sent by the user. Data is an array of the mailbox numbers notifications are being sent for.
+* `customerPackagePickedUp`: A mailbox customer's package has been picked up by the customer.
+* `halPackagePickedUp`: A Hold at Location package has been picked up by the customer.
+* `parcelUpdated`: The current shipment's package/parcel data has been changed. Data is a string representing the source of the change (often an empty string).
+* `keyboardNavShortcut`: A keyboard function key, F5 through F11, has been pressed. Data is like "F5", or "Ctrl F5" if Ctrl key is pressed. This event is used by PostalPoint's UI for context-dependent shortcut keys, but plugins may desire to add keyboard shortcuts when displaying the entire UI (such as a Tools page).
+* `prepaidItemAdded`: A prepaid package has been added to the current receipt.  Data is the TrackingBarcode object.
+* `customerSet`: A customer account has been selected for the current transaction.
+* `goodBarcode`: Emit this event to trigger a "success" beep/feedback on a barcode scanner. Not supported by all scanners.
+* `badBarcode`: Emit this event to trigger a "error" beep/feedback on a barcode scanner. Not supported by all scanners.
+* `nafBarcode`: Emit this event to trigger a "not on file" beep/feedback on a barcode scanner. Not supported by all scanners.
 
 ## Example Code
 
