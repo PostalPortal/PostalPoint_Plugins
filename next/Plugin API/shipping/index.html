@@ -1377,6 +1377,34 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#shippingpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.Package
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="shipping.Package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        new Package()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#shippinggetzipcodezipcode-country-object" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1458,6 +1486,28 @@
     <span class="md-ellipsis">
       
         shipping.registerInsuranceProvider(id, name, cardText, maxValue, getQuote, insure)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetparcel-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getParcel() ⇒ Package
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingsetparcelnewparcel-parcelchangeeventsource" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.setParcel(newParcel, parcelChangeEventSource)
       
     </span>
   </a>
@@ -1662,6 +1712,34 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#shippingpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.Package
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="shipping.Package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        new Package()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#shippinggetzipcodezipcode-country-object" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1749,6 +1827,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#shippinggetparcel-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getParcel() ⇒ Package
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingsetparcelnewparcel-parcelchangeeventsource" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.setParcel(newParcel, parcelChangeEventSource)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1783,6 +1883,10 @@
 <li><a href="#new_shipping.Address_new">new Address()</a></li>
 </ul>
 </li>
+<li><a href="#shipping.Package">.Package</a><ul>
+<li><a href="#new_shipping.Package_new">new Package()</a></li>
+</ul>
+</li>
 <li><a href="#shipping.getZIPCode">.getZIPCode(zipcode, country)</a> ⇒ <code>Object</code></li>
 <li><a href="#shipping.getPackagingByID">.getPackagingByID(id)</a> ⇒ <code>Promise.&lt;Object&gt;</code></li>
 <li><a href="#shipping.getRetailPriceWithMarkup">.getRetailPriceWithMarkup(cost, retail, carrier, service, weightOz, packaging)</a> ⇒ <code>Promise.&lt;number&gt;</code></li>
@@ -1791,6 +1895,8 @@
 <li><a href="#shipping.registerRateEndpoint">.registerRateEndpoint(getRates, purchase, idPrefix)</a></li>
 <li><a href="#shipping.registerMarkupCalculator">.registerMarkupCalculator(markupFn)</a></li>
 <li><a href="#shipping.registerInsuranceProvider">.registerInsuranceProvider(id, name, cardText, maxValue, getQuote, insure)</a></li>
+<li><a href="#shipping.getParcel">.getParcel()</a> ⇒ <code>Package</code></li>
+<li><a href="#shipping.setParcel">.setParcel(newParcel, parcelChangeEventSource)</a></li>
 </ul>
 </li>
 </ul>
@@ -1800,6 +1906,12 @@
 <a name="new_shipping.Address_new"></a></p>
 <h4 id="new-address">new Address()</h4>
 <p>A class representing an address.</p>
+<p><a name="shipping.Package"></a></p>
+<h3 id="shippingpackage">shipping.Package</h3>
+<p><strong>Kind</strong>: static class of <a href="#shipping"><code>shipping</code></a><br />
+<a name="new_shipping.Package_new"></a></p>
+<h4 id="new-package">new Package()</h4>
+<p>A class representing a package/parcel. See docs.</p>
 <p><a name="shipping.getZIPCode"></a></p>
 <h3 id="shippinggetzipcodezipcode-country-object">shipping.getZIPCode(zipcode, country) ⇒ <code>Object</code></h3>
 <p>Get data for a ZIP Code.</p>
@@ -2190,7 +2302,37 @@ any subsequent attempts to register will throw an Error.</li>
 </span><span id="__span-7-35"><a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a><span class="w">     </span><span class="s2">&quot;sampleproviderid&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Sample Insurance&quot;</span><span class="p">,</span>
 </span><span id="__span-7-36"><a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a><span class="w">     </span><span class="s2">&quot;Insurance coverage from Sample Insurance. $1 per $100 of value.&quot;</span><span class="p">,</span>
 </span><span id="__span-7-37"><a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a><span class="w">     </span><span class="mf">5000</span><span class="p">,</span><span class="w"> </span><span class="nx">getQuote</span><span class="p">,</span><span class="w"> </span><span class="nx">insure</span><span class="p">);</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
+<a name="shipping.getParcel"></a></p>
+<h3 id="shippinggetparcel-package">shipping.getParcel() ⇒ <code>Package</code></h3>
+<p>Get the current in-progress shipment's data.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
+<strong>Returns</strong>: <code>Package</code> - See Parcel/Package docs<br />
+<a name="shipping.setParcel"></a></p>
+<h3 id="shippingsetparcelnewparcel-parcelchangeeventsource">shipping.setParcel(newParcel, parcelChangeEventSource)</h3>
+<p>Set/overwrite the current in-progress shipment's data.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>newParcel</td>
+<td><code>Package</code></td>
+<td></td>
+</tr>
+<tr>
+<td>parcelChangeEventSource</td>
+<td><code>string</code> | <code>null</code></td>
+<td>An optional string sent as the data for the <code>parcelUpdated</code> event.</td>
+</tr>
+</tbody>
+</table>
 
 
 
