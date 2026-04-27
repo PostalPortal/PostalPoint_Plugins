@@ -1620,6 +1620,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#stringtrackingwhitespacetracking-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        string.trackingWhitespace(tracking) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2044,6 +2055,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#stringtrackingwhitespacetracking-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        string.trackingWhitespace(tracking) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2298,6 +2320,7 @@
 <li><a href="#util.string">.string</a> : <code>object</code><ul>
 <li><a href="#util.string.split">.split(input, separator, [limit])</a> ⇒ <code>Array.&lt;string&gt;</code></li>
 <li><a href="#util.string.chunk">.chunk(input, chunksize)</a> ⇒ <code>Array.&lt;string&gt;</code></li>
+<li><a href="#util.string.trackingWhitespace">.trackingWhitespace(tracking)</a> ⇒ <code>string</code></li>
 </ul>
 </li>
 <li><a href="#util.time">.time</a> : <code>object</code><ul>
@@ -2580,6 +2603,7 @@ Webhook payload is only queued for deletion, so polling may still return it for 
 <li><a href="#util.string">.string</a> : <code>object</code><ul>
 <li><a href="#util.string.split">.split(input, separator, [limit])</a> ⇒ <code>Array.&lt;string&gt;</code></li>
 <li><a href="#util.string.chunk">.chunk(input, chunksize)</a> ⇒ <code>Array.&lt;string&gt;</code></li>
+<li><a href="#util.string.trackingWhitespace">.trackingWhitespace(tracking)</a> ⇒ <code>string</code></li>
 </ul>
 </li>
 </ul>
@@ -2635,6 +2659,28 @@ Webhook payload is only queued for deletion, so polling may still return it for 
 <td>chunksize</td>
 <td><code>string</code></td>
 <td>Number of characters per chunk</td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.string.trackingWhitespace"></a></p>
+<h4 id="stringtrackingwhitespacetracking-string">string.trackingWhitespace(tracking) ⇒ <code>string</code></h4>
+<p>Add whitespace to a tracking number string for easier reading. Has special
+spacing behavior for international postal (S10) barcodes and UPS 1Z barcodes.</p>
+<p><strong>Kind</strong>: static method of <a href="#util.string"><code>string</code></a><br />
+<strong>Returns</strong>: <code>string</code> - The tracking number with whitespace added  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tracking</td>
+<td><code>string</code></td>
+<td>A tracking number</td>
 </tr>
 </tbody>
 </table>

@@ -1308,6 +1308,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#printprintdocumentdata-printer-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        print.printDocument(data, [printer]) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1605,6 +1616,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#printprintdocumentdata-printer-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        print.printDocument(data, [printer]) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1639,6 +1661,7 @@
 <li><a href="#print.getReceiptPrinter">.getReceiptPrinter()</a> ⇒ <code>Promise.&lt;Object&gt;</code></li>
 <li><a href="#print.printReceiptData">.printReceiptData(data)</a></li>
 <li><a href="#print.imageToBitmap">.imageToBitmap(jimpImage, [dpiFrom], [dpiTo])</a> ⇒ <code>Object</code></li>
+<li><a href="#print.printDocument">.printDocument(data, [printer])</a> ⇒ <code>Promise</code></li>
 </ul>
 </li>
 </ul>
@@ -1718,6 +1741,39 @@
 <td><code>number</code></td>
 <td><code>300</code></td>
 <td>New image DPI.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="print.printDocument"></a></p>
+<h3 id="printprintdocumentdata-printer-promise">print.printDocument(data, [printer]) ⇒ <code>Promise</code></h3>
+<p>Send a file to a normal printer, using a print dialog.
+Supports HTML, PDF, and plain text.
+Auto-detects HTML by looking for "&lt;!doctype html&gt;" or "<html>" (case insensitive) in the first 50 bytes/characters of the data.
+Auto-detects PDF by looking for "%PDF" at the start of the data.
+Assumes plain text if the autodetection logic doesn't find a match.</p>
+<p><strong>Kind</strong>: static method of <a href="#print"><code>print</code></a><br />
+<strong>Returns</strong>: <code>Promise</code> - Resolves around the time the print dialog opens (or the print process is starting, for silent print).  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><code>Array</code> | <code>string</code> | <code>Uint8Array</code></td>
+<td></td>
+<td>Text or binary data. If an array, the array elements will be merged together. Array elements must be strings or Uint8Arrays.</td>
+</tr>
+<tr>
+<td>[printer]</td>
+<td><code>string</code></td>
+<td><code>&quot;\&quot;\&quot;&quot;</code></td>
+<td>blank string to show a print dialog, or a printer name to silently print without a dialog.</td>
 </tr>
 </tbody>
 </table>
