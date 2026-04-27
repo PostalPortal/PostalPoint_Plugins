@@ -10,6 +10,7 @@ Printing to connected printers
     * [.getReceiptPrinter()](#print.getReceiptPrinter) ⇒ <code>Promise.&lt;Object&gt;</code>
     * [.printReceiptData(data)](#print.printReceiptData)
     * [.imageToBitmap(jimpImage, [dpiFrom], [dpiTo])](#print.imageToBitmap) ⇒ <code>Object</code>
+    * [.printDocument(data, [printer])](#print.printDocument) ⇒ <code>Promise</code>
 
 <a name="print.printLabelImage"></a>
 
@@ -52,4 +53,21 @@ Convert a Jimp image object to 1-bit monochrome image data before sending image 
 | jimpImage | <code>Jimp</code> |  |  |
 | [dpiFrom] | <code>number</code> | <code>300</code> | Original image DPI. |
 | [dpiTo] | <code>number</code> | <code>300</code> | New image DPI. |
+
+<a name="print.printDocument"></a>
+
+### print.printDocument(data, [printer]) ⇒ <code>Promise</code>
+Send a file to a normal printer, using a print dialog.
+Supports HTML, PDF, and plain text.
+Auto-detects HTML by looking for "<!doctype html>" or "<html>" (case insensitive) in the first 50 bytes/characters of the data.
+Auto-detects PDF by looking for "%PDF" at the start of the data.
+Assumes plain text if the autodetection logic doesn't find a match.
+
+**Kind**: static method of [<code>print</code>](#print)  
+**Returns**: <code>Promise</code> - Resolves around the time the print dialog opens (or the print process is starting, for silent print).  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| data | <code>Array</code> \| <code>string</code> \| <code>Uint8Array</code> |  | Text or binary data. If an array, the array elements will be merged together. Array elements must be strings or Uint8Arrays. |
+| [printer] | <code>string</code> | <code>&quot;\&quot;\&quot;&quot;</code> | blank string to show a print dialog, or a printer name to silently print without a dialog. |
 

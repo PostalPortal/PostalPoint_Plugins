@@ -19,6 +19,7 @@ Various utility functions: HTTP, time/date, barcode creation, clipboard, etc.
     * [.string](#util.string) : <code>object</code>
         * [.split(input, separator, [limit])](#util.string.split) ⇒ <code>Array.&lt;string&gt;</code>
         * [.chunk(input, chunksize)](#util.string.chunk) ⇒ <code>Array.&lt;string&gt;</code>
+        * [.trackingWhitespace(tracking)](#util.string.trackingWhitespace) ⇒ <code>string</code>
     * [.time](#util.time) : <code>object</code>
         * [.now()](#util.time.now) ⇒ <code>number</code>
         * [.diff(compareto)](#util.time.diff) ⇒ <code>number</code>
@@ -192,6 +193,7 @@ String manipulation functions.
 * [.string](#util.string) : <code>object</code>
     * [.split(input, separator, [limit])](#util.string.split) ⇒ <code>Array.&lt;string&gt;</code>
     * [.chunk(input, chunksize)](#util.string.chunk) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.trackingWhitespace(tracking)](#util.string.trackingWhitespace) ⇒ <code>string</code>
 
 <a name="util.string.split"></a>
 
@@ -217,6 +219,19 @@ Split a string into chunks of length `chunksize`.
 | --- | --- | --- |
 | input | <code>string</code> | Input string |
 | chunksize | <code>string</code> | Number of characters per chunk |
+
+<a name="util.string.trackingWhitespace"></a>
+
+#### string.trackingWhitespace(tracking) ⇒ <code>string</code>
+Add whitespace to a tracking number string for easier reading. Has special
+spacing behavior for international postal (S10) barcodes and UPS 1Z barcodes.
+
+**Kind**: static method of [<code>string</code>](#util.string)  
+**Returns**: <code>string</code> - The tracking number with whitespace added  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| tracking | <code>string</code> | A tracking number |
 
 <a name="util.time"></a>
 

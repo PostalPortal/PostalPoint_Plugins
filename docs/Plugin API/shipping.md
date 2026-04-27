@@ -20,6 +20,7 @@ Add custom carrier and rates, and adjust markup.
     * [.registerInsuranceProvider(id, name, cardText, maxValue, getQuote, insure)](#shipping.registerInsuranceProvider)
     * [.getParcel()](#shipping.getParcel) ⇒ <code>Package</code>
     * [.setParcel(newParcel, parcelChangeEventSource)](#shipping.setParcel)
+    * [.isOfficeMode()](#shipping.isOfficeMode) ⇒ <code>boolean</code>
 
 <a name="shipping.Address"></a>
 
@@ -330,3 +331,10 @@ Set/overwrite the current in-progress shipment's data.
 | newParcel | <code>Package</code> |  |
 | parcelChangeEventSource | <code>string</code> \| <code>null</code> | An optional string sent as the data for the `parcelUpdated` event. |
 
+<a name="shipping.isOfficeMode"></a>
+
+### shipping.isOfficeMode() ⇒ <code>boolean</code>
+Check if PostalPoint is running the shipment in "office mode", i.e. the customer should be charged the cost price.
+
+**Kind**: static method of [<code>shipping</code>](#shipping)  
+**Returns**: <code>boolean</code> - true if office mode enabled, otherwise false.  
