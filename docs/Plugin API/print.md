@@ -59,8 +59,8 @@ Convert a Jimp image object to 1-bit monochrome image data before sending image 
 ### print.printDocument(data, [printer]) ⇒ <code>Promise</code>
 Send a file to a normal printer, using a print dialog.
 Supports HTML, PDF, and plain text.
-Auto-detects HTML by looking for "<!doctype html>" or "<html>" (case insensitive) in the first 50 bytes/characters of the data.
-Auto-detects PDF by looking for "%PDF" at the start of the data.
+Auto-detects HTML by looking for `<!doctype html>` or `<html>` (case insensitive) in the first 50 bytes/characters of the data.
+Auto-detects PDF by looking for `%PDF` at the start of the data.
 Assumes plain text if the autodetection logic doesn't find a match.
 
 **Kind**: static method of [<code>print</code>](#print)  
