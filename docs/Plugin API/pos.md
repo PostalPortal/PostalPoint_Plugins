@@ -209,7 +209,13 @@ Register as a card payment processor.
 **Example**  
 ```js
 global.apis.pos.registerCardProcessor({
-    name: "Demo Card Processor", // Shown in PostalPoint settings menu
+    // Shown in PostalPoint settings menu
+    name: "Demo Card Processor",
+    // Set true if the integration can credit funds back to a customer card.
+    // A return/refund/credit transaction will call checkout with a negative amount.
+    // If this is not true, the card payment option will not be shown on the checkout
+    // during a return transaction.
+    allowCreditCharges: false,
     init: async function () {
         // This will run after PostalPoint launches
         // and before any payments are processed.
@@ -218,6 +224,7 @@ global.apis.pos.registerCardProcessor({
     checkout: async function ({amount, capture = true}) {
         // Charge a credit card using a card reader device.
         // amount is in pennies (or the equivalent base unit in the local currency).
+        // If a credit is to be issued to the card, amount is * -1.
 
         // Add a payment to the receipt with the total amount paid, card details, etc.
         global.apis.pos.addReceiptPayment(
