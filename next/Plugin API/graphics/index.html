@@ -1118,6 +1118,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#graphicspdftoimagebuffer-width-height-autorotate-outputpagecount-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        graphics.pdfToImage(buffer, width, height, [autoRotate], [outputPageCount]) ⇒ Array
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1561,6 +1572,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#graphicspdftoimagebuffer-width-height-autorotate-outputpagecount-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        graphics.pdfToImage(buffer, width, height, [autoRotate], [outputPageCount]) ⇒ Array
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1593,6 +1615,7 @@
 <li><a href="#graphics">graphics</a> : <code>object</code><ul>
 <li><a href="#graphics.Jimp">.Jimp()</a> ⇒ <code>Jimp</code></li>
 <li><a href="#graphics.loadFont">.loadFont(filename)</a> ⇒ <code>Promise</code></li>
+<li><a href="#graphics.pdfToImage">.pdfToImage(buffer, width, height, [autoRotate], [outputPageCount])</a> ⇒ <code>Array</code></li>
 </ul>
 </li>
 </ul>
@@ -1619,6 +1642,54 @@ which gets very confused about our JS environment and ends up crashing everythin
 <tr>
 <td>filename</td>
 <td><code>string</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="graphics.pdfToImage"></a></p>
+<h3 id="graphicspdftoimagebuffer-width-height-autorotate-outputpagecount-array">graphics.pdfToImage(buffer, width, height, [autoRotate], [outputPageCount]) ⇒ <code>Array</code></h3>
+<p>Convert a PDF to an array of images with the specified width and height.
+Pages that aren't the same ratio as the specified width and height will be centered on the image.</p>
+<p><strong>Kind</strong>: static method of <a href="#graphics"><code>graphics</code></a><br />
+<strong>Returns</strong>: <code>Array</code> - Jimp image array, one image per page  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>buffer</td>
+<td><code>Buffer</code></td>
+<td></td>
+<td>PDF data as Buffer</td>
+</tr>
+<tr>
+<td>width</td>
+<td><code>Number</code></td>
+<td></td>
+<td>Desired output width in pixels</td>
+</tr>
+<tr>
+<td>height</td>
+<td><code>Number</code></td>
+<td></td>
+<td>Desired output height in pixels</td>
+</tr>
+<tr>
+<td>[autoRotate]</td>
+<td><code>Boolean</code></td>
+<td><code>true</code></td>
+<td>If true, images will be rotated to best fit the desired dimensions.</td>
+</tr>
+<tr>
+<td>[outputPageCount]</td>
+<td><code>Number</code></td>
+<td><code>-1</code></td>
+<td>Only process the first N pages, or all if -1.</td>
 </tr>
 </tbody>
 </table>

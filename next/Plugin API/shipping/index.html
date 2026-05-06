@@ -1438,6 +1438,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#shippingconvertmeteredtoretailrate_price-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.convertMeteredToRetail(rate_price) ⇒ number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetlabeldatecarrier-date" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getLabelDate([carrier]) ⇒ Date
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#shippinggetcarriernamecarrierid-string" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1449,10 +1471,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#shippinggetservicenameserviceid-carrier-string" class="md-nav__link">
+  <a href="#shippinggetservicenameserviceid-carrier-stripinternational-string" class="md-nav__link">
     <span class="md-ellipsis">
       
-        shipping.getServiceName(serviceId, carrier) ⇒ string
+        shipping.getServiceName(serviceId, [carrier], [stripInternational]) ⇒ string
       
     </span>
   </a>
@@ -1460,10 +1482,43 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#shippingregisterrateendpointgetrates-purchase-idprefix" class="md-nav__link">
+  <a href="#shippingregisterrateendpointgetrates-purchase-idprefix-extraoptions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        shipping.registerRateEndpoint(getRates, purchase, idPrefix)
+        shipping.registerRateEndpoint(getRates, purchase, idPrefix, [extraOptions])
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingregisterstampendpointid-name-getrates-purchase-purchasecorrection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingaddratewarningmessage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.addRateWarning(message)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingregisteraddressverificationproviderid-name-verifyfn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.registerAddressVerificationProvider(id, name, verifyFn)
       
     </span>
   </a>
@@ -1784,6 +1839,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#shippingconvertmeteredtoretailrate_price-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.convertMeteredToRetail(rate_price) ⇒ number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetlabeldatecarrier-date" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getLabelDate([carrier]) ⇒ Date
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#shippinggetcarriernamecarrierid-string" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1795,10 +1872,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#shippinggetservicenameserviceid-carrier-string" class="md-nav__link">
+  <a href="#shippinggetservicenameserviceid-carrier-stripinternational-string" class="md-nav__link">
     <span class="md-ellipsis">
       
-        shipping.getServiceName(serviceId, carrier) ⇒ string
+        shipping.getServiceName(serviceId, [carrier], [stripInternational]) ⇒ string
       
     </span>
   </a>
@@ -1806,10 +1883,43 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#shippingregisterrateendpointgetrates-purchase-idprefix" class="md-nav__link">
+  <a href="#shippingregisterrateendpointgetrates-purchase-idprefix-extraoptions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        shipping.registerRateEndpoint(getRates, purchase, idPrefix)
+        shipping.registerRateEndpoint(getRates, purchase, idPrefix, [extraOptions])
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingregisterstampendpointid-name-getrates-purchase-purchasecorrection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingaddratewarningmessage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.addRateWarning(message)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingregisteraddressverificationproviderid-name-verifyfn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.registerAddressVerificationProvider(id, name, verifyFn)
       
     </span>
   </a>
@@ -1912,9 +2022,14 @@
 <li><a href="#shipping.getZIPCode">.getZIPCode(zipcode, country)</a> ⇒ <code>Object</code></li>
 <li><a href="#shipping.getPackagingByID">.getPackagingByID(id)</a> ⇒ <code>Promise.&lt;Object&gt;</code></li>
 <li><a href="#shipping.getRetailPriceWithMarkup">.getRetailPriceWithMarkup(cost, retail, carrier, service, weightOz, packaging)</a> ⇒ <code>Promise.&lt;number&gt;</code></li>
+<li><a href="#shipping.convertMeteredToRetail">.convertMeteredToRetail(rate_price)</a> ⇒ <code>number</code></li>
+<li><a href="#shipping.getLabelDate">.getLabelDate([carrier])</a> ⇒ <code>Date</code></li>
 <li><a href="#shipping.getCarrierName">.getCarrierName(carrierId)</a> ⇒ <code>string</code></li>
-<li><a href="#shipping.getServiceName">.getServiceName(serviceId, carrier)</a> ⇒ <code>string</code></li>
-<li><a href="#shipping.registerRateEndpoint">.registerRateEndpoint(getRates, purchase, idPrefix)</a></li>
+<li><a href="#shipping.getServiceName">.getServiceName(serviceId, [carrier], [stripInternational])</a> ⇒ <code>string</code></li>
+<li><a href="#shipping.registerRateEndpoint">.registerRateEndpoint(getRates, purchase, idPrefix, [extraOptions])</a></li>
+<li><a href="#shipping.registerStampEndpoint">.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)</a></li>
+<li><a href="#shipping.addRateWarning">.addRateWarning(message)</a></li>
+<li><a href="#shipping.registerAddressVerificationProvider">.registerAddressVerificationProvider(id, name, verifyFn)</a></li>
 <li><a href="#shipping.registerMarkupCalculator">.registerMarkupCalculator(markupFn)</a></li>
 <li><a href="#shipping.registerInsuranceProvider">.registerInsuranceProvider(id, name, cardText, maxValue, getQuote, insure)</a></li>
 <li><a href="#shipping.getParcel">.getParcel()</a> ⇒ <code>Package</code></li>
@@ -2080,6 +2195,51 @@
 </tr>
 </tbody>
 </table>
+<p><a name="shipping.convertMeteredToRetail"></a></p>
+<h3 id="shippingconvertmeteredtoretailrate_price-number">shipping.convertMeteredToRetail(rate_price) ⇒ <code>number</code></h3>
+<p>Convert a USPS metered/PC postage letter rate to the retail stamp price by
+adding the difference based on the current USPS Notice 123 rate chart.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
+<strong>Returns</strong>: <code>number</code> - the retail price for the given metered rate (for example, 0.78)  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rate_price</td>
+<td><code>number</code></td>
+<td>Metered price (for example, 0.74)</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.getLabelDate"></a></p>
+<h3 id="shippinggetlabeldatecarrier-date">shipping.getLabelDate([carrier]) ⇒ <code>Date</code></h3>
+<p>Get the date to use for a label's ship date, based on the next carrier pickup.
+If no date is found for the next pickup, defaults to the current date and time.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[carrier]</td>
+<td><code>string</code></td>
+<td><code>&quot;\&quot;\&quot;&quot;</code></td>
+<td>Carrier ID or name.</td>
+</tr>
+</tbody>
+</table>
 <p><a name="shipping.getCarrierName"></a></p>
 <h3 id="shippinggetcarriernamecarrierid-string">shipping.getCarrierName(carrierId) ⇒ <code>string</code></h3>
 <p>Converts the carrier ID string into a consistent and human-readable name.</p>
@@ -2099,7 +2259,7 @@
 </tbody>
 </table>
 <p><a name="shipping.getServiceName"></a></p>
-<h3 id="shippinggetservicenameserviceid-carrier-string">shipping.getServiceName(serviceId, carrier) ⇒ <code>string</code></h3>
+<h3 id="shippinggetservicenameserviceid-carrier-stripinternational-string">shipping.getServiceName(serviceId, [carrier], [stripInternational]) ⇒ <code>string</code></h3>
 <p>Converts the service ID string into a consistent and human-readable name. Set the carrier ID for better results.</p>
 <p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
 <table>
@@ -2108,6 +2268,7 @@
 <th>Param</th>
 <th>Type</th>
 <th>Default</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -2115,16 +2276,24 @@
 <td>serviceId</td>
 <td><code>string</code></td>
 <td></td>
+<td></td>
 </tr>
 <tr>
-<td>carrier</td>
+<td>[carrier]</td>
 <td><code>string</code></td>
-<td><code>&quot;USPS&quot;</code></td>
+<td><code>&quot;\&quot;USPS\&quot;&quot;</code></td>
+<td>Carrier ID or name (i.e. the string sent to or received from <code>getCarrierName()</code>)</td>
+</tr>
+<tr>
+<td>[stripInternational]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>If true, remove "International" from the service name. For example, "Priority Mail International" becomes "Priority Mail", to allow matching a domestic USPS service with the international version of that service.</td>
 </tr>
 </tbody>
 </table>
 <p><a name="shipping.registerRateEndpoint"></a></p>
-<h3 id="shippingregisterrateendpointgetrates-purchase-idprefix">shipping.registerRateEndpoint(getRates, purchase, idPrefix)</h3>
+<h3 id="shippingregisterrateendpointgetrates-purchase-idprefix-extraoptions">shipping.registerRateEndpoint(getRates, purchase, idPrefix, [extraOptions])</h3>
 <p>Register the plugin as a shipping rate and label provider.  See the Shipping example plugin.</p>
 <p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
 <table>
@@ -2132,6 +2301,7 @@
 <tr>
 <th>Param</th>
 <th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -2139,17 +2309,26 @@
 <tr>
 <td>getRates</td>
 <td><code>function</code></td>
+<td></td>
 <td>A function passed a Parcel object to get rates for. Returns a Promise that resolves to an array of rate objects.</td>
 </tr>
 <tr>
 <td>purchase</td>
 <td><code>function</code></td>
+<td></td>
 <td>A function passed a rate ID to purchase. Returns a Promise that resolves to the label information.</td>
 </tr>
 <tr>
 <td>idPrefix</td>
 <td><code>string</code></td>
+<td></td>
 <td>A unique string that will be prefixing all rate IDs from this plugin.</td>
+</tr>
+<tr>
+<td>[extraOptions]</td>
+<td><code>Object</code></td>
+<td><code>{}</code></td>
+<td>Extra optional functions/options that can be implemented.  See example.</td>
 </tr>
 </tbody>
 </table>
@@ -2185,6 +2364,157 @@
 </span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="nx">toAddressLines</span><span class="w"> </span><span class="c1">// Array of strings</span>
 </span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="p">}</span>
 </span></code></pre></div>
+<strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nx">extraOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="nx">getRecentLabels</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="c1">// Return a list of recently purchased/printed labels for reprinting and/or voiding/refund purposes.</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="c1">// Your plugin must also implement voidLabel() (below) or it won&#39;t be queried for recent labels.</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">                </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">idPrefix</span><span class="si">}</span><span class="sb">_</span><span class="si">${</span><span class="nx">yourShipmentID</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">                </span><span class="nx">refund_status</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// false to show a refund/void button, otherwise a short string to show such as &quot;Refunded&quot; or &quot;Refund processing&quot; or &quot;Refund rejected&quot;</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">                </span><span class="nx">tracking</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Shipment tracking number or an empty string if it has no tracking.</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">                </span><span class="nx">label_urls</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="c1">// Array of URLs to download the label image(s) from if the user requests a reprint.</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">                </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">Address</span><span class="p">(),</span><span class="w"> </span><span class="c1">// Destination/to address.</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">                </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">Address</span><span class="p">(),</span><span class="w"> </span><span class="c1">// Return/from address.</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">                </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">getCarrierName</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span><span class="w"> </span><span class="c1">// Carrier name</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">                </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">getServiceName</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// Shipping service</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">    </span><span class="nx">voidLabel</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">        </span><span class="c1">// Try to void a label with the ID provided (an `id` returned in getRecentLabels)</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">        </span><span class="c1">// Returns a status string that&#39;s displayed to the user in a dialog box, such as &quot;Label refunded.&quot; or &quot;Refund request submitted.&quot; or &quot;Refund request rejected.&quot;</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Void request status message goes here&quot;</span><span class="p">;</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="p">}</span>
+</span></code></pre></div>
+<a name="shipping.registerStampEndpoint"></a></p>
+<h3 id="shippingregisterstampendpointid-name-getrates-purchase-purchasecorrection">shipping.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)</h3>
+<p>Register the plugin as a USPS postage indicia provider for First Class Mail.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><code>string</code></td>
+<td>Unique alphanumeric ID for this provider.</td>
+</tr>
+<tr>
+<td>name</td>
+<td><code>string</code></td>
+<td>Human-readable name for this provider.</td>
+</tr>
+<tr>
+<td>getRates</td>
+<td><code>function</code></td>
+<td>see registerRateEndpoint. Any returned rates that aren't for USPS First-Class Mail are ignored.</td>
+</tr>
+<tr>
+<td>purchase</td>
+<td><code>function</code></td>
+<td>see registerRateEndpoint. Returned data must also include a <code>imageSettings</code> object, see example.</td>
+</tr>
+<tr>
+<td>purchaseCorrection</td>
+<td><code>function</code> | <code>null</code></td>
+<td>Same as <code>purchase</code> but instead of a rate ID the argument is a string number of cents to print on the postage. If null, postage correction stamps will be disabled.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// imageSettings object returned by purchase:</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nx">includeFIM</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// If true, a FIM D (Facing Identification Mark, variant D) is printed to the left of the indicia. Required for letter-size postage.</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="nx">indiciaX</span><span class="o">:</span><span class="w"> </span><span class="nx">px</span><span class="p">,</span><span class="w"> </span><span class="c1">// Leftmost pixel in label image to print (pixels to the left will be cropped out). If negative, counts from the right side of the label instead.</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="nx">indiciaY</span><span class="o">:</span><span class="w"> </span><span class="nx">px</span><span class="p">,</span><span class="w"> </span><span class="c1">// Topmost pixel in label image (pixels above will be cropped out). If negative, counts from the right side of the label instead.</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="nx">indiciaWidth</span><span class="o">:</span><span class="w"> </span><span class="nx">px</span><span class="p">,</span><span class="w"> </span><span class="c1">// Width in pixels to crop to, starting from indiciaX on the left side and moving right</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="nx">indiciaHeight</span><span class="o">:</span><span class="w"> </span><span class="nx">px</span><span class="p">,</span><span class="w"> </span><span class="c1">// Height in pixels to crop to, starting from indiciaY on the top side and moving down</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="nx">dpi</span><span class="o">:</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w"> </span><span class="c1">// Native DPI (pixels per inch) of your label. PostalPoint scales your image to 300 DPI after cropping.</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="nx">rotate</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="c1">// If not zero, image is rotated this many degrees (90, 180, 270, etc) before any processing.</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="p">}</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="c1">// Note: Depending on indicia width, FIM presence, and label width, the indicia may be</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="c1">//   scaled slightly smaller after cropping to the dimensions provided in order to fit on</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="c1">//   the label media size in use. In our testing with the widest indicia (PDF417),</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="c1">//   the barcode in the indicia is still scannable (and the human-readable text still legible)</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="c1">//   after this adjustment, but you might wish to test the worst case scenario:</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="c1">//   `includeFIM: true` on a 1.1x3.5 &quot;standard address&quot; label printed at 200dpi.</span>
+</span></code></pre></div>
+<a name="shipping.addRateWarning"></a></p>
+<h3 id="shippingaddratewarningmessage">shipping.addRateWarning(message)</h3>
+<p>If an error or warning is encountered while getting shipping rates
+(such as an invalid/unsupported combination of shipment options/packaging for a particular service)
+send a message string to this function and it will be available for the user to read
+when the rate cards are displayed on screen.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td><code>string</code> | <code>Array.&lt;string&gt;</code></td>
+<td>A string message or an array of messages.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.registerAddressVerificationProvider"></a></p>
+<h3 id="shippingregisteraddressverificationproviderid-name-verifyfn">shipping.registerAddressVerificationProvider(id, name, verifyFn)</h3>
+<p>Add an address validation/sanitization/verification provider. The user's preferred provider
+will be called with a shipment's to and from addresses, and will return the validated addresses.
+The verified addresses will be passed on to rate provider plugins.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><code>string</code></td>
+<td>Unique alphanumeric ID for this provider.</td>
+</tr>
+<tr>
+<td>name</td>
+<td><code>string</code></td>
+<td>Human-readable display name for this provider.</td>
+</tr>
+<tr>
+<td>verifyFn</td>
+<td><code>function</code></td>
+<td>See example.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nx">registerAddressVerificationProvider</span><span class="p">(</span><span class="s2">&quot;example&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Example&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">addressData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="c1">// This function is passed the data structure shown below, and must return the same structure but updated with the validated addresses.</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">         </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">Address</span><span class="p">(),</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">         </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">Address</span><span class="p">(),</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">         </span><span class="nx">toVerified</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// If the to address was verified</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">         </span><span class="nx">fromVerified</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// If the from/return address was verified</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">         </span><span class="nx">toErrors</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="c1">// String messages to display on the to address verification checkmark/warning icon</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">         </span><span class="nx">fromErrors</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="c1">// String messages to display on the from/return address verification checkmark/warning icon</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="p">});</span>
+</span></code></pre></div>
 <a name="shipping.registerMarkupCalculator"></a></p>
 <h3 id="shippingregistermarkupcalculatormarkupfn">shipping.registerMarkupCalculator(markupFn)</h3>
 <p>Register the plugin to modify PostalPoint's shipping markup calculation during shipment rating.</p>
@@ -2211,36 +2541,36 @@ any subsequent attempts to register will throw an Error.</li>
 </tbody>
 </table>
 <p><strong>Example</strong><br />
-<div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">registerMarkupCalculator</span><span class="p">(</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="c1">// Parameters:</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="c1">// cost:       Cost to shipper</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="c1">// retail:     Carrier-suggested retail price</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="c1">// suggested:  PostalPoint-suggested retail (default margin calc)</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="c1">// carrier:    Shipping carrier name</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="c1">// service:    Shipping service code</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="c1">// weightOz:   The weight of the shipment in ounces, or null if not available.</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="c1">// packaging:  An empty string if not available, or &quot;Letter&quot;, &quot;FlatRateEnvelope&quot;, etc. See https://docs.easypost.com/docs/parcels#predefined-package</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="c1">// parcel:     The Parcel object for this shipment.  May be null for some rate-only requests without a shipment, such as USPS price calculations.</span>
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">cost</span><span class="p">,</span><span class="w"> </span><span class="nx">retail</span><span class="p">,</span><span class="w"> </span><span class="nx">suggested</span><span class="p">,</span><span class="w"> </span><span class="nx">carrier</span><span class="p">,</span><span class="w"> </span><span class="nx">service</span><span class="p">,</span><span class="w"> </span><span class="nx">weightOz</span><span class="p">,</span><span class="w"> </span><span class="nx">packaging</span><span class="p">,</span><span class="w"> </span><span class="nx">parcel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">carrier</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;USPS&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">service</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;First-Class Mail&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">                </span><span class="c1">// Handle First-Class Mail differently if it&#39;s a 1oz letter (i.e. Forever stamp)</span>
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">weightOz</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">packaging</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;Letter&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nx">retail</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.05</span><span class="p">;</span>
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nx">retail</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.25</span><span class="p">;</span>
-</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">                </span><span class="p">}</span>
-</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">            </span><span class="p">}</span>
-</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">            </span><span class="c1">// Handle flat rate envelopes differently</span>
-</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">getServiceName</span><span class="p">(</span><span class="nx">service</span><span class="p">,</span><span class="w"> </span><span class="nx">carrier</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;Priority Mail&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">packaging</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;FlatRateEnvelope&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nx">retail</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span>
-</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">            </span><span class="p">}</span>
-</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">suggested</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Charge the PostalPoint-calculated amount plus $2</span>
-</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">cost</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Charges the customer double the shipment&#39;s cost.</span>
-</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="w">        </span><span class="p">}</span>
-</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="p">);</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">registerMarkupCalculator</span><span class="p">(</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="c1">// Parameters:</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="c1">// cost:       Cost to shipper</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="c1">// retail:     Carrier-suggested retail price</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="c1">// suggested:  PostalPoint-suggested retail (default margin calc)</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="c1">// carrier:    Shipping carrier name</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="c1">// service:    Shipping service code</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="c1">// weightOz:   The weight of the shipment in ounces, or null if not available.</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="c1">// packaging:  An empty string if not available, or &quot;Letter&quot;, &quot;FlatRateEnvelope&quot;, etc. See https://docs.easypost.com/docs/parcels#predefined-package</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span><span class="c1">// parcel:     The Parcel object for this shipment.  May be null for some rate-only requests without a shipment, such as USPS price calculations.</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">cost</span><span class="p">,</span><span class="w"> </span><span class="nx">retail</span><span class="p">,</span><span class="w"> </span><span class="nx">suggested</span><span class="p">,</span><span class="w"> </span><span class="nx">carrier</span><span class="p">,</span><span class="w"> </span><span class="nx">service</span><span class="p">,</span><span class="w"> </span><span class="nx">weightOz</span><span class="p">,</span><span class="w"> </span><span class="nx">packaging</span><span class="p">,</span><span class="w"> </span><span class="nx">parcel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">carrier</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;USPS&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">service</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;First-Class Mail&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">                </span><span class="c1">// Handle First-Class Mail differently if it&#39;s a 1oz letter (i.e. Forever stamp)</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">weightOz</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">packaging</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;Letter&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nx">retail</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.05</span><span class="p">;</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nx">retail</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.25</span><span class="p">;</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">                </span><span class="p">}</span>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">            </span><span class="c1">// Handle flat rate envelopes differently</span>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">getServiceName</span><span class="p">(</span><span class="nx">service</span><span class="p">,</span><span class="w"> </span><span class="nx">carrier</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;Priority Mail&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">packaging</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;FlatRateEnvelope&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nx">retail</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span>
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">suggested</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Charge the PostalPoint-calculated amount plus $2</span>
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">cost</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Charges the customer double the shipment&#39;s cost.</span>
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="p">);</span>
 </span></code></pre></div>
 <a name="shipping.registerInsuranceProvider"></a></p>
 <h3 id="shippingregisterinsuranceproviderid-name-cardtext-maxvalue-getquote-insure">shipping.registerInsuranceProvider(id, name, cardText, maxValue, getQuote, insure)</h3>
@@ -2288,43 +2618,43 @@ any subsequent attempts to register will throw an Error.</li>
 </tbody>
 </table>
 <p><strong>Example</strong><br />
-<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getQuote</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">parcel</span><span class="p">,</span><span class="w"> </span><span class="nx">carrier</span><span class="p">,</span><span class="w"> </span><span class="nx">service</span><span class="p">,</span><span class="w"> </span><span class="nx">rateObject</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="c1">// See shipping rate provider documentation for rateObject structure.</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="c1">// Do math, etc</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">cost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="nx">cost</span><span class="o">:</span><span class="w"> </span><span class="nx">cost</span><span class="p">,</span>
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">        </span><span class="nx">retail</span><span class="o">:</span><span class="w"> </span><span class="nx">cost</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span>
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="p">};</span>
-</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="c1">// Or, to remove this shipping rate from the list,</span>
-</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="c1">// because the shipment/carrier/service combination</span>
-</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="c1">// is not eligible for insurance:</span>
-</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="p">}</span>
-</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>
-</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">insure</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">parcel</span><span class="p">,</span><span class="w"> </span><span class="nx">carrier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;USPS&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Priority&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">trackingNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;94055...&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">    </span><span class="c1">// Purchase the insurance</span>
-</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">cost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
-</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">retailPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cost</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
-</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">costPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cost</span><span class="p">;</span>
-</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>
-</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">receiptitem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">ReceiptItem</span><span class="p">(</span><span class="sb">`sampleinsurance_</span><span class="si">${</span><span class="nx">trackingNumber</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
-</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w">        </span><span class="s2">&quot;Sample Insurance&quot;</span><span class="p">,</span>
-</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">        </span><span class="s2">&quot;Insured for &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">i18n</span><span class="p">.</span><span class="nx">moneyString</span><span class="p">(</span><span class="nx">value</span><span class="p">),</span>
-</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w">        </span><span class="nx">retailPrice</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">costPrice</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span>
-</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">    </span><span class="p">);</span>
-</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="w">    </span><span class="nx">receiptitem</span><span class="p">.</span><span class="nx">merch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="w">    </span><span class="nx">receiptitem</span><span class="p">.</span><span class="nx">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Shipping Insurance&quot;</span><span class="p">;</span>
-</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="w">    </span><span class="nx">receiptitem</span><span class="p">.</span><span class="nx">barcode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">trackingNumber</span><span class="p">;</span>
-</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="w">    </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">addReceiptItem</span><span class="p">(</span><span class="nx">receiptitem</span><span class="p">);</span>
-</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="p">}</span>
-</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a>
-</span><span id="__span-7-34"><a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">registerInsuranceProvider</span><span class="p">(</span>
-</span><span id="__span-7-35"><a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a><span class="w">     </span><span class="s2">&quot;sampleproviderid&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Sample Insurance&quot;</span><span class="p">,</span>
-</span><span id="__span-7-36"><a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a><span class="w">     </span><span class="s2">&quot;Insurance coverage from Sample Insurance. $1 per $100 of value.&quot;</span><span class="p">,</span>
-</span><span id="__span-7-37"><a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a><span class="w">     </span><span class="mf">5000</span><span class="p">,</span><span class="w"> </span><span class="nx">getQuote</span><span class="p">,</span><span class="w"> </span><span class="nx">insure</span><span class="p">);</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getQuote</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">parcel</span><span class="p">,</span><span class="w"> </span><span class="nx">carrier</span><span class="p">,</span><span class="w"> </span><span class="nx">service</span><span class="p">,</span><span class="w"> </span><span class="nx">rateObject</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="c1">// See shipping rate provider documentation for rateObject structure.</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="c1">// Do math, etc</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">cost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">        </span><span class="nx">cost</span><span class="o">:</span><span class="w"> </span><span class="nx">cost</span><span class="p">,</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">        </span><span class="nx">retail</span><span class="o">:</span><span class="w"> </span><span class="nx">cost</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">    </span><span class="p">};</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="c1">// Or, to remove this shipping rate from the list,</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">    </span><span class="c1">// because the shipment/carrier/service combination</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">    </span><span class="c1">// is not eligible for insurance:</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="p">}</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">insure</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">parcel</span><span class="p">,</span><span class="w"> </span><span class="nx">carrier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;USPS&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Priority&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">trackingNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;94055...&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">    </span><span class="c1">// Purchase the insurance</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">cost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">retailPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cost</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">costPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cost</span><span class="p">;</span>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">receiptitem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">ReceiptItem</span><span class="p">(</span><span class="sb">`sampleinsurance_</span><span class="si">${</span><span class="nx">trackingNumber</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="w">        </span><span class="s2">&quot;Sample Insurance&quot;</span><span class="p">,</span>
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="w">        </span><span class="s2">&quot;Insured for &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">i18n</span><span class="p">.</span><span class="nx">moneyString</span><span class="p">(</span><span class="nx">value</span><span class="p">),</span>
+</span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="w">        </span><span class="nx">retailPrice</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">costPrice</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span>
+</span><span id="__span-10-27"><a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="w">    </span><span class="p">);</span>
+</span><span id="__span-10-28"><a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="w">    </span><span class="nx">receiptitem</span><span class="p">.</span><span class="nx">merch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</span><span id="__span-10-29"><a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="w">    </span><span class="nx">receiptitem</span><span class="p">.</span><span class="nx">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Shipping Insurance&quot;</span><span class="p">;</span>
+</span><span id="__span-10-30"><a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a><span class="w">    </span><span class="nx">receiptitem</span><span class="p">.</span><span class="nx">barcode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">trackingNumber</span><span class="p">;</span>
+</span><span id="__span-10-31"><a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a><span class="w">    </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">addReceiptItem</span><span class="p">(</span><span class="nx">receiptitem</span><span class="p">);</span>
+</span><span id="__span-10-32"><a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a><span class="p">}</span>
+</span><span id="__span-10-33"><a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a>
+</span><span id="__span-10-34"><a id="__codelineno-10-34" name="__codelineno-10-34" href="#__codelineno-10-34"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">registerInsuranceProvider</span><span class="p">(</span>
+</span><span id="__span-10-35"><a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a><span class="w">     </span><span class="s2">&quot;sampleproviderid&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Sample Insurance&quot;</span><span class="p">,</span>
+</span><span id="__span-10-36"><a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a><span class="w">     </span><span class="s2">&quot;Insurance coverage from Sample Insurance. $1 per $100 of value.&quot;</span><span class="p">,</span>
+</span><span id="__span-10-37"><a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a><span class="w">     </span><span class="mf">5000</span><span class="p">,</span><span class="w"> </span><span class="nx">getQuote</span><span class="p">,</span><span class="w"> </span><span class="nx">insure</span><span class="p">);</span>
 </span></code></pre></div>
 <a name="shipping.getParcel"></a></p>
 <h3 id="shippinggetparcel-package">shipping.getParcel() ⇒ <code>Package</code></h3>
