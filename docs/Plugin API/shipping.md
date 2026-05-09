@@ -14,13 +14,14 @@ Add custom carrier and rates, and adjust markup.
     * [.getPackagingByID(id)](#shipping.getPackagingByID) ⇒ <code>Promise.&lt;Object&gt;</code>
     * [.getRetailPriceWithMarkup(cost, retail, carrier, service, weightOz, packaging)](#shipping.getRetailPriceWithMarkup) ⇒ <code>Promise.&lt;number&gt;</code>
     * [.convertMeteredToRetail(rate_price)](#shipping.convertMeteredToRetail) ⇒ <code>number</code>
-    * [.getLabelDate([carrier])](#shipping.getLabelDate) ⇒ <code>Date</code>
+    * [.getLabelDate([carrier])](#shipping.getLabelDate) ⇒ <code>Promise.&lt;Date&gt;</code>
     * [.getCarrierName(carrierId)](#shipping.getCarrierName) ⇒ <code>string</code>
     * [.getServiceName(serviceId, [carrier], [stripInternational])](#shipping.getServiceName) ⇒ <code>string</code>
     * [.registerRateEndpoint(getRates, purchase, idPrefix, [extraOptions])](#shipping.registerRateEndpoint)
     * [.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)](#shipping.registerStampEndpoint)
     * [.addRateWarning(message)](#shipping.addRateWarning)
     * [.registerAddressVerificationProvider(id, name, verifyFn)](#shipping.registerAddressVerificationProvider)
+    * [.registerCarrierPickupMenu(carrierName, displayName)](#shipping.registerCarrierPickupMenu) ⇒ <code>undefined</code>
     * [.registerMarkupCalculator(markupFn)](#shipping.registerMarkupCalculator)
     * [.registerInsuranceProvider(id, name, cardText, maxValue, getQuote, insure)](#shipping.registerInsuranceProvider)
     * [.getParcel()](#shipping.getParcel) ⇒ <code>Package</code>
@@ -157,7 +158,7 @@ adding the difference based on the current USPS Notice 123 rate chart.
 
 <a name="shipping.getLabelDate"></a>
 
-### shipping.getLabelDate([carrier]) ⇒ <code>Date</code>
+### shipping.getLabelDate([carrier]) ⇒ <code>Promise.&lt;Date&gt;</code>
 Get the date to use for a label's ship date, based on the next carrier pickup.
 If no date is found for the next pickup, defaults to the current date and time.
 
@@ -342,6 +343,19 @@ registerAddressVerificationProvider("example", "Example", async function (addres
     }
 });
 ```
+<a name="shipping.registerCarrierPickupMenu"></a>
+
+### shipping.registerCarrierPickupMenu(carrierName, displayName) ⇒ <code>undefined</code>
+Add an entry to the Carrier Pickup tool for setting the next pickup date
+for your specific carrier/plugin. Used with `getLabelDate`.
+
+**Kind**: static method of [<code>shipping</code>](#shipping)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| carrierName | <code>string</code> | Carrier name. Pass to `getLabelDate` to get the next pickup date as selected by the user (or auto-incremented). |
+| displayName | <code>string</code> \| <code>null</code> | Optional different name to show in the tool. |
+
 <a name="shipping.registerMarkupCalculator"></a>
 
 ### shipping.registerMarkupCalculator(markupFn)
