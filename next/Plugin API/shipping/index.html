@@ -1449,10 +1449,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#shippinggetlabeldatecarrier-date" class="md-nav__link">
+  <a href="#shippinggetlabeldatecarrier-promisedate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        shipping.getLabelDate([carrier]) ⇒ Date
+        shipping.getLabelDate([carrier]) ⇒ Promise.&lt;Date&gt;
       
     </span>
   </a>
@@ -1519,6 +1519,17 @@
     <span class="md-ellipsis">
       
         shipping.registerAddressVerificationProvider(id, name, verifyFn)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingregistercarrierpickupmenucarriername-displayname-undefined" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.registerCarrierPickupMenu(carrierName, displayName) ⇒ undefined
       
     </span>
   </a>
@@ -1850,10 +1861,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#shippinggetlabeldatecarrier-date" class="md-nav__link">
+  <a href="#shippinggetlabeldatecarrier-promisedate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        shipping.getLabelDate([carrier]) ⇒ Date
+        shipping.getLabelDate([carrier]) ⇒ Promise.&lt;Date&gt;
       
     </span>
   </a>
@@ -1920,6 +1931,17 @@
     <span class="md-ellipsis">
       
         shipping.registerAddressVerificationProvider(id, name, verifyFn)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingregistercarrierpickupmenucarriername-displayname-undefined" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.registerCarrierPickupMenu(carrierName, displayName) ⇒ undefined
       
     </span>
   </a>
@@ -2023,13 +2045,14 @@
 <li><a href="#shipping.getPackagingByID">.getPackagingByID(id)</a> ⇒ <code>Promise.&lt;Object&gt;</code></li>
 <li><a href="#shipping.getRetailPriceWithMarkup">.getRetailPriceWithMarkup(cost, retail, carrier, service, weightOz, packaging)</a> ⇒ <code>Promise.&lt;number&gt;</code></li>
 <li><a href="#shipping.convertMeteredToRetail">.convertMeteredToRetail(rate_price)</a> ⇒ <code>number</code></li>
-<li><a href="#shipping.getLabelDate">.getLabelDate([carrier])</a> ⇒ <code>Date</code></li>
+<li><a href="#shipping.getLabelDate">.getLabelDate([carrier])</a> ⇒ <code>Promise.&lt;Date&gt;</code></li>
 <li><a href="#shipping.getCarrierName">.getCarrierName(carrierId)</a> ⇒ <code>string</code></li>
 <li><a href="#shipping.getServiceName">.getServiceName(serviceId, [carrier], [stripInternational])</a> ⇒ <code>string</code></li>
 <li><a href="#shipping.registerRateEndpoint">.registerRateEndpoint(getRates, purchase, idPrefix, [extraOptions])</a></li>
 <li><a href="#shipping.registerStampEndpoint">.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)</a></li>
 <li><a href="#shipping.addRateWarning">.addRateWarning(message)</a></li>
 <li><a href="#shipping.registerAddressVerificationProvider">.registerAddressVerificationProvider(id, name, verifyFn)</a></li>
+<li><a href="#shipping.registerCarrierPickupMenu">.registerCarrierPickupMenu(carrierName, displayName)</a> ⇒ <code>undefined</code></li>
 <li><a href="#shipping.registerMarkupCalculator">.registerMarkupCalculator(markupFn)</a></li>
 <li><a href="#shipping.registerInsuranceProvider">.registerInsuranceProvider(id, name, cardText, maxValue, getQuote, insure)</a></li>
 <li><a href="#shipping.getParcel">.getParcel()</a> ⇒ <code>Package</code></li>
@@ -2218,7 +2241,7 @@ adding the difference based on the current USPS Notice 123 rate chart.</p>
 </tbody>
 </table>
 <p><a name="shipping.getLabelDate"></a></p>
-<h3 id="shippinggetlabeldatecarrier-date">shipping.getLabelDate([carrier]) ⇒ <code>Date</code></h3>
+<h3 id="shippinggetlabeldatecarrier-promisedate">shipping.getLabelDate([carrier]) ⇒ <code>Promise.&lt;Date&gt;</code></h3>
 <p>Get the date to use for a label's ship date, based on the next carrier pickup.
 If no date is found for the next pickup, defaults to the current date and time.</p>
 <p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
@@ -2515,7 +2538,33 @@ The verified addresses will be passed on to rate provider plugins.</p>
 </span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="p">});</span>
 </span></code></pre></div>
-<a name="shipping.registerMarkupCalculator"></a></p>
+<a name="shipping.registerCarrierPickupMenu"></a></p>
+<h3 id="shippingregistercarrierpickupmenucarriername-displayname-undefined">shipping.registerCarrierPickupMenu(carrierName, displayName) ⇒ <code>undefined</code></h3>
+<p>Add an entry to the Carrier Pickup tool for setting the next pickup date
+for your specific carrier/plugin. Used with <code>getLabelDate</code>.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>carrierName</td>
+<td><code>string</code></td>
+<td>Carrier name. Pass to <code>getLabelDate</code> to get the next pickup date as selected by the user (or auto-incremented).</td>
+</tr>
+<tr>
+<td>displayName</td>
+<td><code>string</code> | <code>null</code></td>
+<td>Optional different name to show in the tool.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.registerMarkupCalculator"></a></p>
 <h3 id="shippingregistermarkupcalculatormarkupfn">shipping.registerMarkupCalculator(markupFn)</h3>
 <p>Register the plugin to modify PostalPoint's shipping markup calculation during shipment rating.</p>
 <p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
