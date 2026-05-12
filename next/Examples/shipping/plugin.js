@@ -125,5 +125,5 @@ async function voidLabel(id) {
     
     // Do refund/void here
     
-    return "Action status message"; // 
+    return "Action status message"; // Message shown to user in a dialog box
 }
