@@ -229,7 +229,7 @@ Register the plugin as a shipping rate and label provider.  See the Shipping exa
 {
     label: labelImageToPrint,
     labeltype: "PNG",
-    receiptItem: ReceiptItem,
+    receiptItem: ReceiptItem, // Data to add to the transaction receipt.
     tracking: "12345678901234567890",
     cost: 10.0,
     price: 15.0,
@@ -237,7 +237,10 @@ Register the plugin as a shipping rate and label provider.  See the Shipping exa
     service: "Service Name",
     delivery_days: 3,
     delivery_date: 1234567890, // UNIX timestamp
-    to: toAddressLines // Array of strings
+    to_address: new global.apis.shipping.Address(),
+    from_address: new global.apis.shipping.Address(),
+    plugin_sourceid: "", // Unique string for your plugin; saved alongside shipment in store database to allow queries to filter shipments by source.
+    metadata: {} // Object containing extra data to be stored in the database. Serialized to JSON.
 }
 ```
 **Example**  

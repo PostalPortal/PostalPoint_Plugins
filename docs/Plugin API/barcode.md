@@ -8,7 +8,7 @@ Handle tracking barcodes
 * [barcode](#barcode) : <code>object</code>
     * [.TrackingBarcode](#barcode.TrackingBarcode)
         * [new TrackingBarcode(code)](#new_barcode.TrackingBarcode_new)
-    * [.addPrepaidBarcode(trackingBarcodeData)](#barcode.addPrepaidBarcode)
+    * [.addPrepaidBarcode(trackingBarcodeData)](#barcode.addPrepaidBarcode) ⇒ <code>Promise</code>
     * [.inject(barcodeData)](#barcode.inject)
     * [.onPrepaidScan(f)](#barcode.onPrepaidScan)
     * [.registerDropOffCarrierScanHandler(carrier, fn)](#barcode.registerDropOffCarrierScanHandler)
@@ -51,7 +51,7 @@ A Tracking barcode object.
 
 <a name="barcode.addPrepaidBarcode"></a>
 
-### barcode.addPrepaidBarcode(trackingBarcodeData)
+### barcode.addPrepaidBarcode(trackingBarcodeData) ⇒ <code>Promise</code>
 Add a TrackingBarcode object to the transaction receipt at any time other than `onPrepaidScan`.
 
 **Kind**: static method of [<code>barcode</code>](#barcode)  
