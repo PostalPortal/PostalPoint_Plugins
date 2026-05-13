@@ -1559,6 +1559,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#shippinggetrecentshipmentsplugin_sourceid-sincedate-includevoided-promisearray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getRecentShipments(plugin_sourceid, sinceDate, includeVoided) ⇒ Promise.&lt;Array&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingmarkshipmentvoidshipmentid-voided-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.markShipmentVoid(shipmentid, voided) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#shippinggetparcel-package" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1971,6 +1993,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#shippinggetrecentshipmentsplugin_sourceid-sincedate-includevoided-promisearray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getRecentShipments(plugin_sourceid, sinceDate, includeVoided) ⇒ Promise.&lt;Array&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingmarkshipmentvoidshipmentid-voided-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.markShipmentVoid(shipmentid, voided) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#shippinggetparcel-package" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2055,6 +2099,8 @@
 <li><a href="#shipping.registerCarrierPickupMenu">.registerCarrierPickupMenu(carrierName, displayName)</a> ⇒ <code>undefined</code></li>
 <li><a href="#shipping.registerMarkupCalculator">.registerMarkupCalculator(markupFn)</a></li>
 <li><a href="#shipping.registerInsuranceProvider">.registerInsuranceProvider(id, name, cardText, maxValue, getQuote, insure)</a></li>
+<li><a href="#shipping.getRecentShipments">.getRecentShipments(plugin_sourceid, sinceDate, includeVoided)</a> ⇒ <code>Promise.&lt;Array&gt;</code></li>
+<li><a href="#shipping.markShipmentVoid">.markShipmentVoid(shipmentid, voided)</a> ⇒ <code>Promise</code></li>
 <li><a href="#shipping.getParcel">.getParcel()</a> ⇒ <code>Package</code></li>
 <li><a href="#shipping.setParcel">.setParcel(newParcel, parcelChangeEventSource)</a></li>
 <li><a href="#shipping.isOfficeMode">.isOfficeMode()</a> ⇒ <code>boolean</code></li>
@@ -2398,22 +2444,26 @@ If no date is found for the next pickup, defaults to the current date and time.<
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">[</span>
 </span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">            </span><span class="p">{</span>
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">                </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">idPrefix</span><span class="si">}</span><span class="sb">_</span><span class="si">${</span><span class="nx">yourShipmentID</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">                </span><span class="nx">refund_status</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// false to show a refund/void button, otherwise a short string to show such as &quot;Refunded&quot; or &quot;Refund processing&quot; or &quot;Refund rejected&quot;</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">                </span><span class="nx">tracking</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Shipment tracking number or an empty string if it has no tracking.</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">                </span><span class="nx">label_urls</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="c1">// Array of URLs to download the label image(s) from if the user requests a reprint.</span>
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">                </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">Address</span><span class="p">(),</span><span class="w"> </span><span class="c1">// Destination/to address.</span>
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">                </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">Address</span><span class="p">(),</span><span class="w"> </span><span class="c1">// Return/from address.</span>
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">                </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">getCarrierName</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span><span class="w"> </span><span class="c1">// Carrier name</span>
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">                </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">getServiceName</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// Shipping service</span>
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">            </span><span class="p">}</span>
-</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">        </span><span class="p">]</span>
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">    </span><span class="nx">voidLabel</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">        </span><span class="c1">// Try to void a label with the ID provided (an `id` returned in getRecentLabels)</span>
-</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">        </span><span class="c1">// Returns a status string that&#39;s displayed to the user in a dialog box, such as &quot;Label refunded.&quot; or &quot;Refund request submitted.&quot; or &quot;Refund request rejected.&quot;</span>
-</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Void request status message goes here&quot;</span><span class="p">;</span>
-</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="p">}</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">                </span><span class="nx">created</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span><span class="w"> </span><span class="c1">// Date object of the label/shipment date. Used for ordering the list.</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">                </span><span class="nx">refund_status</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// false to show a refund/void button, otherwise a short string to show such as &quot;Refunded&quot; or &quot;Refund processing&quot; or &quot;Refund rejected&quot;</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">                </span><span class="nx">tracking</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Shipment tracking number or an empty string if it has no tracking.</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">                </span><span class="nx">label_urls</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="c1">// Array of URLs to download the label image(s) from if the user requests a reprint.</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">                </span><span class="c1">//                 If empty or not an array, the reprint button is disabled.</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">                </span><span class="c1">//                 May also be a function that returns a Promise that resolves to the described array.</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">                </span><span class="c1">//                 If this is a function, it&#39;s passed this label object as an argument.</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">                </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">Address</span><span class="p">(),</span><span class="w"> </span><span class="c1">// Destination/to address.</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">                </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">Address</span><span class="p">(),</span><span class="w"> </span><span class="c1">// Return/from address.</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">                </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">getCarrierName</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span><span class="w"> </span><span class="c1">// Carrier name</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">                </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">getServiceName</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// Shipping service</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">    </span><span class="nx">voidLabel</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">        </span><span class="c1">// Try to void a label with the ID provided (an `id` returned in getRecentLabels)</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">        </span><span class="c1">// Returns a status string that&#39;s displayed to the user in a dialog box, such as &quot;Label refunded.&quot; or &quot;Refund request submitted.&quot; or &quot;Refund request rejected.&quot;</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Void request status message goes here&quot;</span><span class="p">;</span>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="p">}</span>
 </span></code></pre></div>
 <a name="shipping.registerStampEndpoint"></a></p>
 <h3 id="shippingregisterstampendpointid-name-getrates-purchase-purchasecorrection">shipping.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)</h3>
@@ -2708,7 +2758,87 @@ any subsequent attempts to register will throw an Error.</li>
 </span><span id="__span-10-36"><a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a><span class="w">     </span><span class="s2">&quot;Insurance coverage from Sample Insurance. $1 per $100 of value.&quot;</span><span class="p">,</span>
 </span><span id="__span-10-37"><a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a><span class="w">     </span><span class="mf">5000</span><span class="p">,</span><span class="w"> </span><span class="nx">getQuote</span><span class="p">,</span><span class="w"> </span><span class="nx">insure</span><span class="p">);</span>
 </span></code></pre></div>
-<a name="shipping.getParcel"></a></p>
+<a name="shipping.getRecentShipments"></a></p>
+<h3 id="shippinggetrecentshipmentsplugin_sourceid-sincedate-includevoided-promisearray">shipping.getRecentShipments(plugin_sourceid, sinceDate, includeVoided) ⇒ <code>Promise.&lt;Array&gt;</code></h3>
+<p>Get recent shipments for a plugin_sourceid.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
+<strong>Returns</strong>: <code>Promise.&lt;Array&gt;</code> - List of shipments. See example.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin_sourceid</td>
+<td><code>string</code></td>
+<td></td>
+<td>See data returned from the purchase function of <code>registerRateEndpoint</code></td>
+</tr>
+<tr>
+<td>sinceDate</td>
+<td><code>Date</code> | <code>null</code></td>
+<td><code></code></td>
+<td>Get shipments created after this Date object. If not set, returns all shipments from the past 7 days.</td>
+</tr>
+<tr>
+<td>includeVoided</td>
+<td><code>Boolean</code></td>
+<td><code>false</code></td>
+<td>If true, response includes voided shipments.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">// Sample result from this function:</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1">// All fields except `id` and `created` might be null.</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">{</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span><span class="w"> </span><span class="c1">// Internal database ID for shipment</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="nx">customeruuid</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Customer UUID string</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="nx">prepaid</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// True if a prepaid drop-off</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="nx">voided</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// True if label marked as voided</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="nx">tracking</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Tracking number</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="nx">created</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">    </span><span class="nx">metadata</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="c1">// Whatever was returned by the purchase function that created the shipment. Stored internally as a JSON string and parsed before returning. If JSON can&#39;t be parsed, is set to null.</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">    </span><span class="nx">to_address</span><span class="o">:</span><span class="w"> </span><span class="nx">Address</span><span class="p">,</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">    </span><span class="nx">from_address</span><span class="o">:</span><span class="w"> </span><span class="nx">Address</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="p">}</span>
+</span></code></pre></div>
+<a name="shipping.markShipmentVoid"></a></p>
+<h3 id="shippingmarkshipmentvoidshipmentid-voided-promise">shipping.markShipmentVoid(shipmentid, voided) ⇒ <code>Promise</code></h3>
+<p>Mark a shipment as voided in the database.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shipmentid</td>
+<td><code>Integer</code></td>
+<td></td>
+<td>The internal database ID for the shipment, returned in getRecentShipments</td>
+</tr>
+<tr>
+<td>voided</td>
+<td><code>Boolean</code></td>
+<td><code>true</code></td>
+<td>Set to false to un-void a previously voided shipment.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.getParcel"></a></p>
 <h3 id="shippinggetparcel-package">shipping.getParcel() ⇒ <code>Package</code></h3>
 <p>Get the current in-progress shipment's data.</p>
 <p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
