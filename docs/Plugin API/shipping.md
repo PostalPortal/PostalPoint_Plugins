@@ -24,6 +24,8 @@ Add custom carrier and rates, and adjust markup.
     * [.registerCarrierPickupMenu(carrierName, displayName)](#shipping.registerCarrierPickupMenu) ⇒ <code>undefined</code>
     * [.registerMarkupCalculator(markupFn)](#shipping.registerMarkupCalculator)
     * [.registerInsuranceProvider(id, name, cardText, maxValue, getQuote, insure)](#shipping.registerInsuranceProvider)
+    * [.getRecentShipments(plugin_sourceid, sinceDate, includeVoided)](#shipping.getRecentShipments) ⇒ <code>Promise.&lt;Array&gt;</code>
+    * [.markShipmentVoid(shipmentid, voided)](#shipping.markShipmentVoid) ⇒ <code>Promise</code>
     * [.getParcel()](#shipping.getParcel) ⇒ <code>Package</code>
     * [.setParcel(newParcel, parcelChangeEventSource)](#shipping.setParcel)
     * [.isOfficeMode()](#shipping.isOfficeMode) ⇒ <code>boolean</code>
@@ -252,9 +254,13 @@ extraOptions = {
         return [
             {
                 id: `${idPrefix}_${yourShipmentID}`,
+                created: Date, // Date object of the label/shipment date. Used for ordering the list.
                 refund_status: false, // false to show a refund/void button, otherwise a short string to show such as "Refunded" or "Refund processing" or "Refund rejected"
                 tracking: "", // Shipment tracking number or an empty string if it has no tracking.
                 label_urls: [], // Array of URLs to download the label image(s) from if the user requests a reprint.
+                //                 If empty or not an array, the reprint button is disabled.
+                //                 May also be a function that returns a Promise that resolves to the described array.
+                //                 If this is a function, it's passed this label object as an argument.
                 to: new global.apis.shipping.Address(), // Destination/to address.
                 from: new global.apis.shipping.Address(), // Return/from address.
                 carrier: global.apis.shipping.getCarrierName(""), // Carrier name
@@ -464,6 +470,50 @@ global.apis.shipping.registerInsuranceProvider(
      "Insurance coverage from Sample Insurance. $1 per $100 of value.",
      5000, getQuote, insure);
 ```
+<a name="shipping.getRecentShipments"></a>
+
+### shipping.getRecentShipments(plugin_sourceid, sinceDate, includeVoided) ⇒ <code>Promise.&lt;Array&gt;</code>
+Get recent shipments for a plugin_sourceid.
+
+**Kind**: static method of [<code>shipping</code>](#shipping)  
+**Returns**: <code>Promise.&lt;Array&gt;</code> - List of shipments. See example.  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| plugin_sourceid | <code>string</code> |  | See data returned from the purchase function of `registerRateEndpoint` |
+| sinceDate | <code>Date</code> \| <code>null</code> | <code></code> | Get shipments created after this Date object. If not set, returns all shipments from the past 7 days. |
+| includeVoided | <code>Boolean</code> | <code>false</code> | If true, response includes voided shipments. |
+
+**Example**  
+```js
+// Sample result from this function:
+// All fields except `id` and `created` might be null.
+{
+    id: 123, // Internal database ID for shipment
+    customeruuid: "string", // Customer UUID string
+    prepaid: false, // True if a prepaid drop-off
+    voided: false, // True if label marked as voided
+    tracking: "string", // Tracking number
+    carrier: "string",
+    service: "string",
+    created: Date,
+    metadata: {}, // Whatever was returned by the purchase function that created the shipment. Stored internally as a JSON string and parsed before returning. If JSON can't be parsed, is set to null.
+    to_address: Address,
+    from_address: Address
+}
+```
+<a name="shipping.markShipmentVoid"></a>
+
+### shipping.markShipmentVoid(shipmentid, voided) ⇒ <code>Promise</code>
+Mark a shipment as voided in the database.
+
+**Kind**: static method of [<code>shipping</code>](#shipping)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| shipmentid | <code>Integer</code> |  | The internal database ID for the shipment, returned in getRecentShipments |
+| voided | <code>Boolean</code> | <code>true</code> | Set to false to un-void a previously voided shipment. |
+
 <a name="shipping.getParcel"></a>
 
 ### shipping.getParcel() ⇒ <code>Package</code>
