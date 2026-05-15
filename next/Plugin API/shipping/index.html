@@ -1482,6 +1482,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#shippinggetcustomsformimagesparcel-incoterm-trackingnumber-invoicenumber-date-promisearrayjimp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getCustomsFormImages(parcel, incoterm, trackingNumber, invoiceNumber, date) ⇒ Promise.&lt;Array.&lt;Jimp&gt;&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#shippingregisterrateendpointgetrates-purchase-idprefix-extraoptions" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1916,6 +1927,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#shippinggetcustomsformimagesparcel-incoterm-trackingnumber-invoicenumber-date-promisearrayjimp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getCustomsFormImages(parcel, incoterm, trackingNumber, invoiceNumber, date) ⇒ Promise.&lt;Array.&lt;Jimp&gt;&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#shippingregisterrateendpointgetrates-purchase-idprefix-extraoptions" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2092,6 +2114,7 @@
 <li><a href="#shipping.getLabelDate">.getLabelDate([carrier])</a> ⇒ <code>Promise.&lt;Date&gt;</code></li>
 <li><a href="#shipping.getCarrierName">.getCarrierName(carrierId)</a> ⇒ <code>string</code></li>
 <li><a href="#shipping.getServiceName">.getServiceName(serviceId, [carrier], [stripInternational])</a> ⇒ <code>string</code></li>
+<li><a href="#shipping.getCustomsFormImages">.getCustomsFormImages(parcel, incoterm, trackingNumber, invoiceNumber, date)</a> ⇒ <code>Promise.&lt;Array.&lt;Jimp&gt;&gt;</code></li>
 <li><a href="#shipping.registerRateEndpoint">.registerRateEndpoint(getRates, purchase, idPrefix, [extraOptions])</a></li>
 <li><a href="#shipping.registerStampEndpoint">.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)</a></li>
 <li><a href="#shipping.addRateWarning">.addRateWarning(message)</a></li>
@@ -2358,6 +2381,56 @@ If no date is found for the next pickup, defaults to the current date and time.<
 <td><code>boolean</code></td>
 <td><code>false</code></td>
 <td>If true, remove "International" from the service name. For example, "Priority Mail International" becomes "Priority Mail", to allow matching a domestic USPS service with the international version of that service.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.getCustomsFormImages"></a></p>
+<h3 id="shippinggetcustomsformimagesparcel-incoterm-trackingnumber-invoicenumber-date-promisearrayjimp">shipping.getCustomsFormImages(parcel, incoterm, trackingNumber, invoiceNumber, date) ⇒ <code>Promise.&lt;Array.&lt;Jimp&gt;&gt;</code></h3>
+<p>Generate a 4x6 inch customs form/commercial invoice for printing on a label printer.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
+<strong>Returns</strong>: <code>Promise.&lt;Array.&lt;Jimp&gt;&gt;</code> - an array of Jimp image objects.
+Can be sent as-is to the label printer functions. Each array element is a page of the form.
+Normally one page is returned, but additional "overflow" pages are added if there isn't room to list
+all the package contents on one page.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>parcel</td>
+<td><code>Object</code></td>
+<td></td>
+<td>A Package object to pull customs data from.</td>
+</tr>
+<tr>
+<td>incoterm</td>
+<td><code>string</code></td>
+<td><code>&quot;\&quot;DDU\&quot;&quot;</code></td>
+<td>Incoterm.</td>
+</tr>
+<tr>
+<td>trackingNumber</td>
+<td><code>string</code></td>
+<td><code>&quot;\&quot;\&quot;&quot;</code></td>
+<td>The tracking number for the shipment.</td>
+</tr>
+<tr>
+<td>invoiceNumber</td>
+<td><code>string</code></td>
+<td><code>&quot;\&quot;\&quot;&quot;</code></td>
+<td>The commercial invoice number for the shipment.</td>
+</tr>
+<tr>
+<td>date</td>
+<td><code>Date</code></td>
+<td></td>
+<td>Invoice/form date. If undefined, the current date is assumed.</td>
 </tr>
 </tbody>
 </table>
