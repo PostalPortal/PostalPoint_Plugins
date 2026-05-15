@@ -17,6 +17,7 @@ Add custom carrier and rates, and adjust markup.
     * [.getLabelDate([carrier])](#shipping.getLabelDate) ⇒ <code>Promise.&lt;Date&gt;</code>
     * [.getCarrierName(carrierId)](#shipping.getCarrierName) ⇒ <code>string</code>
     * [.getServiceName(serviceId, [carrier], [stripInternational])](#shipping.getServiceName) ⇒ <code>string</code>
+    * [.getCustomsFormImages(parcel, incoterm, trackingNumber, invoiceNumber, date)](#shipping.getCustomsFormImages) ⇒ <code>Promise.&lt;Array.&lt;Jimp&gt;&gt;</code>
     * [.registerRateEndpoint(getRates, purchase, idPrefix, [extraOptions])](#shipping.registerRateEndpoint)
     * [.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)](#shipping.registerStampEndpoint)
     * [.addRateWarning(message)](#shipping.addRateWarning)
@@ -193,6 +194,25 @@ Converts the service ID string into a consistent and human-readable name. Set th
 | serviceId | <code>string</code> |  |  |
 | [carrier] | <code>string</code> | <code>&quot;\&quot;USPS\&quot;&quot;</code> | Carrier ID or name (i.e. the string sent to or received from `getCarrierName()`) |
 | [stripInternational] | <code>boolean</code> | <code>false</code> | If true, remove "International" from the service name. For example, "Priority Mail International" becomes "Priority Mail", to allow matching a domestic USPS service with the international version of that service. |
+
+<a name="shipping.getCustomsFormImages"></a>
+
+### shipping.getCustomsFormImages(parcel, incoterm, trackingNumber, invoiceNumber, date) ⇒ <code>Promise.&lt;Array.&lt;Jimp&gt;&gt;</code>
+Generate a 4x6 inch customs form/commercial invoice for printing on a label printer.
+
+**Kind**: static method of [<code>shipping</code>](#shipping)  
+**Returns**: <code>Promise.&lt;Array.&lt;Jimp&gt;&gt;</code> - an array of Jimp image objects.
+Can be sent as-is to the label printer functions. Each array element is a page of the form.
+Normally one page is returned, but additional "overflow" pages are added if there isn't room to list
+all the package contents on one page.  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| parcel | <code>Object</code> |  | A Package object to pull customs data from. |
+| incoterm | <code>string</code> | <code>&quot;\&quot;DDU\&quot;&quot;</code> | Incoterm. |
+| trackingNumber | <code>string</code> | <code>&quot;\&quot;\&quot;&quot;</code> | The tracking number for the shipment. |
+| invoiceNumber | <code>string</code> | <code>&quot;\&quot;\&quot;&quot;</code> | The commercial invoice number for the shipment. |
+| date | <code>Date</code> |  | Invoice/form date. If undefined, the current date is assumed. |
 
 <a name="shipping.registerRateEndpoint"></a>
 
