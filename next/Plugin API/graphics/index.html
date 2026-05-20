@@ -1119,10 +1119,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#graphicspdftoimagebuffer-width-height-autorotate-outputpagecount-array" class="md-nav__link">
+  <a href="#graphicspdftoimagebuffer-width-height-autorotate-outputpagecount-promisearray" class="md-nav__link">
     <span class="md-ellipsis">
       
-        graphics.pdfToImage(buffer, width, height, [autoRotate], [outputPageCount]) ⇒ Array
+        graphics.pdfToImage(buffer, width, height, [autoRotate], [outputPageCount]) ⇒ Promise.&lt;Array&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphicszpltoimagezpldata-widthmm-heightmm-dpmm-promisearray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        graphics.zplToImage(zplData, [widthMM], [heightMM], [dpmm]) ⇒ Promise.&lt;Array&gt;
       
     </span>
   </a>
@@ -1573,10 +1584,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#graphicspdftoimagebuffer-width-height-autorotate-outputpagecount-array" class="md-nav__link">
+  <a href="#graphicspdftoimagebuffer-width-height-autorotate-outputpagecount-promisearray" class="md-nav__link">
     <span class="md-ellipsis">
       
-        graphics.pdfToImage(buffer, width, height, [autoRotate], [outputPageCount]) ⇒ Array
+        graphics.pdfToImage(buffer, width, height, [autoRotate], [outputPageCount]) ⇒ Promise.&lt;Array&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphicszpltoimagezpldata-widthmm-heightmm-dpmm-promisearray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        graphics.zplToImage(zplData, [widthMM], [heightMM], [dpmm]) ⇒ Promise.&lt;Array&gt;
       
     </span>
   </a>
@@ -1615,7 +1637,8 @@
 <li><a href="#graphics">graphics</a> : <code>object</code><ul>
 <li><a href="#graphics.Jimp">.Jimp()</a> ⇒ <code>Jimp</code></li>
 <li><a href="#graphics.loadFont">.loadFont(filename)</a> ⇒ <code>Promise</code></li>
-<li><a href="#graphics.pdfToImage">.pdfToImage(buffer, width, height, [autoRotate], [outputPageCount])</a> ⇒ <code>Array</code></li>
+<li><a href="#graphics.pdfToImage">.pdfToImage(buffer, width, height, [autoRotate], [outputPageCount])</a> ⇒ <code>Promise.&lt;Array&gt;</code></li>
+<li><a href="#graphics.zplToImage">.zplToImage(zplData, [widthMM], [heightMM], [dpmm])</a> ⇒ <code>Promise.&lt;Array&gt;</code></li>
 </ul>
 </li>
 </ul>
@@ -1646,11 +1669,11 @@ which gets very confused about our JS environment and ends up crashing everythin
 </tbody>
 </table>
 <p><a name="graphics.pdfToImage"></a></p>
-<h3 id="graphicspdftoimagebuffer-width-height-autorotate-outputpagecount-array">graphics.pdfToImage(buffer, width, height, [autoRotate], [outputPageCount]) ⇒ <code>Array</code></h3>
+<h3 id="graphicspdftoimagebuffer-width-height-autorotate-outputpagecount-promisearray">graphics.pdfToImage(buffer, width, height, [autoRotate], [outputPageCount]) ⇒ <code>Promise.&lt;Array&gt;</code></h3>
 <p>Convert a PDF to an array of images with the specified width and height.
 Pages that aren't the same ratio as the specified width and height will be centered on the image.</p>
 <p><strong>Kind</strong>: static method of <a href="#graphics"><code>graphics</code></a><br />
-<strong>Returns</strong>: <code>Array</code> - Jimp image array, one image per page  </p>
+<strong>Returns</strong>: <code>Promise.&lt;Array&gt;</code> - Jimp image array, one image per page  </p>
 <table>
 <thead>
 <tr>
@@ -1690,6 +1713,48 @@ Pages that aren't the same ratio as the specified width and height will be cente
 <td><code>Number</code></td>
 <td><code>-1</code></td>
 <td>Only process the first N pages, or all if -1.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="graphics.zplToImage"></a></p>
+<h3 id="graphicszpltoimagezpldata-widthmm-heightmm-dpmm-promisearray">graphics.zplToImage(zplData, [widthMM], [heightMM], [dpmm]) ⇒ <code>Promise.&lt;Array&gt;</code></h3>
+<p>Convert a ZPL string to an array of images with the specified width and height.
+Supports ZPL data containing multiple labels; each label is rendered as its own image.</p>
+<p><strong>Kind</strong>: static method of <a href="#graphics"><code>graphics</code></a><br />
+<strong>Returns</strong>: <code>Promise.&lt;Array&gt;</code> - Jimp image array, one image per label.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zplData</td>
+<td><code>String</code></td>
+<td></td>
+<td>ZPL label data</td>
+</tr>
+<tr>
+<td>[widthMM]</td>
+<td><code>Number</code></td>
+<td><code>102</code></td>
+<td>Label width in millimeters.</td>
+</tr>
+<tr>
+<td>[heightMM]</td>
+<td><code>Number</code></td>
+<td><code>152</code></td>
+<td>Label height in millimeters.</td>
+</tr>
+<tr>
+<td>[dpmm]</td>
+<td><code>Number</code></td>
+<td><code>8</code></td>
+<td>Dots per millimeter. 8 is 200/203 DPI, 12 is 300 DPI. Supports passing 200, 203, or 300 as well; the correct DPMM value (8 or 12) will be used.</td>
 </tr>
 </tbody>
 </table>
