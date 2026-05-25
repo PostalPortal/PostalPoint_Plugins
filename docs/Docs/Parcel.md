@@ -68,23 +68,6 @@ class Package {
         this.useReturnAsOriginAddress = false;
     }
 
-    toPostalPortalShipment() {
-    }
-
-    /**
-     * Format as EasyPost shipment object
-     * @returns {Package.toEasyPostShipment.shipment}
-     */
-    async toEasyPostShipment() {
-    }
-
-    /**
-     * Format as Endicia shipment object
-     * @returns {Package.toSERAShipment.shipment}
-     */
-    async toSERAShipment() {
-    }
-
     toJSON() {
         return {
             prepaid: this.prepaid,
@@ -104,9 +87,10 @@ class Package {
     /**
      * Get a human-readable summary of size and options.
      * Does not include address data.
+     * @param {string} insuranceLanguage - Insured package description.  "ins": "Insured for", "dv": "Declared value", "": "Value" (default)
      * @returns {String}
      */
-    async toString() {
+    async toString(insuranceLanguage = "") {
     }
 
     /**
