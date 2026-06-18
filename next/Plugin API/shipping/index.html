@@ -1537,10 +1537,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#shippingregistercarrierpickupmenucarriername-displayname-undefined" class="md-nav__link">
+  <a href="#shippingregistercarrierpickupmenucarriername-displayname-onpickup-undefined" class="md-nav__link">
     <span class="md-ellipsis">
       
-        shipping.registerCarrierPickupMenu(carrierName, displayName) ⇒ undefined
+        shipping.registerCarrierPickupMenu(carrierName, displayName, onPickup) ⇒ undefined
       
     </span>
   </a>
@@ -1570,10 +1570,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#shippinggetrecentshipmentsplugin_sourceid-sincedate-includevoided-promisearray" class="md-nav__link">
+  <a href="#shippinggetrecentshipmentsplugin_sourceid-sincedate-includevoided-onlynotshipped-promisearray" class="md-nav__link">
     <span class="md-ellipsis">
       
-        shipping.getRecentShipments(plugin_sourceid, sinceDate, includeVoided) ⇒ Promise.&lt;Array&gt;
+        shipping.getRecentShipments(plugin_sourceid, sinceDate, includeVoided, onlyNotShipped) ⇒ Promise.&lt;Array&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingaddshipmenttodatabaseplugin_sourceid-prepaid-tracking-carrier-service-to_address-from_address-create_date-metadata-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.addShipmentToDatabase(plugin_sourceid, prepaid, tracking, carrier, service, to_address, from_address, create_date, metadata) ⇒ Promise
       
     </span>
   </a>
@@ -1585,6 +1596,17 @@
     <span class="md-ellipsis">
       
         shipping.markShipmentVoid(shipmentid, voided) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingmarkshipmentpickedupshipmentid-timestamp-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.markShipmentPickedUp(shipmentid, timestamp) ⇒ Promise
       
     </span>
   </a>
@@ -1993,10 +2015,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#shippingregistercarrierpickupmenucarriername-displayname-undefined" class="md-nav__link">
+  <a href="#shippingregistercarrierpickupmenucarriername-displayname-onpickup-undefined" class="md-nav__link">
     <span class="md-ellipsis">
       
-        shipping.registerCarrierPickupMenu(carrierName, displayName) ⇒ undefined
+        shipping.registerCarrierPickupMenu(carrierName, displayName, onPickup) ⇒ undefined
       
     </span>
   </a>
@@ -2026,10 +2048,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#shippinggetrecentshipmentsplugin_sourceid-sincedate-includevoided-promisearray" class="md-nav__link">
+  <a href="#shippinggetrecentshipmentsplugin_sourceid-sincedate-includevoided-onlynotshipped-promisearray" class="md-nav__link">
     <span class="md-ellipsis">
       
-        shipping.getRecentShipments(plugin_sourceid, sinceDate, includeVoided) ⇒ Promise.&lt;Array&gt;
+        shipping.getRecentShipments(plugin_sourceid, sinceDate, includeVoided, onlyNotShipped) ⇒ Promise.&lt;Array&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingaddshipmenttodatabaseplugin_sourceid-prepaid-tracking-carrier-service-to_address-from_address-create_date-metadata-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.addShipmentToDatabase(plugin_sourceid, prepaid, tracking, carrier, service, to_address, from_address, create_date, metadata) ⇒ Promise
       
     </span>
   </a>
@@ -2041,6 +2074,17 @@
     <span class="md-ellipsis">
       
         shipping.markShipmentVoid(shipmentid, voided) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingmarkshipmentpickedupshipmentid-timestamp-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.markShipmentPickedUp(shipmentid, timestamp) ⇒ Promise
       
     </span>
   </a>
@@ -2141,11 +2185,13 @@
 <li><a href="#shipping.registerStampEndpoint">.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)</a></li>
 <li><a href="#shipping.addRateWarning">.addRateWarning(message)</a></li>
 <li><a href="#shipping.registerAddressVerificationProvider">.registerAddressVerificationProvider(id, name, verifyFn)</a></li>
-<li><a href="#shipping.registerCarrierPickupMenu">.registerCarrierPickupMenu(carrierName, displayName)</a> ⇒ <code>undefined</code></li>
+<li><a href="#shipping.registerCarrierPickupMenu">.registerCarrierPickupMenu(carrierName, displayName, onPickup)</a> ⇒ <code>undefined</code></li>
 <li><a href="#shipping.registerMarkupCalculator">.registerMarkupCalculator(markupFn)</a></li>
 <li><a href="#shipping.registerInsuranceProvider">.registerInsuranceProvider(id, name, cardText, maxValue, getQuote, insure)</a></li>
-<li><a href="#shipping.getRecentShipments">.getRecentShipments(plugin_sourceid, sinceDate, includeVoided)</a> ⇒ <code>Promise.&lt;Array&gt;</code></li>
+<li><a href="#shipping.getRecentShipments">.getRecentShipments(plugin_sourceid, sinceDate, includeVoided, onlyNotShipped)</a> ⇒ <code>Promise.&lt;Array&gt;</code></li>
+<li><a href="#shipping.addShipmentToDatabase">.addShipmentToDatabase(plugin_sourceid, prepaid, tracking, carrier, service, to_address, from_address, create_date, metadata)</a> ⇒ <code>Promise</code></li>
 <li><a href="#shipping.markShipmentVoid">.markShipmentVoid(shipmentid, voided)</a> ⇒ <code>Promise</code></li>
+<li><a href="#shipping.markShipmentPickedUp">.markShipmentPickedUp(shipmentid, timestamp)</a> ⇒ <code>Promise</code></li>
 <li><a href="#shipping.getParcel">.getParcel()</a> ⇒ <code>Package</code></li>
 <li><a href="#shipping.setParcel">.setParcel(newParcel, parcelChangeEventSource)</a></li>
 <li><a href="#shipping.isOfficeMode">.isOfficeMode()</a> ⇒ <code>boolean</code></li>
@@ -2688,7 +2734,7 @@ The verified addresses will be passed on to rate provider plugins.</p>
 </span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="p">});</span>
 </span></code></pre></div>
 <a name="shipping.registerCarrierPickupMenu"></a></p>
-<h3 id="shippingregistercarrierpickupmenucarriername-displayname-undefined">shipping.registerCarrierPickupMenu(carrierName, displayName) ⇒ <code>undefined</code></h3>
+<h3 id="shippingregistercarrierpickupmenucarriername-displayname-onpickup-undefined">shipping.registerCarrierPickupMenu(carrierName, displayName, onPickup) ⇒ <code>undefined</code></h3>
 <p>Add an entry to the Carrier Pickup tool for setting the next pickup date
 for your specific carrier/plugin. Used with <code>getLabelDate</code>.</p>
 <p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
@@ -2710,6 +2756,11 @@ for your specific carrier/plugin. Used with <code>getLabelDate</code>.</p>
 <td>displayName</td>
 <td><code>string</code> | <code>null</code></td>
 <td>Optional different name to show in the tool.</td>
+</tr>
+<tr>
+<td>onPickup</td>
+<td><code>function</code> | <code>null</code></td>
+<td>Optional function to run when the user marks all packages for the carrier as picked up.</td>
 </tr>
 </tbody>
 </table>
@@ -2855,7 +2906,7 @@ any subsequent attempts to register will throw an Error.</li>
 </span><span id="__span-10-37"><a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a><span class="w">     </span><span class="mf">5000</span><span class="p">,</span><span class="w"> </span><span class="nx">getQuote</span><span class="p">,</span><span class="w"> </span><span class="nx">insure</span><span class="p">);</span>
 </span></code></pre></div>
 <a name="shipping.getRecentShipments"></a></p>
-<h3 id="shippinggetrecentshipmentsplugin_sourceid-sincedate-includevoided-promisearray">shipping.getRecentShipments(plugin_sourceid, sinceDate, includeVoided) ⇒ <code>Promise.&lt;Array&gt;</code></h3>
+<h3 id="shippinggetrecentshipmentsplugin_sourceid-sincedate-includevoided-onlynotshipped-promisearray">shipping.getRecentShipments(plugin_sourceid, sinceDate, includeVoided, onlyNotShipped) ⇒ <code>Promise.&lt;Array&gt;</code></h3>
 <p>Get recent shipments for a plugin_sourceid.</p>
 <p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
 <strong>Returns</strong>: <code>Promise.&lt;Array&gt;</code> - List of shipments. See example.  </p>
@@ -2887,6 +2938,12 @@ any subsequent attempts to register will throw an Error.</li>
 <td><code>false</code></td>
 <td>If true, response includes voided shipments.</td>
 </tr>
+<tr>
+<td>onlyNotShipped</td>
+<td><code>Boolean</code></td>
+<td><code>false</code></td>
+<td>If true, response only includes shipments without a recorded carrier pickup timestamp.</td>
+</tr>
 </tbody>
 </table>
 <p><strong>Example</strong><br />
@@ -2901,12 +2958,76 @@ any subsequent attempts to register will throw an Error.</li>
 </span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
 </span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
 </span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="nx">created</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span>
-</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">    </span><span class="nx">metadata</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="c1">// Whatever was returned by the purchase function that created the shipment. Stored internally as a JSON string and parsed before returning. If JSON can&#39;t be parsed, is set to null.</span>
-</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">    </span><span class="nx">to_address</span><span class="o">:</span><span class="w"> </span><span class="nx">Address</span><span class="p">,</span>
-</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">    </span><span class="nx">from_address</span><span class="o">:</span><span class="w"> </span><span class="nx">Address</span>
-</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="p">}</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">    </span><span class="nx">shipped</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span><span class="w"> </span><span class="c1">// Date and time the package was marked as picked up by the carrier.</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">    </span><span class="nx">metadata</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="c1">// Whatever was returned by the purchase function that created the shipment. Stored internally as a JSON string and parsed before returning. If JSON can&#39;t be parsed, is set to null.</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">    </span><span class="nx">to_address</span><span class="o">:</span><span class="w"> </span><span class="nx">Address</span><span class="p">,</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">    </span><span class="nx">from_address</span><span class="o">:</span><span class="w"> </span><span class="nx">Address</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="p">}</span>
 </span></code></pre></div>
-<a name="shipping.markShipmentVoid"></a></p>
+<a name="shipping.addShipmentToDatabase"></a></p>
+<h3 id="shippingaddshipmenttodatabaseplugin_sourceid-prepaid-tracking-carrier-service-to_address-from_address-create_date-metadata-promise">shipping.addShipmentToDatabase(plugin_sourceid, prepaid, tracking, carrier, service, to_address, from_address, create_date, metadata) ⇒ <code>Promise</code></h3>
+<p>Manually add a shipment record to the store database. This is done automatically when a label is purchased,
+and only needs to be done with this function if a shipment is created outside a normal PostalPoint workflow
+(such as, for example, when a shipment is created by a dropoff QR code handler that doesn't return prepaid drop-off shipment data)</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
+<strong>Returns</strong>: <code>Promise</code> - Result of the database query.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin_sourceid</td>
+<td><code>string</code></td>
+<td>Shipment plugin source ID. See getRecentShipments and registerRateEndpoint</td>
+</tr>
+<tr>
+<td>prepaid</td>
+<td><code>boolean</code></td>
+<td>If the shipment is a prepaid drop-off. Default is false.</td>
+</tr>
+<tr>
+<td>tracking</td>
+<td><code>string</code> | <code>null</code></td>
+<td>Tracking number.</td>
+</tr>
+<tr>
+<td>carrier</td>
+<td><code>string</code> | <code>null</code></td>
+<td>Carrier ID or name.</td>
+</tr>
+<tr>
+<td>service</td>
+<td><code>string</code> | <code>null</code></td>
+<td>Service ID or name.</td>
+</tr>
+<tr>
+<td>to_address</td>
+<td><code>Address</code> | <code>null</code></td>
+<td>An Address object for the destination address.</td>
+</tr>
+<tr>
+<td>from_address</td>
+<td><code>Address</code> | <code>null</code></td>
+<td>An Address object for the return/origin/customer address.</td>
+</tr>
+<tr>
+<td>create_date</td>
+<td><code>Date</code> | <code>number</code> | <code>null</code></td>
+<td>Date or UNIX timestamp when the shipment was created. Defaults to now if not set.</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td><code>Object</code> | <code>null</code></td>
+<td>An object for holding other data about a shipment. Will be serialized to JSON. If not an Object, will be saved as <code>{}</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.markShipmentVoid"></a></p>
 <h3 id="shippingmarkshipmentvoidshipmentid-voided-promise">shipping.markShipmentVoid(shipmentid, voided) ⇒ <code>Promise</code></h3>
 <p>Mark a shipment as voided in the database.</p>
 <p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
@@ -2931,6 +3052,34 @@ any subsequent attempts to register will throw an Error.</li>
 <td><code>Boolean</code></td>
 <td><code>true</code></td>
 <td>Set to false to un-void a previously voided shipment.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.markShipmentPickedUp"></a></p>
+<h3 id="shippingmarkshipmentpickedupshipmentid-timestamp-promise">shipping.markShipmentPickedUp(shipmentid, timestamp) ⇒ <code>Promise</code></h3>
+<p>Mark an outgoing shipment in the database as picked up by the carrier.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shipmentid</td>
+<td><code>Integer</code></td>
+<td></td>
+<td>The internal database ID for the shipment, returned in getRecentShipments</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td><code>Date</code> | <code>Integer</code> | <code>null</code></td>
+<td><code></code></td>
+<td>The Date or UNIX timestamp (in seconds) of the pickup. Defaults to the current date and time if not a Date or number.</td>
 </tr>
 </tbody>
 </table>
