@@ -1809,6 +1809,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#geographygetstatescountry-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        geography.getStates(country) ⇒ Array
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geographygetcitiescountry-state-zip-promisearray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        geography.getCities(country, state, zip) ⇒ Promise.&lt;Array&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geographygetstateisocodestate-country-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        geography.getStateISOCode(state, country) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2244,6 +2277,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#geographygetstatescountry-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        geography.getStates(country) ⇒ Array
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geographygetcitiescountry-state-zip-promisearray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        geography.getCities(country, state, zip) ⇒ Promise.&lt;Array&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geographygetstateisocodestate-country-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        geography.getStateISOCode(state, country) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2343,6 +2409,9 @@
 </li>
 <li><a href="#util.geography">.geography</a> : <code>object</code><ul>
 <li><a href="#util.geography.isoToCountryName">.isoToCountryName(iso)</a> ⇒ <code>string</code></li>
+<li><a href="#util.geography.getStates">.getStates(country)</a> ⇒ <code>Array</code></li>
+<li><a href="#util.geography.getCities">.getCities(country, state, zip)</a> ⇒ <code>Promise.&lt;Array&gt;</code></li>
+<li><a href="#util.geography.getStateISOCode">.getStateISOCode(state, country)</a> ⇒ <code>string</code></li>
 </ul>
 </li>
 <li><a href="#util.objectEquals">.objectEquals(a, b)</a> ⇒ <code>boolean</code></li>
@@ -2944,8 +3013,17 @@ Mostly compatible with the <a href="https://www.php.net/manual/en/datetime.forma
 </table>
 <p><a name="util.geography"></a></p>
 <h3 id="utilgeography-object">util.geography : <code>object</code></h3>
-<p><strong>Kind</strong>: static namespace of <a href="#util"><code>util</code></a><br />
-<a name="util.geography.isoToCountryName"></a></p>
+<p><strong>Kind</strong>: static namespace of <a href="#util"><code>util</code></a>  </p>
+<ul>
+<li><a href="#util.geography">.geography</a> : <code>object</code><ul>
+<li><a href="#util.geography.isoToCountryName">.isoToCountryName(iso)</a> ⇒ <code>string</code></li>
+<li><a href="#util.geography.getStates">.getStates(country)</a> ⇒ <code>Array</code></li>
+<li><a href="#util.geography.getCities">.getCities(country, state, zip)</a> ⇒ <code>Promise.&lt;Array&gt;</code></li>
+<li><a href="#util.geography.getStateISOCode">.getStateISOCode(state, country)</a> ⇒ <code>string</code></li>
+</ul>
+</li>
+</ul>
+<p><a name="util.geography.isoToCountryName"></a></p>
 <h4 id="geographyisotocountrynameiso-string">geography.isoToCountryName(iso) ⇒ <code>string</code></h4>
 <p>Get a human-readable country name from an ISO country code.</p>
 <p><strong>Kind</strong>: static method of <a href="#util.geography"><code>geography</code></a>  </p>
@@ -2962,6 +3040,86 @@ Mostly compatible with the <a href="https://www.php.net/manual/en/datetime.forma
 <td>iso</td>
 <td><code>string</code> | <code>number</code></td>
 <td>2 or 3 letter country code, or numeric country code.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.geography.getStates"></a></p>
+<h4 id="geographygetstatescountry-array">geography.getStates(country) ⇒ <code>Array</code></h4>
+<p>Get a list of states/regions for a country, both names and ISO codes (may be numeric, see Japan)</p>
+<p><strong>Kind</strong>: static method of <a href="#util.geography"><code>geography</code></a><br />
+<strong>Returns</strong>: <code>Array</code> - - [{code: "MT", name: "Montana"}]  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>country</td>
+<td><code>string</code></td>
+<td>2 letter country code</td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.geography.getCities"></a></p>
+<h4 id="geographygetcitiescountry-state-zip-promisearray">geography.getCities(country, state, zip) ⇒ <code>Promise.&lt;Array&gt;</code></h4>
+<p>Get a list of cities/sub-regions for a country and state.</p>
+<p><strong>Kind</strong>: static method of <a href="#util.geography"><code>geography</code></a><br />
+<strong>Returns</strong>: <code>Promise.&lt;Array&gt;</code> - - [{code: "XX", name: "Sub Region Name"}] or [{code: "City Name", name: "City Name"}]  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>country</td>
+<td><code>string</code></td>
+<td>2 letter country code</td>
+</tr>
+<tr>
+<td>state</td>
+<td><code>string</code></td>
+<td>state code</td>
+</tr>
+<tr>
+<td>zip</td>
+<td><code>string</code></td>
+<td>postal code (optional, but enables returning results for many more countries)</td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.geography.getStateISOCode"></a></p>
+<h4 id="geographygetstateisocodestate-country-string">geography.getStateISOCode(state, country) ⇒ <code>string</code></h4>
+<p>The PostalPoint Address object sometimes returns a state code that isn't ISO 3166-2.
+This is usually when the ISO code is numeric, as numeric codes are a poor user experience.
+This function returns the ISO 3166-2 code for a state code (or name, if it's an exact match).</p>
+<p><strong>Kind</strong>: static method of <a href="#util.geography"><code>geography</code></a><br />
+<strong>Returns</strong>: <code>string</code> - - The ISO 3166-2 code, without the leading country code.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>state</td>
+<td><code>string</code></td>
+<td>state code</td>
+</tr>
+<tr>
+<td>country</td>
+<td><code>string</code></td>
+<td>2 letter country code</td>
 </tr>
 </tbody>
 </table>

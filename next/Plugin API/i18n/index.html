@@ -1251,6 +1251,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#i18ngetuilanguagefull-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        i18n.getUILanguage(full) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1715,6 +1726,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#i18ngetuilanguagefull-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        i18n.getUILanguage(full) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1754,6 +1776,7 @@
 <li><a href="#i18n.moneyString">.moneyString(amount)</a> ⇒ <code>string</code></li>
 <li><a href="#i18n.currencyMinorToMajor">.currencyMinorToMajor(amount)</a> ⇒ <code>number</code></li>
 <li><a href="#i18n.currencyMajorToMinor">.currencyMajorToMinor(amount)</a> ⇒ <code>number</code></li>
+<li><a href="#i18n.getUILanguage">.getUILanguage(full)</a> ⇒ <code>string</code></li>
 </ul>
 </li>
 </ul>
@@ -1888,6 +1911,26 @@
 <td>amount</td>
 <td><code>number</code></td>
 <td>Dollars, etc</td>
+</tr>
+</tbody>
+</table>
+<p><a name="i18n.getUILanguage"></a></p>
+<h3 id="i18ngetuilanguagefull-string">i18n.getUILanguage(full) ⇒ <code>string</code></h3>
+<p>Get the user's preferred language code.</p>
+<p><strong>Kind</strong>: static method of <a href="#i18n"><code>i18n</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>full</td>
+<td><code>boolean</code></td>
+<td>True to return entire code (for example, "en_US"), false to return just the language (example: "en"). Default is true.</td>
 </tr>
 </tbody>
 </table>

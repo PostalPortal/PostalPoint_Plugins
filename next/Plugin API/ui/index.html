@@ -1427,6 +1427,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#uicreatepopupcontent-params-promiseobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.createPopup(content, params) ⇒ Promise.&lt;Object&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#uishowprogressspinnertitle-text-subtitle-undefined" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1672,6 +1683,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#uicreatepopupcontent-params-promiseobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ui.createPopup(content, params) ⇒ Promise.&lt;Object&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#uishowprogressspinnertitle-text-subtitle-undefined" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1813,6 +1835,7 @@
 <li><a href="#ui">ui</a> : <code>object</code><ul>
 <li><a href="#ui.addToolsPage">.addToolsPage(page, title, id, description, cardTitle, icon, type)</a></li>
 <li><a href="#ui.addHomeTab">.addHomeTab(content, title, icon, id)</a> ⇒ <code>undefined</code></li>
+<li><a href="#ui.createPopup">.createPopup(content, params)</a> ⇒ <code>Promise.&lt;Object&gt;</code></li>
 <li><a href="#ui.showProgressSpinner">.showProgressSpinner(title, text, subtitle)</a> ⇒ <code>undefined</code></li>
 <li><a href="#ui.hideProgressSpinner">.hideProgressSpinner()</a></li>
 <li><a href="#ui.openSystemWebBrowser">.openSystemWebBrowser(url)</a></li>
@@ -1992,7 +2015,33 @@ will be run as a function and will not be expected to return a page component.
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">}</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addHomeTab</span><span class="p">(</span><span class="nx">renderTab</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hello Template&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fa-duotone fa-file-code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hellotemplatetab&quot;</span><span class="p">);</span>
 </span></code></pre></div>
-<a name="ui.showProgressSpinner"></a></p>
+<a name="ui.createPopup"></a></p>
+<h3 id="uicreatepopupcontent-params-promiseobject">ui.createPopup(content, params) ⇒ <code>Promise.&lt;Object&gt;</code></h3>
+<p>Create a Framework7 Popup from a string (F7 component template or HTML content).</p>
+<p><strong>Kind</strong>: static method of <a href="#ui"><code>ui</code></a><br />
+<strong>Returns</strong>: <code>Promise.&lt;Object&gt;</code> - The Popup object, with methods such as .open() and .close()  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td>params</td>
+<td><code>Object</code></td>
+<td>Route parameters/arguments passed to the popup component.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="ui.showProgressSpinner"></a></p>
 <h3 id="uishowprogressspinnertitle-text-subtitle-undefined">ui.showProgressSpinner(title, text, subtitle) ⇒ <code>undefined</code></h3>
 <p>Show a notification with a loading icon.</p>
 <p><strong>Kind</strong>: static method of <a href="#ui"><code>ui</code></a>  </p>
