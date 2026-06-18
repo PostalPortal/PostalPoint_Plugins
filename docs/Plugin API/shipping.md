@@ -22,11 +22,13 @@ Add custom carrier and rates, and adjust markup.
     * [.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)](#shipping.registerStampEndpoint)
     * [.addRateWarning(message)](#shipping.addRateWarning)
     * [.registerAddressVerificationProvider(id, name, verifyFn)](#shipping.registerAddressVerificationProvider)
-    * [.registerCarrierPickupMenu(carrierName, displayName)](#shipping.registerCarrierPickupMenu) ⇒ <code>undefined</code>
+    * [.registerCarrierPickupMenu(carrierName, displayName, onPickup)](#shipping.registerCarrierPickupMenu) ⇒ <code>undefined</code>
     * [.registerMarkupCalculator(markupFn)](#shipping.registerMarkupCalculator)
     * [.registerInsuranceProvider(id, name, cardText, maxValue, getQuote, insure)](#shipping.registerInsuranceProvider)
-    * [.getRecentShipments(plugin_sourceid, sinceDate, includeVoided)](#shipping.getRecentShipments) ⇒ <code>Promise.&lt;Array&gt;</code>
+    * [.getRecentShipments(plugin_sourceid, sinceDate, includeVoided, onlyNotShipped)](#shipping.getRecentShipments) ⇒ <code>Promise.&lt;Array&gt;</code>
+    * [.addShipmentToDatabase(plugin_sourceid, prepaid, tracking, carrier, service, to_address, from_address, create_date, metadata)](#shipping.addShipmentToDatabase) ⇒ <code>Promise</code>
     * [.markShipmentVoid(shipmentid, voided)](#shipping.markShipmentVoid) ⇒ <code>Promise</code>
+    * [.markShipmentPickedUp(shipmentid, timestamp)](#shipping.markShipmentPickedUp) ⇒ <code>Promise</code>
     * [.getParcel()](#shipping.getParcel) ⇒ <code>Package</code>
     * [.setParcel(newParcel, parcelChangeEventSource)](#shipping.setParcel)
     * [.isOfficeMode()](#shipping.isOfficeMode) ⇒ <code>boolean</code>
@@ -375,7 +377,7 @@ registerAddressVerificationProvider("example", "Example", async function (addres
 ```
 <a name="shipping.registerCarrierPickupMenu"></a>
 
-### shipping.registerCarrierPickupMenu(carrierName, displayName) ⇒ <code>undefined</code>
+### shipping.registerCarrierPickupMenu(carrierName, displayName, onPickup) ⇒ <code>undefined</code>
 Add an entry to the Carrier Pickup tool for setting the next pickup date
 for your specific carrier/plugin. Used with `getLabelDate`.
 
@@ -385,6 +387,7 @@ for your specific carrier/plugin. Used with `getLabelDate`.
 | --- | --- | --- |
 | carrierName | <code>string</code> | Carrier name. Pass to `getLabelDate` to get the next pickup date as selected by the user (or auto-incremented). |
 | displayName | <code>string</code> \| <code>null</code> | Optional different name to show in the tool. |
+| onPickup | <code>function</code> \| <code>null</code> | Optional function to run when the user marks all packages for the carrier as picked up. |
 
 <a name="shipping.registerMarkupCalculator"></a>
 
@@ -493,7 +496,7 @@ global.apis.shipping.registerInsuranceProvider(
 ```
 <a name="shipping.getRecentShipments"></a>
 
-### shipping.getRecentShipments(plugin_sourceid, sinceDate, includeVoided) ⇒ <code>Promise.&lt;Array&gt;</code>
+### shipping.getRecentShipments(plugin_sourceid, sinceDate, includeVoided, onlyNotShipped) ⇒ <code>Promise.&lt;Array&gt;</code>
 Get recent shipments for a plugin_sourceid.
 
 **Kind**: static method of [<code>shipping</code>](#shipping)  
@@ -504,6 +507,7 @@ Get recent shipments for a plugin_sourceid.
 | plugin_sourceid | <code>string</code> |  | See data returned from the purchase function of `registerRateEndpoint` |
 | sinceDate | <code>Date</code> \| <code>null</code> | <code></code> | Get shipments created after this Date object. If not set, returns all shipments from the past 7 days. |
 | includeVoided | <code>Boolean</code> | <code>false</code> | If true, response includes voided shipments. |
+| onlyNotShipped | <code>Boolean</code> | <code>false</code> | If true, response only includes shipments without a recorded carrier pickup timestamp. |
 
 **Example**  
 ```js
@@ -518,11 +522,34 @@ Get recent shipments for a plugin_sourceid.
     carrier: "string",
     service: "string",
     created: Date,
+    shipped: Date, // Date and time the package was marked as picked up by the carrier.
     metadata: {}, // Whatever was returned by the purchase function that created the shipment. Stored internally as a JSON string and parsed before returning. If JSON can't be parsed, is set to null.
     to_address: Address,
     from_address: Address
 }
 ```
+<a name="shipping.addShipmentToDatabase"></a>
+
+### shipping.addShipmentToDatabase(plugin_sourceid, prepaid, tracking, carrier, service, to_address, from_address, create_date, metadata) ⇒ <code>Promise</code>
+Manually add a shipment record to the store database. This is done automatically when a label is purchased,
+and only needs to be done with this function if a shipment is created outside a normal PostalPoint workflow
+(such as, for example, when a shipment is created by a dropoff QR code handler that doesn't return prepaid drop-off shipment data)
+
+**Kind**: static method of [<code>shipping</code>](#shipping)  
+**Returns**: <code>Promise</code> - Result of the database query.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| plugin_sourceid | <code>string</code> | Shipment plugin source ID. See getRecentShipments and registerRateEndpoint |
+| prepaid | <code>boolean</code> | If the shipment is a prepaid drop-off. Default is false. |
+| tracking | <code>string</code> \| <code>null</code> | Tracking number. |
+| carrier | <code>string</code> \| <code>null</code> | Carrier ID or name. |
+| service | <code>string</code> \| <code>null</code> | Service ID or name. |
+| to_address | <code>Address</code> \| <code>null</code> | An Address object for the destination address. |
+| from_address | <code>Address</code> \| <code>null</code> | An Address object for the return/origin/customer address. |
+| create_date | <code>Date</code> \| <code>number</code> \| <code>null</code> | Date or UNIX timestamp when the shipment was created. Defaults to now if not set. |
+| metadata | <code>Object</code> \| <code>null</code> | An object for holding other data about a shipment. Will be serialized to JSON. If not an Object, will be saved as `{}`. |
+
 <a name="shipping.markShipmentVoid"></a>
 
 ### shipping.markShipmentVoid(shipmentid, voided) ⇒ <code>Promise</code>
@@ -534,6 +561,18 @@ Mark a shipment as voided in the database.
 | --- | --- | --- | --- |
 | shipmentid | <code>Integer</code> |  | The internal database ID for the shipment, returned in getRecentShipments |
 | voided | <code>Boolean</code> | <code>true</code> | Set to false to un-void a previously voided shipment. |
+
+<a name="shipping.markShipmentPickedUp"></a>
+
+### shipping.markShipmentPickedUp(shipmentid, timestamp) ⇒ <code>Promise</code>
+Mark an outgoing shipment in the database as picked up by the carrier.
+
+**Kind**: static method of [<code>shipping</code>](#shipping)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| shipmentid | <code>Integer</code> |  | The internal database ID for the shipment, returned in getRecentShipments |
+| timestamp | <code>Date</code> \| <code>Integer</code> \| <code>null</code> | <code></code> | The Date or UNIX timestamp (in seconds) of the pickup. Defaults to the current date and time if not a Date or number. |
 
 <a name="shipping.getParcel"></a>
 
