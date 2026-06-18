@@ -30,6 +30,7 @@ Add custom carrier and rates, and adjust markup.
     * [.getParcel()](#shipping.getParcel) ⇒ <code>Package</code>
     * [.setParcel(newParcel, parcelChangeEventSource)](#shipping.setParcel)
     * [.isOfficeMode()](#shipping.isOfficeMode) ⇒ <code>boolean</code>
+    * [.getAddressFieldInfo(country)](#shipping.getAddressFieldInfo) ⇒ <code>Object</code>
 
 <a name="shipping.Address"></a>
 
@@ -60,7 +61,7 @@ Get data for a ZIP Code.
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | zipcode | <code>string</code> |  | ZIP or postal code. |
-| country | <code>string</code> | <code>&quot;US&quot;</code> | Currently only "US" and "CA" are supported. |
+| country | <code>string</code> | <code>&quot;US&quot;</code> | Two-letter ISO country code. |
 
 **Example**  
 ```js
@@ -560,3 +561,47 @@ Check if PostalPoint is running the shipment in "office mode", i.e. the customer
 
 **Kind**: static method of [<code>shipping</code>](#shipping)  
 **Returns**: <code>boolean</code> - true if office mode enabled, otherwise false.  
+<a name="shipping.getAddressFieldInfo"></a>
+
+### shipping.getAddressFieldInfo(country) ⇒ <code>Object</code>
+Get info on address fields for a given country.
+
+**Kind**: static method of [<code>shipping</code>](#shipping)  
+**Returns**: <code>Object</code> - See example.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| country | <code>string</code> | two-letter ISO country code. |
+
+**Example**  
+```js
+{
+    fields: { // False if field not applicable for addresses in this country.
+        name: true,
+        company: true,
+        street1: true,
+        street2: true,
+        city: true,
+        state: true,
+        zip: true
+    },
+    labels: { // Human-readable form field labels, localized, and country-dependent
+        name: "Name",
+        company: "Company",
+        street1: "Address",
+        street2: "Address Line 2",
+        city: "City/Suburb/District/Locality",
+        state: "State/Province",
+        zip: "Postal Code"
+    },
+    placeholders: {
+        name: "John Doe",
+        company: "ABC Inc",
+        street1: "123 Example St",
+        street2: "Apt 2",
+        city: "(Not Required)",
+        state: "",
+        zip: "12345"
+    }
+}
+```

@@ -34,6 +34,9 @@ Various utility functions: HTTP, time/date, barcode creation, clipboard, etc.
         * [.getBase64(data, [type], [height], [scale], [includetext])](#util.barcode.getBase64) ⇒ <code>Promise.&lt;string&gt;</code>
     * [.geography](#util.geography) : <code>object</code>
         * [.isoToCountryName(iso)](#util.geography.isoToCountryName) ⇒ <code>string</code>
+        * [.getStates(country)](#util.geography.getStates) ⇒ <code>Array</code>
+        * [.getCities(country, state, zip)](#util.geography.getCities) ⇒ <code>Promise.&lt;Array&gt;</code>
+        * [.getStateISOCode(state, country)](#util.geography.getStateISOCode) ⇒ <code>string</code>
     * [.objectEquals(a, b)](#util.objectEquals) ⇒ <code>boolean</code>
     * [.delay([ms])](#util.delay) ⇒ <code>Promise</code>
 
@@ -377,6 +380,13 @@ Get a PNG image of a barcode as a base64 data URI. Uses library "bwip-js".
 
 ### util.geography : <code>object</code>
 **Kind**: static namespace of [<code>util</code>](#util)  
+
+* [.geography](#util.geography) : <code>object</code>
+    * [.isoToCountryName(iso)](#util.geography.isoToCountryName) ⇒ <code>string</code>
+    * [.getStates(country)](#util.geography.getStates) ⇒ <code>Array</code>
+    * [.getCities(country, state, zip)](#util.geography.getCities) ⇒ <code>Promise.&lt;Array&gt;</code>
+    * [.getStateISOCode(state, country)](#util.geography.getStateISOCode) ⇒ <code>string</code>
+
 <a name="util.geography.isoToCountryName"></a>
 
 #### geography.isoToCountryName(iso) ⇒ <code>string</code>
@@ -387,6 +397,47 @@ Get a human-readable country name from an ISO country code.
 | Param | Type | Description |
 | --- | --- | --- |
 | iso | <code>string</code> \| <code>number</code> | 2 or 3 letter country code, or numeric country code. |
+
+<a name="util.geography.getStates"></a>
+
+#### geography.getStates(country) ⇒ <code>Array</code>
+Get a list of states/regions for a country, both names and ISO codes (may be numeric, see Japan)
+
+**Kind**: static method of [<code>geography</code>](#util.geography)  
+**Returns**: <code>Array</code> - - [{code: "MT", name: "Montana"}]  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| country | <code>string</code> | 2 letter country code |
+
+<a name="util.geography.getCities"></a>
+
+#### geography.getCities(country, state, zip) ⇒ <code>Promise.&lt;Array&gt;</code>
+Get a list of cities/sub-regions for a country and state.
+
+**Kind**: static method of [<code>geography</code>](#util.geography)  
+**Returns**: <code>Promise.&lt;Array&gt;</code> - - [{code: "XX", name: "Sub Region Name"}] or [{code: "City Name", name: "City Name"}]  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| country | <code>string</code> | 2 letter country code |
+| state | <code>string</code> | state code |
+| zip | <code>string</code> | postal code (optional, but enables returning results for many more countries) |
+
+<a name="util.geography.getStateISOCode"></a>
+
+#### geography.getStateISOCode(state, country) ⇒ <code>string</code>
+The PostalPoint Address object sometimes returns a state code that isn't ISO 3166-2.
+This is usually when the ISO code is numeric, as numeric codes are a poor user experience.
+This function returns the ISO 3166-2 code for a state code (or name, if it's an exact match).
+
+**Kind**: static method of [<code>geography</code>](#util.geography)  
+**Returns**: <code>string</code> - - The ISO 3166-2 code, without the leading country code.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| state | <code>string</code> | state code |
+| country | <code>string</code> | 2 letter country code |
 
 <a name="util.objectEquals"></a>
 

@@ -78,7 +78,8 @@ were just received from a physical barcode scanner.
 The function passed to onPrepaidScan is run when a barcode is scanned on the Prepaid page.
 The function is passed one argument, a string containing the raw barcode data.
 The function shall return boolean false if unable or unwilling to handle the barcode.
-If the barcode is handled by this function, it shall return a TrackingBarcode object.
+If the barcode is handled by this function, it shall return a TrackingBarcode object,
+or, if the plugin will handle the drop-off fully on its own, shall return boolean true.
 
 **Kind**: static method of [<code>barcode</code>](#barcode)  
 

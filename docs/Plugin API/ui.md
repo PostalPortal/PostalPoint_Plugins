@@ -8,6 +8,7 @@ Interact with and modify the PostalPoint user interface.
 * [ui](#ui) : <code>object</code>
     * [.addToolsPage(page, title, id, description, cardTitle, icon, type)](#ui.addToolsPage)
     * [.addHomeTab(content, title, icon, id)](#ui.addHomeTab) ⇒ <code>undefined</code>
+    * [.createPopup(content, params)](#ui.createPopup) ⇒ <code>Promise.&lt;Object&gt;</code>
     * [.showProgressSpinner(title, text, subtitle)](#ui.showProgressSpinner) ⇒ <code>undefined</code>
     * [.hideProgressSpinner()](#ui.hideProgressSpinner)
     * [.openSystemWebBrowser(url)](#ui.openSystemWebBrowser)
@@ -128,6 +129,19 @@ function renderTab() {
 }
 global.apis.ui.addHomeTab(renderTab, "Hello Template", "fa-duotone fa-file-code", "hellotemplatetab");
 ```
+<a name="ui.createPopup"></a>
+
+### ui.createPopup(content, params) ⇒ <code>Promise.&lt;Object&gt;</code>
+Create a Framework7 Popup from a string (F7 component template or HTML content).
+
+**Kind**: static method of [<code>ui</code>](#ui)  
+**Returns**: <code>Promise.&lt;Object&gt;</code> - The Popup object, with methods such as .open() and .close()  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| content | <code>string</code> |  |
+| params | <code>Object</code> | Route parameters/arguments passed to the popup component. |
+
 <a name="ui.showProgressSpinner"></a>
 
 ### ui.showProgressSpinner(title, text, subtitle) ⇒ <code>undefined</code>
