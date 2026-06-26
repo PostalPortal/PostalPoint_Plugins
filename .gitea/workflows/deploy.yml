@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - public
 
 jobs:
   build-next:
