@@ -1,0 +1,3233 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../settings/">
+      
+      
+        <link rel="next" href="../storage/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/external/postalpoint.app/images/favicon-voxel.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Shipping - PostalPoint Plugin Development</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://analytics.netsyms.net/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '57']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#shipping-object" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://postalpoint.app" title="PostalPoint Plugin Development" class="md-header__button md-logo" aria-label="PostalPoint Plugin Development" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PostalPoint Plugin Development
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Shipping
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://postalpoint.app" title="PostalPoint Plugin Development" class="md-nav__button md-logo" aria-label="PostalPoint Plugin Development" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    PostalPoint Plugin Development
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Docs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Address/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Address object
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Carrier_Service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    getCarrierName and getServiceName
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Drivers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Event Bus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/FormPS1583/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FormPS1583 object
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/HTTP_API_Server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTTP API Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/HiddenConfigs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Flags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Parcel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parcel/Package Object
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/Receipt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Receipt Objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/ReceiptPrinter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Receipt Printer driver functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/TrackingBarcode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TrackingBarcode class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docs/UI_Components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI Components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/01Minimal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Minimal Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/02Basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/03Shipping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shipping Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/04CardProcessor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Card Payments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/05CryptoProcessor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cryptocurrency Payments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plugin API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../barcode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Barcode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentscanner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentscanner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../global%20functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Global functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graphics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graphics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../httpserver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Httpserver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../i18n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I18n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kiosk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kiosk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mailboxes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mailboxes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../print/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Print
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shipping
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shipping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#shipping-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="shipping : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shippingaddress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.Address
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="shipping.Address">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        new Address()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.Package
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="shipping.Package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        new Package()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetzipcodezipcode-country-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getZIPCode(zipcode, country) ⇒ Object
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetpackagingbyidid-promiseobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getPackagingByID(id) ⇒ Promise.&lt;Object&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetretailpricewithmarkupcost-retail-carrier-service-weightoz-packaging-promisenumber" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getRetailPriceWithMarkup(cost, retail, carrier, service, weightOz, packaging) ⇒ Promise.&lt;number&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingconvertmeteredtoretailrate_price-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.convertMeteredToRetail(rate_price) ⇒ number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetlabeldatecarrier-promisedate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getLabelDate([carrier]) ⇒ Promise.&lt;Date&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetcarriernamecarrierid-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getCarrierName(carrierId) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetservicenameserviceid-carrier-stripinternational-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getServiceName(serviceId, [carrier], [stripInternational]) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetcustomsformimagesparcel-incoterm-trackingnumber-invoicenumber-date-promisearrayjimp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getCustomsFormImages(parcel, incoterm, trackingNumber, invoiceNumber, date) ⇒ Promise.&lt;Array.&lt;Jimp&gt;&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingregisterrateendpointgetrates-purchase-idprefix-extraoptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.registerRateEndpoint(getRates, purchase, idPrefix, [extraOptions])
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingregisterstampendpointid-name-getrates-purchase-purchasecorrection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingaddratewarningmessage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.addRateWarning(message)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingregisteraddressverificationproviderid-name-verifyfn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.registerAddressVerificationProvider(id, name, verifyFn)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingregistercarrierpickupmenucarriername-displayname-onpickup-undefined" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.registerCarrierPickupMenu(carrierName, displayName, onPickup) ⇒ undefined
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingregistermarkupcalculatormarkupfn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.registerMarkupCalculator(markupFn)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingregisterinsuranceproviderid-name-cardtext-maxvalue-getquote-insure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.registerInsuranceProvider(id, name, cardText, maxValue, getQuote, insure)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetrecentshipmentsplugin_sourceid-sincedate-includevoided-onlynotshipped-promisearray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getRecentShipments(plugin_sourceid, sinceDate, includeVoided, onlyNotShipped) ⇒ Promise.&lt;Array&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingaddshipmenttodatabaseplugin_sourceid-prepaid-tracking-carrier-service-to_address-from_address-create_date-metadata-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.addShipmentToDatabase(plugin_sourceid, prepaid, tracking, carrier, service, to_address, from_address, create_date, metadata) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingmarkshipmentvoidshipmentid-voided-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.markShipmentVoid(shipmentid, voided) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingmarkshipmentpickedupshipmentid-timestamp-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.markShipmentPickedUp(shipmentid, timestamp) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetparcel-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getParcel() ⇒ Package
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingsetparcelnewparcel-parcelchangeeventsource" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.setParcel(newParcel, parcelChangeEventSource)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingisofficemode-boolean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.isOfficeMode() ⇒ boolean
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetaddressfieldinfocountry-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getAddressFieldInfo(country) ⇒ Object
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ui
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../util/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Util
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#shipping-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping : object
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="shipping : object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shippingaddress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.Address
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="shipping.Address">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        new Address()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.Package
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="shipping.Package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        new Package()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetzipcodezipcode-country-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getZIPCode(zipcode, country) ⇒ Object
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetpackagingbyidid-promiseobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getPackagingByID(id) ⇒ Promise.&lt;Object&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetretailpricewithmarkupcost-retail-carrier-service-weightoz-packaging-promisenumber" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getRetailPriceWithMarkup(cost, retail, carrier, service, weightOz, packaging) ⇒ Promise.&lt;number&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingconvertmeteredtoretailrate_price-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.convertMeteredToRetail(rate_price) ⇒ number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetlabeldatecarrier-promisedate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getLabelDate([carrier]) ⇒ Promise.&lt;Date&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetcarriernamecarrierid-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getCarrierName(carrierId) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetservicenameserviceid-carrier-stripinternational-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getServiceName(serviceId, [carrier], [stripInternational]) ⇒ string
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetcustomsformimagesparcel-incoterm-trackingnumber-invoicenumber-date-promisearrayjimp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getCustomsFormImages(parcel, incoterm, trackingNumber, invoiceNumber, date) ⇒ Promise.&lt;Array.&lt;Jimp&gt;&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingregisterrateendpointgetrates-purchase-idprefix-extraoptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.registerRateEndpoint(getRates, purchase, idPrefix, [extraOptions])
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingregisterstampendpointid-name-getrates-purchase-purchasecorrection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingaddratewarningmessage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.addRateWarning(message)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingregisteraddressverificationproviderid-name-verifyfn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.registerAddressVerificationProvider(id, name, verifyFn)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingregistercarrierpickupmenucarriername-displayname-onpickup-undefined" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.registerCarrierPickupMenu(carrierName, displayName, onPickup) ⇒ undefined
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingregistermarkupcalculatormarkupfn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.registerMarkupCalculator(markupFn)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingregisterinsuranceproviderid-name-cardtext-maxvalue-getquote-insure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.registerInsuranceProvider(id, name, cardText, maxValue, getQuote, insure)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetrecentshipmentsplugin_sourceid-sincedate-includevoided-onlynotshipped-promisearray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getRecentShipments(plugin_sourceid, sinceDate, includeVoided, onlyNotShipped) ⇒ Promise.&lt;Array&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingaddshipmenttodatabaseplugin_sourceid-prepaid-tracking-carrier-service-to_address-from_address-create_date-metadata-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.addShipmentToDatabase(plugin_sourceid, prepaid, tracking, carrier, service, to_address, from_address, create_date, metadata) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingmarkshipmentvoidshipmentid-voided-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.markShipmentVoid(shipmentid, voided) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingmarkshipmentpickedupshipmentid-timestamp-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.markShipmentPickedUp(shipmentid, timestamp) ⇒ Promise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetparcel-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getParcel() ⇒ Package
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingsetparcelnewparcel-parcelchangeeventsource" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.setParcel(newParcel, parcelChangeEventSource)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingisofficemode-boolean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.isOfficeMode() ⇒ boolean
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippinggetaddressfieldinfocountry-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.getAddressFieldInfo(country) ⇒ Object
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Shipping</h1>
+
+<p><a name="shipping"></a></p>
+<h2 id="shipping-object">shipping : <code>object</code></h2>
+<p>Add custom carrier and rates, and adjust markup.</p>
+<p><strong>Kind</strong>: global namespace  </p>
+<ul>
+<li><a href="#shipping">shipping</a> : <code>object</code><ul>
+<li><a href="#shipping.Address">.Address</a><ul>
+<li><a href="#new_shipping.Address_new">new Address()</a></li>
+</ul>
+</li>
+<li><a href="#shipping.Package">.Package</a><ul>
+<li><a href="#new_shipping.Package_new">new Package()</a></li>
+</ul>
+</li>
+<li><a href="#shipping.getZIPCode">.getZIPCode(zipcode, country)</a> ⇒ <code>Object</code></li>
+<li><a href="#shipping.getPackagingByID">.getPackagingByID(id)</a> ⇒ <code>Promise.&lt;Object&gt;</code></li>
+<li><a href="#shipping.getRetailPriceWithMarkup">.getRetailPriceWithMarkup(cost, retail, carrier, service, weightOz, packaging)</a> ⇒ <code>Promise.&lt;number&gt;</code></li>
+<li><a href="#shipping.convertMeteredToRetail">.convertMeteredToRetail(rate_price)</a> ⇒ <code>number</code></li>
+<li><a href="#shipping.getLabelDate">.getLabelDate([carrier])</a> ⇒ <code>Promise.&lt;Date&gt;</code></li>
+<li><a href="#shipping.getCarrierName">.getCarrierName(carrierId)</a> ⇒ <code>string</code></li>
+<li><a href="#shipping.getServiceName">.getServiceName(serviceId, [carrier], [stripInternational])</a> ⇒ <code>string</code></li>
+<li><a href="#shipping.getCustomsFormImages">.getCustomsFormImages(parcel, incoterm, trackingNumber, invoiceNumber, date)</a> ⇒ <code>Promise.&lt;Array.&lt;Jimp&gt;&gt;</code></li>
+<li><a href="#shipping.registerRateEndpoint">.registerRateEndpoint(getRates, purchase, idPrefix, [extraOptions])</a></li>
+<li><a href="#shipping.registerStampEndpoint">.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)</a></li>
+<li><a href="#shipping.addRateWarning">.addRateWarning(message)</a></li>
+<li><a href="#shipping.registerAddressVerificationProvider">.registerAddressVerificationProvider(id, name, verifyFn)</a></li>
+<li><a href="#shipping.registerCarrierPickupMenu">.registerCarrierPickupMenu(carrierName, displayName, onPickup)</a> ⇒ <code>undefined</code></li>
+<li><a href="#shipping.registerMarkupCalculator">.registerMarkupCalculator(markupFn)</a></li>
+<li><a href="#shipping.registerInsuranceProvider">.registerInsuranceProvider(id, name, cardText, maxValue, getQuote, insure)</a></li>
+<li><a href="#shipping.getRecentShipments">.getRecentShipments(plugin_sourceid, sinceDate, includeVoided, onlyNotShipped)</a> ⇒ <code>Promise.&lt;Array&gt;</code></li>
+<li><a href="#shipping.addShipmentToDatabase">.addShipmentToDatabase(plugin_sourceid, prepaid, tracking, carrier, service, to_address, from_address, create_date, metadata)</a> ⇒ <code>Promise</code></li>
+<li><a href="#shipping.markShipmentVoid">.markShipmentVoid(shipmentid, voided)</a> ⇒ <code>Promise</code></li>
+<li><a href="#shipping.markShipmentPickedUp">.markShipmentPickedUp(shipmentid, timestamp)</a> ⇒ <code>Promise</code></li>
+<li><a href="#shipping.getParcel">.getParcel()</a> ⇒ <code>Package</code></li>
+<li><a href="#shipping.setParcel">.setParcel(newParcel, parcelChangeEventSource)</a></li>
+<li><a href="#shipping.isOfficeMode">.isOfficeMode()</a> ⇒ <code>boolean</code></li>
+<li><a href="#shipping.getAddressFieldInfo">.getAddressFieldInfo(country)</a> ⇒ <code>Object</code></li>
+</ul>
+</li>
+</ul>
+<p><a name="shipping.Address"></a></p>
+<h3 id="shippingaddress">shipping.Address</h3>
+<p><strong>Kind</strong>: static class of <a href="#shipping"><code>shipping</code></a><br />
+<a name="new_shipping.Address_new"></a></p>
+<h4 id="new-address">new Address()</h4>
+<p>A class representing an address.</p>
+<p><a name="shipping.Package"></a></p>
+<h3 id="shippingpackage">shipping.Package</h3>
+<p><strong>Kind</strong>: static class of <a href="#shipping"><code>shipping</code></a><br />
+<a name="new_shipping.Package_new"></a></p>
+<h4 id="new-package">new Package()</h4>
+<p>A class representing a package/parcel. See docs.</p>
+<p><a name="shipping.getZIPCode"></a></p>
+<h3 id="shippinggetzipcodezipcode-country-object">shipping.getZIPCode(zipcode, country) ⇒ <code>Object</code></h3>
+<p>Get data for a ZIP Code.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
+<strong>Returns</strong>: <code>Object</code> - Data about the ZIP code. See example. Fields may be empty if not available. Type may be "STANDARD", "UNIQUE", "PO BOX", or "MILITARY".  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zipcode</td>
+<td><code>string</code></td>
+<td></td>
+<td>ZIP or postal code.</td>
+</tr>
+<tr>
+<td>country</td>
+<td><code>string</code></td>
+<td><code>&quot;US&quot;</code></td>
+<td>Two-letter ISO country code.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span><span class="nx">city</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;NEW YORK&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;NY&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;STANDARD&quot;</span><span class="p">}</span>
+</span></code></pre></div>
+<a name="shipping.getPackagingByID"></a></p>
+<h3 id="shippinggetpackagingbyidid-promiseobject">shipping.getPackagingByID(id) ⇒ <code>Promise.&lt;Object&gt;</code></h3>
+<p>Get a parcel's packaging type from PostalPoint's internal ID for it.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
+<strong>Returns</strong>: <code>Promise.&lt;Object&gt;</code> - See examples.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><code>number</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Parcel&quot;</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nx">img</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;box.png&quot;</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Box&quot;</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nx">l</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nx">w</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nx">h</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="nx">weight</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="nx">hazmat</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Customer&quot;</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;FlatRateEnvelope&quot;</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nx">img</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;pm-fres.png&quot;</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Flat Rate Envelope&quot;</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Priority&quot;</span><span class="p">,</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="nx">l</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">2</span><span class="p">,</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nx">w</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">2</span><span class="p">,</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="nx">h</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">2</span><span class="p">,</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="nx">weight</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="nx">hazmat</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="nx">usps_supplied</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="nx">envelope</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;USPS&quot;</span><span class="p">,</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="nx">skus</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;PS00001000014&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;PS00001000012&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;PS00001000027&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;PS00001000064&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;PS00001001921&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;PS00001035000&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;PS00001036014&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;PS00001128600&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://qr.usps.com/epsspu?p=30&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://qr.usps.com/epsspu?p=8&quot;</span><span class="p">]</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="p">}</span>
+</span></code></pre></div>
+<strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">201</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;UPSLetter&quot;</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nx">img</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ups-env.png&quot;</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Envelope&quot;</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;UPS&quot;</span><span class="p">,</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nx">l</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">2</span><span class="p">,</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nx">w</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">2</span><span class="p">,</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nx">h</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">2</span><span class="p">,</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="nx">weight</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="nx">hazmat</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;OtherCarrier&quot;</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<a name="shipping.getRetailPriceWithMarkup"></a></p>
+<h3 id="shippinggetretailpricewithmarkupcost-retail-carrier-service-weightoz-packaging-promisenumber">shipping.getRetailPriceWithMarkup(cost, retail, carrier, service, weightOz, packaging) ⇒ <code>Promise.&lt;number&gt;</code></h3>
+<p>Calculate the retail price for a shipment rate based on the configured margin settings.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
+<strong>Returns</strong>: <code>Promise.&lt;number&gt;</code> - The amount to charge the customer  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cost</td>
+<td><code>number</code></td>
+<td>Cost of shipment to business</td>
+</tr>
+<tr>
+<td>retail</td>
+<td><code>number</code></td>
+<td>Default retail price from label provider</td>
+</tr>
+<tr>
+<td>carrier</td>
+<td><code>string</code></td>
+<td>Shipment carrier</td>
+</tr>
+<tr>
+<td>service</td>
+<td><code>string</code></td>
+<td>Shipment service</td>
+</tr>
+<tr>
+<td>weightOz</td>
+<td><code>number</code></td>
+<td>The weight of the shipment in ounces, or null if not available.</td>
+</tr>
+<tr>
+<td>packaging</td>
+<td><code>string</code></td>
+<td>An empty string if not available, or "Letter", "FlatRateEnvelope", etc.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.convertMeteredToRetail"></a></p>
+<h3 id="shippingconvertmeteredtoretailrate_price-number">shipping.convertMeteredToRetail(rate_price) ⇒ <code>number</code></h3>
+<p>Convert a USPS metered/PC postage letter rate to the retail stamp price by
+adding the difference based on the current USPS Notice 123 rate chart.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
+<strong>Returns</strong>: <code>number</code> - the retail price for the given metered rate (for example, 0.78)  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rate_price</td>
+<td><code>number</code></td>
+<td>Metered price (for example, 0.74)</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.getLabelDate"></a></p>
+<h3 id="shippinggetlabeldatecarrier-promisedate">shipping.getLabelDate([carrier]) ⇒ <code>Promise.&lt;Date&gt;</code></h3>
+<p>Get the date to use for a label's ship date, based on the next carrier pickup.
+If no date is found for the next pickup, defaults to the current date and time.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[carrier]</td>
+<td><code>string</code></td>
+<td><code>&quot;\&quot;\&quot;&quot;</code></td>
+<td>Carrier ID or name.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.getCarrierName"></a></p>
+<h3 id="shippinggetcarriernamecarrierid-string">shipping.getCarrierName(carrierId) ⇒ <code>string</code></h3>
+<p>Converts the carrier ID string into a consistent and human-readable name.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>carrierId</td>
+<td><code>string</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.getServiceName"></a></p>
+<h3 id="shippinggetservicenameserviceid-carrier-stripinternational-string">shipping.getServiceName(serviceId, [carrier], [stripInternational]) ⇒ <code>string</code></h3>
+<p>Converts the service ID string into a consistent and human-readable name. Set the carrier ID for better results.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>serviceId</td>
+<td><code>string</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[carrier]</td>
+<td><code>string</code></td>
+<td><code>&quot;\&quot;USPS\&quot;&quot;</code></td>
+<td>Carrier ID or name (i.e. the string sent to or received from <code>getCarrierName()</code>)</td>
+</tr>
+<tr>
+<td>[stripInternational]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>If true, remove "International" from the service name. For example, "Priority Mail International" becomes "Priority Mail", to allow matching a domestic USPS service with the international version of that service.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.getCustomsFormImages"></a></p>
+<h3 id="shippinggetcustomsformimagesparcel-incoterm-trackingnumber-invoicenumber-date-promisearrayjimp">shipping.getCustomsFormImages(parcel, incoterm, trackingNumber, invoiceNumber, date) ⇒ <code>Promise.&lt;Array.&lt;Jimp&gt;&gt;</code></h3>
+<p>Generate a 4x6 inch customs form/commercial invoice for printing on a label printer.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
+<strong>Returns</strong>: <code>Promise.&lt;Array.&lt;Jimp&gt;&gt;</code> - an array of Jimp image objects.
+Can be sent as-is to the label printer functions. Each array element is a page of the form.
+Normally one page is returned, but additional "overflow" pages are added if there isn't room to list
+all the package contents on one page.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>parcel</td>
+<td><code>Object</code></td>
+<td></td>
+<td>A Package object to pull customs data from.</td>
+</tr>
+<tr>
+<td>incoterm</td>
+<td><code>string</code></td>
+<td><code>&quot;\&quot;DDU\&quot;&quot;</code></td>
+<td>Incoterm.</td>
+</tr>
+<tr>
+<td>trackingNumber</td>
+<td><code>string</code></td>
+<td><code>&quot;\&quot;\&quot;&quot;</code></td>
+<td>The tracking number for the shipment.</td>
+</tr>
+<tr>
+<td>invoiceNumber</td>
+<td><code>string</code></td>
+<td><code>&quot;\&quot;\&quot;&quot;</code></td>
+<td>The commercial invoice number for the shipment.</td>
+</tr>
+<tr>
+<td>date</td>
+<td><code>Date</code></td>
+<td></td>
+<td>Invoice/form date. If undefined, the current date is assumed.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.registerRateEndpoint"></a></p>
+<h3 id="shippingregisterrateendpointgetrates-purchase-idprefix-extraoptions">shipping.registerRateEndpoint(getRates, purchase, idPrefix, [extraOptions])</h3>
+<p>Register the plugin as a shipping rate and label provider.  See the Shipping example plugin.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getRates</td>
+<td><code>function</code></td>
+<td></td>
+<td>A function passed a Parcel object to get rates for. Returns a Promise that resolves to an array of rate objects.</td>
+</tr>
+<tr>
+<td>purchase</td>
+<td><code>function</code></td>
+<td></td>
+<td>A function passed a rate ID to purchase. Returns a Promise that resolves to the label information.</td>
+</tr>
+<tr>
+<td>idPrefix</td>
+<td><code>string</code></td>
+<td></td>
+<td>A unique string that will be prefixing all rate IDs from this plugin.</td>
+</tr>
+<tr>
+<td>[extraOptions]</td>
+<td><code>Object</code></td>
+<td><code>{}</code></td>
+<td>Extra optional functions/options that can be implemented.  See example.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// getRates sample return value:</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">[{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nx">rateid</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">idPrefix</span><span class="si">}</span><span class="sb">_</span><span class="si">${</span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">uuid</span><span class="p">.</span><span class="nx">v4</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;CarrierID&quot;</span><span class="p">,</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nx">carrierName</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Carrier Name&quot;</span><span class="p">,</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;CARRIER_SERVICE_ID&quot;</span><span class="p">,</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="nx">cost_rate</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="nx">retail_rate</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="p">,</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nx">delivery_days</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="nx">delivery_date</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="nx">guaranteed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="nx">serviceName</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Service Name&quot;</span><span class="p">,</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;green&quot;</span><span class="w"> </span><span class="c1">// Rate card color</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="p">}]</span>
+</span></code></pre></div>
+<strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// purchase sample return value:</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">{</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="nx">labelImageToPrint</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nx">labeltype</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;PNG&quot;</span><span class="p">,</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nx">receiptItem</span><span class="o">:</span><span class="w"> </span><span class="nx">ReceiptItem</span><span class="p">,</span><span class="w"> </span><span class="c1">// Data to add to the transaction receipt.</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nx">tracking</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;12345678901234567890&quot;</span><span class="p">,</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="nx">cost</span><span class="o">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="nx">price</span><span class="o">:</span><span class="w"> </span><span class="mf">15.0</span><span class="p">,</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Carrier Name&quot;</span><span class="p">,</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Service Name&quot;</span><span class="p">,</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="nx">delivery_days</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="nx">delivery_date</span><span class="o">:</span><span class="w"> </span><span class="mf">1234567890</span><span class="p">,</span><span class="w"> </span><span class="c1">// UNIX timestamp</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="nx">to_address</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">Address</span><span class="p">(),</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="nx">from_address</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">Address</span><span class="p">(),</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="nx">plugin_sourceid</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Unique string for your plugin; saved alongside shipment in store database to allow queries to filter shipments by source.</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="nx">metadata</span><span class="o">:</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">// Object containing extra data to be stored in the database. Serialized to JSON.</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="p">}</span>
+</span></code></pre></div>
+<strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nx">extraOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="nx">getRecentLabels</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="c1">// Return a list of recently purchased/printed labels for reprinting and/or voiding/refund purposes.</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="c1">// Your plugin must also implement voidLabel() (below) or it won&#39;t be queried for recent labels.</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">                </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">idPrefix</span><span class="si">}</span><span class="sb">_</span><span class="si">${</span><span class="nx">yourShipmentID</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">                </span><span class="nx">created</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span><span class="w"> </span><span class="c1">// Date object of the label/shipment date. Used for ordering the list.</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">                </span><span class="nx">refund_status</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// false to show a refund/void button, otherwise a short string to show such as &quot;Refunded&quot; or &quot;Refund processing&quot; or &quot;Refund rejected&quot;</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">                </span><span class="nx">tracking</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Shipment tracking number or an empty string if it has no tracking.</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">                </span><span class="nx">label_urls</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="c1">// Array of URLs to download the label image(s) from if the user requests a reprint.</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">                </span><span class="c1">//                 If empty or not an array, the reprint button is disabled.</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">                </span><span class="c1">//                 May also be a function that returns a Promise that resolves to the described array.</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">                </span><span class="c1">//                 If this is a function, it&#39;s passed this label object as an argument.</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">                </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">Address</span><span class="p">(),</span><span class="w"> </span><span class="c1">// Destination/to address.</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">                </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">Address</span><span class="p">(),</span><span class="w"> </span><span class="c1">// Return/from address.</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">                </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">getCarrierName</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span><span class="w"> </span><span class="c1">// Carrier name</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">                </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">getServiceName</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// Shipping service</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">    </span><span class="nx">voidLabel</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">        </span><span class="c1">// Try to void a label with the ID provided (an `id` returned in getRecentLabels)</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">        </span><span class="c1">// Returns a status string that&#39;s displayed to the user in a dialog box, such as &quot;Label refunded.&quot; or &quot;Refund request submitted.&quot; or &quot;Refund request rejected.&quot;</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Void request status message goes here&quot;</span><span class="p">;</span>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="p">}</span>
+</span></code></pre></div>
+<a name="shipping.registerStampEndpoint"></a></p>
+<h3 id="shippingregisterstampendpointid-name-getrates-purchase-purchasecorrection">shipping.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)</h3>
+<p>Register the plugin as a USPS postage indicia provider for First Class Mail.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><code>string</code></td>
+<td>Unique alphanumeric ID for this provider.</td>
+</tr>
+<tr>
+<td>name</td>
+<td><code>string</code></td>
+<td>Human-readable name for this provider.</td>
+</tr>
+<tr>
+<td>getRates</td>
+<td><code>function</code></td>
+<td>see registerRateEndpoint. Any returned rates that aren't for USPS First-Class Mail are ignored.</td>
+</tr>
+<tr>
+<td>purchase</td>
+<td><code>function</code></td>
+<td>see registerRateEndpoint. Returned data must also include a <code>imageSettings</code> object, see example.</td>
+</tr>
+<tr>
+<td>purchaseCorrection</td>
+<td><code>function</code> | <code>null</code></td>
+<td>Same as <code>purchase</code> but instead of a rate ID the argument is a string number of cents to print on the postage. If null, postage correction stamps will be disabled.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// imageSettings object returned by purchase:</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nx">includeFIM</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// If true, a FIM D (Facing Identification Mark, variant D) is printed to the left of the indicia. Required for letter-size postage.</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="nx">indiciaX</span><span class="o">:</span><span class="w"> </span><span class="nx">px</span><span class="p">,</span><span class="w"> </span><span class="c1">// Leftmost pixel in label image to print (pixels to the left will be cropped out). If negative, counts from the right side of the label instead.</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="nx">indiciaY</span><span class="o">:</span><span class="w"> </span><span class="nx">px</span><span class="p">,</span><span class="w"> </span><span class="c1">// Topmost pixel in label image (pixels above will be cropped out). If negative, counts from the right side of the label instead.</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="nx">indiciaWidth</span><span class="o">:</span><span class="w"> </span><span class="nx">px</span><span class="p">,</span><span class="w"> </span><span class="c1">// Width in pixels to crop to, starting from indiciaX on the left side and moving right</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="nx">indiciaHeight</span><span class="o">:</span><span class="w"> </span><span class="nx">px</span><span class="p">,</span><span class="w"> </span><span class="c1">// Height in pixels to crop to, starting from indiciaY on the top side and moving down</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="nx">dpi</span><span class="o">:</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w"> </span><span class="c1">// Native DPI (pixels per inch) of your label. PostalPoint scales your image to 300 DPI after cropping.</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="nx">rotate</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="c1">// If not zero, image is rotated this many degrees (90, 180, 270, etc) before any processing.</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="p">}</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="c1">// Note: Depending on indicia width, FIM presence, and label width, the indicia may be</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="c1">//   scaled slightly smaller after cropping to the dimensions provided in order to fit on</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="c1">//   the label media size in use. In our testing with the widest indicia (PDF417),</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="c1">//   the barcode in the indicia is still scannable (and the human-readable text still legible)</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="c1">//   after this adjustment, but you might wish to test the worst case scenario:</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="c1">//   `includeFIM: true` on a 1.1x3.5 &quot;standard address&quot; label printed at 200dpi.</span>
+</span></code></pre></div>
+<a name="shipping.addRateWarning"></a></p>
+<h3 id="shippingaddratewarningmessage">shipping.addRateWarning(message)</h3>
+<p>If an error or warning is encountered while getting shipping rates
+(such as an invalid/unsupported combination of shipment options/packaging for a particular service)
+send a message string to this function and it will be available for the user to read
+when the rate cards are displayed on screen.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td><code>string</code> | <code>Array.&lt;string&gt;</code></td>
+<td>A string message or an array of messages.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.registerAddressVerificationProvider"></a></p>
+<h3 id="shippingregisteraddressverificationproviderid-name-verifyfn">shipping.registerAddressVerificationProvider(id, name, verifyFn)</h3>
+<p>Add an address validation/sanitization/verification provider. The user's preferred provider
+will be called with a shipment's to and from addresses, and will return the validated addresses.
+The verified addresses will be passed on to rate provider plugins.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><code>string</code></td>
+<td>Unique alphanumeric ID for this provider.</td>
+</tr>
+<tr>
+<td>name</td>
+<td><code>string</code></td>
+<td>Human-readable display name for this provider.</td>
+</tr>
+<tr>
+<td>verifyFn</td>
+<td><code>function</code></td>
+<td>See example.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nx">registerAddressVerificationProvider</span><span class="p">(</span><span class="s2">&quot;example&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Example&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">addressData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="c1">// This function is passed the data structure shown below, and must return the same structure but updated with the validated addresses.</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">         </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">Address</span><span class="p">(),</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">         </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">Address</span><span class="p">(),</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">         </span><span class="nx">toVerified</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// If the to address was verified</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">         </span><span class="nx">fromVerified</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// If the from/return address was verified</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">         </span><span class="nx">toErrors</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="c1">// String messages to display on the to address verification checkmark/warning icon</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">         </span><span class="nx">fromErrors</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="c1">// String messages to display on the from/return address verification checkmark/warning icon</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="p">});</span>
+</span></code></pre></div>
+<a name="shipping.registerCarrierPickupMenu"></a></p>
+<h3 id="shippingregistercarrierpickupmenucarriername-displayname-onpickup-undefined">shipping.registerCarrierPickupMenu(carrierName, displayName, onPickup) ⇒ <code>undefined</code></h3>
+<p>Add an entry to the Carrier Pickup tool for setting the next pickup date
+for your specific carrier/plugin. Used with <code>getLabelDate</code>.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>carrierName</td>
+<td><code>string</code></td>
+<td>Carrier name. Pass to <code>getLabelDate</code> to get the next pickup date as selected by the user (or auto-incremented).</td>
+</tr>
+<tr>
+<td>displayName</td>
+<td><code>string</code> | <code>null</code></td>
+<td>Optional different name to show in the tool.</td>
+</tr>
+<tr>
+<td>onPickup</td>
+<td><code>function</code> | <code>null</code></td>
+<td>Optional function to run when the user marks all packages for the carrier as picked up.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.registerMarkupCalculator"></a></p>
+<h3 id="shippingregistermarkupcalculatormarkupfn">shipping.registerMarkupCalculator(markupFn)</h3>
+<p>Register the plugin to modify PostalPoint's shipping markup calculation during shipment rating.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
+<strong>Throws</strong>:</p>
+<ul>
+<li><code>Error</code> Only one plugin may register with this function;
+any subsequent attempts to register will throw an Error.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>markupFn</td>
+<td><code>function</code></td>
+<td>A function that must return either the retail price to charge for this rate, or <code>false</code> to opt-out of setting this particular rate.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">registerMarkupCalculator</span><span class="p">(</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="c1">// Parameters:</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="c1">// cost:       Cost to shipper</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="c1">// retail:     Carrier-suggested retail price</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="c1">// suggested:  PostalPoint-suggested retail (default margin calc)</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="c1">// carrier:    Shipping carrier name</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="c1">// service:    Shipping service code</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="c1">// weightOz:   The weight of the shipment in ounces, or null if not available.</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="c1">// packaging:  An empty string if not available, or &quot;Letter&quot;, &quot;FlatRateEnvelope&quot;, etc. See https://docs.easypost.com/docs/parcels#predefined-package</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span><span class="c1">// parcel:     The Parcel object for this shipment.  May be null for some rate-only requests without a shipment, such as USPS price calculations.</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">cost</span><span class="p">,</span><span class="w"> </span><span class="nx">retail</span><span class="p">,</span><span class="w"> </span><span class="nx">suggested</span><span class="p">,</span><span class="w"> </span><span class="nx">carrier</span><span class="p">,</span><span class="w"> </span><span class="nx">service</span><span class="p">,</span><span class="w"> </span><span class="nx">weightOz</span><span class="p">,</span><span class="w"> </span><span class="nx">packaging</span><span class="p">,</span><span class="w"> </span><span class="nx">parcel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">carrier</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;USPS&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">service</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;First-Class Mail&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">                </span><span class="c1">// Handle First-Class Mail differently if it&#39;s a 1oz letter (i.e. Forever stamp)</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">weightOz</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">packaging</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;Letter&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nx">retail</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.05</span><span class="p">;</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nx">retail</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.25</span><span class="p">;</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">                </span><span class="p">}</span>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">            </span><span class="c1">// Handle flat rate envelopes differently</span>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">getServiceName</span><span class="p">(</span><span class="nx">service</span><span class="p">,</span><span class="w"> </span><span class="nx">carrier</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;Priority Mail&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">packaging</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;FlatRateEnvelope&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nx">retail</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span>
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">suggested</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Charge the PostalPoint-calculated amount plus $2</span>
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">cost</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Charges the customer double the shipment&#39;s cost.</span>
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="p">);</span>
+</span></code></pre></div>
+<a name="shipping.registerInsuranceProvider"></a></p>
+<h3 id="shippingregisterinsuranceproviderid-name-cardtext-maxvalue-getquote-insure">shipping.registerInsuranceProvider(id, name, cardText, maxValue, getQuote, insure)</h3>
+<p>Add a shipping insurance provider.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><code>string</code> | <code>null</code></td>
+<td>Unique ID for the provider. Will be autogenerated if null.</td>
+</tr>
+<tr>
+<td>name</td>
+<td><code>string</code></td>
+<td>Human-readable name for the provider. Shown as the card heading on the Insurance section of the Ship screen.</td>
+</tr>
+<tr>
+<td>cardText</td>
+<td><code>string</code></td>
+<td>Text or HTML to display on the Ship screen card for this provider.</td>
+</tr>
+<tr>
+<td>maxValue</td>
+<td><code>number</code></td>
+<td>The largest number that will be accepted for the "Insured for" value.</td>
+</tr>
+<tr>
+<td>getQuote</td>
+<td><code>function</code></td>
+<td>Returns the cost and retail price for insuring the parcel, or a Promise that resolves into the same. See the example for details.</td>
+</tr>
+<tr>
+<td>insure</td>
+<td><code>function</code></td>
+<td>Insure the parcel and add the insurance details to the receipt.  See example.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getQuote</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">parcel</span><span class="p">,</span><span class="w"> </span><span class="nx">carrier</span><span class="p">,</span><span class="w"> </span><span class="nx">service</span><span class="p">,</span><span class="w"> </span><span class="nx">rateObject</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="c1">// See shipping rate provider documentation for rateObject structure.</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="c1">// Do math, etc</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">cost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">        </span><span class="nx">cost</span><span class="o">:</span><span class="w"> </span><span class="nx">cost</span><span class="p">,</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">        </span><span class="nx">retail</span><span class="o">:</span><span class="w"> </span><span class="nx">cost</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">    </span><span class="p">};</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="c1">// Or, to remove this shipping rate from the list,</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">    </span><span class="c1">// because the shipment/carrier/service combination</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">    </span><span class="c1">// is not eligible for insurance:</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="p">}</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">insure</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">parcel</span><span class="p">,</span><span class="w"> </span><span class="nx">carrier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;USPS&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Priority&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">trackingNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;94055...&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">    </span><span class="c1">// Purchase the insurance</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">cost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">retailPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cost</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">costPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cost</span><span class="p">;</span>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">receiptitem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">ReceiptItem</span><span class="p">(</span><span class="sb">`sampleinsurance_</span><span class="si">${</span><span class="nx">trackingNumber</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="w">        </span><span class="s2">&quot;Sample Insurance&quot;</span><span class="p">,</span>
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="w">        </span><span class="s2">&quot;Insured for &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">i18n</span><span class="p">.</span><span class="nx">moneyString</span><span class="p">(</span><span class="nx">value</span><span class="p">),</span>
+</span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="w">        </span><span class="nx">retailPrice</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">costPrice</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span>
+</span><span id="__span-10-27"><a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="w">    </span><span class="p">);</span>
+</span><span id="__span-10-28"><a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="w">    </span><span class="nx">receiptitem</span><span class="p">.</span><span class="nx">merch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</span><span id="__span-10-29"><a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="w">    </span><span class="nx">receiptitem</span><span class="p">.</span><span class="nx">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Shipping Insurance&quot;</span><span class="p">;</span>
+</span><span id="__span-10-30"><a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a><span class="w">    </span><span class="nx">receiptitem</span><span class="p">.</span><span class="nx">barcode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">trackingNumber</span><span class="p">;</span>
+</span><span id="__span-10-31"><a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a><span class="w">    </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">addReceiptItem</span><span class="p">(</span><span class="nx">receiptitem</span><span class="p">);</span>
+</span><span id="__span-10-32"><a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a><span class="p">}</span>
+</span><span id="__span-10-33"><a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a>
+</span><span id="__span-10-34"><a id="__codelineno-10-34" name="__codelineno-10-34" href="#__codelineno-10-34"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">registerInsuranceProvider</span><span class="p">(</span>
+</span><span id="__span-10-35"><a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a><span class="w">     </span><span class="s2">&quot;sampleproviderid&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Sample Insurance&quot;</span><span class="p">,</span>
+</span><span id="__span-10-36"><a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a><span class="w">     </span><span class="s2">&quot;Insurance coverage from Sample Insurance. $1 per $100 of value.&quot;</span><span class="p">,</span>
+</span><span id="__span-10-37"><a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a><span class="w">     </span><span class="mf">5000</span><span class="p">,</span><span class="w"> </span><span class="nx">getQuote</span><span class="p">,</span><span class="w"> </span><span class="nx">insure</span><span class="p">);</span>
+</span></code></pre></div>
+<a name="shipping.getRecentShipments"></a></p>
+<h3 id="shippinggetrecentshipmentsplugin_sourceid-sincedate-includevoided-onlynotshipped-promisearray">shipping.getRecentShipments(plugin_sourceid, sinceDate, includeVoided, onlyNotShipped) ⇒ <code>Promise.&lt;Array&gt;</code></h3>
+<p>Get recent shipments for a plugin_sourceid.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
+<strong>Returns</strong>: <code>Promise.&lt;Array&gt;</code> - List of shipments. See example.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin_sourceid</td>
+<td><code>string</code></td>
+<td></td>
+<td>See data returned from the purchase function of <code>registerRateEndpoint</code></td>
+</tr>
+<tr>
+<td>sinceDate</td>
+<td><code>Date</code> | <code>null</code></td>
+<td><code></code></td>
+<td>Get shipments created after this Date object. If not set, returns all shipments from the past 7 days.</td>
+</tr>
+<tr>
+<td>includeVoided</td>
+<td><code>Boolean</code></td>
+<td><code>false</code></td>
+<td>If true, response includes voided shipments.</td>
+</tr>
+<tr>
+<td>onlyNotShipped</td>
+<td><code>Boolean</code></td>
+<td><code>false</code></td>
+<td>If true, response only includes shipments without a recorded carrier pickup timestamp.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">// Sample result from this function:</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1">// All fields except `id` and `created` might be null.</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">{</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span><span class="w"> </span><span class="c1">// Internal database ID for shipment</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="nx">customeruuid</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Customer UUID string</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="nx">prepaid</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// True if a prepaid drop-off</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="nx">voided</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// True if label marked as voided</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="nx">tracking</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Tracking number</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="nx">created</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">    </span><span class="nx">shipped</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span><span class="w"> </span><span class="c1">// Date and time the package was marked as picked up by the carrier.</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">    </span><span class="nx">metadata</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="c1">// Whatever was returned by the purchase function that created the shipment. Stored internally as a JSON string and parsed before returning. If JSON can&#39;t be parsed, is set to null.</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">    </span><span class="nx">to_address</span><span class="o">:</span><span class="w"> </span><span class="nx">Address</span><span class="p">,</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">    </span><span class="nx">from_address</span><span class="o">:</span><span class="w"> </span><span class="nx">Address</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="p">}</span>
+</span></code></pre></div>
+<a name="shipping.addShipmentToDatabase"></a></p>
+<h3 id="shippingaddshipmenttodatabaseplugin_sourceid-prepaid-tracking-carrier-service-to_address-from_address-create_date-metadata-promise">shipping.addShipmentToDatabase(plugin_sourceid, prepaid, tracking, carrier, service, to_address, from_address, create_date, metadata) ⇒ <code>Promise</code></h3>
+<p>Manually add a shipment record to the store database. This is done automatically when a label is purchased,
+and only needs to be done with this function if a shipment is created outside a normal PostalPoint workflow
+(such as, for example, when a shipment is created by a dropoff QR code handler that doesn't return prepaid drop-off shipment data)</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
+<strong>Returns</strong>: <code>Promise</code> - Result of the database query.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin_sourceid</td>
+<td><code>string</code></td>
+<td>Shipment plugin source ID. See getRecentShipments and registerRateEndpoint</td>
+</tr>
+<tr>
+<td>prepaid</td>
+<td><code>boolean</code></td>
+<td>If the shipment is a prepaid drop-off. Default is false.</td>
+</tr>
+<tr>
+<td>tracking</td>
+<td><code>string</code> | <code>null</code></td>
+<td>Tracking number.</td>
+</tr>
+<tr>
+<td>carrier</td>
+<td><code>string</code> | <code>null</code></td>
+<td>Carrier ID or name.</td>
+</tr>
+<tr>
+<td>service</td>
+<td><code>string</code> | <code>null</code></td>
+<td>Service ID or name.</td>
+</tr>
+<tr>
+<td>to_address</td>
+<td><code>Address</code> | <code>null</code></td>
+<td>An Address object for the destination address.</td>
+</tr>
+<tr>
+<td>from_address</td>
+<td><code>Address</code> | <code>null</code></td>
+<td>An Address object for the return/origin/customer address.</td>
+</tr>
+<tr>
+<td>create_date</td>
+<td><code>Date</code> | <code>number</code> | <code>null</code></td>
+<td>Date or UNIX timestamp when the shipment was created. Defaults to now if not set.</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td><code>Object</code> | <code>null</code></td>
+<td>An object for holding other data about a shipment. Will be serialized to JSON. If not an Object, will be saved as <code>{}</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.markShipmentVoid"></a></p>
+<h3 id="shippingmarkshipmentvoidshipmentid-voided-promise">shipping.markShipmentVoid(shipmentid, voided) ⇒ <code>Promise</code></h3>
+<p>Mark a shipment as voided in the database.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shipmentid</td>
+<td><code>Integer</code></td>
+<td></td>
+<td>The internal database ID for the shipment, returned in getRecentShipments</td>
+</tr>
+<tr>
+<td>voided</td>
+<td><code>Boolean</code></td>
+<td><code>true</code></td>
+<td>Set to false to un-void a previously voided shipment.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.markShipmentPickedUp"></a></p>
+<h3 id="shippingmarkshipmentpickedupshipmentid-timestamp-promise">shipping.markShipmentPickedUp(shipmentid, timestamp) ⇒ <code>Promise</code></h3>
+<p>Mark an outgoing shipment in the database as picked up by the carrier.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shipmentid</td>
+<td><code>Integer</code></td>
+<td></td>
+<td>The internal database ID for the shipment, returned in getRecentShipments</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td><code>Date</code> | <code>Integer</code> | <code>null</code></td>
+<td><code></code></td>
+<td>The Date or UNIX timestamp (in seconds) of the pickup. Defaults to the current date and time if not a Date or number.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.getParcel"></a></p>
+<h3 id="shippinggetparcel-package">shipping.getParcel() ⇒ <code>Package</code></h3>
+<p>Get the current in-progress shipment's data.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
+<strong>Returns</strong>: <code>Package</code> - See Parcel/Package docs<br />
+<a name="shipping.setParcel"></a></p>
+<h3 id="shippingsetparcelnewparcel-parcelchangeeventsource">shipping.setParcel(newParcel, parcelChangeEventSource)</h3>
+<p>Set/overwrite the current in-progress shipment's data.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>newParcel</td>
+<td><code>Package</code></td>
+<td></td>
+</tr>
+<tr>
+<td>parcelChangeEventSource</td>
+<td><code>string</code> | <code>null</code></td>
+<td>An optional string sent as the data for the <code>parcelUpdated</code> event.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.isOfficeMode"></a></p>
+<h3 id="shippingisofficemode-boolean">shipping.isOfficeMode() ⇒ <code>boolean</code></h3>
+<p>Check if PostalPoint is running the shipment in "office mode", i.e. the customer should be charged the cost price.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
+<strong>Returns</strong>: <code>boolean</code> - true if office mode enabled, otherwise false.<br />
+<a name="shipping.getAddressFieldInfo"></a></p>
+<h3 id="shippinggetaddressfieldinfocountry-object">shipping.getAddressFieldInfo(country) ⇒ <code>Object</code></h3>
+<p>Get info on address fields for a given country.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
+<strong>Returns</strong>: <code>Object</code> - See example.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>country</td>
+<td><code>string</code></td>
+<td>two-letter ISO country code.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">{</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="nx">fields</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// False if field not applicable for addresses in this country.</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">        </span><span class="nx">company</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">        </span><span class="nx">street1</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">        </span><span class="nx">street2</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">        </span><span class="nx">city</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">        </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">        </span><span class="nx">zip</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">    </span><span class="nx">labels</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Human-readable form field labels, localized, and country-dependent</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Name&quot;</span><span class="p">,</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">        </span><span class="nx">company</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Company&quot;</span><span class="p">,</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">        </span><span class="nx">street1</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Address&quot;</span><span class="p">,</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">        </span><span class="nx">street2</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Address Line 2&quot;</span><span class="p">,</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">        </span><span class="nx">city</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;City/Suburb/District/Locality&quot;</span><span class="p">,</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">        </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;State/Province&quot;</span><span class="p">,</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="w">        </span><span class="nx">zip</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Postal Code&quot;</span>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="w">    </span><span class="nx">placeholders</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;John Doe&quot;</span><span class="p">,</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="w">        </span><span class="nx">company</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ABC Inc&quot;</span><span class="p">,</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="w">        </span><span class="nx">street1</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123 Example St&quot;</span><span class="p">,</span>
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="w">        </span><span class="nx">street2</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Apt 2&quot;</span><span class="p">,</span>
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="w">        </span><span class="nx">city</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;(Not Required)&quot;</span><span class="p">,</span>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="w">        </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="w">        </span><span class="nx">zip</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;12345&quot;</span>
+</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="p">}</span>
+</span></code></pre></div></p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../assets/external/unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
