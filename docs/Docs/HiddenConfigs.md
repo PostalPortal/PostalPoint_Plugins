@@ -9,6 +9,7 @@ However, there are some special "hidden" setting options that can override defau
 Warning: PostalPoint is tested with these settings at their default values (usually, unset). There is a small chance of bugs being created by changing a value.
 
 * `approved_shipper_receipt_disclaimer`: Set non-empty to add a disclaimer on printed receipts: "Note: A non-postal surcharge was added to x items"
+* `db_path`: Override the filename used for the internal SQLite3 database.
 * `disable_hid_feedback`: Set non-empty to skip sending scan feedback commands (error beep, etc) to the USB HID POS barcode scanner.
 * `disable_keyboard_shortcuts`: Set non-empty to disable the Function key row keyboard navigation shortcuts.
 * `disablesettingsbackup`: Set non-empty to skip backing up settings with the database.
