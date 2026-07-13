@@ -17,6 +17,8 @@ Add custom carrier and rates, and adjust markup.
     * [.getLabelDate([carrier])](#shipping.getLabelDate) ⇒ <code>Promise.&lt;Date&gt;</code>
     * [.getCarrierName(carrierId)](#shipping.getCarrierName) ⇒ <code>string</code>
     * [.getServiceName(serviceId, [carrier], [stripInternational])](#shipping.getServiceName) ⇒ <code>string</code>
+    * [.defineCarrierName(id, name)](#shipping.defineCarrierName)
+    * [.defineServiceName(id, name, carrierName, nameTM)](#shipping.defineServiceName)
     * [.getCustomsFormImages(parcel, incoterm, trackingNumber, invoiceNumber, date)](#shipping.getCustomsFormImages) ⇒ <code>Promise.&lt;Array.&lt;Jimp&gt;&gt;</code>
     * [.registerRateEndpoint(getRates, purchase, idPrefix, [extraOptions])](#shipping.registerRateEndpoint)
     * [.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)](#shipping.registerStampEndpoint)
@@ -197,6 +199,39 @@ Converts the service ID string into a consistent and human-readable name. Set th
 | serviceId | <code>string</code> |  |  |
 | [carrier] | <code>string</code> | <code>&quot;\&quot;USPS\&quot;&quot;</code> | Carrier ID or name (i.e. the string sent to or received from `getCarrierName()`) |
 | [stripInternational] | <code>boolean</code> | <code>false</code> | If true, remove "International" from the service name. For example, "Priority Mail International" becomes "Priority Mail", to allow matching a domestic USPS service with the international version of that service. |
+
+<a name="shipping.defineCarrierName"></a>
+
+### shipping.defineCarrierName(id, name)
+Add a new carrier ID-name pair for use by getCarrierName.
+Adding multiple IDs for the same carrier name is permitted.
+Adding new IDs for a pre-existing carrier name is also permitted.
+`id` and `name` must be non-empty strings or this function will log a warning and do nothing.
+
+**Kind**: static method of [<code>shipping</code>](#shipping)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>string</code> | An internal ID code that might be passed to getCarrierName. |
+| name | <code>string</code> | The human-readable carrier name for display. |
+
+<a name="shipping.defineServiceName"></a>
+
+### shipping.defineServiceName(id, name, carrierName, nameTM)
+Add a new shipping service ID-name pair for use by getServiceName.
+Adding multiple IDs for the same service name is permitted.
+Adding new IDs for a pre-existing service name is also permitted.
+`carrierName` must match the name or an ID of an already-defined carrier or this function will log a warning and do nothing.
+`id`, `name`, and `carrierName` must be non-empty strings or this function will log a warning and do nothing.
+
+**Kind**: static method of [<code>shipping</code>](#shipping)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>string</code> | An internal ID code that might be passed to getServiceName. |
+| name | <code>string</code> | The human-readable service name for display. |
+| carrierName | <code>string</code> | The human-readable carrier name for display. |
+| nameTM | <code>string</code> \| <code>null</code> | An alternate version of the service name to display, including trademark symbols. Will be used instead of `name` in some places such as shipping rate cards, but not on receipts or other places that might not support non-ASCII symbols. |
 
 <a name="shipping.getCustomsFormImages"></a>
 
@@ -515,6 +550,7 @@ Get recent shipments for a plugin_sourceid.
 // All fields except `id` and `created` might be null.
 {
     id: 123, // Internal database ID for shipment
+    shipmentid: "xxx", // The `shipmentid` returned from a label purchase, or null if not provided
     customeruuid: "string", // Customer UUID string
     prepaid: false, // True if a prepaid drop-off
     voided: false, // True if label marked as voided

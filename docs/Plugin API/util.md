@@ -39,6 +39,7 @@ Various utility functions: HTTP, time/date, barcode creation, clipboard, etc.
         * [.getStateISOCode(state, country)](#util.geography.getStateISOCode) ⇒ <code>string</code>
     * [.objectEquals(a, b)](#util.objectEquals) ⇒ <code>boolean</code>
     * [.delay([ms])](#util.delay) ⇒ <code>Promise</code>
+    * [.getFormData(formid)](#util.getFormData) ⇒ <code>Object</code>
 
 <a name="util.uuid"></a>
 
@@ -462,4 +463,16 @@ Pause execution for some amount of time in an async function, i.e., returns a Pr
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [ms] | <code>number</code> | <code>1000</code> | Number of milliseconds to pause. |
+
+<a name="util.getFormData"></a>
+
+### util.getFormData(formid) ⇒ <code>Object</code>
+Get data from a HTML form that's currently loaded/onscreen.
+
+**Kind**: static method of [<code>util</code>](#util)  
+**Returns**: <code>Object</code> - {inputName: val, otherInput: val2, ...}  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| formid | <code>string</code> | The HTML ID of the form object. |
 
