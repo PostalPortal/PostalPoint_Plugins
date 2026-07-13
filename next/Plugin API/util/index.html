@@ -1869,6 +1869,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#utilgetformdataformid-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.getFormData(formid) ⇒ Object
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2337,6 +2348,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#utilgetformdataformid-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        util.getFormData(formid) ⇒ Object
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2416,6 +2438,7 @@
 </li>
 <li><a href="#util.objectEquals">.objectEquals(a, b)</a> ⇒ <code>boolean</code></li>
 <li><a href="#util.delay">.delay([ms])</a> ⇒ <code>Promise</code></li>
+<li><a href="#util.getFormData">.getFormData(formid)</a> ⇒ <code>Object</code></li>
 </ul>
 </li>
 </ul>
@@ -3165,6 +3188,27 @@ This function returns the ISO 3166-2 code for a state code (or name, if it's an 
 <td><code>number</code></td>
 <td><code>1000</code></td>
 <td>Number of milliseconds to pause.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="util.getFormData"></a></p>
+<h3 id="utilgetformdataformid-object">util.getFormData(formid) ⇒ <code>Object</code></h3>
+<p>Get data from a HTML form that's currently loaded/onscreen.</p>
+<p><strong>Kind</strong>: static method of <a href="#util"><code>util</code></a><br />
+<strong>Returns</strong>: <code>Object</code> - {inputName: val, otherInput: val2, ...}  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>formid</td>
+<td><code>string</code></td>
+<td>The HTML ID of the form object.</td>
 </tr>
 </tbody>
 </table>

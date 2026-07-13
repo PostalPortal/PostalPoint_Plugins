@@ -1482,6 +1482,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#shippingdefinecarriernameid-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.defineCarrierName(id, name)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingdefineservicenameid-name-carriername-nametm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.defineServiceName(id, name, carrierName, nameTM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#shippinggetcustomsformimagesparcel-incoterm-trackingnumber-invoicenumber-date-promisearrayjimp" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1960,6 +1982,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#shippingdefinecarriernameid-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.defineCarrierName(id, name)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shippingdefineservicenameid-name-carriername-nametm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shipping.defineServiceName(id, name, carrierName, nameTM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#shippinggetcustomsformimagesparcel-incoterm-trackingnumber-invoicenumber-date-promisearrayjimp" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2180,6 +2224,8 @@
 <li><a href="#shipping.getLabelDate">.getLabelDate([carrier])</a> ⇒ <code>Promise.&lt;Date&gt;</code></li>
 <li><a href="#shipping.getCarrierName">.getCarrierName(carrierId)</a> ⇒ <code>string</code></li>
 <li><a href="#shipping.getServiceName">.getServiceName(serviceId, [carrier], [stripInternational])</a> ⇒ <code>string</code></li>
+<li><a href="#shipping.defineCarrierName">.defineCarrierName(id, name)</a></li>
+<li><a href="#shipping.defineServiceName">.defineServiceName(id, name, carrierName, nameTM)</a></li>
 <li><a href="#shipping.getCustomsFormImages">.getCustomsFormImages(parcel, incoterm, trackingNumber, invoiceNumber, date)</a> ⇒ <code>Promise.&lt;Array.&lt;Jimp&gt;&gt;</code></li>
 <li><a href="#shipping.registerRateEndpoint">.registerRateEndpoint(getRates, purchase, idPrefix, [extraOptions])</a></li>
 <li><a href="#shipping.registerStampEndpoint">.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)</a></li>
@@ -2450,6 +2496,73 @@ If no date is found for the next pickup, defaults to the current date and time.<
 <td><code>boolean</code></td>
 <td><code>false</code></td>
 <td>If true, remove "International" from the service name. For example, "Priority Mail International" becomes "Priority Mail", to allow matching a domestic USPS service with the international version of that service.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.defineCarrierName"></a></p>
+<h3 id="shippingdefinecarriernameid-name">shipping.defineCarrierName(id, name)</h3>
+<p>Add a new carrier ID-name pair for use by getCarrierName.
+Adding multiple IDs for the same carrier name is permitted.
+Adding new IDs for a pre-existing carrier name is also permitted.
+<code>id</code> and <code>name</code> must be non-empty strings or this function will log a warning and do nothing.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><code>string</code></td>
+<td>An internal ID code that might be passed to getCarrierName.</td>
+</tr>
+<tr>
+<td>name</td>
+<td><code>string</code></td>
+<td>The human-readable carrier name for display.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.defineServiceName"></a></p>
+<h3 id="shippingdefineservicenameid-name-carriername-nametm">shipping.defineServiceName(id, name, carrierName, nameTM)</h3>
+<p>Add a new shipping service ID-name pair for use by getServiceName.
+Adding multiple IDs for the same service name is permitted.
+Adding new IDs for a pre-existing service name is also permitted.
+<code>carrierName</code> must match the name or an ID of an already-defined carrier or this function will log a warning and do nothing.
+<code>id</code>, <code>name</code>, and <code>carrierName</code> must be non-empty strings or this function will log a warning and do nothing.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><code>string</code></td>
+<td>An internal ID code that might be passed to getServiceName.</td>
+</tr>
+<tr>
+<td>name</td>
+<td><code>string</code></td>
+<td>The human-readable service name for display.</td>
+</tr>
+<tr>
+<td>carrierName</td>
+<td><code>string</code></td>
+<td>The human-readable carrier name for display.</td>
+</tr>
+<tr>
+<td>nameTM</td>
+<td><code>string</code> | <code>null</code></td>
+<td>An alternate version of the service name to display, including trademark symbols. Will be used instead of <code>name</code> in some places such as shipping rate cards, but not on receipts or other places that might not support non-ASCII symbols.</td>
 </tr>
 </tbody>
 </table>
@@ -2951,18 +3064,19 @@ any subsequent attempts to register will throw an Error.</li>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1">// All fields except `id` and `created` might be null.</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">{</span>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span><span class="w"> </span><span class="c1">// Internal database ID for shipment</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="nx">customeruuid</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Customer UUID string</span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="nx">prepaid</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// True if a prepaid drop-off</span>
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="nx">voided</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// True if label marked as voided</span>
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="nx">tracking</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Tracking number</span>
-</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="nx">created</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span>
-</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">    </span><span class="nx">shipped</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span><span class="w"> </span><span class="c1">// Date and time the package was marked as picked up by the carrier.</span>
-</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">    </span><span class="nx">metadata</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="c1">// Whatever was returned by the purchase function that created the shipment. Stored internally as a JSON string and parsed before returning. If JSON can&#39;t be parsed, is set to null.</span>
-</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">    </span><span class="nx">to_address</span><span class="o">:</span><span class="w"> </span><span class="nx">Address</span><span class="p">,</span>
-</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">    </span><span class="nx">from_address</span><span class="o">:</span><span class="w"> </span><span class="nx">Address</span>
-</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="p">}</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="nx">shipmentid</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// The `shipmentid` returned from a label purchase, or null if not provided</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="nx">customeruuid</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Customer UUID string</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="nx">prepaid</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// True if a prepaid drop-off</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="nx">voided</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// True if label marked as voided</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="nx">tracking</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Tracking number</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">    </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">    </span><span class="nx">created</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">    </span><span class="nx">shipped</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span><span class="w"> </span><span class="c1">// Date and time the package was marked as picked up by the carrier.</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">    </span><span class="nx">metadata</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="c1">// Whatever was returned by the purchase function that created the shipment. Stored internally as a JSON string and parsed before returning. If JSON can&#39;t be parsed, is set to null.</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">    </span><span class="nx">to_address</span><span class="o">:</span><span class="w"> </span><span class="nx">Address</span><span class="p">,</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">    </span><span class="nx">from_address</span><span class="o">:</span><span class="w"> </span><span class="nx">Address</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="p">}</span>
 </span></code></pre></div>
 <a name="shipping.addShipmentToDatabase"></a></p>
 <h3 id="shippingaddshipmenttodatabaseplugin_sourceid-prepaid-tracking-carrier-service-to_address-from_address-create_date-metadata-promise">shipping.addShipmentToDatabase(plugin_sourceid, prepaid, tracking, carrier, service, to_address, from_address, create_date, metadata) ⇒ <code>Promise</code></h3>
