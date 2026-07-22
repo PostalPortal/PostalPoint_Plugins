@@ -19,6 +19,7 @@ extra:
   version:
     provider: mike
     alias: true
+    default: next
 extra_css:
   - assets/styles.css
 plugins:
