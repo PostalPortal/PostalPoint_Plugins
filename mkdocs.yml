@@ -43,8 +43,12 @@ extra:
     default: next
 extra_css:
   - assets/styles.css
+  - https://static.netsyms.net/fontawesome-pro/7.3.0/css/all.min.css
 plugins:
-  - privacy
+  - privacy:
+      assets_exclude:
+        - static.netsyms.net/*
+        - postalpoint.app/*
   - search
   - mike:
       alias_type: symlink
