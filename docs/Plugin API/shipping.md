@@ -17,7 +17,7 @@ Add custom carrier and rates, and adjust markup.
     * [.getLabelDate([carrier])](#shipping.getLabelDate) ⇒ <code>Promise.&lt;Date&gt;</code>
     * [.getCarrierName(carrierId)](#shipping.getCarrierName) ⇒ <code>string</code>
     * [.getServiceName(serviceId, [carrier], [stripInternational])](#shipping.getServiceName) ⇒ <code>string</code>
-    * [.defineCarrierName(id, name, dropoff, regions)](#shipping.defineCarrierName)
+    * [.defineCarrierName(id, name, dropoff, regions, hide)](#shipping.defineCarrierName)
     * [.defineServiceName(id, name, carrierName, nameTM)](#shipping.defineServiceName)
     * [.getCustomsFormImages(parcel, incoterm, trackingNumber, invoiceNumber, date)](#shipping.getCustomsFormImages) ⇒ <code>Promise.&lt;Array.&lt;Jimp&gt;&gt;</code>
     * [.registerRateEndpoint(getRates, purchase, idPrefix, [extraOptions])](#shipping.registerRateEndpoint)
@@ -202,7 +202,7 @@ Converts the service ID string into a consistent and human-readable name. Set th
 
 <a name="shipping.defineCarrierName"></a>
 
-### shipping.defineCarrierName(id, name, dropoff, regions)
+### shipping.defineCarrierName(id, name, dropoff, regions, hide)
 Add a new carrier ID-name pair for use by getCarrierName.
 Adding multiple IDs for the same carrier name is permitted.
 Adding new IDs for a pre-existing carrier name is also permitted.
@@ -215,7 +215,8 @@ Adding new IDs for a pre-existing carrier name is also permitted.
 | id | <code>string</code> |  | An internal ID code that might be passed to getCarrierName. |
 | name | <code>string</code> |  | The human-readable carrier name for display. |
 | dropoff | <code>boolean</code> | <code>false</code> | True if drop-off scans for this carrier can be handled (i.e. there's a handler set with global.apis.barcode.onPrepaidScan for it) |
-| regions | <code>array</code> | <code>[</code> | Array of two-letter ISO country codes where this carrier is available.  Carriers are hidden from list UIs if the user's country isn't on this list.  An empty array means global availability. |
+| regions | <code>array</code> |  | Array of two-letter ISO country codes where this carrier is available.  Carriers are hidden from list UIs if the user's country isn't on this list.  An empty array or undefined means global availability. |
+| hide | <code>boolean</code> | <code>false</code> | If true, the carrier name won't be shown to the user in some UIs, but will still be available for all other purposes. |
 
 <a name="shipping.defineServiceName"></a>
 
