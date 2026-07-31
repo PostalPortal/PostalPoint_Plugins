@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../httpserver/">
+        <link rel="prev" href="../documentscanner/">
       
       
-        <link rel="next" href="../kiosk/">
+        <link rel="next" href="../fs/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>I18n - PostalPoint Plugin Development</title>
+        <title>Eventbus - PostalPoint Plugin Development</title>
       
     
     
@@ -98,7 +98,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#i18n-object" class="md-skip">
+        <a href="#eventbus-object" class="md-skip">
           Skip to content
         </a>
       
@@ -137,7 +137,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              I18n
+              Eventbus
             
           </span>
         </div>
@@ -957,10 +957,34 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../eventbus/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Eventbus
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -975,6 +999,36 @@
   
 
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#eventbus-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        eventbus : <code>object</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1092,34 +1146,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  I18n
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../i18n/" class="md-nav__link">
         
   
   
@@ -1134,152 +1164,6 @@
   
 
       </a>
-      
-        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#i18n-object" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n : <code>object</code>
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="i18n : object">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#i18ncountry-string" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.country() ⇒ <code>string</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i18ncurrency-string" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.currency() ⇒ <code>string</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i18nsymbol-string" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.symbol() ⇒ <code>string</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i18ndecimals-number" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.decimals() ⇒ <code>number</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i18nconvertcurrencyamount-fromcurrency-tocurrency-promisenumber" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.convertCurrency(amount, fromCurrency, [toCurrency]) ⇒ <code>Promise.&lt;number&gt;</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i18nmoneytofixedamount-string" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.moneyToFixed(amount) ⇒ <code>string</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i18nmoneystringamount-string" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.moneyString(amount) ⇒ <code>string</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i18ncurrencyminortomajoramount-number" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.currencyMinorToMajor(amount) ⇒ <code>number</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i18ncurrencymajortominoramount-number" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.currencyMajorToMinor(amount) ⇒ <code>number</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i18ngetuilanguagefull-string" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.getUILanguage(full) ⇒ <code>string</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1626,129 +1510,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#i18n-object" class="md-nav__link">
+  <a href="#eventbus-object" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        i18n : <code>object</code>
+        eventbus : <code>object</code>
       </span>
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="i18n : object">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#i18ncountry-string" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.country() ⇒ <code>string</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i18ncurrency-string" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.currency() ⇒ <code>string</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i18nsymbol-string" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.symbol() ⇒ <code>string</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i18ndecimals-number" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.decimals() ⇒ <code>number</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i18nconvertcurrencyamount-fromcurrency-tocurrency-promisenumber" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.convertCurrency(amount, fromCurrency, [toCurrency]) ⇒ <code>Promise.&lt;number&gt;</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i18nmoneytofixedamount-string" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.moneyToFixed(amount) ⇒ <code>string</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i18nmoneystringamount-string" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.moneyString(amount) ⇒ <code>string</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i18ncurrencyminortomajoramount-number" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.currencyMinorToMajor(amount) ⇒ <code>number</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i18ncurrencymajortominoramount-number" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.currencyMajorToMinor(amount) ⇒ <code>number</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i18ngetuilanguagefull-string" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        i18n.getUILanguage(full) ⇒ <code>string</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1767,181 +1535,13 @@
                 
                   
 
-  <h1 id="__skip">I18n</h1>
+  <h1 id="__skip">Eventbus</h1>
 
-<p><a name="i18n"></a></p>
-<h2 id="i18n-object">i18n : <code>object</code></h2>
-<p>Functions to help support multiple currencies and countries.</p>
+<p><a name="eventbus"></a></p>
+<h2 id="eventbus-object">eventbus : <code>object</code></h2>
+<p>A <a href="https://framework7.io/docs/events#events-bus">Framework7 event bus</a> that
+PostalPoint broadcasts events with. See docs/Events.md for details.</p>
 <p><strong>Kind</strong>: global namespace  </p>
-<ul>
-<li><a href="#i18n">i18n</a> : <code>object</code><ul>
-<li><a href="#i18n.country">.country()</a> ⇒ <code>string</code></li>
-<li><a href="#i18n.currency">.currency()</a> ⇒ <code>string</code></li>
-<li><a href="#i18n.symbol">.symbol()</a> ⇒ <code>string</code></li>
-<li><a href="#i18n.decimals">.decimals()</a> ⇒ <code>number</code></li>
-<li><a href="#i18n.convertCurrency">.convertCurrency(amount, fromCurrency, [toCurrency])</a> ⇒ <code>Promise.&lt;number&gt;</code></li>
-<li><a href="#i18n.moneyToFixed">.moneyToFixed(amount)</a> ⇒ <code>string</code></li>
-<li><a href="#i18n.moneyString">.moneyString(amount)</a> ⇒ <code>string</code></li>
-<li><a href="#i18n.currencyMinorToMajor">.currencyMinorToMajor(amount)</a> ⇒ <code>number</code></li>
-<li><a href="#i18n.currencyMajorToMinor">.currencyMajorToMinor(amount)</a> ⇒ <code>number</code></li>
-<li><a href="#i18n.getUILanguage">.getUILanguage(full)</a> ⇒ <code>string</code></li>
-</ul>
-</li>
-</ul>
-<p><a name="i18n.country"></a></p>
-<h3 id="i18ncountry-string">i18n.country() ⇒ <code>string</code></h3>
-<p>Get the 2-character ISO country code that PostalPoint is running in.</p>
-<p><strong>Kind</strong>: static method of <a href="#i18n"><code>i18n</code></a><br />
-<strong>Returns</strong>: <code>string</code> - "US", "CA", etc.<br />
-<a name="i18n.currency"></a></p>
-<h3 id="i18ncurrency-string">i18n.currency() ⇒ <code>string</code></h3>
-<p>Get the 3-character currency code in use.</p>
-<p><strong>Kind</strong>: static method of <a href="#i18n"><code>i18n</code></a><br />
-<strong>Returns</strong>: <code>string</code> - "usd", "cad", etc.<br />
-<a name="i18n.symbol"></a></p>
-<h3 id="i18nsymbol-string">i18n.symbol() ⇒ <code>string</code></h3>
-<p>Get the currency symbol.</p>
-<p><strong>Kind</strong>: static method of <a href="#i18n"><code>i18n</code></a><br />
-<strong>Returns</strong>: <code>string</code> - "$", "€", "₤", etc<br />
-<a name="i18n.decimals"></a></p>
-<h3 id="i18ndecimals-number">i18n.decimals() ⇒ <code>number</code></h3>
-<p>Get the number of decimal places for the currency: for example, USD has 2 ($x.00), KRW has 0 (x), UYW has 4 (x.0000).</p>
-<p><strong>Kind</strong>: static method of <a href="#i18n"><code>i18n</code></a><br />
-<strong>Returns</strong>: <code>number</code> - 0, 2, 3, or 4<br />
-<a name="i18n.convertCurrency"></a></p>
-<h3 id="i18nconvertcurrencyamount-fromcurrency-tocurrency-promisenumber">i18n.convertCurrency(amount, fromCurrency, [toCurrency]) ⇒ <code>Promise.&lt;number&gt;</code></h3>
-<p>Convert an amount of money to a different currency. Conversion rate is retrieved from the internet and cached for 4 hours.</p>
-<p><strong>Kind</strong>: static method of <a href="#i18n"><code>i18n</code></a>  </p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>amount</td>
-<td><code>number</code></td>
-<td></td>
-<td>Amount of money in the "wrong" currency</td>
-</tr>
-<tr>
-<td>fromCurrency</td>
-<td><code>string</code></td>
-<td></td>
-<td>The currency code for the "wrong" currency that needs conversion</td>
-</tr>
-<tr>
-<td>[toCurrency]</td>
-<td><code>string</code></td>
-<td><code>&quot;getCurrencyCode()&quot;</code></td>
-<td>The "correct" currency we want the amount to be in.</td>
-</tr>
-</tbody>
-</table>
-<p><a name="i18n.moneyToFixed"></a></p>
-<h3 id="i18nmoneytofixedamount-string">i18n.moneyToFixed(amount) ⇒ <code>string</code></h3>
-<p>Returns the amount as a string formatted with the correct number of decimal places for the currency in use.</p>
-<p><strong>Kind</strong>: static method of <a href="#i18n"><code>i18n</code></a><br />
-<strong>Returns</strong>: <code>string</code> - "1.23", "1.2345", etc  </p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>amount</td>
-<td><code>number</code></td>
-</tr>
-</tbody>
-</table>
-<p><a name="i18n.moneyString"></a></p>
-<h3 id="i18nmoneystringamount-string">i18n.moneyString(amount) ⇒ <code>string</code></h3>
-<p>Returns the amount as a string, with the correct decimal places, and the local currency symbol.</p>
-<p><strong>Kind</strong>: static method of <a href="#i18n"><code>i18n</code></a><br />
-<strong>Returns</strong>: <code>string</code> - "$1.23", etc  </p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>amount</td>
-<td><code>number</code></td>
-</tr>
-</tbody>
-</table>
-<p><a name="i18n.currencyMinorToMajor"></a></p>
-<h3 id="i18ncurrencyminortomajoramount-number">i18n.currencyMinorToMajor(amount) ⇒ <code>number</code></h3>
-<p>Convert an amount in cents to dollars (or the local equivalent currency units).</p>
-<p><strong>Kind</strong>: static method of <a href="#i18n"><code>i18n</code></a><br />
-<strong>Returns</strong>: <code>number</code> - Dollars, etc  </p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>amount</td>
-<td><code>number</code></td>
-<td>Cents, etc</td>
-</tr>
-</tbody>
-</table>
-<p><a name="i18n.currencyMajorToMinor"></a></p>
-<h3 id="i18ncurrencymajortominoramount-number">i18n.currencyMajorToMinor(amount) ⇒ <code>number</code></h3>
-<p>Convert an amount in dollars to cents (or the local equivalent currency units).</p>
-<p><strong>Kind</strong>: static method of <a href="#i18n"><code>i18n</code></a><br />
-<strong>Returns</strong>: <code>number</code> - Cents, etc  </p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>amount</td>
-<td><code>number</code></td>
-<td>Dollars, etc</td>
-</tr>
-</tbody>
-</table>
-<p><a name="i18n.getUILanguage"></a></p>
-<h3 id="i18ngetuilanguagefull-string">i18n.getUILanguage(full) ⇒ <code>string</code></h3>
-<p>Get the user's preferred language code.</p>
-<p><strong>Kind</strong>: static method of <a href="#i18n"><code>i18n</code></a>  </p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>full</td>
-<td><code>boolean</code></td>
-<td>True to return entire code (for example, "en_US"), false to return just the language (example: "en"). Default is true.</td>
-</tr>
-</tbody>
-</table>
 
 
 

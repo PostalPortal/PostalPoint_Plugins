@@ -960,6 +960,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../eventbus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Eventbus
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fs/" class="md-nav__link">
         
   
@@ -1090,6 +1117,17 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         confirm(text, title, [callback], [cancelCallback]) ⇒ <code>Promise</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompttext-title-callback-cancelcallback-defaultvalue-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        prompt(text, title, [callback], [cancelCallback], defaultValue) ⇒ <code>Promise</code>
       </span>
     </span>
   </a>
@@ -1581,6 +1619,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#prompttext-title-callback-cancelcallback-defaultvalue-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        prompt(text, title, [callback], [cancelCallback], defaultValue) ⇒ <code>Promise</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1701,6 +1750,53 @@ See https://framework7.io/docs/app for details.</p>
 <td><code>function</code> | <code>null</code></td>
 <td><code></code></td>
 <td>Function to call when the Cancel button is pressed.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="prompt"></a></p>
+<h2 id="prompttext-title-callback-cancelcallback-defaultvalue-promise">prompt(text, title, [callback], [cancelCallback], defaultValue) ⇒ <code>Promise</code></h2>
+<p>Display a simple confirm dialog box with OK and Cancel buttons.</p>
+<p><strong>Kind</strong>: global function<br />
+<strong>Returns</strong>: <code>Promise</code> - Resolves when the user closes the dialog, with the input box's value if OK is pressed, or <code>false</code> if Cancel is pressed.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text</td>
+<td><code>string</code></td>
+<td></td>
+<td>Body text of the dialog. Can include HTML tags.  The input box will be appended to this.</td>
+</tr>
+<tr>
+<td>title</td>
+<td><code>string</code></td>
+<td></td>
+<td>Dialog title.</td>
+</tr>
+<tr>
+<td>[callback]</td>
+<td><code>function</code> | <code>null</code></td>
+<td><code></code></td>
+<td>Function to call when the OK button is pressed. Is passed the input value.</td>
+</tr>
+<tr>
+<td>[cancelCallback]</td>
+<td><code>function</code> | <code>null</code></td>
+<td><code></code></td>
+<td>Function to call when the Cancel button is pressed. Is passed the input value.</td>
+</tr>
+<tr>
+<td>defaultValue</td>
+<td><code>string</code></td>
+<td></td>
+<td>Text to pre-fill in the input box.</td>
 </tr>
 </tbody>
 </table>

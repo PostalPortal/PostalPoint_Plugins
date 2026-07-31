@@ -960,6 +960,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../eventbus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Eventbus
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fs/" class="md-nav__link">
         
   
@@ -1400,6 +1427,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#uiadddropofftabcontent-title-icon-id-undefined" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ui.addDropoffTab(content, title, icon, id) ⇒ <code>undefined</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#uicreatepopupcontent-params-promiseobject" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1666,6 +1704,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#uiadddropofftabcontent-title-icon-id-undefined" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ui.addDropoffTab(content, title, icon, id) ⇒ <code>undefined</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#uicreatepopupcontent-params-promiseobject" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1816,6 +1865,7 @@
 <li><a href="#ui">ui</a> : <code>object</code><ul>
 <li><a href="#ui.addToolsPage">.addToolsPage(page, title, id, description, cardTitle, icon, type)</a></li>
 <li><a href="#ui.addHomeTab">.addHomeTab(content, title, icon, id)</a> ⇒ <code>undefined</code></li>
+<li><a href="#ui.addDropoffTab">.addDropoffTab(content, title, icon, id)</a> ⇒ <code>undefined</code></li>
 <li><a href="#ui.createPopup">.createPopup(content, params)</a> ⇒ <code>Promise.&lt;Object&gt;</code></li>
 <li><a href="#ui.showProgressSpinner">.showProgressSpinner(title, text, subtitle)</a> ⇒ <code>undefined</code></li>
 <li><a href="#ui.hideProgressSpinner">.hideProgressSpinner()</a></li>
@@ -1996,6 +2046,50 @@ will be run as a function and will not be expected to return a page component.
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">}</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addHomeTab</span><span class="p">(</span><span class="nx">renderTab</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hello Template&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fa-duotone fa-file-code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hellotemplatetab&quot;</span><span class="p">);</span>
 </span></code></pre></div>
+<a name="ui.addDropoffTab"></a></p>
+<h3 id="uiadddropofftabcontent-title-icon-id-undefined">ui.addDropoffTab(content, title, icon, id) ⇒ <code>undefined</code></h3>
+<p>Add a custom tab to the PostalPoint prepaid drop-off screen.  Works almost the same as addToolsPage.</p>
+<p><strong>Kind</strong>: static method of <a href="#ui"><code>ui</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content</td>
+<td><code>string</code> | <code>function</code></td>
+<td>Tab content. It is rendered/processed when the user navigates to the Drop Off screen and clicks the tab; if the user navigates to a different screen and back to Drop Off, it will be re-rendered. If <code>content</code> is a string ending in <code>.f7</code> it is treated as a file path and the content will be loaded from disk. If <code>content</code> is any other string, it is treated as the content. If <code>content</code> is a function, it will be called and must return the content.</td>
+</tr>
+<tr>
+<td>title</td>
+<td><code>string</code></td>
+<td>Tab title. Keep it short; depending on screen size and tab count, you have as little as 150px of space.</td>
+</tr>
+<tr>
+<td>icon</td>
+<td><code>string</code></td>
+<td>FontAwesome icon displayed above the tab title.</td>
+</tr>
+<tr>
+<td>id</td>
+<td><code>string</code></td>
+<td>Tab ID. Make it unique, or pass an empty string to be assigned a random ID. If addDropoffTab is called with a tab ID that is already registered, it will be overwritten.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addDropoffTab</span><span class="p">(</span><span class="s2">&quot;&lt;div class=&#39;block&#39;&gt;Hello&lt;/div&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hello Tab&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fa-duotone fa-hand-wave&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hellotab&quot;</span><span class="p">);</span>
+</span></code></pre></div>
+<strong>Example</strong><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">renderTab</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;&lt;template&gt;&lt;div&gt;&lt;h1&gt;${hellovar}&lt;/h1&gt;&lt;/div&gt;&lt;/template&gt;&lt;script&gt;export default (props, {$on, $update, $f7}) =&gt; {var hellovar = &#39;hello world&#39;; return $render;}&lt;/script&gt;&quot;</span><span class="p">;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">}</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addDropoffTab</span><span class="p">(</span><span class="nx">renderTab</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hello Template&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fa-duotone fa-file-code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hellotemplatetab&quot;</span><span class="p">);</span>
+</span></code></pre></div>
 <a name="ui.createPopup"></a></p>
 <h3 id="uicreatepopupcontent-params-promiseobject">ui.createPopup(content, params) ⇒ <code>Promise.&lt;Object&gt;</code></h3>
 <p>Create a Framework7 Popup from a string (F7 component template or HTML content).</p>
@@ -2093,13 +2187,13 @@ will be run as a function and will not be expected to return a page component.
 </tbody>
 </table>
 <p><strong>Example</strong><br />
-<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">openInternalWebBrowser</span><span class="p">(</span><span class="s2">&quot;https://postalpoint.app&quot;</span><span class="p">);</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">eventbus</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;browserNavigate&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">newUrl</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="sb">`New URL: </span><span class="si">${</span><span class="nx">newUrl</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Browser Navigated&quot;</span><span class="p">);</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">newUrl</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;https://closeme.com&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">eventbus</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s2">&quot;browserCloseRequest&quot;</span><span class="p">);</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="p">});</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">openInternalWebBrowser</span><span class="p">(</span><span class="s2">&quot;https://postalpoint.app&quot;</span><span class="p">);</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">eventbus</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;browserNavigate&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">newUrl</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="sb">`New URL: </span><span class="si">${</span><span class="nx">newUrl</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Browser Navigated&quot;</span><span class="p">);</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">newUrl</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;https://closeme.com&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">eventbus</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s2">&quot;browserCloseRequest&quot;</span><span class="p">);</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="p">});</span>
 </span></code></pre></div>
 <a name="ui.clearCustomerScreen"></a></p>
 <h3 id="uiclearcustomerscreen">ui.clearCustomerScreen()</h3>
@@ -2162,25 +2256,25 @@ Wrap it in a <webview src="../..."></webview> tag if you need to display one.</p
 </tbody>
 </table>
 <p><strong>Example</strong><br />
-<div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// How content is converted by PostalPoint before display:</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;html&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`data:text/html;charset=utf-8,</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;pdf&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`data:application/pdf,</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;raw&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="nb">global</span><span class="p">.</span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;body&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`data:text/html;charset=utf-8,&lt;!DOCTYPE html&gt;</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="sb">    &lt;meta charset=&quot;utf-8&quot;&gt;</span>
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="sb">    &lt;title&gt;&lt;/title&gt;</span>
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="sb">    &lt;style&gt;</span>
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="sb">        html, body {margin: 0; padding: 0; font-family: Roboto, Ubuntu, Arial, sans-serif;}</span>
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="sb">        h1, h2, h3 {margin: 0;}</span>
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="sb">    &lt;/style&gt;</span>
-</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="sb">    &lt;div id=&quot;maindiv&quot;&gt;</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">&lt;/div&gt;`</span><span class="p">;</span>
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">    </span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`data:text/plain;charset=utf-8,</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="p">}</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">// How content is converted by PostalPoint before display:</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;html&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`data:text/html;charset=utf-8,</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;pdf&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`data:application/pdf,</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;raw&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="nb">global</span><span class="p">.</span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;body&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`data:text/html;charset=utf-8,&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="sb">    &lt;meta charset=&quot;utf-8&quot;&gt;</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="sb">    &lt;title&gt;&lt;/title&gt;</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="sb">    &lt;style&gt;</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="sb">        html, body {margin: 0; padding: 0; font-family: Roboto, Ubuntu, Arial, sans-serif;}</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="sb">        h1, h2, h3 {margin: 0;}</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="sb">    &lt;/style&gt;</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="sb">    &lt;div id=&quot;maindiv&quot;&gt;</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">&lt;/div&gt;`</span><span class="p">;</span>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">    </span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`data:text/plain;charset=utf-8,</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="p">}</span>
 </span></code></pre></div>
 <a name="ui.collectSignatureFromCustomerScreen"></a></p>
 <h3 id="uicollectsignaturefromcustomerscreentitle-terms-termstype">ui.collectSignatureFromCustomerScreen(title, terms, termstype)</h3>
@@ -2222,18 +2316,18 @@ the customerSignatureCollected event is emitted with the data
 </tbody>
 </table>
 <p><strong>Example</strong><br />
-<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">collectSignatureFromCustomerScreen</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&lt;p&gt;By signing, you agree to pay us lots of money&lt;/p&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;body&quot;</span><span class="p">);</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">eventbus</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;customerSignatureCollected&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">sigdata</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">pngDataURL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sigdata</span><span class="p">.</span><span class="nx">png</span><span class="p">;</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">svgDataURL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sigdata</span><span class="p">.</span><span class="nx">svg</span><span class="p">;</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">});</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">collectSignatureFromCustomerScreen</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&lt;p&gt;By signing, you agree to pay us lots of money&lt;/p&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;body&quot;</span><span class="p">);</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">eventbus</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;customerSignatureCollected&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">sigdata</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">pngDataURL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sigdata</span><span class="p">.</span><span class="nx">png</span><span class="p">;</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">svgDataURL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sigdata</span><span class="p">.</span><span class="nx">svg</span><span class="p">;</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="p">});</span>
 </span></code></pre></div>
 <a name="ui.cancelSignatureCollection"></a></p>
 <h3 id="uicancelsignaturecollection">ui.cancelSignatureCollection()</h3>
 <p>Cancels customer signature collection and returns the customer-facing display to normal operation.</p>
 <p><strong>Kind</strong>: static method of <a href="#ui"><code>ui</code></a><br />
 <strong>Example</strong><br />
-<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">cancelSignatureCollection</span><span class="p">();</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">cancelSignatureCollection</span><span class="p">();</span>
 </span></code></pre></div>
 <a name="ui.clearSignaturePad"></a></p>
 <h3 id="uiclearsignaturepad">ui.clearSignaturePad()</h3>
@@ -2241,7 +2335,7 @@ the customerSignatureCollected event is emitted with the data
 Note that the customer is also provided a button to do this.</p>
 <p><strong>Kind</strong>: static method of <a href="#ui"><code>ui</code></a><br />
 <strong>Example</strong><br />
-<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">clearSignaturePad</span><span class="p">();</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">clearSignaturePad</span><span class="p">();</span>
 </span></code></pre></div>
 <a name="ui.getCustomerDisplayInfo"></a></p>
 <h3 id="uigetcustomerdisplayinfo-object">ui.getCustomerDisplayInfo() ⇒ <code>Object</code></h3>
@@ -2254,7 +2348,7 @@ will be displayed there instead of on the customer screen.</p>
 <p><strong>Kind</strong>: static method of <a href="#ui"><code>ui</code></a><br />
 <strong>Returns</strong>: <code>Object</code> - {"enabled": true, "touch": true, "signature": true}<br />
 <strong>Example</strong><br />
-<div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">getCustomerDisplayInfo</span><span class="p">();</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">getCustomerDisplayInfo</span><span class="p">();</span>
 </span></code></pre></div></p>
 
 
