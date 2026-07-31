@@ -52,3 +52,50 @@ Display a simple confirm dialog box with OK and Cancel buttons.
 | [callback] | <code>function</code> \| <code>null</code> | <code></code> | Function to call when the OK button is pressed. |
 | [cancelCallback] | <code>function</code> \| <code>null</code> | <code></code> | Function to call when the Cancel button is pressed. |
 
+<a name="confirm"></a>
+
+## confirm(text, title, [callback], [cancelCallback], defaultValue) ⇒ <code>Promise</code>
+Display a simple confirm dialog box with OK and Cancel buttons.
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - Resolves when the user closes the dialog, with the input box's value if OK is pressed, or `false` if Cancel is pressed.  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| text | <code>string</code> |  | Body text of the dialog. Can include HTML tags.  The input box will be appended to this. |
+| title | <code>string</code> |  | Dialog title. |
+| [callback] | <code>function</code> \| <code>null</code> | <code></code> | Function to call when the OK button is pressed. Is passed the input value. |
+| [cancelCallback] | <code>function</code> \| <code>null</code> | <code></code> | Function to call when the Cancel button is pressed. Is passed the input value. |
+| defaultValue | <code>string</code> |  | Text to pre-fill in the input box. |
+
+<a name="confirm"></a>
+
+## confirm(text, title, [callback], [cancelCallback]) ⇒ <code>Promise</code>
+Display a simple confirm dialog box with OK and Cancel buttons.
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - Resolves when the user closes the dialog, with value `true` if OK is pressed, or `false` if Cancel is pressed.  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| text | <code>string</code> |  | Body text of the dialog. Can include HTML tags. |
+| title | <code>string</code> |  | Dialog title. |
+| [callback] | <code>function</code> \| <code>null</code> | <code></code> | Function to call when the OK button is pressed. |
+| [cancelCallback] | <code>function</code> \| <code>null</code> | <code></code> | Function to call when the Cancel button is pressed. |
+
+<a name="confirm"></a>
+
+## confirm(text, title, [callback], [cancelCallback], defaultValue) ⇒ <code>Promise</code>
+Display a simple confirm dialog box with OK and Cancel buttons.
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - Resolves when the user closes the dialog, with the input box's value if OK is pressed, or `false` if Cancel is pressed.  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| text | <code>string</code> |  | Body text of the dialog. Can include HTML tags.  The input box will be appended to this. |
+| title | <code>string</code> |  | Dialog title. |
+| [callback] | <code>function</code> \| <code>null</code> | <code></code> | Function to call when the OK button is pressed. Is passed the input value. |
+| [cancelCallback] | <code>function</code> \| <code>null</code> | <code></code> | Function to call when the Cancel button is pressed. Is passed the input value. |
+| defaultValue | <code>string</code> |  | Text to pre-fill in the input box. |
+

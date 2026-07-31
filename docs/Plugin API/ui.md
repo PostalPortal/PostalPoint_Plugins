@@ -8,6 +8,7 @@ Interact with and modify the PostalPoint user interface.
 * [ui](#ui) : <code>object</code>
     * [.addToolsPage(page, title, id, description, cardTitle, icon, type)](#ui.addToolsPage)
     * [.addHomeTab(content, title, icon, id)](#ui.addHomeTab) ⇒ <code>undefined</code>
+    * [.addDropoffTab(content, title, icon, id)](#ui.addDropoffTab) ⇒ <code>undefined</code>
     * [.createPopup(content, params)](#ui.createPopup) ⇒ <code>Promise.&lt;Object&gt;</code>
     * [.showProgressSpinner(title, text, subtitle)](#ui.showProgressSpinner) ⇒ <code>undefined</code>
     * [.hideProgressSpinner()](#ui.hideProgressSpinner)
@@ -128,6 +129,31 @@ function renderTab() {
     return "<template><div><h1>${hellovar}</h1></div></template><script>export default (props, {$on, $update, $f7}) => {var hellovar = 'hello world'; return $render;}</script>";
 }
 global.apis.ui.addHomeTab(renderTab, "Hello Template", "fa-duotone fa-file-code", "hellotemplatetab");
+```
+<a name="ui.addDropoffTab"></a>
+
+### ui.addDropoffTab(content, title, icon, id) ⇒ <code>undefined</code>
+Add a custom tab to the PostalPoint prepaid drop-off screen.  Works almost the same as addToolsPage.
+
+**Kind**: static method of [<code>ui</code>](#ui)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| content | <code>string</code> \| <code>function</code> | Tab content. It is rendered/processed when the user navigates to the Drop Off screen and clicks the tab; if the user navigates to a different screen and back to Drop Off, it will be re-rendered. If `content` is a string ending in `.f7` it is treated as a file path and the content will be loaded from disk. If `content` is any other string, it is treated as the content. If `content` is a function, it will be called and must return the content. |
+| title | <code>string</code> | Tab title. Keep it short; depending on screen size and tab count, you have as little as 150px of space. |
+| icon | <code>string</code> | FontAwesome icon displayed above the tab title. |
+| id | <code>string</code> | Tab ID. Make it unique, or pass an empty string to be assigned a random ID. If addDropoffTab is called with a tab ID that is already registered, it will be overwritten. |
+
+**Example**  
+```js
+global.apis.ui.addDropoffTab("<div class='block'>Hello</div>", "Hello Tab", "fa-duotone fa-hand-wave", "hellotab");
+```
+**Example**  
+```js
+function renderTab() {
+    return "<template><div><h1>${hellovar}</h1></div></template><script>export default (props, {$on, $update, $f7}) => {var hellovar = 'hello world'; return $render;}</script>";
+}
+global.apis.ui.addDropoffTab(renderTab, "Hello Template", "fa-duotone fa-file-code", "hellotemplatetab");
 ```
 <a name="ui.createPopup"></a>
 

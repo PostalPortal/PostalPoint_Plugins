@@ -21,7 +21,7 @@ Print a 300 DPI image on the shipping label printer, centered on a 4x6 inch labe
 
 | Param | Type | Description |
 | --- | --- | --- |
-| image | <code>ArrayBuffer</code> \| <code>Buffer</code> \| <code>Uint8Array</code> \| <code>string</code> \| <code>Jimp</code> | image data, as a Jimp image object, raw PNG bytes, or a URL (http/https) string.  1200x1800 or 800x1200 images are scaled to 4x6 inches. Other image sizes are assumed to be 300 DPI and are centered on the shipping label. Image orientation is rotated to match the label orientation. |
+| image | <code>ArrayBuffer</code> \| <code>Buffer</code> \| <code>Uint8Array</code> \| <code>string</code> \| <code>Jimp</code> \| <code>Array</code> | image data, as a Jimp image object, raw PNG bytes, or a URL (http/https) string.  Also accepts an array of such objects if printing multiple labels.  1200x1800 or 800x1200 images are scaled to 4x6 inches. Other image sizes are assumed to be 300 DPI and are centered on the shipping label. Image orientation is rotated to match the label orientation. |
 
 <a name="print.getReceiptPrinter"></a>
 
