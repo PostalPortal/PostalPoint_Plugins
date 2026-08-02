@@ -1,11 +1,11 @@
 name: Build and Deploy MkDocs
 
 on:
-  - push:
+  push:
     branches:
       - master
       - public
-  - workflow_dispatch
+  workflow_dispatch: {}
 
 jobs:
   build-next:
