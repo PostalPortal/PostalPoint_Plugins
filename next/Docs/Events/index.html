@@ -1675,6 +1675,7 @@
 <li><code>sendToCustomerScreen</code>: Emit to send data via <code>window.postMessage</code> to a custom HTML interface on the customer-facing display.</li>
 <li><code>receiveFromCustomerScreen</code>: Contains the event sent from the customer-facing display's custom HTML interface via <code>window.parent.postMessage</code></li>
 <li><code>transactionFinished</code>: Contains a receipt object of a transaction that was just finalized. See below for event data details.</li>
+<li><code>receiptChange</code>: Same data as transactionFinished, but emitted every time the receipt is changed.</li>
 <li><code>customerSignatureCollected</code>: Contains a signature image from the customer-facing display. See below for event data details.</li>
 <li><code>settingsSaved</code>: Emitted when PostalPoint's settings are saved. Usually this means the user changed a setting in the UI.</li>
 <li><code>pluginSettingsSaved</code>: Emitted when the user saves a plugin's settings. The plugin ID string is sent as the event data.</li>
