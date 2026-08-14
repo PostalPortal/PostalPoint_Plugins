@@ -1124,10 +1124,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prompttext-title-callback-cancelcallback-defaultvalue-promise" class="md-nav__link">
+  <a href="#prompttext-title-callback-cancelcallback-defaultvalue-inputtype-promise" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        prompt(text, title, [callback], [cancelCallback], defaultValue) ⇒ <code>Promise</code>
+        prompt(text, title, [callback], [cancelCallback], defaultValue, inputType) ⇒ <code>Promise</code>
       </span>
     </span>
   </a>
@@ -1620,10 +1620,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prompttext-title-callback-cancelcallback-defaultvalue-promise" class="md-nav__link">
+  <a href="#prompttext-title-callback-cancelcallback-defaultvalue-inputtype-promise" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        prompt(text, title, [callback], [cancelCallback], defaultValue) ⇒ <code>Promise</code>
+        prompt(text, title, [callback], [cancelCallback], defaultValue, inputType) ⇒ <code>Promise</code>
       </span>
     </span>
   </a>
@@ -1754,7 +1754,7 @@ See https://framework7.io/docs/app for details.</p>
 </tbody>
 </table>
 <p><a name="prompt"></a></p>
-<h2 id="prompttext-title-callback-cancelcallback-defaultvalue-promise">prompt(text, title, [callback], [cancelCallback], defaultValue) ⇒ <code>Promise</code></h2>
+<h2 id="prompttext-title-callback-cancelcallback-defaultvalue-inputtype-promise">prompt(text, title, [callback], [cancelCallback], defaultValue, inputType) ⇒ <code>Promise</code></h2>
 <p>Display a simple confirm dialog box with OK and Cancel buttons.</p>
 <p><strong>Kind</strong>: global function<br />
 <strong>Returns</strong>: <code>Promise</code> - Resolves when the user closes the dialog, with the input box's value if OK is pressed, or <code>false</code> if Cancel is pressed.  </p>
@@ -1797,6 +1797,12 @@ See https://framework7.io/docs/app for details.</p>
 <td><code>string</code></td>
 <td></td>
 <td>Text to pre-fill in the input box.</td>
+</tr>
+<tr>
+<td>inputType</td>
+<td><code>string</code></td>
+<td></td>
+<td>"text", "number", etc.</td>
 </tr>
 </tbody>
 </table>
