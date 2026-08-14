@@ -54,7 +54,7 @@ Display a simple confirm dialog box with OK and Cancel buttons.
 
 <a name="prompt"></a>
 
-## prompt(text, title, [callback], [cancelCallback], defaultValue) ⇒ <code>Promise</code>
+## prompt(text, title, [callback], [cancelCallback], defaultValue, inputType) ⇒ <code>Promise</code>
 Display a simple confirm dialog box with OK and Cancel buttons.
 
 **Kind**: global function  
@@ -67,4 +67,5 @@ Display a simple confirm dialog box with OK and Cancel buttons.
 | [callback] | <code>function</code> \| <code>null</code> | <code></code> | Function to call when the OK button is pressed. Is passed the input value. |
 | [cancelCallback] | <code>function</code> \| <code>null</code> | <code></code> | Function to call when the Cancel button is pressed. Is passed the input value. |
 | defaultValue | <code>string</code> |  | Text to pre-fill in the input box. |
+| inputType | <code>string</code> |  | "text", "number", etc. |
 
