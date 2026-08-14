@@ -16,6 +16,7 @@ Warning: PostalPoint is tested with these settings at their default values (usua
 * `dymo_twin_roll_selection`: Set label roll selection when using a Dymo twin label printer: 0=auto, 1=left, 2=right, default is 1.
 * `easypost_allow_wallet_billing`: Set truthy to allow EasyPost wallet accounts with TOS that restricts resale.
 * `hide_delivery_date`: If non-empty, package delivery dates won't be shown on receipts. Shipping plugins are advised to check if this setting is set.
+* `i18npseudo`: If truthy, the i18n system will be in test mode, adding unicode characters and making strings longer to expose UI problems.
 * `mailboxslipoverride`: Change the print size of a mailbox package slip, which is normally 4x6, but defaults to 4x3 when using a QL label printer and DK2243 labels.  Set to "4x6" or "4x3" to force a size.
 * `mute_sounds`: Set non-empty to disable sound effects.
 * `postalpoint_lan_server_port`: Override the port used for the internal web server. This must match on all installations that need to communicate.
