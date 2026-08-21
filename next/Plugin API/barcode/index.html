@@ -12,7 +12,7 @@
         <link rel="prev" href="../../Examples/05CryptoProcessor/">
       
       
-        <link rel="next" href="../database/">
+        <link rel="next" href="../customers/">
       
       
         
@@ -1049,6 +1049,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../customers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Customers
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../database/" class="md-nav__link">
         
   
@@ -1849,7 +1876,8 @@
 </table>
 <p><a name="barcode.addPrepaidBarcode"></a></p>
 <h3 id="barcodeaddprepaidbarcodetrackingbarcodedata-promise">barcode.addPrepaidBarcode(trackingBarcodeData) ⇒ <code>Promise</code></h3>
-<p>Add a TrackingBarcode object to the transaction receipt at any time other than <code>onPrepaidScan</code>.</p>
+<p>Add a TrackingBarcode object to the transaction receipt at any time other than <code>onPrepaidScan</code>.
+Sets certain special flags on the resulting ReceiptItem to reliably indicate it's a prepaid drop-off.</p>
 <p><strong>Kind</strong>: static method of <a href="#barcode"><code>barcode</code></a>  </p>
 <table>
 <thead>
