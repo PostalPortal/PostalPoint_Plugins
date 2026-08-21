@@ -13,11 +13,13 @@ Point of Sale, transaction, and payment-related functionality.
     * [.addReceiptItem(item)](#pos.addReceiptItem)
     * [.addReceiptPayment(payment)](#pos.addReceiptPayment)
     * [.getReceipt()](#pos.getReceipt) ⇒ <code>Receipt</code>
-    * [.getCustomerAccountInfo()](#pos.getCustomerAccountInfo) ⇒ <code>Object</code> \| <code>boolean</code>
+    * ~~[.getCustomerAccountInfo()](#pos.getCustomerAccountInfo) ⇒ <code>global.apis.shipping.Address</code> \| <code>boolean</code>~~
+    * ~~[.setCustomerAccount(uuid)](#pos.setCustomerAccount) ⇒ <code>Promise.&lt;Array.&lt;global.apis.shipping.Address&gt;&gt;</code>~~
     * [.addOnscreenPaymentLog(msg)](#pos.addOnscreenPaymentLog)
     * [.getReceiptID()](#pos.getReceiptID) ⇒ <code>string</code>
     * [.onReceiptChange(f)](#pos.onReceiptChange)
-    * ~~[.onTransactionFinished(f)](#pos.onTransactionFinished)~~
+    * [.finishTransaction()](#pos.finishTransaction)
+    * [.setEmailReceiptAddress(email)](#pos.setEmailReceiptAddress)
     * [.registerCardProcessor(f)](#pos.registerCardProcessor)
     * [.registerCryptoProcessor(f)](#pos.registerCryptoProcessor)
     * [.getShippingSalesTax()](#pos.getShippingSalesTax) ⇒ <code>Object</code>
@@ -125,30 +127,29 @@ Get the current receipt for the currently active transaction.
 **Kind**: static method of [<code>pos</code>](#pos)  
 <a name="pos.getCustomerAccountInfo"></a>
 
-### pos.getCustomerAccountInfo() ⇒ <code>Object</code> \| <code>boolean</code>
+### ~~pos.getCustomerAccountInfo() ⇒ <code>global.apis.shipping.Address</code> \| <code>boolean</code>~~
+***Deprecated***
+
 Get information about the active customer account.
+Alias of global.apis.customers.getCustomerAccountInfo and will be removed sometime.
 
 **Kind**: static method of [<code>pos</code>](#pos)  
-**Returns**: <code>Object</code> \| <code>boolean</code> - The object in the example, or `false` if no active customer account.  
-**Example**  
-```js
-{
-    uuid: "",
-    name: "",
-    company: "",
-    email: "",
-    phone: "", // primary phone number, E.164 format.
-    phone2: "", // second phone/fax, not usually visible in PostalPoint
-    phone3: "", // third phone/fax, not usually visible in PostalPoint
-    street1: "", // address line 1
-    street2: "", // address line 2
-    zip: "", // postal code
-    city: "",
-    state: "", // state/province/etc
-    country: "", // 2-letter ISO country code
-    taxid: ""
-}
-```
+**Returns**: <code>global.apis.shipping.Address</code> \| <code>boolean</code> - An Address object with the customer's
+data, or `false` if no customer account associated with the transaction.  
+<a name="pos.setCustomerAccount"></a>
+
+### ~~pos.setCustomerAccount(uuid) ⇒ <code>Promise.&lt;Array.&lt;global.apis.shipping.Address&gt;&gt;</code>~~
+***Deprecated***
+
+Set the customer for the current transaction.
+Alias of global.apis.customers.setCustomerAccount and will be removed sometime.
+
+**Kind**: static method of [<code>pos</code>](#pos)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| uuid | <code>String</code> | Customer account UUID. |
+
 <a name="pos.addOnscreenPaymentLog"></a>
 
 ### pos.addOnscreenPaymentLog(msg)
@@ -180,20 +181,26 @@ It is passed a single argument, a Receipt object containing the entire transacti
 | --- | --- |
 | f | <code>function</code> | 
 
-<a name="pos.onTransactionFinished"></a>
+<a name="pos.finishTransaction"></a>
 
-### ~~pos.onTransactionFinished(f)~~
-***Deprecated***
+### pos.finishTransaction()
+Finalize the currently-open transaction/receipt. Performs the same actions as
+clicking `Checkout` > `Finish Transaction` > `Finalize and start new sale`.
 
-The supplied function will be called when a transaction is finished.
-It is passed a single argument, a Receipt object containing the entire transaction.
-Recommended to listen for the `transactionFinished` event instead.
+**Kind**: static method of [<code>pos</code>](#pos)  
+<a name="pos.setEmailReceiptAddress"></a>
+
+### pos.setEmailReceiptAddress(email)
+Set the address the receipt will be emailed to when the transaction is finished.
+Set to an empty string to disable sending the email receipt.
+Note that when a transaction has a customer associated, and that customer record has an email on file,
+PostalPoint will have already run this function when setting the customer.
 
 **Kind**: static method of [<code>pos</code>](#pos)  
 
 | Param | Type |
 | --- | --- |
-| f | <code>function</code> | 
+| email | <code>String</code> | 
 
 <a name="pos.registerCardProcessor"></a>
 

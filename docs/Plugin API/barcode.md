@@ -53,6 +53,7 @@ A Tracking barcode object.
 
 ### barcode.addPrepaidBarcode(trackingBarcodeData) ⇒ <code>Promise</code>
 Add a TrackingBarcode object to the transaction receipt at any time other than `onPrepaidScan`.
+Sets certain special flags on the resulting ReceiptItem to reliably indicate it's a prepaid drop-off.
 
 **Kind**: static method of [<code>barcode</code>](#barcode)  
 
