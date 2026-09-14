@@ -1,0 +1,53 @@
+name: Push public branch to HTTP server
+
+on:
+  push:
+    branches:
+      - public
+
+jobs:
+  build-next:
+    runs-on: ubuntu-latest
+      
+    steps:
+      - name: Set up container
+        run: |
+          apt update
+          apt install -y rsync
+      
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+    
+      - name: Setup SSH keys
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
+          ssh-keyscan -p 2322 source.netsyms.com >> ~/.ssh/known_hosts
+      
+      - name: Configure Git
+        run: |
+          git config user.name "CI"
+          git config user.email "ci@netsyms.com"
+          git remote set-url origin ssh://gitea@source.netsyms.com:2322/PostalPortal/PostalPoint_Plugins.git
+
+      - name: Checkout public branch
+        run: |
+          git checkout public
+
+      - name: Deploy with rsync
+        run: |
+          rsync -rltz --no-perms --no-owner --no-group --omit-dir-times --delete \
+            --filter='P error/' \
+            --filter='P stats/' \
+            --exclude=".git/" \
+            ./ \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/var/www/dev.postalpoint.app/web
