@@ -288,11 +288,10 @@ global.apis.pos.registerCardProcessor({
         // then `return false` instead and it'll appear that the user's action to start the payment did nothing.
         return true;
     },
-    saveCardForOfflineUse: async function ({statusCallback, customerUUID, name,
-             company, street1, street2, city, state, zip, country, email, phone}) {
+    saveCardForOfflineUse: async function (statusCallback, customerAddress) {
         // Use the card reader to capture an in-person card and save it for offline use.
-        // Provided details are the customer's info, which might be empty strings except for the customerUUID.
-        // Saved card details must be tied to the customerUUID, as that's how saved cards are looked up.
+        // Provided details are an Address object with the customer's contact info.
+        // Saved card details must be tied to the customerAddress.uuid, as that's how saved cards are looked up.
 
         // statusCallback(string, boolean) updates the progress message on the cashier's screen.
         // If the boolean is true, the progress message is replaced with a confirmation message.
@@ -304,8 +303,21 @@ global.apis.pos.registerCardProcessor({
         // Alternatively, return boolean false and display the error
         // yourself with global.apis.alert(message, title) or something.
     },
+    getExternalURLForSavingCard: async function (statusCallback, customerAddress) {
+         // Alternate flow for saving cards. If this function is defined, an alternate card saving UI is used.
+         // Returns a URL and a Promise.  The URL is for an external webpage that accepts
+         // the customer's card info and saves it. The URL will be opened by the customer
+         // on their phone, or possibly by the store in the system web browser.
+         // The Promise resolves when the card info is saved,
+         // with the same behavior as saveCardForOfflineUse.
+         return {
+             url: "https://...",
+             promise: async function () {
+                 // wait for card info to be saved
+             }
+    },
     cancelSaveCardForOfflineUse: function () {
-        // Cancel the process running in saveCardForOfflineUse() at the user/cashier's request.
+        // Cancel the process running in saveCardForOfflineUse() or getExternalURLForSavingCard() at the user/cashier's request.
     },
     getSavedPaymentMethods: async function ({customerUUID}) {
         // Return all saved payment methods tied to the provided customer UUID.
