@@ -1173,6 +1173,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#graphicsrendertexta-b-jimp" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        graphics.renderText(a, [b]) ⇒ <code>Jimp</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#graphicsloadfontfilename-promise" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1637,6 +1648,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#graphicsrendertexta-b-jimp" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        graphics.renderText(a, [b]) ⇒ <code>Jimp</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#graphicsloadfontfilename-promise" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1698,6 +1720,7 @@
 <ul>
 <li><a href="#graphics">graphics</a> : <code>object</code><ul>
 <li><a href="#graphics.Jimp">.Jimp()</a> ⇒ <code>Jimp</code></li>
+<li><a href="#graphics.renderText">.renderText(a, [b])</a> ⇒ <code>Jimp</code></li>
 <li><a href="#graphics.loadFont">.loadFont(filename)</a> ⇒ <code>Promise</code></li>
 <li><a href="#graphics.pdfToImage">.pdfToImage(buffer, width, height, [autoRotate], [outputPageCount])</a> ⇒ <code>Promise.&lt;Array&gt;</code></li>
 <li><a href="#graphics.zplToImage">.zplToImage(zplData, [widthMM], [heightMM], [dpmm])</a> ⇒ <code>Promise.&lt;Array&gt;</code></li>
@@ -1710,6 +1733,225 @@
 <p><strong>Kind</strong>: static method of <a href="#graphics"><code>graphics</code></a><br />
 <strong>Example</strong><br />
 <div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">Jimp</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">graphics</span><span class="p">.</span><span class="nx">Jimp</span><span class="p">();</span>
+</span></code></pre></div>
+<a name="graphics.renderText"></a></p>
+<h3 id="graphicsrendertexta-b-jimp">graphics.renderText(a, [b]) ⇒ <code>Jimp</code></h3>
+<p>Draw text onto a Jimp image. Uses the platform's (i.e. Chromium) text engine.
+The text is rasterized and alpha-blended (source-over) directly into <code>image.bitmap.data</code>.
+The image is mutated in place and also returned, so either calling style works:</p>
+<div class="language-text highlight"><pre><span></span><code>img = renderText({ image: img, size: 50, ... });
+renderText(img, { size: 50, ... });
+</code></pre></div>
+<p>Text is laid out inside the box (<code>x</code>, <code>y</code>, <code>maxWidth</code>, <code>maxHeight</code>) and
+aligned within it. Content taller than the box overflows downward rather than
+being clipped — use <code>shrinkToFit</code> to bound it. Anything falling outside the
+image itself is clipped.</p>
+<p><strong>Kind</strong>: static method of <a href="#graphics"><code>graphics</code></a><br />
+<strong>Returns</strong>: <code>Jimp</code> - The same image passed in, mutated.<br />
+<strong>Throws</strong>:</p>
+<ul>
+<li><code>Error</code> If <code>image</code> is missing or is not a Jimp image.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td><code>Jimp</code> | <code>Object</code></td>
+<td></td>
+<td>The options object, or the Jimp image when the        options are passed as the second argument.</td>
+</tr>
+<tr>
+<td>[b]</td>
+<td><code>Object</code></td>
+<td></td>
+<td>The options, when the image was passed positionally.</td>
+</tr>
+<tr>
+<td>options.image</td>
+<td><code>Jimp</code></td>
+<td></td>
+<td>Target image. Required unless passed as the        first argument. Mutated in place.</td>
+</tr>
+<tr>
+<td>options.font</td>
+<td><code>string</code> | <code>Array.&lt;string&gt;</code></td>
+<td></td>
+<td>Registered font family name, or an        ordered list of them. Automatic fallback to system fonts as needed.        Defaults to <code>PostalPointSans</code>.</td>
+</tr>
+<tr>
+<td>[options.size]</td>
+<td><code>number</code></td>
+<td><code>32</code></td>
+<td>Font size in pixels.</td>
+</tr>
+<tr>
+<td>[options.weight]</td>
+<td><code>string</code> | <code>number</code></td>
+<td><code>&quot;\&quot;normal\&quot;&quot;</code></td>
+<td>CSS font weight:        <code>"normal"</code>, <code>"bold"</code>, or 100–900.</td>
+</tr>
+<tr>
+<td>[options.style]</td>
+<td><code>string</code></td>
+<td><code>&quot;\&quot;normal\&quot;&quot;</code></td>
+<td>CSS font style: <code>"normal"</code>,        <code>"italic"</code> or <code>"oblique"</code>. Synthesized if no matching face exists.</td>
+</tr>
+<tr>
+<td>[options.color]</td>
+<td><code>string</code></td>
+<td><code>&quot;\&quot;#000000\&quot;&quot;</code></td>
+<td>Any CSS color string. Alpha in        the color (<code>rgba(...)</code>) composites correctly against the image.</td>
+</tr>
+<tr>
+<td>[options.x]</td>
+<td><code>number</code></td>
+<td><code>0</code></td>
+<td>Left edge of the text box, in image pixels.</td>
+</tr>
+<tr>
+<td>[options.y]</td>
+<td><code>number</code></td>
+<td><code>0</code></td>
+<td>Top edge of the text box, in image pixels.</td>
+</tr>
+<tr>
+<td>[options.maxWidth]</td>
+<td><code>number</code></td>
+<td></td>
+<td>Box width. Wrapping and horizontal        alignment are both measured against it. Defaults to the remaining        image width from <code>x</code>.</td>
+</tr>
+<tr>
+<td>[options.maxHeight]</td>
+<td><code>number</code></td>
+<td></td>
+<td>Box height. Used for vertical alignment        and as the target for <code>shrinkToFit</code>. Defaults to the remaining image        height from <code>y</code>.</td>
+</tr>
+<tr>
+<td>options.text</td>
+<td><code>string</code> | <code>Object</code></td>
+<td></td>
+<td>The string to draw, or an object        matching Jimp's <code>print()</code> shape.</td>
+</tr>
+<tr>
+<td>options.text.text</td>
+<td><code>string</code></td>
+<td></td>
+<td>The string to draw. Embedded <code>\n</code> forces        a hard break. Empty or null returns the image untouched.</td>
+</tr>
+<tr>
+<td>[options.text.alignmentX]</td>
+<td><code>number</code> | <code>string</code></td>
+<td></td>
+<td>Horizontal alignment        within <code>maxWidth</code>. Accepts Jimp's <code>HorizontalAlign</code> enum        or the strings <code>"left"</code>, <code>"center"</code>, <code>"right"</code>. Defaults to left.</td>
+</tr>
+<tr>
+<td>[options.text.alignmentY]</td>
+<td><code>number</code> | <code>string</code></td>
+<td></td>
+<td>Vertical alignment of the        whole text block within <code>maxHeight</code>. Accepts Jimp's <code>VerticalAlign</code>        enum or the strings <code>"top"</code>, <code>"middle"</code>, <code>"bottom"</code>. Defaults to top.</td>
+</tr>
+<tr>
+<td>[options.lineHeight]</td>
+<td><code>number</code></td>
+<td></td>
+<td>Row pitch. Values of 4 or less are        treated as a multiplier of the font's natural line height        (<code>1.5</code> = one-and-a-half spacing); larger values are an absolute pixel        pitch. Omitted, the font's own ascent + descent is used. Set an        absolute value when rows must land on a pre-printed grid, or when        several columns have to stay row-aligned with each other.</td>
+</tr>
+<tr>
+<td>[options.wrap]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>When false, lines break only at        explicit <code>\n</code> and <code>maxWidth</code> governs alignment alone. Use this for        columns whose rows must correspond one-to-one across several calls,        where an auto-wrap in one column would desync the others.</td>
+</tr>
+<tr>
+<td>[options.kinsoku]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>Applies simplified kinsoku shori:        prevents a line from beginning with closing punctuation        (<code>。</code> <code>、</code> <code>）</code> <code>!</code> <code>?</code> and similar), letting it hang past <code>maxWidth</code>        instead. Only affects text containing those characters.</td>
+</tr>
+<tr>
+<td>[options.shrinkToFit]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>Step the size down (~4% at a        time) until the wrapped block fits within <code>maxHeight</code>, or <code>minSize</code> is        reached.</td>
+</tr>
+<tr>
+<td>[options.minSize]</td>
+<td><code>number</code></td>
+<td><code>8</code></td>
+<td>Floor for <code>shrinkToFit</code>, in pixels.        Below this the text stops shrinking and is allowed to overflow.</td>
+</tr>
+<tr>
+<td>[options.mono]</td>
+<td><code>boolean</code> | <code>number</code></td>
+<td><code>false</code></td>
+<td>Hard-threshold the antialiased        alpha to fully on or off before blending, producing pure 1-bit edges        for direct thermal printing. <code>true</code> thresholds at 128; a number sets        the cutoff (lower = heavier text). Leave off when the downstream        rasterizer dithers or does its own halftoning.</td>
+</tr>
+<tr>
+<td>[options.letterSpacing]</td>
+<td><code>number</code></td>
+<td></td>
+<td>Extra tracking in pixels. Ignored        by canvas backends that don't implement <code>ctx.letterSpacing</code>. Negative        values tighten. Avoid on Arabic and Indic text, where it breaks        cursive joining.</td>
+</tr>
+<tr>
+<td>[options.onLayout]</td>
+<td><code>function</code></td>
+<td></td>
+<td>Called after layout with        <code>{ size, lines, lineHeight, width, height }</code>: the final size after any        shrinking, the wrapped lines, the resolved pitch, and the measured        block dimensions. Useful for positioning whatever comes next, or for        logging when <code>shrinkToFit</code> had to intervene.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong> <em>(Centered in a box, matching Jimp&#x27;s print() options)</em><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nx">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">renderText</span><span class="p">({</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="nx">img</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;PostalPointSans&quot;</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nx">weight</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bold&quot;</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">45</span><span class="p">,</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123&quot;</span><span class="p">,</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="nx">alignmentX</span><span class="o">:</span><span class="w"> </span><span class="nx">HorizontalAlign</span><span class="p">.</span><span class="nx">CENTER</span><span class="p">,</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="nx">alignmentY</span><span class="o">:</span><span class="w"> </span><span class="nx">VerticalAlign</span><span class="p">.</span><span class="nx">MIDDLE</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="nx">maxWidth</span><span class="o">:</span><span class="w"> </span><span class="mf">780</span><span class="p">,</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="nx">maxHeight</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">});</span>
+</span></code></pre></div>
+<strong>Example</strong> <em>(Column that must stay row-aligned with its neighbours)</em><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">renderText</span><span class="p">({</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="nx">form</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;PostalPointSans&quot;</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">30</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nx">lineHeight</span><span class="o">:</span><span class="w"> </span><span class="mf">36</span><span class="p">,</span><span class="w">   </span><span class="c1">// absolute pitch, matches the ruled grid</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nx">wrap</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">      </span><span class="c1">// only \n breaks, so rows can&#39;t desync</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">425</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">295</span><span class="p">,</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;abc\ndef&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">alignmentX</span><span class="o">:</span><span class="w"> </span><span class="nx">HorizontalAlign</span><span class="p">.</span><span class="nx">CENTER</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="nx">maxWidth</span><span class="o">:</span><span class="w"> </span><span class="mf">75</span><span class="p">,</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="nx">maxHeight</span><span class="o">:</span><span class="w"> </span><span class="mf">435</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">});</span>
+</span></code></pre></div>
+<strong>Example</strong> <em>(Text into a fixed box, 1-bit output)</em><br />
+<div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">renderText</span><span class="p">({</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="nx">img</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;PostalPointSans&quot;</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">250</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nx">shrinkToFit</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nx">minSize</span><span class="o">:</span><span class="w"> </span><span class="mf">60</span><span class="p">,</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nx">mono</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">40</span><span class="p">,</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">            </span><span class="nx">alignmentX</span><span class="o">:</span><span class="w"> </span><span class="nx">HorizontalAlign</span><span class="p">.</span><span class="nx">CENTER</span><span class="p">,</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">            </span><span class="nx">alignmentY</span><span class="o">:</span><span class="w"> </span><span class="nx">VerticalAlign</span><span class="p">.</span><span class="nx">MIDDLE</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="nx">maxWidth</span><span class="o">:</span><span class="w"> </span><span class="mf">780</span><span class="p">,</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="nx">maxHeight</span><span class="o">:</span><span class="w"> </span><span class="mf">250</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="p">});</span>
 </span></code></pre></div>
 <a name="graphics.loadFont"></a></p>
 <h3 id="graphicsloadfontfilename-promise">graphics.loadFont(filename) ⇒ <code>Promise</code></h3>

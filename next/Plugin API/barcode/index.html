@@ -1012,6 +1012,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#barcodeparsebarcodecode-trackingbarcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        barcode.parseBarcode(code) ⇒ <code>TrackingBarcode</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#barcodeinjectbarcodedata" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1049,6 +1060,17 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         barcode.decodeAAMVA(barcodeData) ⇒ <code>Object</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barcodescanimageforbarcodesimage-barcodetypes-promisearrayboolean" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        barcode.scanImageForBarcodes(image, barcodeTypes) ⇒ <code>Promise.&lt;(Array|Boolean)&gt;</code>
       </span>
     </span>
   </a>
@@ -1704,6 +1726,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#barcodeparsebarcodecode-trackingbarcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        barcode.parseBarcode(code) ⇒ <code>TrackingBarcode</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#barcodeinjectbarcodedata" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1747,6 +1780,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#barcodescanimageforbarcodesimage-barcodetypes-promisearrayboolean" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        barcode.scanImageForBarcodes(image, barcodeTypes) ⇒ <code>Promise.&lt;(Array|Boolean)&gt;</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1780,10 +1824,12 @@
 </ul>
 </li>
 <li><a href="#barcode.addPrepaidBarcode">.addPrepaidBarcode(trackingBarcodeData)</a> ⇒ <code>Promise</code></li>
+<li><a href="#barcode.parseBarcode">.parseBarcode(code)</a> ⇒ <code>TrackingBarcode</code></li>
 <li><a href="#barcode.inject">.inject(barcodeData)</a></li>
 <li><a href="#barcode.onPrepaidScan">.onPrepaidScan(f)</a></li>
 <li><a href="#barcode.registerDropOffCarrierScanHandler">.registerDropOffCarrierScanHandler(carrier, fn)</a></li>
 <li><a href="#barcode.decodeAAMVA">.decodeAAMVA(barcodeData)</a> ⇒ <code>Object</code></li>
+<li><a href="#barcode.scanImageForBarcodes">.scanImageForBarcodes(image, barcodeTypes)</a> ⇒ <code>Promise.&lt;(Array|Boolean)&gt;</code></li>
 </ul>
 </li>
 </ul>
@@ -1920,6 +1966,28 @@ Sets certain special flags on the resulting ReceiptItem to reliably indicate it'
 </tr>
 </tbody>
 </table>
+<p><a name="barcode.parseBarcode"></a></p>
+<h3 id="barcodeparsebarcodecode-trackingbarcode">barcode.parseBarcode(code) ⇒ <code>TrackingBarcode</code></h3>
+<p>Parse a string as a barcode using PostalPoint's internal barcode parser and return a TrackingBarcode object.
+This function doesn't query against plugins registered with onPrepaidScan; it only parses the barcode using the internal parser.</p>
+<p><strong>Kind</strong>: static method of <a href="#barcode"><code>barcode</code></a><br />
+<strong>Returns</strong>: <code>TrackingBarcode</code> - TrackingBarcode object  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td><code>string</code></td>
+<td>Barcode or tracking number</td>
+</tr>
+</tbody>
+</table>
 <p><a name="barcode.inject"></a></p>
 <h3 id="barcodeinjectbarcodedata">barcode.inject(barcodeData)</h3>
 <p>Pass data to the internal barcode event subsystem. The data is handled as if it
@@ -2044,6 +2112,32 @@ any subsequent attempts to register to handle that carrier will throw an Error.<
 <td>barcodeData</td>
 <td><code>String</code></td>
 <td>Contents of the barcode. If missing or an empty string, returns an empty data object.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="barcode.scanImageForBarcodes"></a></p>
+<h3 id="barcodescanimageforbarcodesimage-barcodetypes-promisearrayboolean">barcode.scanImageForBarcodes(image, barcodeTypes) ⇒ <code>Promise.&lt;(Array|Boolean)&gt;</code></h3>
+<p>Scan an image for barcodes.</p>
+<p><strong>Kind</strong>: static method of <a href="#barcode"><code>barcode</code></a><br />
+<strong>Returns</strong>: <code>Promise.&lt;(Array|Boolean)&gt;</code> - - Array of detected barcodes: [{code: "xxx", type: "yyy"}], or <code>false</code> if none found.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>image</td>
+<td><code>ArrayBuffer</code> | <code>Buffer</code> | <code>Uint8Array</code> | <code>Jimp</code></td>
+<td>image data, as a Jimp image object or raw PNG bytes.</td>
+</tr>
+<tr>
+<td>barcodeTypes</td>
+<td><code>Array</code></td>
+<td>Barcode formats to detect. Default is <code>["code_128"]</code>.</td>
 </tr>
 </tbody>
 </table>
