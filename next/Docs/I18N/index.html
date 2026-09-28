@@ -607,6 +607,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#fonts" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Fonts
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1648,6 +1659,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#fonts" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Fonts
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1744,6 +1766,20 @@ such as receipt text or the customer display, and the correct language strings w
 </span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">config</span><span class="p">;</span>
 </span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="p">};</span>
 </span></code></pre></div>
+<h2 id="fonts">Fonts</h2>
+<p>Starting in version 0.52, PostalPoint includes two fonts with very broad character/glyph support; all Latin-based languages, as well as Chinese, Japanese, Korean, and Vietnamese.</p>
+<p>These fonts are based on the Noto and/or Roboto font families.</p>
+<ul>
+<li>PostalPointSans</li>
+<li>PostalPointMono</li>
+</ul>
+<p>It's recommended to use these fonts in your CSS for consistent UIs with good language support.</p>
+<p>While not recommended, if needed, the fonts are in TTF format and can be loaded directly with the following paths (relative to the PostalPoint installation):</p>
+<ul>
+<li><code>./assets/fonts/postalpoint-sans/PostalPointSans-Regular.ttf</code></li>
+<li><code>./assets/fonts/postalpoint-mono/PostalPointMono-Regular.ttf</code></li>
+</ul>
+<p>Medium and bold weight variants of the Sans font are available, but don't have full character coverage; when used in CSS, the fallback is automatic, but keep it in mind if using the TTFs directly.</p>
 
 
 
