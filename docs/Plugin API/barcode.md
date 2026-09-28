@@ -9,10 +9,12 @@ Handle tracking barcodes
     * [.TrackingBarcode](#barcode.TrackingBarcode)
         * [new TrackingBarcode(code)](#new_barcode.TrackingBarcode_new)
     * [.addPrepaidBarcode(trackingBarcodeData)](#barcode.addPrepaidBarcode) ⇒ <code>Promise</code>
+    * [.parseBarcode(code)](#barcode.parseBarcode) ⇒ <code>TrackingBarcode</code>
     * [.inject(barcodeData)](#barcode.inject)
     * [.onPrepaidScan(f)](#barcode.onPrepaidScan)
     * [.registerDropOffCarrierScanHandler(carrier, fn)](#barcode.registerDropOffCarrierScanHandler)
     * [.decodeAAMVA(barcodeData)](#barcode.decodeAAMVA) ⇒ <code>Object</code>
+    * [.scanImageForBarcodes(image, barcodeTypes)](#barcode.scanImageForBarcodes) ⇒ <code>Promise.&lt;(Array\|Boolean)&gt;</code>
 
 <a name="barcode.TrackingBarcode"></a>
 
@@ -60,6 +62,19 @@ Sets certain special flags on the resulting ReceiptItem to reliably indicate it'
 | Param | Type |
 | --- | --- |
 | trackingBarcodeData | <code>TrackingBarcode</code> | 
+
+<a name="barcode.parseBarcode"></a>
+
+### barcode.parseBarcode(code) ⇒ <code>TrackingBarcode</code>
+Parse a string as a barcode using PostalPoint's internal barcode parser and return a TrackingBarcode object.
+This function doesn't query against plugins registered with onPrepaidScan; it only parses the barcode using the internal parser.
+
+**Kind**: static method of [<code>barcode</code>](#barcode)  
+**Returns**: <code>TrackingBarcode</code> - TrackingBarcode object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| code | <code>string</code> | Barcode or tracking number |
 
 <a name="barcode.inject"></a>
 
@@ -152,4 +167,17 @@ Parse the contents of an AAMVA drivers license or ID card's barcode.
 | Param | Type | Description |
 | --- | --- | --- |
 | barcodeData | <code>String</code> | Contents of the barcode. If missing or an empty string, returns an empty data object. |
+
+<a name="barcode.scanImageForBarcodes"></a>
+
+### barcode.scanImageForBarcodes(image, barcodeTypes) ⇒ <code>Promise.&lt;(Array\|Boolean)&gt;</code>
+Scan an image for barcodes.
+
+**Kind**: static method of [<code>barcode</code>](#barcode)  
+**Returns**: <code>Promise.&lt;(Array\|Boolean)&gt;</code> - - Array of detected barcodes: [{code: "xxx", type: "yyy"}], or `false` if none found.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| image | <code>ArrayBuffer</code> \| <code>Buffer</code> \| <code>Uint8Array</code> \| <code>Jimp</code> | image data, as a Jimp image object or raw PNG bytes. |
+| barcodeTypes | <code>Array</code> | Barcode formats to detect. Default is `["code_128"]`. |
 

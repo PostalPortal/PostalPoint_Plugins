@@ -264,7 +264,7 @@ if (type == "html") {
     <meta charset="utf-8">
     <title></title>
     <style>
-        html, body {margin: 0; padding: 0; font-family: Roboto, Ubuntu, Arial, sans-serif;}
+        html, body {margin: 0; padding: 0; font-family: PostalPointSans, Roboto, Ubuntu, Arial, sans-serif;}
         h1, h2, h3 {margin: 0;}
     </style>
     <div id="maindiv">${content}</div>`;
