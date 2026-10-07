@@ -2360,6 +2360,16 @@
 <td><code>static_function</code></td>
 <td>Returns a ReceiptPayment created from the object returned by <code>payment.toJSON()</code>.</td>
 </tr>
+<tr>
+<td>setExtra(key,</td>
+<td><code>function</code></td>
+<td>val) - Attach a named string to the payment object.</td>
+</tr>
+<tr>
+<td>getExtra(key)</td>
+<td><code>function</code></td>
+<td>Retrieve a named string previously attached to the payment object. Returns <code>null</code> if key not found.</td>
+</tr>
 </tbody>
 </table>
 <p><a name="new_pos.ReceiptPayment_new"></a></p>
@@ -2387,7 +2397,7 @@
 <tr>
 <td>text</td>
 <td><code>string</code></td>
-<td>extra data (credit card info, etc)</td>
+<td>extra data to show on the receipt (credit card transaction info, etc)</td>
 </tr>
 </tbody>
 </table>
