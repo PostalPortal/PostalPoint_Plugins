@@ -84,6 +84,8 @@ A class representing a sale item in the current transaction.
 | id | <code>string</code> | Automatically-generated unique ID for this payment. |
 | toJSON() | <code>function</code> | Get the payment as an object suitable for JSON encoding. |
 | fromJSON(json) | <code>static\_function</code> | Returns a ReceiptPayment created from the object returned by `payment.toJSON()`. |
+| setExtra(key, | <code>function</code> | val) - Attach a named string to the payment object. |
+| getExtra(key) | <code>function</code> | Retrieve a named string previously attached to the payment object. Returns `null` if key not found. |
 
 <a name="new_pos.ReceiptPayment_new"></a>
 
@@ -95,7 +97,7 @@ A class representing a payment entry for the current transaction.
 | --- | --- | --- |
 | amount | <code>number</code> | amount paid |
 | type | <code>string</code> | payment type |
-| text | <code>string</code> | extra data (credit card info, etc) |
+| text | <code>string</code> | extra data to show on the receipt (credit card transaction info, etc) |
 
 <a name="pos.addReceiptItem"></a>
 

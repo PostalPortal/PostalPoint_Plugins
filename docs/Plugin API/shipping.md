@@ -17,8 +17,8 @@ Add custom carrier and rates, and adjust markup.
     * [.getLabelDate([carrier])](#shipping.getLabelDate) ⇒ <code>Promise.&lt;Date&gt;</code>
     * [.getCarrierName(carrierId)](#shipping.getCarrierName) ⇒ <code>string</code>
     * [.getServiceName(serviceId, [carrier], [stripInternational])](#shipping.getServiceName) ⇒ <code>string</code>
-    * [.defineCarrierName(id, name, dropoff, regions, hide)](#shipping.defineCarrierName)
-    * [.defineServiceName(id, name, carrierName, nameTM)](#shipping.defineServiceName)
+    * [.defineCarrierName(id, name, dropoff, regions, hide, trackingUrl)](#shipping.defineCarrierName)
+    * [.defineServiceName(id, name, carrierName, nameTM, tracking, transit)](#shipping.defineServiceName)
     * [.getCustomsFormImages(parcel, incoterm, trackingNumber, invoiceNumber, date)](#shipping.getCustomsFormImages) ⇒ <code>Promise.&lt;Array.&lt;Jimp&gt;&gt;</code>
     * [.registerRateEndpoint(getRates, purchase, idPrefix, [extraOptions])](#shipping.registerRateEndpoint)
     * [.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)](#shipping.registerStampEndpoint)
@@ -28,7 +28,7 @@ Add custom carrier and rates, and adjust markup.
     * [.registerMarkupCalculator(markupFn)](#shipping.registerMarkupCalculator)
     * [.registerInsuranceProvider(id, name, cardText, maxValue, getQuote, insure)](#shipping.registerInsuranceProvider)
     * [.getRecentShipments(plugin_sourceid, sinceDate, includeVoided, onlyNotShipped)](#shipping.getRecentShipments) ⇒ <code>Promise.&lt;Array&gt;</code>
-    * [.addShipmentToDatabase(plugin_sourceid, prepaid, tracking, carrier, service, to_address, from_address, create_date, metadata)](#shipping.addShipmentToDatabase) ⇒ <code>Promise</code>
+    * [.addShipmentToDatabase(plugin_sourceid, prepaid, tracking, carrier, service, to_address, from_address, create_date, metadata, labels)](#shipping.addShipmentToDatabase) ⇒ <code>Promise</code>
     * [.markShipmentVoid(shipmentid, voided)](#shipping.markShipmentVoid) ⇒ <code>Promise</code>
     * [.markShipmentPickedUp(shipmentid, timestamp)](#shipping.markShipmentPickedUp) ⇒ <code>Promise</code>
     * [.getParcel()](#shipping.getParcel) ⇒ <code>Package</code>
@@ -202,7 +202,7 @@ Converts the service ID string into a consistent and human-readable name. Set th
 
 <a name="shipping.defineCarrierName"></a>
 
-### shipping.defineCarrierName(id, name, dropoff, regions, hide)
+### shipping.defineCarrierName(id, name, dropoff, regions, hide, trackingUrl)
 Add a new carrier ID-name pair for use by getCarrierName.
 Adding multiple IDs for the same carrier name is permitted.
 Adding new IDs for a pre-existing carrier name is also permitted.
@@ -217,10 +217,11 @@ Adding new IDs for a pre-existing carrier name is also permitted.
 | dropoff | <code>boolean</code> | <code>false</code> | True if drop-off scans for this carrier can be handled (i.e. there's a handler set with global.apis.barcode.onPrepaidScan for it) |
 | regions | <code>array</code> |  | Array of two-letter ISO country codes where this carrier is available.  Carriers are hidden from list UIs if the user's country isn't on this list.  An empty array or undefined means global availability. |
 | hide | <code>boolean</code> | <code>false</code> | If true, the carrier name won't be shown to the user in some UIs, but will still be available for all other purposes. |
+| trackingUrl | <code>string</code> | <code>null</code> | A template for a public tracking URL. If present, must be a string starting with "https://" or "http://" and containing "{{trackingNumber}}" which will be replaced with a package's actual tracking number when generating a tracking link. |
 
 <a name="shipping.defineServiceName"></a>
 
-### shipping.defineServiceName(id, name, carrierName, nameTM)
+### shipping.defineServiceName(id, name, carrierName, nameTM, tracking, transit)
 Add a new shipping service ID-name pair for use by getServiceName.
 Adding multiple IDs for the same service name is permitted.
 Adding new IDs for a pre-existing service name is also permitted.
@@ -229,12 +230,14 @@ Adding new IDs for a pre-existing service name is also permitted.
 
 **Kind**: static method of [<code>shipping</code>](#shipping)  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| id | <code>string</code> | An internal ID code that might be passed to getServiceName. |
-| name | <code>string</code> | The human-readable service name for display. |
-| carrierName | <code>string</code> | The human-readable carrier name for display. |
-| nameTM | <code>string</code> \| <code>null</code> | An alternate version of the service name to display, including trademark symbols. Will be used instead of `name` in some places such as shipping rate cards, but not on receipts or other places that might not support non-ASCII symbols. |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| id | <code>string</code> |  | An internal ID code that might be passed to getServiceName. |
+| name | <code>string</code> |  | The human-readable service name for display. |
+| carrierName | <code>string</code> |  | The human-readable carrier name for display. |
+| nameTM | <code>string</code> \| <code>null</code> |  | An alternate version of the service name to display, including trademark symbols. Will be used instead of `name` in some places such as shipping rate cards, but not on receipts or other places that might not support non-ASCII symbols. |
+| tracking | <code>string</code> \| <code>boolean</code> | <code>null</code> | If a service has limited or no tracking. For limited tracking (such as in-transit but no delivery tracking), set to `"limited"`, for no tracking (such as a letter with no barcode), set to `false`. |
+| transit | <code>string</code> | <code>null</code> | Typical number of days before delivery. Displayed when a specific rate has no delivery estimate. Must be in one of these forms: "10", "15+", "3-5". Regex: `/^[0-9]+(\+|-[0-9]+)?$/` |
 
 <a name="shipping.getCustomsFormImages"></a>
 
@@ -409,7 +412,8 @@ registerAddressVerificationProvider("example", "Example", async function (addres
          toVerified: true, // If the to address was verified
          fromVerified: true, // If the from/return address was verified
          toErrors: [], // String messages to display on the to address verification checkmark/warning icon
-         fromErrors: [] // String messages to display on the from/return address verification checkmark/warning icon
+         fromErrors: [], // String messages to display on the from/return address verification checkmark/warning icon
+         fromVerificationSkipped: false // Optional boolean, set true to suppress UI warnings if your integration doesn't attempt to validate the return address.
     }
 });
 ```
@@ -564,12 +568,13 @@ Get recent shipments for a plugin_sourceid.
     shipped: Date, // Date and time the package was marked as picked up by the carrier.
     metadata: {}, // Whatever was returned by the purchase function that created the shipment. Stored internally as a JSON string and parsed before returning. If JSON can't be parsed, is set to null.
     to_address: Address,
-    from_address: Address
+    from_address: Address,
+    labelimages: [] // Array of Base64-encoded PNG image data: URIs for each label, or null if no label images available
 }
 ```
 <a name="shipping.addShipmentToDatabase"></a>
 
-### shipping.addShipmentToDatabase(plugin_sourceid, prepaid, tracking, carrier, service, to_address, from_address, create_date, metadata) ⇒ <code>Promise</code>
+### shipping.addShipmentToDatabase(plugin_sourceid, prepaid, tracking, carrier, service, to_address, from_address, create_date, metadata, labels) ⇒ <code>Promise</code>
 Manually add a shipment record to the store database. This is done automatically when a label is purchased,
 and only needs to be done with this function if a shipment is created outside a normal PostalPoint workflow
 (such as, for example, when a shipment is created by a dropoff QR code handler that doesn't return prepaid drop-off shipment data)
@@ -588,6 +593,7 @@ and only needs to be done with this function if a shipment is created outside a 
 | from_address | <code>Address</code> \| <code>null</code> | An Address object for the return/origin/customer address. |
 | create_date | <code>Date</code> \| <code>number</code> \| <code>null</code> | Date or UNIX timestamp when the shipment was created. Defaults to now if not set. |
 | metadata | <code>Object</code> \| <code>null</code> | An object for holding other data about a shipment. Will be serialized to JSON. If not an Object, will be saved as `{}`. |
+| labels | <code>Array.&lt;(Jimp\|Buffer\|ArrayBuffer\|Uint8Array)&gt;</code> | Label image(s) for reprinting. Array of Jimp object or PNG image bytes. PostalPoint may drop old label images automatically to save space. |
 
 <a name="shipping.markShipmentVoid"></a>
 
