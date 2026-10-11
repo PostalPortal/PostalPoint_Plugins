@@ -50,7 +50,7 @@ Get the list of mailboxes and boxholders as an array of objects, see example.
     expires: 1234567890, // UNIX timestamp (in seconds) or false if box vacant
     size: "2", // Box size, 1-10
     notes: "", // Notes for mailbox, not currently shown in Mailbox Manager UI but may be used in the future
-    barcode: "", // Unique barcode for the mailbox, for future use
+    barcode: "", // Unique barcode for the mailbox
     renewalMerchID: "", // Merchandise item ID used for autorenewing this mailbox
     isBusiness: false, // True if the box is for a business, false if for personal use
     names: [], // Array of boxholders. See addOrUpdateBoxholder for the format.
