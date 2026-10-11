@@ -13,13 +13,14 @@ Point of Sale, transaction, and payment-related functionality.
     * [.addReceiptItem(item)](#pos.addReceiptItem)
     * [.addReceiptPayment(payment)](#pos.addReceiptPayment)
     * [.getReceipt()](#pos.getReceipt) ⇒ <code>Receipt</code>
+    * [.loadReceipt(uuid)](#pos.loadReceipt) ⇒ <code>Promise</code>
     * ~~[.getCustomerAccountInfo()](#pos.getCustomerAccountInfo) ⇒ <code>global.apis.shipping.Address</code> \| <code>boolean</code>~~
     * ~~[.setCustomerAccount(uuid)](#pos.setCustomerAccount) ⇒ <code>Promise.&lt;Array.&lt;global.apis.shipping.Address&gt;&gt;</code>~~
     * [.addOnscreenPaymentLog(msg)](#pos.addOnscreenPaymentLog)
     * [.getReceiptID()](#pos.getReceiptID) ⇒ <code>string</code>
     * [.onReceiptChange(f)](#pos.onReceiptChange)
     * [.finishTransaction()](#pos.finishTransaction)
-    * [.setEmailReceiptAddress(email)](#pos.setEmailReceiptAddress)
+    * [.setEmailReceiptAddress(email)](#pos.setEmailReceiptAddress) ⇒ <code>Promise</code>
     * [.registerCardProcessor(f)](#pos.registerCardProcessor)
     * [.registerCryptoProcessor(f)](#pos.registerCryptoProcessor)
     * [.getShippingSalesTax()](#pos.getShippingSalesTax) ⇒ <code>Object</code>
@@ -127,6 +128,18 @@ Add a payment to the current transaction/receipt.
 Get the current receipt for the currently active transaction.
 
 **Kind**: static method of [<code>pos</code>](#pos)  
+<a name="pos.loadReceipt"></a>
+
+### pos.loadReceipt(uuid) ⇒ <code>Promise</code>
+Retrieve a receipt by its UUID. Response contains an extra `date` field with the receipt's commit timestamp in seconds (UNIX timestamp).
+
+**Kind**: static method of [<code>pos</code>](#pos)  
+**Returns**: <code>Promise</code> - Resolves to a receipt object or `null` if not found.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| uuid | <code>string</code> | Receipt ID. |
+
 <a name="pos.getCustomerAccountInfo"></a>
 
 ### ~~pos.getCustomerAccountInfo() ⇒ <code>global.apis.shipping.Address</code> \| <code>boolean</code>~~
@@ -192,7 +205,7 @@ clicking `Checkout` > `Finish Transaction` > `Finalize and start new sale`.
 **Kind**: static method of [<code>pos</code>](#pos)  
 <a name="pos.setEmailReceiptAddress"></a>
 
-### pos.setEmailReceiptAddress(email)
+### pos.setEmailReceiptAddress(email) ⇒ <code>Promise</code>
 Set the address the receipt will be emailed to when the transaction is finished.
 Set to an empty string to disable sending the email receipt.
 Note that when a transaction has a customer associated, and that customer record has an email on file,
@@ -234,6 +247,9 @@ global.apis.pos.registerCardProcessor({
         // Charge a credit card using a card reader device.
         // amount is in pennies (or the equivalent base unit in the local currency).
         // If a credit is to be issued to the card, amount is * -1.
+        //
+        // During a return, global.apis.pos.getReceipt().originalUUID
+        // contains the original transaction's receipt ID.
 
         // Add a payment to the receipt with the total amount paid, card details, etc.
         global.apis.pos.addReceiptPayment(

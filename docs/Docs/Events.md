@@ -15,9 +15,8 @@ Plugins can use `global.apis.eventbus` to receive events when certain actions ha
 * `settingsSaved`: Emitted when PostalPoint's settings are saved. Usually this means the user changed a setting in the UI.
 * `pluginSettingsSaved`: Emitted when the user saves a plugin's settings. The plugin ID string is sent as the event data.
 * `packageCheckIn`: Emitted when a package is checked in to a mailbox or for Hold At Location. See below for event data details.
-* `mailboxMailDelivered`: Emitted when mail delivery notifications are sent by the user. Data is an array of the mailbox numbers notifications are being sent for.
-* `customerPackagePickedUp`: A mailbox customer's package has been picked up by the customer.
-* `halPackagePickedUp`: A Hold at Location package has been picked up by the customer.
+* `mailboxMailDelivered`: Emitted when mail delivery notifications are sent by the user. Data is a string array of the mailbox numbers that notifications are being sent for.
+* `customerPackagePickedUp`: A customer's package (mailbox customer or Hold at Location) has been picked up by the customer. Event contains information about the package; see info below.
 * `parcelUpdated`: The current shipment's package/parcel data has been changed. Data is a string representing the source of the change (often an empty string).
 * `keyboardNavShortcut`: A keyboard function key, F5 through F11, has been pressed. Data is like "F5", or "Ctrl F5" if Ctrl key is pressed. This event is used by PostalPoint's UI for context-dependent shortcut keys, but plugins may desire to add keyboard shortcuts when displaying the entire UI (such as a Tools page).
 * `prepaidItemAdded`: A prepaid package has been added to the current receipt.  Data is the TrackingBarcode object.
@@ -70,5 +69,20 @@ See [Receipt](./Receipt.md)
     recipient: "", // Hold At Location recipient name, or empty string if not HAL.
     toLocker: "5", // Parcel locker number, or false if not going to a parcel locker.
     shelfLabelPrinted: true // Indicates if a shelf label was printed for this package.  Will be false if going to a locker, if the user requested no label, or if the label failed to print.
+}
+```
+
+### customerPackagePickedUp
+
+```javascript
+{
+    hal: false, // Is true if a Hold at Location package AND a fee is due
+    charge: false, // Is true if a fee is due
+    error: false, // Is true if an error was displayed during pickup
+    fee: 0, // Calculated fee amount in dollars (or local currency)
+    totalDays: 0, // Number of days the package has been awaiting pickup
+    billableDays: 0, // Number of days after the no-fee grace period
+    boxNumber: "", // Customer mailbox number or "HAL" if Hold at Location
+    tagNumber: "abcdefgh12345678" // Unique shelf tag ID number for the package
 }
 ```
