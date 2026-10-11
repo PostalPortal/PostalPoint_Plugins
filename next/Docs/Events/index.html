@@ -522,6 +522,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#customerpackagepickedup" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        customerPackagePickedUp
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1699,6 +1710,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#customerpackagepickedup" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        customerPackagePickedUp
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1734,9 +1756,8 @@
 <li><code>settingsSaved</code>: Emitted when PostalPoint's settings are saved. Usually this means the user changed a setting in the UI.</li>
 <li><code>pluginSettingsSaved</code>: Emitted when the user saves a plugin's settings. The plugin ID string is sent as the event data.</li>
 <li><code>packageCheckIn</code>: Emitted when a package is checked in to a mailbox or for Hold At Location. See below for event data details.</li>
-<li><code>mailboxMailDelivered</code>: Emitted when mail delivery notifications are sent by the user. Data is an array of the mailbox numbers notifications are being sent for.</li>
-<li><code>customerPackagePickedUp</code>: A mailbox customer's package has been picked up by the customer.</li>
-<li><code>halPackagePickedUp</code>: A Hold at Location package has been picked up by the customer.</li>
+<li><code>mailboxMailDelivered</code>: Emitted when mail delivery notifications are sent by the user. Data is a string array of the mailbox numbers that notifications are being sent for.</li>
+<li><code>customerPackagePickedUp</code>: A customer's package (mailbox customer or Hold at Location) has been picked up by the customer. Event contains information about the package; see info below.</li>
 <li><code>parcelUpdated</code>: The current shipment's package/parcel data has been changed. Data is a string representing the source of the change (often an empty string).</li>
 <li><code>keyboardNavShortcut</code>: A keyboard function key, F5 through F11, has been pressed. Data is like "F5", or "Ctrl F5" if Ctrl key is pressed. This event is used by PostalPoint's UI for context-dependent shortcut keys, but plugins may desire to add keyboard shortcuts when displaying the entire UI (such as a Tools page).</li>
 <li><code>prepaidItemAdded</code>: A prepaid package has been added to the current receipt.  Data is the TrackingBarcode object.</li>
@@ -1776,6 +1797,18 @@
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nx">toLocker</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;5&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Parcel locker number, or false if not going to a parcel locker.</span>
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="nx">shelfLabelPrinted</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c1">// Indicates if a shelf label was printed for this package.  Will be false if going to a locker, if the user requested no label, or if the label failed to print.</span>
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="customerpackagepickedup">customerPackagePickedUp</h3>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nx">hal</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// Is true if a Hold at Location package AND a fee is due</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nx">charge</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// Is true if a fee is due</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// Is true if an error was displayed during pickup</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nx">fee</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="c1">// Calculated fee amount in dollars (or local currency)</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nx">totalDays</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="c1">// Number of days the package has been awaiting pickup</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nx">billableDays</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="c1">// Number of days after the no-fee grace period</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nx">boxNumber</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Customer mailbox number or &quot;HAL&quot; if Hold at Location</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nx">tagNumber</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;abcdefgh12345678&quot;</span><span class="w"> </span><span class="c1">// Unique shelf tag ID number for the package</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">}</span>
 </span></code></pre></div>
 
 

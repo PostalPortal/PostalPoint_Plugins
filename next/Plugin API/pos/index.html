@@ -1386,6 +1386,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#posloadreceiptuuid-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        pos.loadReceipt(uuid) ⇒ <code>Promise</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#posgetcustomeraccountinfo-globalapisshippingaddress-boolean" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1452,10 +1463,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#possetemailreceiptaddressemail" class="md-nav__link">
+  <a href="#possetemailreceiptaddressemail-promise" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        pos.setEmailReceiptAddress(email)
+        pos.setEmailReceiptAddress(email) ⇒ <code>Promise</code>
       </span>
     </span>
   </a>
@@ -1925,6 +1936,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#posloadreceiptuuid-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        pos.loadReceipt(uuid) ⇒ <code>Promise</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#posgetcustomeraccountinfo-globalapisshippingaddress-boolean" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1991,10 +2013,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#possetemailreceiptaddressemail" class="md-nav__link">
+  <a href="#possetemailreceiptaddressemail-promise" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        pos.setEmailReceiptAddress(email)
+        pos.setEmailReceiptAddress(email) ⇒ <code>Promise</code>
       </span>
     </span>
   </a>
@@ -2128,13 +2150,14 @@
 <li><a href="#pos.addReceiptItem">.addReceiptItem(item)</a></li>
 <li><a href="#pos.addReceiptPayment">.addReceiptPayment(payment)</a></li>
 <li><a href="#pos.getReceipt">.getReceipt()</a> ⇒ <code>Receipt</code></li>
+<li><a href="#pos.loadReceipt">.loadReceipt(uuid)</a> ⇒ <code>Promise</code></li>
 <li>~~<a href="#pos.getCustomerAccountInfo">.getCustomerAccountInfo()</a> ⇒ <code>global.apis.shipping.Address</code> | <code>boolean</code>~~</li>
 <li>~~<a href="#pos.setCustomerAccount">.setCustomerAccount(uuid)</a> ⇒ <code>Promise.&lt;Array.&lt;global.apis.shipping.Address&gt;&gt;</code>~~</li>
 <li><a href="#pos.addOnscreenPaymentLog">.addOnscreenPaymentLog(msg)</a></li>
 <li><a href="#pos.getReceiptID">.getReceiptID()</a> ⇒ <code>string</code></li>
 <li><a href="#pos.onReceiptChange">.onReceiptChange(f)</a></li>
 <li><a href="#pos.finishTransaction">.finishTransaction()</a></li>
-<li><a href="#pos.setEmailReceiptAddress">.setEmailReceiptAddress(email)</a></li>
+<li><a href="#pos.setEmailReceiptAddress">.setEmailReceiptAddress(email)</a> ⇒ <code>Promise</code></li>
 <li><a href="#pos.registerCardProcessor">.registerCardProcessor(f)</a></li>
 <li><a href="#pos.registerCryptoProcessor">.registerCryptoProcessor(f)</a></li>
 <li><a href="#pos.getShippingSalesTax">.getShippingSalesTax()</a> ⇒ <code>Object</code></li>
@@ -2441,7 +2464,28 @@
 <h3 id="posgetreceipt-receipt">pos.getReceipt() ⇒ <code>Receipt</code></h3>
 <p>Get the current receipt for the currently active transaction.</p>
 <p><strong>Kind</strong>: static method of <a href="#pos"><code>pos</code></a><br />
-<a name="pos.getCustomerAccountInfo"></a></p>
+<a name="pos.loadReceipt"></a></p>
+<h3 id="posloadreceiptuuid-promise">pos.loadReceipt(uuid) ⇒ <code>Promise</code></h3>
+<p>Retrieve a receipt by its UUID. Response contains an extra <code>date</code> field with the receipt's commit timestamp in seconds (UNIX timestamp).</p>
+<p><strong>Kind</strong>: static method of <a href="#pos"><code>pos</code></a><br />
+<strong>Returns</strong>: <code>Promise</code> - Resolves to a receipt object or <code>null</code> if not found.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uuid</td>
+<td><code>string</code></td>
+<td>Receipt ID.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="pos.getCustomerAccountInfo"></a></p>
 <h3 id="posgetcustomeraccountinfo-globalapisshippingaddress-boolean">~~pos.getCustomerAccountInfo() ⇒ <code>global.apis.shipping.Address</code> | <code>boolean</code>~~</h3>
 <p><strong><em>Deprecated</em></strong></p>
 <p>Get information about the active customer account.
@@ -2522,7 +2566,7 @@ It is passed a single argument, a Receipt object containing the entire transacti
 clicking <code>Checkout</code> &gt; <code>Finish Transaction</code> &gt; <code>Finalize and start new sale</code>.</p>
 <p><strong>Kind</strong>: static method of <a href="#pos"><code>pos</code></a><br />
 <a name="pos.setEmailReceiptAddress"></a></p>
-<h3 id="possetemailreceiptaddressemail">pos.setEmailReceiptAddress(email)</h3>
+<h3 id="possetemailreceiptaddressemail-promise">pos.setEmailReceiptAddress(email) ⇒ <code>Promise</code></h3>
 <p>Set the address the receipt will be emailed to when the transaction is finished.
 Set to an empty string to disable sending the email receipt.
 Note that when a transaction has a customer associated, and that customer record has an email on file,
@@ -2580,111 +2624,114 @@ PostalPoint will have already run this function when setting the customer.</p>
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="c1">// Charge a credit card using a card reader device.</span>
 </span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="c1">// amount is in pennies (or the equivalent base unit in the local currency).</span>
 </span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="c1">// If a credit is to be issued to the card, amount is * -1.</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span><span class="c1">// Add a payment to the receipt with the total amount paid, card details, etc.</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">        </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">addReceiptPayment</span><span class="p">(</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">            </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">ReceiptPayment</span><span class="p">(</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">                </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">i18n</span><span class="p">.</span><span class="nx">currencyMinorToMajor</span><span class="p">(</span><span class="nx">amount</span><span class="p">),</span>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">                </span><span class="s2">&quot;card&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Payment type. Accepted values are card, ach, crypto, cash,</span>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">                </span><span class="c1">// check, account, and free.  Other types will be displayed as-is.</span>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">                </span><span class="s2">&quot;Demo Card\nCardholder Name, etc\nMore info for receipt&quot;</span><span class="w"> </span><span class="c1">// Additional text for receipt</span>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">            </span><span class="p">)</span>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">        </span><span class="p">);</span>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
-</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">        </span><span class="c1">// Must return boolean false if the payment failed.</span>
-</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">        </span><span class="c1">// Otherwise it will be assumed it succeeded.</span>
-</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">        </span><span class="c1">// If an error is encountered, handle it and return false.</span>
-</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">        </span><span class="c1">// It&#39;s recommended to display a short &quot;payment failed&quot; error</span>
-</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">        </span><span class="c1">// message via global.apis.alert, and outputting more details</span>
-</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">        </span><span class="c1">// via global.apis.pos.addOnscreenPaymentLog.</span>
-</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>
-</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">        </span><span class="c1">// If capture is false, perform an authorization but don&#39;t capture,</span>
-</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">        </span><span class="c1">// and return a value you can use to identify the authorization later</span>
-</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">        </span><span class="c1">// and complete it.  The value will be passed back to finishPayment, below.</span>
-</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">        </span><span class="c1">// This is used mainly for the self-serve kiosk mode, in case the label fails</span>
-</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">        </span><span class="c1">// to be purchased/generated by the carrier.</span>
-</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">    </span><span class="nx">cancelCheckout</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">        </span><span class="c1">// The user has requested the card transaction be canceled before it completes.</span>
-</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">        </span><span class="c1">// Reset the terminal to its resting state, clear its screen, etc.</span>
-</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">    </span><span class="nx">finishPayment</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">({</span><span class="nx">checkoutResponse</span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">        </span><span class="c1">// Finish a payment that was authorized but not captured</span>
-</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">        </span><span class="c1">// because checkout() was called with capture = false.</span>
-</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">        </span><span class="c1">// If payment was already captured and added</span>
-</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">        </span><span class="c1">// to the receipt, just return true.</span>
-</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">        </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">addReceiptPayment</span><span class="p">(</span>
-</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">            </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">ReceiptPayment</span><span class="p">(</span>
-</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">                </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">i18n</span><span class="p">.</span><span class="nx">currencyMinorToMajor</span><span class="p">(</span><span class="nx">amount</span><span class="p">),</span>
-</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">                </span><span class="s2">&quot;card&quot;</span><span class="p">,</span>
-</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="w">                </span><span class="s2">&quot;Demo Card\nCardholder Name, etc\nMore info for receipt&quot;</span>
-</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">            </span><span class="p">)</span>
-</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">        </span><span class="p">);</span>
-</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="w">    </span><span class="nx">updateCartDisplay</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">receipt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="w">        </span><span class="c1">// Show transaction data on the card reader display.</span>
-</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="w">        </span><span class="c1">// This function is called when the &quot;cart&quot; or total changes.</span>
-</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="w">        </span><span class="c1">// `receipt` is a receipt object, see docs for details.</span>
-</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="w">    </span><span class="nx">checkoutSavedMethod</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">({</span><span class="nx">customerID</span><span class="p">,</span><span class="w"> </span><span class="nx">paymentMethodID</span><span class="p">,</span><span class="w"> </span><span class="nx">amount</span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="w">        </span><span class="c1">// Same as checkout() except using a payment method already on file.</span>
-</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="w">        </span><span class="c1">// customerID and paymentMethodID are provided by getSavedPaymentMethods below.</span>
-</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>
-</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="w">        </span><span class="c1">// Must return true upon success.</span>
-</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="w">        </span><span class="c1">// If the payment is not successful, and you didn&#39;t throw an Error to show the user,</span>
-</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="w">        </span><span class="c1">// then `return false` instead and it&#39;ll appear that the user&#39;s action to start the payment did nothing.</span>
-</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="w">    </span><span class="nx">saveCardForOfflineUse</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">statusCallback</span><span class="p">,</span><span class="w"> </span><span class="nx">customerAddress</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a><span class="w">        </span><span class="c1">// Use the card reader to capture an in-person card and save it for offline use.</span>
-</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a><span class="w">        </span><span class="c1">// Provided details are an Address object with the customer&#39;s contact info.</span>
-</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="w">        </span><span class="c1">// Saved card details must be tied to the customerAddress.uuid, as that&#39;s how saved cards are looked up.</span>
-</span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>
-</span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="w">        </span><span class="c1">// statusCallback(string, boolean) updates the progress message on the cashier&#39;s screen.</span>
-</span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a><span class="w">        </span><span class="c1">// If the boolean is true, the progress message is replaced with a confirmation message.</span>
-</span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a><span class="w">        </span><span class="nx">statusCallback</span><span class="p">(</span><span class="s2">&quot;Saving card details...&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
-</span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>
-</span><span id="__span-0-83"><a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// Card saved to customer</span>
-</span><span id="__span-0-84"><a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a><span class="w">        </span><span class="c1">// If an error occurred, you can throw it and the error</span>
-</span><span id="__span-0-85"><a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a><span class="w">        </span><span class="c1">// message will be displayed to the cashier.</span>
-</span><span id="__span-0-86"><a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a><span class="w">        </span><span class="c1">// Alternatively, return boolean false and display the error</span>
-</span><span id="__span-0-87"><a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a><span class="w">        </span><span class="c1">// yourself with global.apis.alert(message, title) or something.</span>
-</span><span id="__span-0-88"><a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-0-89"><a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a><span class="w">    </span><span class="nx">getExternalURLForSavingCard</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">statusCallback</span><span class="p">,</span><span class="w"> </span><span class="nx">customerAddress</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-90"><a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a><span class="w">         </span><span class="c1">// Alternate flow for saving cards. If this function is defined, an alternate card saving UI is used.</span>
-</span><span id="__span-0-91"><a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a><span class="w">         </span><span class="c1">// Returns a URL and a Promise.  The URL is for an external webpage that accepts</span>
-</span><span id="__span-0-92"><a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a><span class="w">         </span><span class="c1">// the customer&#39;s card info and saves it. The URL will be opened by the customer</span>
-</span><span id="__span-0-93"><a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a><span class="w">         </span><span class="c1">// on their phone, or possibly by the store in the system web browser.</span>
-</span><span id="__span-0-94"><a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a><span class="w">         </span><span class="c1">// The Promise resolves when the card info is saved,</span>
-</span><span id="__span-0-95"><a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a><span class="w">         </span><span class="c1">// with the same behavior as saveCardForOfflineUse.</span>
-</span><span id="__span-0-96"><a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a><span class="w">         </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-97"><a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a><span class="w">             </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://...&quot;</span><span class="p">,</span>
-</span><span id="__span-0-98"><a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a><span class="w">             </span><span class="nx">promise</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-99"><a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a><span class="w">                 </span><span class="c1">// wait for card info to be saved</span>
-</span><span id="__span-0-100"><a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a><span class="w">             </span><span class="p">}</span>
-</span><span id="__span-0-101"><a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-0-102"><a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a><span class="w">    </span><span class="nx">cancelSaveCardForOfflineUse</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-103"><a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a><span class="w">        </span><span class="c1">// Cancel the process running in saveCardForOfflineUse() or getExternalURLForSavingCard() at the user/cashier&#39;s request.</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="c1">//</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span><span class="c1">// During a return, global.apis.pos.getReceipt().originalUUID</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">        </span><span class="c1">// contains the original transaction&#39;s receipt ID.</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">        </span><span class="c1">// Add a payment to the receipt with the total amount paid, card details, etc.</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">        </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">addReceiptPayment</span><span class="p">(</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">            </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">ReceiptPayment</span><span class="p">(</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">                </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">i18n</span><span class="p">.</span><span class="nx">currencyMinorToMajor</span><span class="p">(</span><span class="nx">amount</span><span class="p">),</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">                </span><span class="s2">&quot;card&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Payment type. Accepted values are card, ach, crypto, cash,</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">                </span><span class="c1">// check, account, and free.  Other types will be displayed as-is.</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">                </span><span class="s2">&quot;Demo Card\nCardholder Name, etc\nMore info for receipt&quot;</span><span class="w"> </span><span class="c1">// Additional text for receipt</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">            </span><span class="p">)</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">        </span><span class="p">);</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">        </span><span class="c1">// Must return boolean false if the payment failed.</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">        </span><span class="c1">// Otherwise it will be assumed it succeeded.</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">        </span><span class="c1">// If an error is encountered, handle it and return false.</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">        </span><span class="c1">// It&#39;s recommended to display a short &quot;payment failed&quot; error</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">        </span><span class="c1">// message via global.apis.alert, and outputting more details</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">        </span><span class="c1">// via global.apis.pos.addOnscreenPaymentLog.</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">        </span><span class="c1">// If capture is false, perform an authorization but don&#39;t capture,</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">        </span><span class="c1">// and return a value you can use to identify the authorization later</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">        </span><span class="c1">// and complete it.  The value will be passed back to finishPayment, below.</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">        </span><span class="c1">// This is used mainly for the self-serve kiosk mode, in case the label fails</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">        </span><span class="c1">// to be purchased/generated by the carrier.</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">    </span><span class="nx">cancelCheckout</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">        </span><span class="c1">// The user has requested the card transaction be canceled before it completes.</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">        </span><span class="c1">// Reset the terminal to its resting state, clear its screen, etc.</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">    </span><span class="nx">finishPayment</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">({</span><span class="nx">checkoutResponse</span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">        </span><span class="c1">// Finish a payment that was authorized but not captured</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">        </span><span class="c1">// because checkout() was called with capture = false.</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">        </span><span class="c1">// If payment was already captured and added</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">        </span><span class="c1">// to the receipt, just return true.</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">        </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">addReceiptPayment</span><span class="p">(</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="w">            </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">ReceiptPayment</span><span class="p">(</span>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">                </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">i18n</span><span class="p">.</span><span class="nx">currencyMinorToMajor</span><span class="p">(</span><span class="nx">amount</span><span class="p">),</span>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">                </span><span class="s2">&quot;card&quot;</span><span class="p">,</span>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">                </span><span class="s2">&quot;Demo Card\nCardholder Name, etc\nMore info for receipt&quot;</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="w">            </span><span class="p">)</span>
+</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="w">        </span><span class="p">);</span>
+</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="w">    </span><span class="nx">updateCartDisplay</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">receipt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="w">        </span><span class="c1">// Show transaction data on the card reader display.</span>
+</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="w">        </span><span class="c1">// This function is called when the &quot;cart&quot; or total changes.</span>
+</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="w">        </span><span class="c1">// `receipt` is a receipt object, see docs for details.</span>
+</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="w">    </span><span class="nx">checkoutSavedMethod</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">({</span><span class="nx">customerID</span><span class="p">,</span><span class="w"> </span><span class="nx">paymentMethodID</span><span class="p">,</span><span class="w"> </span><span class="nx">amount</span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="w">        </span><span class="c1">// Same as checkout() except using a payment method already on file.</span>
+</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="w">        </span><span class="c1">// customerID and paymentMethodID are provided by getSavedPaymentMethods below.</span>
+</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>
+</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="w">        </span><span class="c1">// Must return true upon success.</span>
+</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="w">        </span><span class="c1">// If the payment is not successful, and you didn&#39;t throw an Error to show the user,</span>
+</span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="w">        </span><span class="c1">// then `return false` instead and it&#39;ll appear that the user&#39;s action to start the payment did nothing.</span>
+</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="w">    </span><span class="nx">saveCardForOfflineUse</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">statusCallback</span><span class="p">,</span><span class="w"> </span><span class="nx">customerAddress</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a><span class="w">        </span><span class="c1">// Use the card reader to capture an in-person card and save it for offline use.</span>
+</span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="w">        </span><span class="c1">// Provided details are an Address object with the customer&#39;s contact info.</span>
+</span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a><span class="w">        </span><span class="c1">// Saved card details must be tied to the customerAddress.uuid, as that&#39;s how saved cards are looked up.</span>
+</span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>
+</span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a><span class="w">        </span><span class="c1">// statusCallback(string, boolean) updates the progress message on the cashier&#39;s screen.</span>
+</span><span id="__span-0-83"><a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a><span class="w">        </span><span class="c1">// If the boolean is true, the progress message is replaced with a confirmation message.</span>
+</span><span id="__span-0-84"><a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a><span class="w">        </span><span class="nx">statusCallback</span><span class="p">(</span><span class="s2">&quot;Saving card details...&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
+</span><span id="__span-0-85"><a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>
+</span><span id="__span-0-86"><a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// Card saved to customer</span>
+</span><span id="__span-0-87"><a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a><span class="w">        </span><span class="c1">// If an error occurred, you can throw it and the error</span>
+</span><span id="__span-0-88"><a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a><span class="w">        </span><span class="c1">// message will be displayed to the cashier.</span>
+</span><span id="__span-0-89"><a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a><span class="w">        </span><span class="c1">// Alternatively, return boolean false and display the error</span>
+</span><span id="__span-0-90"><a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a><span class="w">        </span><span class="c1">// yourself with global.apis.alert(message, title) or something.</span>
+</span><span id="__span-0-91"><a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-0-92"><a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a><span class="w">    </span><span class="nx">getExternalURLForSavingCard</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">statusCallback</span><span class="p">,</span><span class="w"> </span><span class="nx">customerAddress</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-93"><a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a><span class="w">         </span><span class="c1">// Alternate flow for saving cards. If this function is defined, an alternate card saving UI is used.</span>
+</span><span id="__span-0-94"><a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a><span class="w">         </span><span class="c1">// Returns a URL and a Promise.  The URL is for an external webpage that accepts</span>
+</span><span id="__span-0-95"><a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a><span class="w">         </span><span class="c1">// the customer&#39;s card info and saves it. The URL will be opened by the customer</span>
+</span><span id="__span-0-96"><a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a><span class="w">         </span><span class="c1">// on their phone, or possibly by the store in the system web browser.</span>
+</span><span id="__span-0-97"><a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a><span class="w">         </span><span class="c1">// The Promise resolves when the card info is saved,</span>
+</span><span id="__span-0-98"><a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a><span class="w">         </span><span class="c1">// with the same behavior as saveCardForOfflineUse.</span>
+</span><span id="__span-0-99"><a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a><span class="w">         </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-100"><a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a><span class="w">             </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://...&quot;</span><span class="p">,</span>
+</span><span id="__span-0-101"><a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a><span class="w">             </span><span class="nx">promise</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-102"><a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a><span class="w">                 </span><span class="c1">// wait for card info to be saved</span>
+</span><span id="__span-0-103"><a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a><span class="w">             </span><span class="p">}</span>
 </span><span id="__span-0-104"><a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-0-105"><a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a><span class="w">    </span><span class="nx">getSavedPaymentMethods</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">({</span><span class="nx">customerUUID</span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-106"><a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a><span class="w">        </span><span class="c1">// Return all saved payment methods tied to the provided customer UUID.</span>
-</span><span id="__span-0-107"><a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">[{</span>
-</span><span id="__span-0-108"><a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a><span class="w">            </span><span class="nx">customer</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;internal string referencing the customer&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Passed to checkoutSavedMethod as customerID</span>
-</span><span id="__span-0-109"><a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a><span class="w">            </span><span class="nx">customer_uuid</span><span class="o">:</span><span class="w"> </span><span class="nx">customerUUID</span><span class="p">,</span>
-</span><span id="__span-0-110"><a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a><span class="w">            </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;card/payment method identifier&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Passed to checkoutSavedMethod as paymentMethodID</span>
-</span><span id="__span-0-111"><a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a><span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;card&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Payment type. Accepted values are card, ach, crypto, cash, check, account, and free.</span>
-</span><span id="__span-0-112"><a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a><span class="w">            </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Visa debit x1234 (exp. 12/29)&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Label for payment method</span>
-</span><span id="__span-0-113"><a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a><span class="w">            </span><span class="nx">label_short</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Visa debit x1234&quot;</span><span class="w"> </span><span class="c1">// Abbreviated label for payment method</span>
-</span><span id="__span-0-114"><a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a><span class="w">        </span><span class="p">}];</span>
-</span><span id="__span-0-115"><a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-0-116"><a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a><span class="w">    </span><span class="nx">deleteSavedPaymentMethod</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">({</span><span class="nx">customerUUID</span><span class="p">,</span><span class="w"> </span><span class="nx">customerID</span><span class="p">,</span><span class="w"> </span><span class="nx">paymentMethodID</span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-117"><a id="__codelineno-0-117" name="__codelineno-0-117" href="#__codelineno-0-117"></a><span class="w">        </span><span class="c1">// Delete the payment method identified by paymentMethodID</span>
-</span><span id="__span-0-118"><a id="__codelineno-0-118" name="__codelineno-0-118" href="#__codelineno-0-118"></a><span class="w">        </span><span class="c1">// and tied to the PostalPoint customerUUID and the card processor customerID.</span>
-</span><span id="__span-0-119"><a id="__codelineno-0-119" name="__codelineno-0-119" href="#__codelineno-0-119"></a><span class="w">        </span><span class="c1">// If unable to delete, throw an error and the error message</span>
-</span><span id="__span-0-120"><a id="__codelineno-0-120" name="__codelineno-0-120" href="#__codelineno-0-120"></a><span class="w">        </span><span class="c1">// will be displayed to the cashier.</span>
-</span><span id="__span-0-121"><a id="__codelineno-0-121" name="__codelineno-0-121" href="#__codelineno-0-121"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-0-122"><a id="__codelineno-0-122" name="__codelineno-0-122" href="#__codelineno-0-122"></a><span class="p">});</span>
+</span><span id="__span-0-105"><a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a><span class="w">    </span><span class="nx">cancelSaveCardForOfflineUse</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-106"><a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a><span class="w">        </span><span class="c1">// Cancel the process running in saveCardForOfflineUse() or getExternalURLForSavingCard() at the user/cashier&#39;s request.</span>
+</span><span id="__span-0-107"><a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-0-108"><a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a><span class="w">    </span><span class="nx">getSavedPaymentMethods</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">({</span><span class="nx">customerUUID</span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-109"><a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a><span class="w">        </span><span class="c1">// Return all saved payment methods tied to the provided customer UUID.</span>
+</span><span id="__span-0-110"><a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">[{</span>
+</span><span id="__span-0-111"><a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a><span class="w">            </span><span class="nx">customer</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;internal string referencing the customer&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Passed to checkoutSavedMethod as customerID</span>
+</span><span id="__span-0-112"><a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a><span class="w">            </span><span class="nx">customer_uuid</span><span class="o">:</span><span class="w"> </span><span class="nx">customerUUID</span><span class="p">,</span>
+</span><span id="__span-0-113"><a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a><span class="w">            </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;card/payment method identifier&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Passed to checkoutSavedMethod as paymentMethodID</span>
+</span><span id="__span-0-114"><a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a><span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;card&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Payment type. Accepted values are card, ach, crypto, cash, check, account, and free.</span>
+</span><span id="__span-0-115"><a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a><span class="w">            </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Visa debit x1234 (exp. 12/29)&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Label for payment method</span>
+</span><span id="__span-0-116"><a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a><span class="w">            </span><span class="nx">label_short</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Visa debit x1234&quot;</span><span class="w"> </span><span class="c1">// Abbreviated label for payment method</span>
+</span><span id="__span-0-117"><a id="__codelineno-0-117" name="__codelineno-0-117" href="#__codelineno-0-117"></a><span class="w">        </span><span class="p">}];</span>
+</span><span id="__span-0-118"><a id="__codelineno-0-118" name="__codelineno-0-118" href="#__codelineno-0-118"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-0-119"><a id="__codelineno-0-119" name="__codelineno-0-119" href="#__codelineno-0-119"></a><span class="w">    </span><span class="nx">deleteSavedPaymentMethod</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">({</span><span class="nx">customerUUID</span><span class="p">,</span><span class="w"> </span><span class="nx">customerID</span><span class="p">,</span><span class="w"> </span><span class="nx">paymentMethodID</span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-120"><a id="__codelineno-0-120" name="__codelineno-0-120" href="#__codelineno-0-120"></a><span class="w">        </span><span class="c1">// Delete the payment method identified by paymentMethodID</span>
+</span><span id="__span-0-121"><a id="__codelineno-0-121" name="__codelineno-0-121" href="#__codelineno-0-121"></a><span class="w">        </span><span class="c1">// and tied to the PostalPoint customerUUID and the card processor customerID.</span>
+</span><span id="__span-0-122"><a id="__codelineno-0-122" name="__codelineno-0-122" href="#__codelineno-0-122"></a><span class="w">        </span><span class="c1">// If unable to delete, throw an error and the error message</span>
+</span><span id="__span-0-123"><a id="__codelineno-0-123" name="__codelineno-0-123" href="#__codelineno-0-123"></a><span class="w">        </span><span class="c1">// will be displayed to the cashier.</span>
+</span><span id="__span-0-124"><a id="__codelineno-0-124" name="__codelineno-0-124" href="#__codelineno-0-124"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-125"><a id="__codelineno-0-125" name="__codelineno-0-125" href="#__codelineno-0-125"></a><span class="p">});</span>
 </span></code></pre></div>
 <a name="pos.registerCryptoProcessor"></a></p>
 <h3 id="posregistercryptoprocessorf">pos.registerCryptoProcessor(f)</h3>
