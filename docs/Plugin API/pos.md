@@ -292,6 +292,13 @@ global.apis.pos.registerCardProcessor({
             )
         );
     },
+    cancelPayment: async function ({checkoutResponse}) {
+        // Optional. Void an authorization from checkout() with capture = false,
+        // without capturing it, so the hold on the customer's card is released.
+        // Called by the self-serve kiosk when the label purchase fails.
+        // Return true if the authorization was voided.
+        return true;
+    },
     updateCartDisplay: function (receipt) {
         // Show transaction data on the card reader display.
         // This function is called when the "cart" or total changes.

@@ -21,7 +21,7 @@ Add custom carrier and rates, and adjust markup.
     * [.defineServiceName(id, name, carrierName, nameTM, tracking, transit)](#shipping.defineServiceName)
     * [.getCustomsFormImages(parcel, incoterm, trackingNumber, invoiceNumber, date)](#shipping.getCustomsFormImages) ⇒ <code>Promise.&lt;Array.&lt;Jimp&gt;&gt;</code>
     * [.registerRateEndpoint(getRates, purchase, idPrefix, [extraOptions])](#shipping.registerRateEndpoint)
-    * [.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)](#shipping.registerStampEndpoint)
+    * [.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection, supportsBulk)](#shipping.registerStampEndpoint)
     * [.addRateWarning(message)](#shipping.addRateWarning)
     * [.registerAddressVerificationProvider(id, name, verifyFn)](#shipping.registerAddressVerificationProvider)
     * [.registerCarrierPickupMenu(carrierName, displayName, onPickup)](#shipping.registerCarrierPickupMenu) ⇒ <code>undefined</code>
@@ -267,7 +267,7 @@ Register the plugin as a shipping rate and label provider.  See the Shipping exa
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| getRates | <code>function</code> |  | A function passed a Parcel object to get rates for. Returns a Promise that resolves to an array of rate objects. |
+| getRates | <code>function</code> |  | A function passed a Package object to get rates for. Returns a Promise that resolves to an array of rate objects. |
 | purchase | <code>function</code> |  | A function passed a rate ID to purchase. Returns a Promise that resolves to the label information. |
 | idPrefix | <code>string</code> |  | A unique string that will be prefixing all rate IDs from this plugin. |
 | [extraOptions] | <code>Object</code> | <code>{}</code> | Extra optional functions/options that can be implemented.  See example. |
@@ -341,7 +341,7 @@ extraOptions = {
 ```
 <a name="shipping.registerStampEndpoint"></a>
 
-### shipping.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection)
+### shipping.registerStampEndpoint(id, name, getRates, purchase, purchaseCorrection, supportsBulk)
 Register the plugin as a USPS postage indicia provider for First Class Mail.
 
 **Kind**: static method of [<code>shipping</code>](#shipping)  
@@ -351,18 +351,19 @@ Register the plugin as a USPS postage indicia provider for First Class Mail.
 | id | <code>string</code> | Unique alphanumeric ID for this provider. |
 | name | <code>string</code> | Human-readable name for this provider. |
 | getRates | <code>function</code> | see registerRateEndpoint. Any returned rates that aren't for USPS First-Class Mail are ignored. |
-| purchase | <code>function</code> | see registerRateEndpoint. Returned data must also include a `imageSettings` object, see example. |
+| purchase | <code>function</code> | see registerRateEndpoint. receiptItem, addresses, and delivery days/date properties are ignored. Returned data must also include a `imageSettings` object, see example. |
 | purchaseCorrection | <code>function</code> \| <code>null</code> | Same as `purchase` but instead of a rate ID the argument is a string number of cents to print on the postage. If null, postage correction stamps will be disabled. |
+| supportsBulk | <code>boolean</code> | Declare that this endpoint can handle purchasing multiple stamps with one request. If set and true, your purchase function will be called with a second `quantity` argument with the number of stamps as an integer 1-20. When doing this, the `cost` and `price` returned should be the total, not the price per stamp. Return all stamp indicia images in `label` as an array of images. |
 
 **Example**  
 ```js
 // imageSettings object returned by purchase:
 {
-    includeFIM: true, // If true, a FIM D (Facing Identification Mark, variant D) is printed to the left of the indicia. Required for letter-size postage.
+    includeFIM: true, // If true, a FIM D (Facing Identification Mark, variant D) is printed to the left of the indicia. Ignored if the stamp labels in use have fluorescent dye/ink.
     indiciaX: px, // Leftmost pixel in label image to print (pixels to the left will be cropped out). If negative, counts from the right side of the label instead.
     indiciaY: px, // Topmost pixel in label image (pixels above will be cropped out). If negative, counts from the right side of the label instead.
-    indiciaWidth: px, // Width in pixels to crop to, starting from indiciaX on the left side and moving right
-    indiciaHeight: px, // Height in pixels to crop to, starting from indiciaY on the top side and moving down
+    indiciaWidth: px, // Width in pixels to crop to, starting from indiciaX on the left side and moving right. If `0`, no cropping is attempted at all in any direction.
+    indiciaHeight: px, // Height in pixels to crop to, starting from indiciaY on the top side and moving down. If `0`, no cropping is attempted at all in any direction.
     dpi: 300, // Native DPI (pixels per inch) of your label. PostalPoint scales your image to 300 DPI after cropping.
     rotate: 0 // If not zero, image is rotated this many degrees (90, 180, 270, etc) before any processing.
 }
@@ -371,7 +372,7 @@ Register the plugin as a USPS postage indicia provider for First Class Mail.
 //   the label media size in use. In our testing with the widest indicia (PDF417),
 //   the barcode in the indicia is still scannable (and the human-readable text still legible)
 //   after this adjustment, but you might wish to test the worst case scenario:
-//   `includeFIM: true` on a 1.1x3.5 "standard address" label printed at 200dpi.
+//   `includeFIM: true` on a 1.1x3.5 inch label printed at 200dpi.
 ```
 <a name="shipping.addRateWarning"></a>
 
@@ -458,7 +459,7 @@ global.apis.shipping.registerMarkupCalculator(
     // service:    Shipping service code
     // weightOz:   The weight of the shipment in ounces, or null if not available.
     // packaging:  An empty string if not available, or "Letter", "FlatRateEnvelope", etc. See https://docs.easypost.com/docs/parcels#predefined-package
-    // parcel:     The Parcel object for this shipment.  May be null for some rate-only requests without a shipment, such as USPS price calculations.
+    // parcel:     The Package object for this shipment.  May be null for some rate-only requests without a shipment, such as USPS price calculations.
     function (cost, retail, suggested, carrier, service, weightOz, packaging, parcel) {
         if (carrier == "USPS") {
             if (service == "First-Class Mail") {
@@ -569,7 +570,7 @@ Get recent shipments for a plugin_sourceid.
     metadata: {}, // Whatever was returned by the purchase function that created the shipment. Stored internally as a JSON string and parsed before returning. If JSON can't be parsed, is set to null.
     to_address: Address,
     from_address: Address,
-    labelimages: [] // Array of Base64-encoded PNG image data: URIs for each label, or null if no label images available
+    labelimages: [] // Array of Base64-encoded PNG image data: URIs for each label, or null if no label images available (PostalPoint drops old label images automatically to save space)
 }
 ```
 <a name="shipping.addShipmentToDatabase"></a>
@@ -593,7 +594,7 @@ and only needs to be done with this function if a shipment is created outside a 
 | from_address | <code>Address</code> \| <code>null</code> | An Address object for the return/origin/customer address. |
 | create_date | <code>Date</code> \| <code>number</code> \| <code>null</code> | Date or UNIX timestamp when the shipment was created. Defaults to now if not set. |
 | metadata | <code>Object</code> \| <code>null</code> | An object for holding other data about a shipment. Will be serialized to JSON. If not an Object, will be saved as `{}`. |
-| labels | <code>Array.&lt;(Jimp\|Buffer\|ArrayBuffer\|Uint8Array)&gt;</code> | Label image(s) for reprinting. Array of Jimp object or PNG image bytes. PostalPoint may drop old label images automatically to save space. |
+| labels | <code>Array.&lt;(Jimp\|Buffer\|ArrayBuffer\|Uint8Array)&gt;</code> | Label image(s) for reprinting. Array of Jimp object or PNG image bytes. PostalPoint drops old label images automatically to save space. |
 
 <a name="shipping.markShipmentVoid"></a>
 
@@ -625,7 +626,7 @@ Mark an outgoing shipment in the database as picked up by the carrier.
 Get the current in-progress shipment's data.
 
 **Kind**: static method of [<code>shipping</code>](#shipping)  
-**Returns**: <code>Package</code> - See Parcel/Package docs  
+**Returns**: <code>Package</code> - See Package/Parcel docs  
 <a name="shipping.setParcel"></a>
 
 ### shipping.setParcel(newParcel, parcelChangeEventSource)
