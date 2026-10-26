@@ -27,6 +27,7 @@ Add custom carrier and rates, and adjust markup.
     * [.registerCarrierPickupMenu(carrierName, displayName, onPickup)](#shipping.registerCarrierPickupMenu) ⇒ <code>undefined</code>
     * [.registerMarkupCalculator(markupFn)](#shipping.registerMarkupCalculator)
     * [.registerInsuranceProvider(id, name, cardText, maxValue, getQuote, insure)](#shipping.registerInsuranceProvider)
+    * [.addLegalDisclaimer(carrierName, disclaimerText)](#shipping.addLegalDisclaimer)
     * [.getRecentShipments(plugin_sourceid, sinceDate, includeVoided, onlyNotShipped)](#shipping.getRecentShipments) ⇒ <code>Promise.&lt;Array&gt;</code>
     * [.addShipmentToDatabase(plugin_sourceid, prepaid, tracking, carrier, service, to_address, from_address, create_date, metadata, labels)](#shipping.addShipmentToDatabase) ⇒ <code>Promise</code>
     * [.markShipmentVoid(shipmentid, voided)](#shipping.markShipmentVoid) ⇒ <code>Promise</code>
@@ -537,6 +538,20 @@ global.apis.shipping.registerInsuranceProvider(
      "Insurance coverage from Sample Insurance. $1 per $100 of value.",
      5000, getQuote, insure);
 ```
+<a name="shipping.addLegalDisclaimer"></a>
+
+### shipping.addLegalDisclaimer(carrierName, disclaimerText)
+Add a disclaimer to the rates screen.
+Disclaimer is shown whenever a rate from the specified carrier is displayed.
+This function is intended to enable compliance with certain carrier branding/legal policies.
+
+**Kind**: static method of [<code>shipping</code>](#shipping)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| carrierName | <code>string</code> | Carrier name. |
+| disclaimerText | <code>string</code> | Text to display. |
+
 <a name="shipping.getRecentShipments"></a>
 
 ### shipping.getRecentShipments(plugin_sourceid, sinceDate, includeVoided, onlyNotShipped) ⇒ <code>Promise.&lt;Array&gt;</code>
