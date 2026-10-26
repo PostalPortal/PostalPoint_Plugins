@@ -9,6 +9,7 @@
       
       
       
+      
         <link rel="prev" href="../HiddenConfigs/">
       
       
@@ -19,7 +20,7 @@
       
       
       <link rel="icon" href="https://postalpoint.app/images/favicon-voxel.png">
-      <meta name="generator" content="zensical-0.0.51">
+      <meta name="generator" content="zensical-0.0.72">
     
     
       
@@ -30,12 +31,12 @@
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.62c9b9cc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.4ab2de0c.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
       
       
 
@@ -94,14 +95,11 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#internationalizationtranslation-i18n" class="md-skip">
-          Skip to content
-        </a>
-      
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
     </div>
     <div data-md-component="announce">
       
@@ -123,9 +121,10 @@
   <img src="https://postalpoint.app/images/favicon-voxel.png" alt="PostalPoint Plugin Development">
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+    <label class="md-header__button md-icon" for="__drawer">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -187,9 +186,10 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+        <label class="md-header__button md-icon" for="__search">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
         </label>
         <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
   <button type="button" class="md-search__button">
@@ -299,18 +299,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Docs
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -334,10 +335,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -361,10 +362,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -388,10 +389,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -415,10 +416,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -442,10 +443,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -469,10 +470,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -496,10 +497,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
     
@@ -625,10 +626,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -652,10 +653,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -679,10 +680,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -706,10 +707,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -733,10 +734,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -760,10 +761,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -804,18 +806,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Examples
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -839,10 +842,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -866,10 +869,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -893,10 +896,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -920,10 +923,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -947,10 +950,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -991,18 +995,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Plugin API
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1026,10 +1031,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1053,10 +1058,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1080,10 +1085,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1107,10 +1112,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1134,10 +1139,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1161,10 +1166,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1188,10 +1193,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1215,10 +1220,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1242,10 +1247,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1269,10 +1274,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1296,10 +1301,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1323,10 +1328,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1350,10 +1355,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1377,10 +1382,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1404,10 +1409,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1431,10 +1436,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1458,10 +1463,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1485,10 +1490,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1512,10 +1517,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1539,10 +1544,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1566,10 +1571,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1682,8 +1688,10 @@
             <div class="md-content" data-md-component="content">
               
               <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
                 
                   
+
 
 <h1 id="internationalizationtranslation-i18n">Internationalization/Translation (i18n)</h1>
 <p>Starting with v0.51, plugins can access PostalPoint's <code>i18next</code> translation system.</p>
@@ -1699,9 +1707,9 @@
 </ul>
 <h2 id="setup">Setup</h2>
 <p>In your <code>package.json</code>, add:</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&quot;postalpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">&quot;i18nNamespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-custom-id-here&quot;</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&quot;i18nFiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;extrai18nfile&quot;</span><span class="p">]</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">"postalpoint"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">"i18nNamespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your-custom-id-here"</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">"i18nFiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"extrai18nfile"</span><span class="p">]</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Then create an <code>i18n</code> folder next to your <code>package.json</code>, with subfolders for language codes (<code>en</code>, <code>fr_CA</code>, <code>es_MX</code>, etc).</p>
@@ -1716,29 +1724,29 @@ such as receipt text or the customer display, and the correct language strings w
 <p>This simple, real-world example is from the Custom Web Tools plugin.</p>
 <p><code>i18n/en/customwebtools.json5</code>:</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nt">&quot;websiteTitle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Website {{n}} Title&quot;</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">&quot;websiteAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Website {{n}} Address/URL&quot;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nt">"websiteTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Website {{n}} Title"</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">"websiteAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Website {{n}} Address/URL"</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">}</span>
 </span></code></pre></div>
 <p><code>i18n/fr_CA/customwebtools.json5</code>:</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nt">&quot;websiteTitle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Titre du site Web {{n}}&quot;</span><span class="p">,</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">&quot;websiteAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Adresse/URL du site Web {{n}}&quot;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nt">"websiteTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Titre du site Web {{n}}"</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">"websiteAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adresse/URL du site Web {{n}}"</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span>
 </span></code></pre></div>
 <p><code>package.json</code>:</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;postalpoint_custom_web_tools&quot;</span><span class="p">,</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.2.0&quot;</span><span class="p">,</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nt">&quot;main&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;webtools.js&quot;</span><span class="p">,</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nt">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PostalPortal LLC&quot;</span><span class="p">,</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BSD-3-Clause&quot;</span><span class="p">,</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Add websites to the Tools page for instant access without leaving PostalPoint. Supports scanning barcodes into the websites for easy data entry.&quot;</span><span class="p">,</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nt">&quot;postalpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="nt">&quot;pluginname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Custom Web Tools&quot;</span><span class="p">,</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="nt">&quot;minVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;000051&quot;</span><span class="p">,</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="nt">&quot;i18nNamespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;customwebtools&quot;</span><span class="p">,</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="nt">&quot;i18nFiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"postalpoint_custom_web_tools"</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.0"</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nt">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webtools.js"</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PostalPortal LLC"</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BSD-3-Clause"</span><span class="p">,</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Add websites to the Tools page for instant access without leaving PostalPoint. Supports scanning barcodes into the websites for easy data entry."</span><span class="p">,</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nt">"postalpoint"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="nt">"pluginname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom Web Tools"</span><span class="p">,</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="nt">"minVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000051"</span><span class="p">,</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="nt">"i18nNamespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customwebtools"</span><span class="p">,</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="nt">"i18nFiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
 </span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="p">}</span>
 </span></code></pre></div>
@@ -1747,20 +1755,20 @@ such as receipt text or the customer display, and the correct language strings w
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="nx">config</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">            </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;app.postalpoint.customwebtools.title&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i</span><span class="p">,</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">            </span><span class="nx">defaultVal</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">            </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="p">(</span><span class="s2">&quot;plugin.customwebtools~~websiteTitle&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">n</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)}),</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">            </span><span class="nx">placeholder</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">            </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">            </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">"app.postalpoint.customwebtools.title"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i</span><span class="p">,</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">            </span><span class="nx">defaultVal</span><span class="o">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">            </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="p">(</span><span class="s2">"plugin.customwebtools~~websiteTitle"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">n</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)}),</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">            </span><span class="nx">placeholder</span><span class="o">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">            </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s2">""</span>
 </span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="p">});</span>
 </span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="nx">config</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
-</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
-</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">            </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;app.postalpoint.customwebtools.url&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i</span><span class="p">,</span>
-</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">            </span><span class="nx">defaultVal</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">            </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="p">(</span><span class="s2">&quot;plugin.customwebtools~~websiteAddress&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">n</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)}),</span>
-</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">            </span><span class="nx">placeholder</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://example.com&quot;</span><span class="p">,</span>
-</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">            </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">            </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">"app.postalpoint.customwebtools.url"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i</span><span class="p">,</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">            </span><span class="nx">defaultVal</span><span class="o">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">            </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="p">(</span><span class="s2">"plugin.customwebtools~~websiteAddress"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">n</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)}),</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">            </span><span class="nx">placeholder</span><span class="o">:</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="p">,</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">            </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s2">""</span>
 </span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">        </span><span class="p">});</span>
 </span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">config</span><span class="p">;</span>
@@ -1825,7 +1833,7 @@ such as receipt text or the customer display, and the correct language strings w
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
@@ -1833,10 +1841,16 @@ such as receipt text or the customer display, and the correct language strings w
     
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.code.copy"],"search":"../../assets/javascripts/workers/search.b6b7e04f.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"alias":true,"default":"next","provider":"mike"}}</script>
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.c47bb847.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"alias":true,"default":"next","provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7f30b55.min.js"></script>
+      <script src="../../assets/javascripts/bundle.10ee5ab6.min.js"></script>
+      
+        <script src="../../assets/external/unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

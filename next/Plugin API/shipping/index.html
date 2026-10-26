@@ -9,6 +9,7 @@
       
       
       
+      
         <link rel="prev" href="../settings/">
       
       
@@ -19,7 +20,7 @@
       
       
       <link rel="icon" href="https://postalpoint.app/images/favicon-voxel.png">
-      <meta name="generator" content="zensical-0.0.51">
+      <meta name="generator" content="zensical-0.0.72">
     
     
       
@@ -30,12 +31,12 @@
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.62c9b9cc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.4ab2de0c.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
       
       
 
@@ -94,14 +95,11 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#shipping-object" class="md-skip">
-          Skip to content
-        </a>
-      
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
     </div>
     <div data-md-component="announce">
       
@@ -123,9 +121,10 @@
   <img src="https://postalpoint.app/images/favicon-voxel.png" alt="PostalPoint Plugin Development">
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+    <label class="md-header__button md-icon" for="__drawer">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -187,9 +186,10 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+        <label class="md-header__button md-icon" for="__search">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
         </label>
         <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
   <button type="button" class="md-search__button">
@@ -297,18 +297,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Docs
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -332,10 +333,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -359,10 +360,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -386,10 +387,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -413,10 +414,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -440,10 +441,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -467,10 +468,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -494,10 +495,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -521,10 +522,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -548,10 +549,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -575,10 +576,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -602,10 +603,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -629,10 +630,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -656,10 +657,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -700,18 +702,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Examples
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -735,10 +738,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -762,10 +765,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -789,10 +792,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -816,10 +819,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -843,10 +846,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -889,18 +893,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Plugin API
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -924,10 +929,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -951,10 +956,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -978,10 +983,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1005,10 +1010,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1032,10 +1037,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1059,10 +1064,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1086,10 +1091,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1113,10 +1118,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1140,10 +1145,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1167,10 +1172,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1194,10 +1199,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1221,10 +1226,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1248,10 +1253,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1275,10 +1280,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1302,10 +1307,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1329,10 +1334,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
     
@@ -1648,6 +1653,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#shippingaddlegaldisclaimercarriername-disclaimertext" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        shipping.addLegalDisclaimer(carrierName, disclaimerText)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#shippinggetrecentshipmentsplugin_sourceid-sincedate-includevoided-onlynotshipped-promisearray" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1747,10 +1763,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1774,10 +1790,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1801,10 +1817,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1828,10 +1844,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1855,10 +1871,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2156,6 +2173,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#shippingaddlegaldisclaimercarriername-disclaimertext" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        shipping.addLegalDisclaimer(carrierName, disclaimerText)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#shippinggetrecentshipmentsplugin_sourceid-sincedate-includevoided-onlynotshipped-promisearray" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2260,10 +2288,12 @@
             <div class="md-content" data-md-component="content">
               
               <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
                 
                   
 
-  <h1 id="__skip">Shipping</h1>
+
+  <h1>Shipping</h1>
 
 <p><a name="shipping"></a></p>
 <h2 id="shipping-object">shipping : <code>object</code></h2>
@@ -2296,6 +2326,7 @@
 <li><a href="#shipping.registerCarrierPickupMenu">.registerCarrierPickupMenu(carrierName, displayName, onPickup)</a> ⇒ <code>undefined</code></li>
 <li><a href="#shipping.registerMarkupCalculator">.registerMarkupCalculator(markupFn)</a></li>
 <li><a href="#shipping.registerInsuranceProvider">.registerInsuranceProvider(id, name, cardText, maxValue, getQuote, insure)</a></li>
+<li><a href="#shipping.addLegalDisclaimer">.addLegalDisclaimer(carrierName, disclaimerText)</a></li>
 <li><a href="#shipping.getRecentShipments">.getRecentShipments(plugin_sourceid, sinceDate, includeVoided, onlyNotShipped)</a> ⇒ <code>Promise.&lt;Array&gt;</code></li>
 <li><a href="#shipping.addShipmentToDatabase">.addShipmentToDatabase(plugin_sourceid, prepaid, tracking, carrier, service, to_address, from_address, create_date, metadata, labels)</a> ⇒ <code>Promise</code></li>
 <li><a href="#shipping.markShipmentVoid">.markShipmentVoid(shipmentid, voided)</a> ⇒ <code>Promise</code></li>
@@ -2349,7 +2380,7 @@
 </tbody>
 </table>
 <p><strong>Example</strong><br />
-<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span><span class="nx">city</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;NEW YORK&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;NY&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;STANDARD&quot;</span><span class="p">}</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span><span class="nx">city</span><span class="o">:</span><span class="w"> </span><span class="s2">"NEW YORK"</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"STANDARD"</span><span class="p">}</span>
 </span></code></pre></div>
 <a name="shipping.getPackagingByID"></a></p>
 <h3 id="shippinggetpackagingbyidid-promiseobject">shipping.getPackagingByID(id) ⇒ <code>Promise.&lt;Object&gt;</code></h3>
@@ -2373,25 +2404,25 @@
 <p><strong>Example</strong><br />
 <div class="language-js highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Parcel&quot;</span><span class="p">,</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nx">img</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;box.png&quot;</span><span class="p">,</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Box&quot;</span><span class="p">,</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"Parcel"</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nx">img</span><span class="o">:</span><span class="w"> </span><span class="s2">"box.png"</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Box"</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nx">l</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span>
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nx">w</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span>
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nx">h</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span>
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="nx">weight</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 </span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="nx">hazmat</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Customer&quot;</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="s2">"Customer"</span>
 </span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">}</span>
 </span></code></pre></div>
 <strong>Example</strong><br />
 <div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;FlatRateEnvelope&quot;</span><span class="p">,</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nx">img</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;pm-fres.png&quot;</span><span class="p">,</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Flat Rate Envelope&quot;</span><span class="p">,</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Priority&quot;</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"FlatRateEnvelope"</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nx">img</span><span class="o">:</span><span class="w"> </span><span class="s2">"pm-fres.png"</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Flat Rate Envelope"</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s2">"Priority"</span><span class="p">,</span>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="nx">l</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">2</span><span class="p">,</span>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nx">w</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">2</span><span class="p">,</span>
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="nx">h</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">2</span><span class="p">,</span>
@@ -2399,23 +2430,23 @@
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="nx">hazmat</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 </span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="nx">usps_supplied</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 </span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="nx">envelope</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;USPS&quot;</span><span class="p">,</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="nx">skus</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;PS00001000014&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;PS00001000012&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;PS00001000027&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;PS00001000064&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;PS00001001921&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;PS00001035000&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;PS00001036014&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;PS00001128600&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://qr.usps.com/epsspu?p=30&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://qr.usps.com/epsspu?p=8&quot;</span><span class="p">]</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="s2">"USPS"</span><span class="p">,</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="nx">skus</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"PS00001000014"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PS00001000012"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PS00001000027"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PS00001000064"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PS00001001921"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PS00001035000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PS00001036014"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PS00001128600"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://qr.usps.com/epsspu?p=30"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://qr.usps.com/epsspu?p=8"</span><span class="p">]</span>
 </span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="p">}</span>
 </span></code></pre></div>
 <strong>Example</strong><br />
 <div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">201</span><span class="p">,</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;UPSLetter&quot;</span><span class="p">,</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nx">img</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ups-env.png&quot;</span><span class="p">,</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Envelope&quot;</span><span class="p">,</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;UPS&quot;</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"UPSLetter"</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nx">img</span><span class="o">:</span><span class="w"> </span><span class="s2">"ups-env.png"</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Envelope"</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="s2">"UPS"</span><span class="p">,</span>
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nx">l</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">2</span><span class="p">,</span>
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nx">w</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">2</span><span class="p">,</span>
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nx">h</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">2</span><span class="p">,</span>
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="nx">weight</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 </span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="nx">hazmat</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;OtherCarrier&quot;</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="s2">"OtherCarrier"</span>
 </span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="p">}</span>
 </span></code></pre></div>
 <a name="shipping.getRetailPriceWithMarkup"></a></p>
@@ -2766,34 +2797,34 @@ all the package contents on one page.  </p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// getRates sample return value:</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">[{</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nx">rateid</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">idPrefix</span><span class="si">}</span><span class="sb">_</span><span class="si">${</span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">uuid</span><span class="p">.</span><span class="nx">v4</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;CarrierID&quot;</span><span class="p">,</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nx">carrierName</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Carrier Name&quot;</span><span class="p">,</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;CARRIER_SERVICE_ID&quot;</span><span class="p">,</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="s2">"CarrierID"</span><span class="p">,</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nx">carrierName</span><span class="o">:</span><span class="w"> </span><span class="s2">"Carrier Name"</span><span class="p">,</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s2">"CARRIER_SERVICE_ID"</span><span class="p">,</span>
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="nx">cost_rate</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span>
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="nx">retail_rate</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="p">,</span>
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nx">delivery_days</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span>
 </span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="nx">delivery_date</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
 </span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="nx">guaranteed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="nx">serviceName</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Service Name&quot;</span><span class="p">,</span>
-</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;green&quot;</span><span class="w"> </span><span class="c1">// Rate card color</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="nx">serviceName</span><span class="o">:</span><span class="w"> </span><span class="s2">"Service Name"</span><span class="p">,</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"green"</span><span class="w"> </span><span class="c1">// Rate card color</span>
 </span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="p">}]</span>
 </span></code></pre></div>
 <strong>Example</strong><br />
 <div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// purchase sample return value:</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">{</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="nx">labelImageToPrint</span><span class="p">,</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nx">labeltype</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;PNG&quot;</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nx">labeltype</span><span class="o">:</span><span class="w"> </span><span class="s2">"PNG"</span><span class="p">,</span>
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nx">receiptItem</span><span class="o">:</span><span class="w"> </span><span class="nx">ReceiptItem</span><span class="p">,</span><span class="w"> </span><span class="c1">// Data to add to the transaction receipt.</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nx">tracking</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;12345678901234567890&quot;</span><span class="p">,</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nx">tracking</span><span class="o">:</span><span class="w"> </span><span class="s2">"12345678901234567890"</span><span class="p">,</span>
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="nx">cost</span><span class="o">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span>
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="nx">price</span><span class="o">:</span><span class="w"> </span><span class="mf">15.0</span><span class="p">,</span>
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Carrier Name&quot;</span><span class="p">,</span>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Service Name&quot;</span><span class="p">,</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="s2">"Carrier Name"</span><span class="p">,</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s2">"Service Name"</span><span class="p">,</span>
 </span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="nx">delivery_days</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span>
 </span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="nx">delivery_date</span><span class="o">:</span><span class="w"> </span><span class="mf">1234567890</span><span class="p">,</span><span class="w"> </span><span class="c1">// UNIX timestamp</span>
 </span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="nx">to_address</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">Address</span><span class="p">(),</span>
 </span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="nx">from_address</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">Address</span><span class="p">(),</span>
-</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="nx">plugin_sourceid</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Unique string for your plugin; saved alongside shipment in store database to allow queries to filter shipments by source.</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="nx">plugin_sourceid</span><span class="o">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="c1">// Unique string for your plugin; saved alongside shipment in store database to allow queries to filter shipments by source.</span>
 </span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="nx">metadata</span><span class="o">:</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">// Object containing extra data to be stored in the database. Serialized to JSON.</span>
 </span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="p">}</span>
 </span></code></pre></div>
@@ -2801,28 +2832,28 @@ all the package contents on one page.  </p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nx">extraOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="nx">getRecentLabels</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="c1">// Return a list of recently purchased/printed labels for reprinting and/or voiding/refund purposes.</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="c1">// Your plugin must also implement voidLabel() (below) or it won&#39;t be queried for recent labels.</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="c1">// Your plugin must also implement voidLabel() (below) or it won't be queried for recent labels.</span>
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">[</span>
 </span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">            </span><span class="p">{</span>
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">                </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">idPrefix</span><span class="si">}</span><span class="sb">_</span><span class="si">${</span><span class="nx">yourShipmentID</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">                </span><span class="nx">created</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span><span class="w"> </span><span class="c1">// Date object of the label/shipment date. Used for ordering the list.</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">                </span><span class="nx">refund_status</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// false to show a refund/void button, otherwise a short string to show such as &quot;Refunded&quot; or &quot;Refund processing&quot; or &quot;Refund rejected&quot;</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">                </span><span class="nx">tracking</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Shipment tracking number or an empty string if it has no tracking.</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">                </span><span class="nx">refund_status</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// false to show a refund/void button, otherwise a short string to show such as "Refunded" or "Refund processing" or "Refund rejected"</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">                </span><span class="nx">tracking</span><span class="o">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="c1">// Shipment tracking number or an empty string if it has no tracking.</span>
 </span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">                </span><span class="nx">label_urls</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="c1">// Array of URLs to download the label image(s) from if the user requests a reprint.</span>
 </span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">                </span><span class="c1">//                 If empty or not an array, the reprint button is disabled.</span>
 </span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">                </span><span class="c1">//                 May also be a function that returns a Promise that resolves to the described array.</span>
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">                </span><span class="c1">//                 If this is a function, it&#39;s passed this label object as an argument.</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">                </span><span class="c1">//                 If this is a function, it's passed this label object as an argument.</span>
 </span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">                </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">Address</span><span class="p">(),</span><span class="w"> </span><span class="c1">// Destination/to address.</span>
 </span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">                </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">Address</span><span class="p">(),</span><span class="w"> </span><span class="c1">// Return/from address.</span>
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">                </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">getCarrierName</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span><span class="w"> </span><span class="c1">// Carrier name</span>
-</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">                </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">getServiceName</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// Shipping service</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">                </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">getCarrierName</span><span class="p">(</span><span class="s2">""</span><span class="p">),</span><span class="w"> </span><span class="c1">// Carrier name</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">                </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">getServiceName</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="w"> </span><span class="c1">// Shipping service</span>
 </span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">            </span><span class="p">}</span>
 </span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">        </span><span class="p">]</span>
 </span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">    </span><span class="p">},</span>
 </span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">    </span><span class="nx">voidLabel</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">        </span><span class="c1">// Try to void a label with the ID provided (an `id` returned in getRecentLabels)</span>
-</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">        </span><span class="c1">// Returns a status string that&#39;s displayed to the user in a dialog box, such as &quot;Label refunded.&quot; or &quot;Refund request submitted.&quot; or &quot;Refund request rejected.&quot;</span>
-</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Void request status message goes here&quot;</span><span class="p">;</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">        </span><span class="c1">// Returns a status string that's displayed to the user in a dialog box, such as "Label refunded." or "Refund request submitted." or "Refund request rejected."</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">"Void request status message goes here"</span><span class="p">;</span>
 </span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="p">}</span>
 </span></code></pre></div>
@@ -2945,7 +2976,7 @@ The verified addresses will be passed on to rate provider plugins.</p>
 </tbody>
 </table>
 <p><strong>Example</strong><br />
-<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nx">registerAddressVerificationProvider</span><span class="p">(</span><span class="s2">&quot;example&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Example&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">addressData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nx">registerAddressVerificationProvider</span><span class="p">(</span><span class="s2">"example"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Example"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">addressData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="c1">// This function is passed the data structure shown below, and must return the same structure but updated with the validated addresses.</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">         </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">Address</span><span class="p">(),</span>
@@ -2954,7 +2985,7 @@ The verified addresses will be passed on to rate provider plugins.</p>
 </span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">         </span><span class="nx">fromVerified</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// If the from/return address was verified</span>
 </span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">         </span><span class="nx">toErrors</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="c1">// String messages to display on the to address verification checkmark/warning icon</span>
 </span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">         </span><span class="nx">fromErrors</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="c1">// String messages to display on the from/return address verification checkmark/warning icon</span>
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">         </span><span class="nx">fromVerificationSkipped</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c1">// Optional boolean, set true to suppress UI warnings if your integration doesn&#39;t attempt to validate the return address.</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">         </span><span class="nx">fromVerificationSkipped</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c1">// Optional boolean, set true to suppress UI warnings if your integration doesn't attempt to validate the return address.</span>
 </span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="p">});</span>
 </span></code></pre></div>
@@ -3023,25 +3054,25 @@ any subsequent attempts to register will throw an Error.</li>
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="c1">// carrier:    Shipping carrier name</span>
 </span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="c1">// service:    Shipping service code</span>
 </span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="c1">// weightOz:   The weight of the shipment in ounces, or null if not available.</span>
-</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="c1">// packaging:  An empty string if not available, or &quot;Letter&quot;, &quot;FlatRateEnvelope&quot;, etc. See https://docs.easypost.com/docs/parcels#predefined-package</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="c1">// packaging:  An empty string if not available, or "Letter", "FlatRateEnvelope", etc. See https://docs.easypost.com/docs/parcels#predefined-package</span>
 </span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span><span class="c1">// parcel:     The Package object for this shipment.  May be null for some rate-only requests without a shipment, such as USPS price calculations.</span>
 </span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">cost</span><span class="p">,</span><span class="w"> </span><span class="nx">retail</span><span class="p">,</span><span class="w"> </span><span class="nx">suggested</span><span class="p">,</span><span class="w"> </span><span class="nx">carrier</span><span class="p">,</span><span class="w"> </span><span class="nx">service</span><span class="p">,</span><span class="w"> </span><span class="nx">weightOz</span><span class="p">,</span><span class="w"> </span><span class="nx">packaging</span><span class="p">,</span><span class="w"> </span><span class="nx">parcel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">carrier</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;USPS&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">service</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;First-Class Mail&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">                </span><span class="c1">// Handle First-Class Mail differently if it&#39;s a 1oz letter (i.e. Forever stamp)</span>
-</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">weightOz</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">packaging</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;Letter&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">carrier</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"USPS"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">service</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"First-Class Mail"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">                </span><span class="c1">// Handle First-Class Mail differently if it's a 1oz letter (i.e. Forever stamp)</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">weightOz</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">packaging</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"Letter"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nx">retail</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.05</span><span class="p">;</span>
 </span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nx">retail</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.25</span><span class="p">;</span>
 </span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">                </span><span class="p">}</span>
 </span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">            </span><span class="p">}</span>
 </span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">            </span><span class="c1">// Handle flat rate envelopes differently</span>
-</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">getServiceName</span><span class="p">(</span><span class="nx">service</span><span class="p">,</span><span class="w"> </span><span class="nx">carrier</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;Priority Mail&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">packaging</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;FlatRateEnvelope&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">getServiceName</span><span class="p">(</span><span class="nx">service</span><span class="p">,</span><span class="w"> </span><span class="nx">carrier</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"Priority Mail"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">packaging</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"FlatRateEnvelope"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nx">retail</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span>
 </span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">            </span><span class="p">}</span>
 </span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">suggested</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Charge the PostalPoint-calculated amount plus $2</span>
 </span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">cost</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Charges the customer double the shipment&#39;s cost.</span>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">cost</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Charges the customer double the shipment's cost.</span>
 </span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">        </span><span class="p">}</span>
 </span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="p">);</span>
@@ -3108,29 +3139,56 @@ any subsequent attempts to register will throw an Error.</li>
 </span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 </span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="p">}</span>
 </span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>
-</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">insure</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">parcel</span><span class="p">,</span><span class="w"> </span><span class="nx">carrier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;USPS&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Priority&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">trackingNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;94055...&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">insure</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">parcel</span><span class="p">,</span><span class="w"> </span><span class="nx">carrier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"USPS"</span><span class="p">,</span><span class="w"> </span><span class="nx">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Priority"</span><span class="p">,</span><span class="w"> </span><span class="nx">trackingNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"94055..."</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">    </span><span class="c1">// Purchase the insurance</span>
 </span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">cost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
 </span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">retailPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cost</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
 </span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">costPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cost</span><span class="p">;</span>
 </span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>
 </span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">receiptitem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">ReceiptItem</span><span class="p">(</span><span class="sb">`sampleinsurance_</span><span class="si">${</span><span class="nx">trackingNumber</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
-</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="w">        </span><span class="s2">&quot;Sample Insurance&quot;</span><span class="p">,</span>
-</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="w">        </span><span class="s2">&quot;Insured for &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">i18n</span><span class="p">.</span><span class="nx">moneyString</span><span class="p">(</span><span class="nx">value</span><span class="p">),</span>
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="w">        </span><span class="s2">"Sample Insurance"</span><span class="p">,</span>
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="w">        </span><span class="s2">"Insured for "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">i18n</span><span class="p">.</span><span class="nx">moneyString</span><span class="p">(</span><span class="nx">value</span><span class="p">),</span>
 </span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="w">        </span><span class="nx">retailPrice</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">costPrice</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span>
 </span><span id="__span-10-27"><a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="w">    </span><span class="p">);</span>
 </span><span id="__span-10-28"><a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="w">    </span><span class="nx">receiptitem</span><span class="p">.</span><span class="nx">merch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-</span><span id="__span-10-29"><a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="w">    </span><span class="nx">receiptitem</span><span class="p">.</span><span class="nx">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Shipping Insurance&quot;</span><span class="p">;</span>
+</span><span id="__span-10-29"><a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="w">    </span><span class="nx">receiptitem</span><span class="p">.</span><span class="nx">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Shipping Insurance"</span><span class="p">;</span>
 </span><span id="__span-10-30"><a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a><span class="w">    </span><span class="nx">receiptitem</span><span class="p">.</span><span class="nx">barcode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">trackingNumber</span><span class="p">;</span>
 </span><span id="__span-10-31"><a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a><span class="w">    </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">addReceiptItem</span><span class="p">(</span><span class="nx">receiptitem</span><span class="p">);</span>
 </span><span id="__span-10-32"><a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a><span class="p">}</span>
 </span><span id="__span-10-33"><a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a>
 </span><span id="__span-10-34"><a id="__codelineno-10-34" name="__codelineno-10-34" href="#__codelineno-10-34"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">shipping</span><span class="p">.</span><span class="nx">registerInsuranceProvider</span><span class="p">(</span>
-</span><span id="__span-10-35"><a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a><span class="w">     </span><span class="s2">&quot;sampleproviderid&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Sample Insurance&quot;</span><span class="p">,</span>
-</span><span id="__span-10-36"><a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a><span class="w">     </span><span class="s2">&quot;Insurance coverage from Sample Insurance. $1 per $100 of value.&quot;</span><span class="p">,</span>
+</span><span id="__span-10-35"><a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a><span class="w">     </span><span class="s2">"sampleproviderid"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Sample Insurance"</span><span class="p">,</span>
+</span><span id="__span-10-36"><a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a><span class="w">     </span><span class="s2">"Insurance coverage from Sample Insurance. $1 per $100 of value."</span><span class="p">,</span>
 </span><span id="__span-10-37"><a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a><span class="w">     </span><span class="mf">5000</span><span class="p">,</span><span class="w"> </span><span class="nx">getQuote</span><span class="p">,</span><span class="w"> </span><span class="nx">insure</span><span class="p">);</span>
 </span></code></pre></div>
-<a name="shipping.getRecentShipments"></a></p>
+<a name="shipping.addLegalDisclaimer"></a></p>
+<h3 id="shippingaddlegaldisclaimercarriername-disclaimertext">shipping.addLegalDisclaimer(carrierName, disclaimerText)</h3>
+<p>Add a disclaimer to the rates screen.
+Disclaimer is shown whenever a rate from the specified carrier is displayed.
+This function is intended to enable compliance with certain carrier branding/legal policies.</p>
+<p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>carrierName</td>
+<td><code>string</code></td>
+<td>Carrier name.</td>
+</tr>
+<tr>
+<td>disclaimerText</td>
+<td><code>string</code></td>
+<td>Text to display.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="shipping.getRecentShipments"></a></p>
 <h3 id="shippinggetrecentshipmentsplugin_sourceid-sincedate-includevoided-onlynotshipped-promisearray">shipping.getRecentShipments(plugin_sourceid, sinceDate, includeVoided, onlyNotShipped) ⇒ <code>Promise.&lt;Array&gt;</code></h3>
 <p>Get recent shipments for a plugin_sourceid.</p>
 <p><strong>Kind</strong>: static method of <a href="#shipping"><code>shipping</code></a><br />
@@ -3176,16 +3234,16 @@ any subsequent attempts to register will throw an Error.</li>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1">// All fields except `id` and `created` might be null.</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">{</span>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span><span class="w"> </span><span class="c1">// Internal database ID for shipment</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="nx">shipmentid</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// The `shipmentid` returned from a label purchase, or null if not provided</span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="nx">customeruuid</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Customer UUID string</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="nx">shipmentid</span><span class="o">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w"> </span><span class="c1">// The `shipmentid` returned from a label purchase, or null if not provided</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="nx">customeruuid</span><span class="o">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w"> </span><span class="c1">// Customer UUID string</span>
 </span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="nx">prepaid</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// True if a prepaid drop-off</span>
 </span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="nx">voided</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// True if label marked as voided</span>
-</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="nx">tracking</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Tracking number</span>
-</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">    </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="nx">tracking</span><span class="o">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w"> </span><span class="c1">// Tracking number</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">    </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span>
 </span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">    </span><span class="nx">created</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span>
 </span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">    </span><span class="nx">shipped</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span><span class="w"> </span><span class="c1">// Date and time the package was marked as picked up by the carrier.</span>
-</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">    </span><span class="nx">metadata</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="c1">// Whatever was returned by the purchase function that created the shipment. Stored internally as a JSON string and parsed before returning. If JSON can&#39;t be parsed, is set to null.</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">    </span><span class="nx">metadata</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="c1">// Whatever was returned by the purchase function that created the shipment. Stored internally as a JSON string and parsed before returning. If JSON can't be parsed, is set to null.</span>
 </span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">    </span><span class="nx">to_address</span><span class="o">:</span><span class="w"> </span><span class="nx">Address</span><span class="p">,</span>
 </span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">    </span><span class="nx">from_address</span><span class="o">:</span><span class="w"> </span><span class="nx">Address</span><span class="p">,</span>
 </span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="w">    </span><span class="nx">labelimages</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="c1">// Array of Base64-encoded PNG image data: URIs for each label, or null if no label images available (PostalPoint drops old label images automatically to save space)</span>
@@ -3383,22 +3441,22 @@ and only needs to be done with this function if a shipment is created outside a 
 </span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">        </span><span class="nx">zip</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
 </span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">    </span><span class="p">},</span>
 </span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">    </span><span class="nx">labels</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Human-readable form field labels, localized, and country-dependent</span>
-</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Name&quot;</span><span class="p">,</span>
-</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">        </span><span class="nx">company</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Company&quot;</span><span class="p">,</span>
-</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">        </span><span class="nx">street1</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Address&quot;</span><span class="p">,</span>
-</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">        </span><span class="nx">street2</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Address Line 2&quot;</span><span class="p">,</span>
-</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">        </span><span class="nx">city</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;City/Suburb/District/Locality&quot;</span><span class="p">,</span>
-</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">        </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;State/Province&quot;</span><span class="p">,</span>
-</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="w">        </span><span class="nx">zip</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Postal Code&quot;</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Name"</span><span class="p">,</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">        </span><span class="nx">company</span><span class="o">:</span><span class="w"> </span><span class="s2">"Company"</span><span class="p">,</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">        </span><span class="nx">street1</span><span class="o">:</span><span class="w"> </span><span class="s2">"Address"</span><span class="p">,</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">        </span><span class="nx">street2</span><span class="o">:</span><span class="w"> </span><span class="s2">"Address Line 2"</span><span class="p">,</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">        </span><span class="nx">city</span><span class="o">:</span><span class="w"> </span><span class="s2">"City/Suburb/District/Locality"</span><span class="p">,</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">        </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="s2">"State/Province"</span><span class="p">,</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="w">        </span><span class="nx">zip</span><span class="o">:</span><span class="w"> </span><span class="s2">"Postal Code"</span>
 </span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="w">    </span><span class="p">},</span>
 </span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="w">    </span><span class="nx">placeholders</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;John Doe&quot;</span><span class="p">,</span>
-</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="w">        </span><span class="nx">company</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ABC Inc&quot;</span><span class="p">,</span>
-</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="w">        </span><span class="nx">street1</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123 Example St&quot;</span><span class="p">,</span>
-</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="w">        </span><span class="nx">street2</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Apt 2&quot;</span><span class="p">,</span>
-</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="w">        </span><span class="nx">city</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;(Not Required)&quot;</span><span class="p">,</span>
-</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="w">        </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="w">        </span><span class="nx">zip</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;12345&quot;</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="w">        </span><span class="nx">company</span><span class="o">:</span><span class="w"> </span><span class="s2">"ABC Inc"</span><span class="p">,</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="w">        </span><span class="nx">street1</span><span class="o">:</span><span class="w"> </span><span class="s2">"123 Example St"</span><span class="p">,</span>
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="w">        </span><span class="nx">street2</span><span class="o">:</span><span class="w"> </span><span class="s2">"Apt 2"</span><span class="p">,</span>
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="w">        </span><span class="nx">city</span><span class="o">:</span><span class="w"> </span><span class="s2">"(Not Required)"</span><span class="p">,</span>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="w">        </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="w">        </span><span class="nx">zip</span><span class="o">:</span><span class="w"> </span><span class="s2">"12345"</span>
 </span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="p">}</span>
 </span></code></pre></div></p>
@@ -3447,7 +3505,7 @@ and only needs to be done with this function if a shipment is created outside a 
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
@@ -3455,10 +3513,16 @@ and only needs to be done with this function if a shipment is created outside a 
     
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.code.copy"],"search":"../../assets/javascripts/workers/search.b6b7e04f.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"alias":true,"default":"next","provider":"mike"}}</script>
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.c47bb847.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"alias":true,"default":"next","provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7f30b55.min.js"></script>
+      <script src="../../assets/javascripts/bundle.10ee5ab6.min.js"></script>
+      
+        <script src="../../assets/external/unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

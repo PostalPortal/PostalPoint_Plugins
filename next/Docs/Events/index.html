@@ -9,6 +9,7 @@
       
       
       
+      
         <link rel="prev" href="../Database/">
       
       
@@ -19,7 +20,7 @@
       
       
       <link rel="icon" href="https://postalpoint.app/images/favicon-voxel.png">
-      <meta name="generator" content="zensical-0.0.51">
+      <meta name="generator" content="zensical-0.0.72">
     
     
       
@@ -30,12 +31,12 @@
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.62c9b9cc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.4ab2de0c.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
       
       
 
@@ -94,14 +95,11 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#event-bus" class="md-skip">
-          Skip to content
-        </a>
-      
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
     </div>
     <div data-md-component="announce">
       
@@ -123,9 +121,10 @@
   <img src="https://postalpoint.app/images/favicon-voxel.png" alt="PostalPoint Plugin Development">
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+    <label class="md-header__button md-icon" for="__drawer">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -187,9 +186,10 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+        <label class="md-header__button md-icon" for="__search">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
         </label>
         <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
   <button type="button" class="md-search__button">
@@ -299,18 +299,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Docs
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -334,10 +335,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -361,10 +362,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -388,10 +389,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
     
@@ -545,10 +546,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -572,10 +573,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -599,10 +600,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -626,10 +627,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -653,10 +654,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -680,10 +681,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -707,10 +708,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -734,10 +735,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -761,10 +762,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -788,10 +789,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -832,18 +834,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Examples
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -867,10 +870,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -894,10 +897,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -921,10 +924,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -948,10 +951,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -975,10 +978,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1019,18 +1023,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Plugin API
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1054,10 +1059,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1081,10 +1086,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1108,10 +1113,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1135,10 +1140,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1162,10 +1167,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1189,10 +1194,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1216,10 +1221,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1243,10 +1248,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1270,10 +1275,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1297,10 +1302,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1324,10 +1329,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1351,10 +1356,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1378,10 +1383,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1405,10 +1410,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1432,10 +1437,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1459,10 +1464,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1486,10 +1491,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1513,10 +1518,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1540,10 +1545,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1567,10 +1572,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1594,10 +1599,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1738,8 +1744,10 @@
             <div class="md-content" data-md-component="content">
               
               <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
                 
                   
+
 
 <h1 id="event-bus">Event Bus</h1>
 <p>Plugins can use <code>global.apis.eventbus</code> to receive events when certain actions happen in PostalPoint.</p>
@@ -1769,12 +1777,12 @@
 <h2 id="example-code">Example Code</h2>
 <div class="language-javascript highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Handle a barcode scan.</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">// Remember that PostalPoint will probably also be doing something in response to the barcode.</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">eventbus</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;barcodeScanned&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">barcodedata</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">eventbus</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"barcodeScanned"</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">barcodedata</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="c1">// do something with the barcode</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">});</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1">// Close the embedded web browser, returning the user to whatever was onscreen before it opened</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">eventbus</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s2">&quot;browserCloseRequest&quot;</span><span class="p">);</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">eventbus</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s2">"browserCloseRequest"</span><span class="p">);</span>
 </span></code></pre></div>
 <h2 id="event-data-objects">Event Data Objects</h2>
 <p>For events that return an object instead of a single value.</p>
@@ -1782,19 +1790,19 @@
 <p>See <a href=".././Receipt/">Receipt</a></p>
 <h3 id="customersignaturecollected">customerSignatureCollected</h3>
 <div class="language-javascript highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="s2">&quot;svg&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;data:image/svg+xml;base64,...&quot;</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="s2">&quot;png&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;data:image/png;base64,...&quot;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="s2">"svg"</span><span class="o">:</span><span class="w"> </span><span class="s2">"data:image/svg+xml;base64,..."</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="s2">"png"</span><span class="o">:</span><span class="w"> </span><span class="s2">"data:image/png;base64,..."</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">}</span>
 </span></code></pre></div>
 <h3 id="packagecheckin">packageCheckIn</h3>
 <div class="language-javascript highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nx">tag</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;abcxyz123456&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Unique ID for the package, also found in the shelf label barcode.</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nx">tracking</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;94001...&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Package tracking number. May be an empty string for items without tracking.</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;FedEx&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Package carrier name, if detectable from the tracking number.  Otherwise an empty string.</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nx">mailbox</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Mailbox number. Will be &quot;HAL&quot; for Hold At Location packages.</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nx">tag</span><span class="o">:</span><span class="w"> </span><span class="s2">"abcxyz123456"</span><span class="p">,</span><span class="w"> </span><span class="c1">// Unique ID for the package, also found in the shelf label barcode.</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nx">tracking</span><span class="o">:</span><span class="w"> </span><span class="s2">"94001..."</span><span class="p">,</span><span class="w"> </span><span class="c1">// Package tracking number. May be an empty string for items without tracking.</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nx">carrier</span><span class="o">:</span><span class="w"> </span><span class="s2">"FedEx"</span><span class="p">,</span><span class="w"> </span><span class="c1">// Package carrier name, if detectable from the tracking number.  Otherwise an empty string.</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nx">mailbox</span><span class="o">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w"> </span><span class="c1">// Mailbox number. Will be "HAL" for Hold At Location packages.</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nx">isHAL</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// True if package is for Hold At Location.</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="nx">recipient</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Hold At Location recipient name, or empty string if not HAL.</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nx">toLocker</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;5&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Parcel locker number, or false if not going to a parcel locker.</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="nx">recipient</span><span class="o">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="c1">// Hold At Location recipient name, or empty string if not HAL.</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nx">toLocker</span><span class="o">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w"> </span><span class="c1">// Parcel locker number, or false if not going to a parcel locker.</span>
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="nx">shelfLabelPrinted</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c1">// Indicates if a shelf label was printed for this package.  Will be false if going to a locker, if the user requested no label, or if the label failed to print.</span>
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span>
 </span></code></pre></div>
@@ -1806,8 +1814,8 @@
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nx">fee</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="c1">// Calculated fee amount in dollars (or local currency)</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nx">totalDays</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="c1">// Number of days the package has been awaiting pickup</span>
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nx">billableDays</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="c1">// Number of days after the no-fee grace period</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nx">boxNumber</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Customer mailbox number or &quot;HAL&quot; if Hold at Location</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nx">tagNumber</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;abcdefgh12345678&quot;</span><span class="w"> </span><span class="c1">// Unique shelf tag ID number for the package</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nx">boxNumber</span><span class="o">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="c1">// Customer mailbox number or "HAL" if Hold at Location</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nx">tagNumber</span><span class="o">:</span><span class="w"> </span><span class="s2">"abcdefgh12345678"</span><span class="w"> </span><span class="c1">// Unique shelf tag ID number for the package</span>
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">}</span>
 </span></code></pre></div>
 
@@ -1855,7 +1863,7 @@
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
@@ -1863,10 +1871,16 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.code.copy"],"search":"../../assets/javascripts/workers/search.b6b7e04f.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"alias":true,"default":"next","provider":"mike"}}</script>
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.c47bb847.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"alias":true,"default":"next","provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7f30b55.min.js"></script>
+      <script src="../../assets/javascripts/bundle.10ee5ab6.min.js"></script>
+      
+        <script src="../../assets/external/unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

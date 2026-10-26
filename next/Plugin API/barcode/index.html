@@ -9,6 +9,7 @@
       
       
       
+      
         <link rel="prev" href="../../Examples/05CryptoProcessor/">
       
       
@@ -19,7 +20,7 @@
       
       
       <link rel="icon" href="https://postalpoint.app/images/favicon-voxel.png">
-      <meta name="generator" content="zensical-0.0.51">
+      <meta name="generator" content="zensical-0.0.72">
     
     
       
@@ -30,12 +31,12 @@
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.62c9b9cc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.4ab2de0c.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
       
       
 
@@ -94,14 +95,11 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#barcode-object" class="md-skip">
-          Skip to content
-        </a>
-      
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
     </div>
     <div data-md-component="announce">
       
@@ -123,9 +121,10 @@
   <img src="https://postalpoint.app/images/favicon-voxel.png" alt="PostalPoint Plugin Development">
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+    <label class="md-header__button md-icon" for="__drawer">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -187,9 +186,10 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+        <label class="md-header__button md-icon" for="__search">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
         </label>
         <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
   <button type="button" class="md-search__button">
@@ -297,18 +297,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Docs
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -332,10 +333,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -359,10 +360,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -386,10 +387,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -413,10 +414,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -440,10 +441,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -467,10 +468,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -494,10 +495,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -521,10 +522,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -548,10 +549,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -575,10 +576,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -602,10 +603,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -629,10 +630,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -656,10 +657,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -700,18 +702,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Examples
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -735,10 +738,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -762,10 +765,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -789,10 +792,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -816,10 +819,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -843,10 +846,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -889,18 +893,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Plugin API
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
     
@@ -1089,10 +1094,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1116,10 +1121,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1143,10 +1148,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1170,10 +1175,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1197,10 +1202,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1224,10 +1229,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1251,10 +1256,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1278,10 +1283,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1305,10 +1310,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1332,10 +1337,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1359,10 +1364,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1386,10 +1391,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1413,10 +1418,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1440,10 +1445,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1467,10 +1472,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1494,10 +1499,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1521,10 +1526,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1548,10 +1553,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1575,10 +1580,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1602,10 +1607,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1629,10 +1634,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1808,10 +1814,12 @@
             <div class="md-content" data-md-component="content">
               
               <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
                 
                   
 
-  <h1 id="__skip">Barcode</h1>
+
+  <h1>Barcode</h1>
 
 <p><a name="barcode"></a></p>
 <h2 id="barcode-object">barcode : <code>object</code></h2>
@@ -2063,15 +2071,15 @@ any subsequent attempts to register to handle that carrier will throw an Error.<
 </tbody>
 </table>
 <p><strong>Example</strong><br />
-<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">barcode</span><span class="p">.</span><span class="nx">registerDropOffCarrierScanHandler</span><span class="p">(</span><span class="s2">&quot;FedEx&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">barcode</span><span class="p">.</span><span class="nx">registerDropOffCarrierScanHandler</span><span class="p">(</span><span class="s2">"FedEx"</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="sb">`Carrier: </span><span class="si">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">carrier</span><span class="si">}</span><span class="sb">, Tracking number: </span><span class="si">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">tracking</span><span class="si">}</span><span class="sb">, `</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="o">+</span><span class="w"> </span><span class="sb">`Raw scanned barcode: </span><span class="si">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">barcode</span><span class="si">}</span><span class="sb">, `</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="o">+</span><span class="w"> </span><span class="sb">`UNIX timestamp of scan: </span><span class="si">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">timestamp</span><span class="si">}</span><span class="sb">, Scan UUID: </span><span class="si">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">uuid</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="s2">&quot;Processing DropOffCarrierScan data&quot;</span><span class="p">);</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="s2">"Processing DropOffCarrierScan data"</span><span class="p">);</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// Not processed but should be discarded</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// Processed, discard from queue</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;Failed to process, try again later&quot;</span><span class="p">);</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">"Failed to process, try again later"</span><span class="p">);</span>
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">});</span>
 </span></code></pre></div>
 <a name="barcode.decodeAAMVA"></a></p>
@@ -2186,7 +2194,7 @@ any subsequent attempts to register to handle that carrier will throw an Error.<
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
@@ -2194,10 +2202,16 @@ any subsequent attempts to register to handle that carrier will throw an Error.<
     
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.code.copy"],"search":"../../assets/javascripts/workers/search.b6b7e04f.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"alias":true,"default":"next","provider":"mike"}}</script>
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.c47bb847.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"alias":true,"default":"next","provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7f30b55.min.js"></script>
+      <script src="../../assets/javascripts/bundle.10ee5ab6.min.js"></script>
+      
+        <script src="../../assets/external/unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

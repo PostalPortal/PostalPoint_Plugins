@@ -9,6 +9,7 @@
       
       
       
+      
         <link rel="prev" href="../TrackingBarcode/">
       
       
@@ -19,7 +20,7 @@
       
       
       <link rel="icon" href="https://postalpoint.app/images/favicon-voxel.png">
-      <meta name="generator" content="zensical-0.0.51">
+      <meta name="generator" content="zensical-0.0.72">
     
     
       
@@ -30,12 +31,12 @@
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.62c9b9cc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.4ab2de0c.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
       
       
 
@@ -94,14 +95,11 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#ui-components" class="md-skip">
-          Skip to content
-        </a>
-      
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
     </div>
     <div data-md-component="announce">
       
@@ -123,9 +121,10 @@
   <img src="https://postalpoint.app/images/favicon-voxel.png" alt="PostalPoint Plugin Development">
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+    <label class="md-header__button md-icon" for="__drawer">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -187,9 +186,10 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+        <label class="md-header__button md-icon" for="__search">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
         </label>
         <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
   <button type="button" class="md-search__button">
@@ -299,18 +299,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Docs
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -334,10 +335,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -361,10 +362,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -388,10 +389,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -415,10 +416,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -442,10 +443,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -469,10 +470,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -496,10 +497,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -523,10 +524,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -550,10 +551,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -577,10 +578,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -604,10 +605,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -631,10 +632,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
     
@@ -985,10 +986,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1029,18 +1031,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Examples
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1064,10 +1067,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1091,10 +1094,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1118,10 +1121,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1145,10 +1148,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1172,10 +1175,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1216,18 +1220,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Plugin API
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1251,10 +1256,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1278,10 +1283,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1305,10 +1310,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1332,10 +1337,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1359,10 +1364,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1386,10 +1391,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1413,10 +1418,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1440,10 +1445,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1467,10 +1472,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1494,10 +1499,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1521,10 +1526,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1548,10 +1553,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1575,10 +1580,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1602,10 +1607,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1629,10 +1634,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1656,10 +1661,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1683,10 +1688,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1710,10 +1715,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1737,10 +1742,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1764,10 +1769,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1791,10 +1796,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2132,8 +2138,10 @@
             <div class="md-content" data-md-component="content">
               
               <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
                 
                   
+
 
 <h1 id="ui-components">UI Components</h1>
 <p>PostalPoint uses Framework7 for its user interface and styling.</p>
@@ -2166,9 +2174,9 @@
 <li><code>type=number</code> shows + and - UI buttons near the actual input.</li>
 <li><code>type=file</code> is an editable text input and a browse button.  The input's value is the full file path, and the browse button allows the user to select a file path to set in the input.</li>
 </ul>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;list&quot;</span><span class="p">&gt;</span>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"list"</span><span class="p">&gt;</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="p">&lt;</span><span class="nt">li-input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Placeholder Text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;notes&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;notesInput&quot;</span> <span class="p">/&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="p">&lt;</span><span class="nt">li-input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">"Placeholder Text"</span> <span class="na">name</span><span class="o">=</span><span class="s">"notes"</span> <span class="na">id</span><span class="o">=</span><span class="s">"notesInput"</span> <span class="p">/&gt;</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></code></pre></div>
@@ -2186,9 +2194,9 @@
 <li>liid: ID for the <code>li</code> tag inside this component.</li>
 <li>liclass: CSS class string for the <code>li</code> tag.</li>
 </ul>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;list&quot;</span><span class="p">&gt;</span>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"list"</span><span class="p">&gt;</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        <span class="p">&lt;</span><span class="nt">li-select-input</span> <span class="na">label</span><span class="o">=</span><span class="s">&quot;Country&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;country&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;country_select&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="na">options</span><span class="o">=</span><span class="s">&quot;${JSON.stringify([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;])}&quot;</span> <span class="p">/&gt;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        <span class="p">&lt;</span><span class="nt">li-select-input</span> <span class="na">label</span><span class="o">=</span><span class="s">"Country"</span> <span class="na">name</span><span class="o">=</span><span class="s">"country"</span> <span class="na">id</span><span class="o">=</span><span class="s">"country_select"</span> <span class="na">value</span><span class="o">=</span><span class="s">""</span> <span class="na">options</span><span class="o">=</span><span class="s">"${JSON.stringify(['a', 'b', 'c'])}"</span> <span class="p">/&gt;</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></code></pre></div>
@@ -2207,9 +2215,9 @@ This means you cannot use commas in any of the values.</p>
 <li>liclass: CSS class string for the <code>li</code> tag.</li>
 <li>style: CSS style for the <code>li</code> tag.</li>
 </ul>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;list&quot;</span><span class="p">&gt;</span>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"list"</span><span class="p">&gt;</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        <span class="p">&lt;</span><span class="nt">li-multi-select-input</span> <span class="na">label</span><span class="o">=</span><span class="s">&quot;Select Carriers&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;carriers&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="na">options</span><span class="o">=</span><span class="s">&#39;${JSON.stringify([&quot;USPS&quot;, &quot;FedEx&quot;])}&#39;</span> <span class="p">/&gt;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        <span class="p">&lt;</span><span class="nt">li-multi-select-input</span> <span class="na">label</span><span class="o">=</span><span class="s">"Select Carriers"</span> <span class="na">name</span><span class="o">=</span><span class="s">"carriers"</span> <span class="na">value</span><span class="o">=</span><span class="s">""</span> <span class="na">options</span><span class="o">=</span><span class="s">'${JSON.stringify(["USPS", "FedEx"])}'</span> <span class="p">/&gt;</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></code></pre></div>
@@ -2229,9 +2237,9 @@ The hidden <code>input</code>'s <code>id</code> is set to <code>${id}_hidden</co
 <li>liid: ID for the <code>li</code> tag inside this component.</li>
 <li>liclass: CSS class string for the <code>li</code> tag.</li>
 </ul>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;list&quot;</span><span class="p">&gt;</span>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"list"</span><span class="p">&gt;</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        <span class="p">&lt;</span><span class="nt">li-checkbox-input</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;someCheck&quot;</span> <span class="na">label</span><span class="o">=</span><span class="s">&quot;Turn me on&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;someCheck&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;I&#39;m on&quot;</span> <span class="p">/&gt;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        <span class="p">&lt;</span><span class="nt">li-checkbox-input</span> <span class="na">id</span><span class="o">=</span><span class="s">"someCheck"</span> <span class="na">label</span><span class="o">=</span><span class="s">"Turn me on"</span> <span class="na">name</span><span class="o">=</span><span class="s">"someCheck"</span> <span class="na">value</span><span class="o">=</span><span class="s">"I'm on"</span> <span class="p">/&gt;</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></code></pre></div>
@@ -2249,9 +2257,9 @@ The hidden <code>input</code>'s <code>id</code> is set to <code>${id}_hidden</co
 <li>liclass: CSS class string for the <code>li</code> tag.</li>
 <li>style: CSS styles for the <code>li</code> tag.</li>
 </ul>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;list&quot;</span><span class="p">&gt;</span>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"list"</span><span class="p">&gt;</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>        <span class="p">&lt;</span><span class="nt">li-color-input</span> <span class="na">label</span><span class="o">=</span><span class="s">&quot;Pick a Color&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;picked_color&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;picked_color&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;#00acff&quot;</span> <span class="na">defaultcolor</span><span class="o">=</span><span class="s">&quot;#00acff&quot;</span> <span class="p">/&gt;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>        <span class="p">&lt;</span><span class="nt">li-color-input</span> <span class="na">label</span><span class="o">=</span><span class="s">"Pick a Color"</span> <span class="na">id</span><span class="o">=</span><span class="s">"picked_color"</span> <span class="na">name</span><span class="o">=</span><span class="s">"picked_color"</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">""</span> <span class="na">value</span><span class="o">=</span><span class="s">"#00acff"</span> <span class="na">defaultcolor</span><span class="o">=</span><span class="s">"#00acff"</span> <span class="p">/&gt;</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></code></pre></div>
@@ -2266,26 +2274,26 @@ The hidden <code>input</code>'s <code>id</code> is set to <code>${id}_hidden</co
 <li>liclass: CSS class string for the <code>li</code> tag.</li>
 <li>style: CSS styles for the <code>li</code> tag.</li>
 </ul>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;list&quot;</span><span class="p">&gt;</span>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"list"</span><span class="p">&gt;</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>        <span class="p">&lt;</span><span class="nt">li-button</span> <span class="na">label</span><span class="o">=</span><span class="s">&quot;Click Me&quot;</span> <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&quot;${someFunction}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;color-green button-outline&quot;</span> <span class="p">/&gt;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>        <span class="p">&lt;</span><span class="nt">li-button</span> <span class="na">label</span><span class="o">=</span><span class="s">"Click Me"</span> <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">"${someFunction}"</span> <span class="na">class</span><span class="o">=</span><span class="s">"color-green button-outline"</span> <span class="p">/&gt;</span>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></code></pre></div>
 <h2 id="scaleweight-display">Scale/Weight Display</h2>
 <h3 id="small-display">Small display</h3>
 <p>Simply include this in a navbar to show the postage scale's current weight or error code. Updated automatically.</p>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;navbar-scale-display&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"navbar-scale-display"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></code></pre></div>
 <h4 id="example">Example:</h4>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;navbar&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;navbar-bg&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;navbar-inner&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;title display-flex justify-content-start align-items-center&quot;</span><span class="p">&gt;</span>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"navbar"</span><span class="p">&gt;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"navbar-bg"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"navbar-inner"</span><span class="p">&gt;</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"title display-flex justify-content-start align-items-center"</span><span class="p">&gt;</span>
 </span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>            <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>Some Page Title<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;right padding-right&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;navbar-scale-display&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"right padding-right"</span><span class="p">&gt;</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"navbar-scale-display"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -2293,7 +2301,7 @@ The hidden <code>input</code>'s <code>id</code> is set to <code>${id}_hidden</co
 <h2 id="shortcut-key-hint">Shortcut Key Hint</h2>
 <p>Show a tiny keyboard symbol on a button or other UI element.  Not shown if the user turns off the "Show Keyboard Shortcuts" preference.</p>
 <p>Has CSS to deal with embedding in a Framework7 button or tab label.</p>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">&lt;</span><span class="nt">key-hint</span> <span class="na">k</span><span class="o">=</span><span class="s">&quot;F5&quot;</span> <span class="p">/&gt;</span>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">&lt;</span><span class="nt">key-hint</span> <span class="na">k</span><span class="o">=</span><span class="s">"F5"</span> <span class="p">/&gt;</span>
 </span></code></pre></div>
 <h2 id="number-pad">Number Pad</h2>
 <p>A touch-friendly onscreen number pad that sends its input to a target element.</p>
@@ -2306,7 +2314,7 @@ The hidden <code>input</code>'s <code>id</code> is set to <code>${id}_hidden</co
 <li>eraseonstart: If set to a non-empty string, the target input's existing value will be cleared the first time the user presses a key on the number pad.</li>
 <li>clearbutton: If set to a non-empty string, an erase/clear button will be included on the number pad.</li>
 </ul>
-<div class="language-html highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">&lt;</span><span class="nt">osk-numberpad</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;amountInput&quot;</span> <span class="na">decimal</span><span class="o">=</span><span class="s">&quot;yes&quot;</span> <span class="p">/&gt;</span>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">&lt;</span><span class="nt">osk-numberpad</span> <span class="na">target</span><span class="o">=</span><span class="s">"amountInput"</span> <span class="na">decimal</span><span class="o">=</span><span class="s">"yes"</span> <span class="p">/&gt;</span>
 </span></code></pre></div>
 
 
@@ -2353,7 +2361,7 @@ The hidden <code>input</code>'s <code>id</code> is set to <code>${id}_hidden</co
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
@@ -2361,10 +2369,16 @@ The hidden <code>input</code>'s <code>id</code> is set to <code>${id}_hidden</co
     
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.code.copy"],"search":"../../assets/javascripts/workers/search.b6b7e04f.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"alias":true,"default":"next","provider":"mike"}}</script>
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.c47bb847.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"alias":true,"default":"next","provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7f30b55.min.js"></script>
+      <script src="../../assets/javascripts/bundle.10ee5ab6.min.js"></script>
+      
+        <script src="../../assets/external/unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

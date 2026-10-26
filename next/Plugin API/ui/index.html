@@ -9,6 +9,7 @@
       
       
       
+      
         <link rel="prev" href="../storage/">
       
       
@@ -19,7 +20,7 @@
       
       
       <link rel="icon" href="https://postalpoint.app/images/favicon-voxel.png">
-      <meta name="generator" content="zensical-0.0.51">
+      <meta name="generator" content="zensical-0.0.72">
     
     
       
@@ -30,12 +31,12 @@
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.62c9b9cc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.4ab2de0c.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
       
       
 
@@ -94,14 +95,11 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#ui-object" class="md-skip">
-          Skip to content
-        </a>
-      
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
     </div>
     <div data-md-component="announce">
       
@@ -123,9 +121,10 @@
   <img src="https://postalpoint.app/images/favicon-voxel.png" alt="PostalPoint Plugin Development">
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+    <label class="md-header__button md-icon" for="__drawer">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -187,9 +186,10 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+        <label class="md-header__button md-icon" for="__search">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
         </label>
         <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
   <button type="button" class="md-search__button">
@@ -297,18 +297,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Docs
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -332,10 +333,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -359,10 +360,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -386,10 +387,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -413,10 +414,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -440,10 +441,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -467,10 +468,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -494,10 +495,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -521,10 +522,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -548,10 +549,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -575,10 +576,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -602,10 +603,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -629,10 +630,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -656,10 +657,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -700,18 +702,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Examples
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -735,10 +738,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -762,10 +765,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -789,10 +792,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -816,10 +819,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -843,10 +846,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -889,18 +893,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Plugin API
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -924,10 +929,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -951,10 +956,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -978,10 +983,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1005,10 +1010,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1032,10 +1037,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1059,10 +1064,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1086,10 +1091,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1113,10 +1118,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1140,10 +1145,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1167,10 +1172,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1194,10 +1199,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1221,10 +1226,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1248,10 +1253,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1275,10 +1280,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1302,10 +1307,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1329,10 +1334,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1356,10 +1361,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1383,10 +1388,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
     
@@ -1624,10 +1629,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1651,10 +1656,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1678,10 +1683,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1906,10 +1912,12 @@
             <div class="md-content" data-md-component="content">
               
               <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
                 
                   
 
-  <h1 id="__skip">Ui</h1>
+
+  <h1>Ui</h1>
 
 <p><a name="ui"></a></p>
 <h2 id="ui-object">ui : <code>object</code></h2>
@@ -1999,35 +2007,35 @@ will be run as a function and will not be expected to return a page component.
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nx">exports</span><span class="p">.</span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addToolsPage</span><span class="p">(</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">                                 </span><span class="nx">displayMessage</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">                                 </span><span class="s2">&quot;click me&quot;</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">                                 </span><span class="s2">&quot;clickmecard&quot;</span><span class="p">,</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">                                 </span><span class="s2">&quot;Click here to see a message&quot;</span><span class="p">,</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">                                 </span><span class="s2">&quot;Click This Card&quot;</span><span class="p">,</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">                                 </span><span class="s2">&quot;fa-solid fa-arrow-pointer&quot;</span><span class="p">,</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">                                 </span><span class="s2">&quot;function&quot;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">                                 </span><span class="s2">"click me"</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">                                 </span><span class="s2">"clickmecard"</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">                                 </span><span class="s2">"Click here to see a message"</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">                                 </span><span class="s2">"Click This Card"</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">                                 </span><span class="s2">"fa-solid fa-arrow-pointer"</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">                                 </span><span class="s2">"function"</span>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">                               </span><span class="p">);</span>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">}</span>
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
 </span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="kd">function</span><span class="w"> </span><span class="nx">displayMessage</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Card clicked&quot;</span><span class="p">);</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s2">"Card clicked"</span><span class="p">);</span>
 </span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="p">}</span>
 </span></code></pre></div>
 <strong>Example</strong><br />
 <div class="language-js highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Open a dynamically-generated page</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">function</span><span class="w"> </span><span class="nx">rollDice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">randomNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">6</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="sb">`&lt;div class=&quot;page&quot;&gt;</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="sb">        &lt;div class=&quot;navbar&quot;&gt;</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="sb">            &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="sb">            &lt;div class=&quot;navbar-inner&quot;&gt;</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="sb">                &lt;a href=&quot;#&quot; class=&quot;link back&quot;&gt;</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="sb">                    &lt;i class=&quot;icon icon-back&quot;&gt;&lt;/i&gt;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="sb">`&lt;div class="page"&gt;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="sb">        &lt;div class="navbar"&gt;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="sb">            &lt;div class="navbar-bg"&gt;&lt;/div&gt;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="sb">            &lt;div class="navbar-inner"&gt;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="sb">                &lt;a href="#" class="link back"&gt;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="sb">                    &lt;i class="icon icon-back"&gt;&lt;/i&gt;</span>
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="sb">                &lt;/a&gt;</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="sb">                &lt;div class=&quot;title&quot;&gt;Random Number&lt;/div&gt;</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="sb">                &lt;div class="title"&gt;Random Number&lt;/div&gt;</span>
 </span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="sb">            &lt;/div&gt;</span>
 </span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="sb">        &lt;/div&gt;</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="sb">        &lt;div class=&quot;page-content&quot;&gt;</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="sb">            &lt;div class=&quot;block&quot;&gt;</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="sb">        &lt;div class="page-content"&gt;</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="sb">            &lt;div class="block"&gt;</span>
 </span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="sb">                &lt;h1&gt;You rolled </span><span class="si">${</span><span class="nx">randomNumber</span><span class="si">}</span><span class="sb">&lt;/h1&gt;</span>
 </span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="sb">            &lt;/div&gt;</span>
 </span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="sb">        &lt;/div&gt;</span>
@@ -2035,25 +2043,25 @@ will be run as a function and will not be expected to return a page component.
 </span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="p">}</span>
 </span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addToolsPage</span><span class="p">(</span>
 </span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">                             </span><span class="nx">rollDice</span><span class="p">,</span>
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">                             </span><span class="s2">&quot;Random&quot;</span><span class="p">,</span>
-</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">                             </span><span class="s2">&quot;randomnumbercard&quot;</span><span class="p">,</span>
-</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">                             </span><span class="s2">&quot;Click here for a random number&quot;</span><span class="p">,</span>
-</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">                             </span><span class="s2">&quot;Random Number&quot;</span><span class="p">,</span>
-</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">                             </span><span class="s2">&quot;fa-regular fa-dice&quot;</span><span class="p">,</span>
-</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">                             </span><span class="s2">&quot;page&quot;</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">                             </span><span class="s2">"Random"</span><span class="p">,</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">                             </span><span class="s2">"randomnumbercard"</span><span class="p">,</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">                             </span><span class="s2">"Click here for a random number"</span><span class="p">,</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">                             </span><span class="s2">"Random Number"</span><span class="p">,</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">                             </span><span class="s2">"fa-regular fa-dice"</span><span class="p">,</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">                             </span><span class="s2">"page"</span>
 </span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">                           </span><span class="p">);</span>
 </span></code></pre></div>
 <strong>Example</strong><br />
 <div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Open a page from a file.</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">// See https://framework7.io/docs/router-component#single-file-component</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addToolsPage</span><span class="p">(</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">                             </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">getPluginFolder</span><span class="p">(</span><span class="s2">&quot;example-plugin&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/page.f7&quot;</span><span class="p">,</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">                             </span><span class="s2">&quot;Page&quot;</span><span class="p">,</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">                             </span><span class="s2">&quot;filepage&quot;</span><span class="p">,</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">                             </span><span class="s2">&quot;Open page.f7 from the plugin installation folder&quot;</span><span class="p">,</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">                             </span><span class="s2">&quot;Open Custom Page&quot;</span><span class="p">,</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">                             </span><span class="s2">&quot;fa-regular fa-file&quot;</span><span class="p">,</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">                             </span><span class="s2">&quot;page&quot;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">                             </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">getPluginFolder</span><span class="p">(</span><span class="s2">"example-plugin"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"/page.f7"</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">                             </span><span class="s2">"Page"</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">                             </span><span class="s2">"filepage"</span><span class="p">,</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">                             </span><span class="s2">"Open page.f7 from the plugin installation folder"</span><span class="p">,</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">                             </span><span class="s2">"Open Custom Page"</span><span class="p">,</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">                             </span><span class="s2">"fa-regular fa-file"</span><span class="p">,</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">                             </span><span class="s2">"page"</span>
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">                           </span><span class="p">);</span>
 </span></code></pre></div>
 <a name="ui.addHomeTab"></a></p>
@@ -2092,13 +2100,13 @@ will be run as a function and will not be expected to return a page component.
 </tbody>
 </table>
 <p><strong>Example</strong><br />
-<div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addHomeTab</span><span class="p">(</span><span class="s2">&quot;&lt;div class=&#39;block&#39;&gt;Hello&lt;/div&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hello Tab&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fa-duotone fa-hand-wave&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hellotab&quot;</span><span class="p">);</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addHomeTab</span><span class="p">(</span><span class="s2">"&lt;div class='block'&gt;Hello&lt;/div&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Hello Tab"</span><span class="p">,</span><span class="w"> </span><span class="s2">"fa-duotone fa-hand-wave"</span><span class="p">,</span><span class="w"> </span><span class="s2">"hellotab"</span><span class="p">);</span>
 </span></code></pre></div>
 <strong>Example</strong><br />
 <div class="language-js highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">renderTab</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;&lt;template&gt;&lt;div&gt;&lt;h1&gt;${hellovar}&lt;/h1&gt;&lt;/div&gt;&lt;/template&gt;&lt;script&gt;export default (props, {$on, $update, $f7}) =&gt; {var hellovar = &#39;hello world&#39;; return $render;}&lt;/script&gt;&quot;</span><span class="p">;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">"&lt;template&gt;&lt;div&gt;&lt;h1&gt;${hellovar}&lt;/h1&gt;&lt;/div&gt;&lt;/template&gt;&lt;script&gt;export default (props, {$on, $update, $f7}) =&gt; {var hellovar = 'hello world'; return $render;}&lt;/script&gt;"</span><span class="p">;</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">}</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addHomeTab</span><span class="p">(</span><span class="nx">renderTab</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hello Template&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fa-duotone fa-file-code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hellotemplatetab&quot;</span><span class="p">);</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addHomeTab</span><span class="p">(</span><span class="nx">renderTab</span><span class="p">,</span><span class="w"> </span><span class="s2">"Hello Template"</span><span class="p">,</span><span class="w"> </span><span class="s2">"fa-duotone fa-file-code"</span><span class="p">,</span><span class="w"> </span><span class="s2">"hellotemplatetab"</span><span class="p">);</span>
 </span></code></pre></div>
 <a name="ui.addDropoffTab"></a></p>
 <h3 id="uiadddropofftabcontent-title-icon-id-undefined">ui.addDropoffTab(content, title, icon, id) ⇒ <code>undefined</code></h3>
@@ -2136,13 +2144,13 @@ will be run as a function and will not be expected to return a page component.
 </tbody>
 </table>
 <p><strong>Example</strong><br />
-<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addDropoffTab</span><span class="p">(</span><span class="s2">&quot;&lt;div class=&#39;block&#39;&gt;Hello&lt;/div&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hello Tab&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fa-duotone fa-hand-wave&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hellotab&quot;</span><span class="p">);</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addDropoffTab</span><span class="p">(</span><span class="s2">"&lt;div class='block'&gt;Hello&lt;/div&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Hello Tab"</span><span class="p">,</span><span class="w"> </span><span class="s2">"fa-duotone fa-hand-wave"</span><span class="p">,</span><span class="w"> </span><span class="s2">"hellotab"</span><span class="p">);</span>
 </span></code></pre></div>
 <strong>Example</strong><br />
 <div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">renderTab</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;&lt;template&gt;&lt;div&gt;&lt;h1&gt;${hellovar}&lt;/h1&gt;&lt;/div&gt;&lt;/template&gt;&lt;script&gt;export default (props, {$on, $update, $f7}) =&gt; {var hellovar = &#39;hello world&#39;; return $render;}&lt;/script&gt;&quot;</span><span class="p">;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">"&lt;template&gt;&lt;div&gt;&lt;h1&gt;${hellovar}&lt;/h1&gt;&lt;/div&gt;&lt;/template&gt;&lt;script&gt;export default (props, {$on, $update, $f7}) =&gt; {var hellovar = 'hello world'; return $render;}&lt;/script&gt;"</span><span class="p">;</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">}</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addDropoffTab</span><span class="p">(</span><span class="nx">renderTab</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hello Template&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fa-duotone fa-file-code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hellotemplatetab&quot;</span><span class="p">);</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">addDropoffTab</span><span class="p">(</span><span class="nx">renderTab</span><span class="p">,</span><span class="w"> </span><span class="s2">"Hello Template"</span><span class="p">,</span><span class="w"> </span><span class="s2">"fa-duotone fa-file-code"</span><span class="p">,</span><span class="w"> </span><span class="s2">"hellotemplatetab"</span><span class="p">);</span>
 </span></code></pre></div>
 <a name="ui.createPopup"></a></p>
 <h3 id="uicreatepopupcontent-params-promiseobject">ui.createPopup(content, params) ⇒ <code>Promise.&lt;Object&gt;</code></h3>
@@ -2241,11 +2249,11 @@ will be run as a function and will not be expected to return a page component.
 </tbody>
 </table>
 <p><strong>Example</strong><br />
-<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">openInternalWebBrowser</span><span class="p">(</span><span class="s2">&quot;https://postalpoint.app&quot;</span><span class="p">);</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">eventbus</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;browserNavigate&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">newUrl</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="sb">`New URL: </span><span class="si">${</span><span class="nx">newUrl</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Browser Navigated&quot;</span><span class="p">);</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">newUrl</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;https://closeme.com&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">eventbus</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s2">&quot;browserCloseRequest&quot;</span><span class="p">);</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">openInternalWebBrowser</span><span class="p">(</span><span class="s2">"https://postalpoint.app"</span><span class="p">);</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">eventbus</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"browserNavigate"</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">newUrl</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="sb">`New URL: </span><span class="si">${</span><span class="nx">newUrl</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="s2">"Browser Navigated"</span><span class="p">);</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">newUrl</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"https://closeme.com"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">eventbus</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s2">"browserCloseRequest"</span><span class="p">);</span>
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="p">});</span>
 </span></code></pre></div>
@@ -2311,21 +2319,21 @@ Wrap it in a <webview src="../..."></webview> tag if you need to display one.</p
 </table>
 <p><strong>Example</strong><br />
 <div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">// How content is converted by PostalPoint before display:</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;html&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"html"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`data:text/html;charset=utf-8,</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;pdf&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"pdf"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`data:application/pdf,</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;raw&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"raw"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="nb">global</span><span class="p">.</span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;body&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"body"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`data:text/html;charset=utf-8,&lt;!DOCTYPE html&gt;</span>
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="sb">    &lt;meta charset=&quot;utf-8&quot;&gt;</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="sb">    &lt;meta charset="utf-8"&gt;</span>
 </span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="sb">    &lt;title&gt;&lt;/title&gt;</span>
 </span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="sb">    &lt;style&gt;</span>
 </span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="sb">        html, body {margin: 0; padding: 0; font-family: PostalPointSans, Roboto, Ubuntu, Arial, sans-serif;}</span>
 </span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="sb">        h1, h2, h3 {margin: 0;}</span>
 </span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="sb">    &lt;/style&gt;</span>
-</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="sb">    &lt;div id=&quot;maindiv&quot;&gt;</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">&lt;/div&gt;`</span><span class="p">;</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="sb">    &lt;div id="maindiv"&gt;</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">&lt;/div&gt;`</span><span class="p">;</span>
 </span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">    </span><span class="nx">customerScreenContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`data:text/plain;charset=utf-8,</span><span class="si">${</span><span class="nx">content</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
 </span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="p">}</span>
@@ -2370,8 +2378,8 @@ the customerSignatureCollected event is emitted with the data
 </tbody>
 </table>
 <p><strong>Example</strong><br />
-<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">collectSignatureFromCustomerScreen</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&lt;p&gt;By signing, you agree to pay us lots of money&lt;/p&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;body&quot;</span><span class="p">);</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">eventbus</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;customerSignatureCollected&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">sigdata</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">collectSignatureFromCustomerScreen</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="s2">"&lt;p&gt;By signing, you agree to pay us lots of money&lt;/p&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"body"</span><span class="p">);</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nb">global</span><span class="p">.</span><span class="nx">apis</span><span class="p">.</span><span class="nx">eventbus</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"customerSignatureCollected"</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">sigdata</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">pngDataURL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sigdata</span><span class="p">.</span><span class="nx">png</span><span class="p">;</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">svgDataURL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sigdata</span><span class="p">.</span><span class="nx">svg</span><span class="p">;</span>
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="p">});</span>
@@ -2449,7 +2457,7 @@ will be displayed there instead of on the customer screen.</p>
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
@@ -2457,10 +2465,16 @@ will be displayed there instead of on the customer screen.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.code.copy"],"search":"../../assets/javascripts/workers/search.b6b7e04f.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"alias":true,"default":"next","provider":"mike"}}</script>
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.c47bb847.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"alias":true,"default":"next","provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7f30b55.min.js"></script>
+      <script src="../../assets/javascripts/bundle.10ee5ab6.min.js"></script>
+      
+        <script src="../../assets/external/unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

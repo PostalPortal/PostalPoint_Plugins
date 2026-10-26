@@ -9,6 +9,7 @@
       
       
       
+      
         <link rel="prev" href="../user/">
       
       
@@ -17,7 +18,7 @@
       
       
       <link rel="icon" href="https://postalpoint.app/images/favicon-voxel.png">
-      <meta name="generator" content="zensical-0.0.51">
+      <meta name="generator" content="zensical-0.0.72">
     
     
       
@@ -28,12 +29,12 @@
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.62c9b9cc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.4ab2de0c.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
       
       
 
@@ -92,14 +93,11 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#util-object" class="md-skip">
-          Skip to content
-        </a>
-      
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
     </div>
     <div data-md-component="announce">
       
@@ -121,9 +119,10 @@
   <img src="https://postalpoint.app/images/favicon-voxel.png" alt="PostalPoint Plugin Development">
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+    <label class="md-header__button md-icon" for="__drawer">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -185,9 +184,10 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+        <label class="md-header__button md-icon" for="__search">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
         </label>
         <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
   <button type="button" class="md-search__button">
@@ -295,18 +295,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Docs
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -330,10 +331,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -357,10 +358,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -384,10 +385,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -411,10 +412,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -438,10 +439,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -465,10 +466,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -492,10 +493,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -519,10 +520,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -546,10 +547,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -573,10 +574,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -600,10 +601,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -627,10 +628,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -654,10 +655,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -698,18 +700,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Examples
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -733,10 +736,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -760,10 +763,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -787,10 +790,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -814,10 +817,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -841,10 +844,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -887,18 +891,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Plugin API
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -922,10 +927,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -949,10 +954,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -976,10 +981,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1003,10 +1008,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1030,10 +1035,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1057,10 +1062,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1084,10 +1089,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1111,10 +1116,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1138,10 +1143,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1165,10 +1170,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1192,10 +1197,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1219,10 +1224,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1246,10 +1251,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1273,10 +1278,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1300,10 +1305,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1327,10 +1332,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1354,10 +1359,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1381,10 +1386,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1408,10 +1413,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1435,10 +1440,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
     
@@ -1944,10 +1949,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2440,10 +2446,12 @@
             <div class="md-content" data-md-component="content">
               
               <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
                 
                   
 
-  <h1 id="__skip">Util</h1>
+
+  <h1>Util</h1>
 
 <p><a name="util"></a></p>
 <h2 id="util-object">util : <code>object</code></h2>
@@ -2624,13 +2632,13 @@
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">         </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="mf">1234567890</span><span class="p">,</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">         </span><span class="c1">// Source name set in geturl()</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">         </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;sourcename&quot;</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">         </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="s2">"sourcename"</span><span class="p">,</span>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">         </span><span class="c1">// JSON string of all the HTTP headers sent to the webhook URL.</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">         </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{&#39;Content-Type&#39;: &#39;application/json&#39;}&quot;</span><span class="p">,</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">         </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="s2">"{'Content-Type': 'application/json'}"</span><span class="p">,</span>
 </span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">         </span><span class="c1">// Entire HTTP request body sent to the webhook URL.</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">         </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">         </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s2">""</span>
 </span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">     </span><span class="p">}</span>
 </span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="p">]</span>
 </span></code></pre></div>
@@ -3319,7 +3327,7 @@ This function returns the ISO 3166-2 code for a state code (or name, if it's an 
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
@@ -3327,10 +3335,16 @@ This function returns the ISO 3166-2 code for a state code (or name, if it's an 
     
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.code.copy"],"search":"../../assets/javascripts/workers/search.b6b7e04f.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"alias":true,"default":"next","provider":"mike"}}</script>
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.c47bb847.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"alias":true,"default":"next","provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7f30b55.min.js"></script>
+      <script src="../../assets/javascripts/bundle.10ee5ab6.min.js"></script>
+      
+        <script src="../../assets/external/unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>
